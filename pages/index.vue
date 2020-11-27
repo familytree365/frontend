@@ -5,7 +5,7 @@
             <div class="navbar is-fixed-top clearHeader" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="#">
-                        <img src="~assets/images/logo.svg">
+                        <img src="~assets/images/logo1.svg">
                     </a>
                     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                         data-target="navbarBasicExample">
@@ -28,15 +28,15 @@
                         <a data-scroll class="navbar-item" href="#overview">
                             Overview
                         </a>
-                        <a class="navbar-item" href="signin.html">
-                            Sign in
-                        </a>
+                        <NuxtLink to="/login" class="navbar-item">
+                          Sign in
+                        </NuxtLink>
                         <div class="navbar-item">
                             <div class="buttons">
-                                <a href="signup.html"
+                                <NuxtLink to="/register"
                                     class="button theme-button has-background-secondary has-text-weight-medium has-text-white">
                                     Create an account
-                                </a>
+                                </NuxtLink>
                             </div>
                         </div>
                     </nav>

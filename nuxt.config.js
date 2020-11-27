@@ -34,7 +34,47 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     '@nuxtjs/bulma',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    [
+      'nuxt-fontawesome', {
+        imports: [
+         {
+           set: '@fortawesome/free-solid-svg-icons',
+           icons: ['fas']
+         },
+         {
+           set:'@fortawesome/free-brands-svg-icons',
+           icons: ['fab']
+         }
+       ]
+      }
+]
   ],
+
+axios: {
+  baseURL: "http://localhost:8000",
+  credentials: true
+},
+auth: {
+  redirect: {
+    login: '/login',
+    logout: '/',
+    callback: '/login',
+    home: '/'
+  },
+  strategies: {
+    local: {
+      endpoints: {
+        login: { url: '/api/login', method: 'post', propertyName: false },
+        user: { url: '/api/user', method: 'get', propertyName: false }
+      },
+      tokenRequired: false,
+      tokenType: false
+    }
+  },
+  localStorage: false
+},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
