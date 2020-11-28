@@ -23,7 +23,7 @@
                             Features
                         </a>
                         <a data-scroll class="navbar-item" href="#why">
-                            Why Genealogia
+                            Why Family Tree 365
                         </a>
                         <a data-scroll class="navbar-item" href="#overview">
                             Overview
@@ -47,11 +47,11 @@
                     <div class="column is-12 is-flex jc--c">
                         <div class="hero-content">
                             <h1 class="is-size-2 has-text-white has-text-weight-bold">
-                                Genealogia is a secure online website which you can create your own family tree with.
+                              Family Tree 365 is an online family tree maker that’s feature-rich yet easy to use.
                             </h1>
                             <h2 class="is-size-5 has-text-light mt-6">
-                                It is designed to have extensive features but be easy and accessible to use. You can
-                                easily import and export GEDCOM files, view and manipulate the data.
+                              It is designed to have extensive functionality while being simple to use, secure, and accessible.
+                              You can easily import and export GEDCOM files, view and manipulate data, and unlock extra features. Sign-up to start your free family tree today!
                             </h2>
                             <NuxtLink to="/register"
                                 class="button theme-button theme-button-xl has-background-secondary has-text-weight-medium has-text-white mt-6">
@@ -73,45 +73,39 @@
             <div class="columns is-variable is-8 is-multiline">
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/secured.svg" alt="" class="mb-4">
-                    <div class="is-size-4 has-text-black has-text-weight-bold"> Secured &amp; Easy to Use </div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-4 has-text-black has-text-weight-bold"> Easy to use &amp; secure.</div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">With an intuitive interface, you can get up and running quickly.
+                      There’s no steep learning curve. In-built security features keep your family tree private and secure.</div>
                 </div>
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/import.svg" alt="" class="mb-4">
-                    <div class="is-size-4 has-text-black has-text-weight-bold"> Easily Import & Export</div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-4 has-text-black has-text-weight-bold"> Easily Import &amp; Export</div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Our user-friendly import/export tool makes uploading and downloading
+                      existing family trees a breeze. Compatible with GEDCOM (family tree standard data format). </div>
                 </div>
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/record.svg" alt="" class="mb-4">
                     <div class="is-size-4 has-text-black has-text-weight-bold"> Record your Family </div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Create your family tree(s) and view in different formats using our tree viewer.
+                      Even if you’re new to genealogy, you can quickly get to grips with our platform. </div>
                 </div>
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/ntree.svg" alt="" class="mb-4">
                     <div class="is-size-4 has-text-black has-text-weight-bold"> No limit for Family Tree </div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">We impose no limits on the size of your family tree so you are free to expand as you wish.
+                      The platform can easily support hundreds of thousands of records.</div>
                 </div>
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/upload.svg" alt="" class="mb-4">
                     <div class="is-size-4 has-text-black has-text-weight-bold"> Upload your Files </div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Upload a range of media formats to support your family tree,
+                      including source documents, photographs, and other files related to your genealogy search. </div>
                 </div>
                 <div class="column is-4 mb-5">
                     <img src="~assets/images/gimport.svg" alt="" class="mb-4">
                     <div class="is-size-4 has-text-black has-text-weight-bold"> GEDCOM Import </div>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Porro magni aperiam aspernatur, veritatis officiis autem
-                        repudiandae. </div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">We support GEDCOM, the de facto standard file format for genealogy data.
+                      You can import and export GEDCOM family tree data at the click of a button. </div>
                 </div>
             </div>
         </div>
@@ -126,22 +120,20 @@
                 <div class="column is-7 is-flex jc--c ai--c">
                     <div class="px-5 is-flex fd--c jc--c py-6">
                         <h1 class="is-size-3 has-text-black has-text-weight-bold mb-5">
-                            Why Choose Genealogia?
+                            Why Choose Family Tree 365?
                         </h1>
                         <div class="is-size-6 has-text-black has-text-weight-regular is-flex ai--fs mb-4">
                             <img src="~assets/images/Checkmark.svg" alt="" class="bullet mt-2 mr-3">
-                            Genealogia is a secure online website
-                            which you can<br> use to create your own family tree(s) with.</div>
+                          Family Tree 365 is the simple and secure way to create your own family tree online.
+                          It is designed to be easy to understand with great functionality..</div>
                         <div class="is-size-6 has-text-black has-text-weight-regular is-flex ai--fs mb-4">
                             <img src="~assets/images/Checkmark.svg" alt="" class="bullet mt-2 mr-3">
-                            It has a tree viewer and DNA support
-                            more features<br> are planned such as the inclusion of archive databases<br> &amp;
-                            collections</div>
+                          It has an intuitive yet powerful tree viewer and DNA matching. More features are also planned,
+                          as the inclusion of archive databases and collections.</div>
                         <div class="is-size-6 has-text-black has-text-weight-regular is-flex ai--fs">
                             <img src="~assets/images/Checkmark.svg" alt="" class="bullet mt-2 mr-3">
-                            It is aimed to be affordable with a 7 day
-                            no obligation<br> trial with different pricing levels depending on how<br> many trees you
-                            require.</div>
+                      Set up your first family tree free of charge. We offer different pricing levels with optional subscriptions
+                      if you need to create extra trees</div>
                         <NuxtLink to="/register"
                             class="button theme-button theme-button-xl has-background-primary has-text-weight-medium has-text-white mt-5">
                             Create Your Own Tree
@@ -159,9 +151,8 @@
                     <h1 class="is-size-2 has-text-black has-text-weight-bold">
                         Create &amp; manage your family tree
                     </h1>
-                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Genealogia is a secure online website 
-                        which you can use to create your own family tree(s) with. There is no limit to the size of your trees
-                        and it should easily support hundreds of thousands of records.</div>
+                    <div class="is-size-6 has-text-black has-text-weight-regular mt-2">Family Tree 365 lets you create and manage your family tree the quick and easy way.
+                      Register to access our user-friendly platform that gives you all the tools you need to create, manage, and research your family genealogy.</div>
                 </div>
                 <div class="column is-12 has-text-centered">
                     <div class="fadein">
@@ -182,8 +173,8 @@
                         Start Your Free Tree Now!
                     </h1>
                     <div class="is-size-6 has-text-white has-text-weight-regular">
-                        We’ll help you get started, & explain Genealogia features. Any<br> issues you can always contact
-                        our support team.
+                      Your first tree is 100% free! If you need more, we offer affordable upgrades via our simple subscription plans.
+                      Need help? We can assist you to get started and explain Family Tree 365 features. Any issues? You can always contact our support team.
                     </div>
                 </div>
                 <div class="footer-action column is-5 is-flex ai--c jc--fe">
@@ -198,11 +189,11 @@
                 <div class="column is-4">
                     <img src="~assets/images/footer-logo.svg" width="180px" class="mb-5">
                     <div class="is-size-7 has-text-light has-text-weight-regular" style="line-height: 1.4rem;">
-                        Genealogia Ltd,<br> International House, 12 Constance<br> Street London, E16 2DQ.<br> Company
+                        Family Tree 365 Ltd,<br> Unit A, 82 James Carter Road, Mildenhall, Suffolk, England, IP28 7DE<br> Company
                         number 12734769
                     </div>
                     <p class="mt-2">
-                        <a href="https://www.facebook.com/genealogiawebsite" target="_blank" class="is-size-7 has-text-link is-flex">
+                        <a href="https://www.facebook.com/familytree365" target="_blank" class="is-size-7 has-text-link is-flex">
                             <i class="fab fa-facebook mr-2" style="margin-top: 0.2rem;"></i>Follow us on Facebook </a>
                         </p>
                 </div>
@@ -214,13 +205,13 @@
                         <div class="column is-flex fd--c">
                             <NuxtLink to="/" class="is-size-7 has-text-link mb-2">Home</NuxtLink>
                             <a href="#features" class="is-size-7 has-text-link mb-2">Features</a>
-                            <a href="index.html" class="is-size-7 has-text-link mb-2">Why Genealogia?</a>
+                            <a href="index.html" class="is-size-7 has-text-link mb-2">Why Family Tree 365?</a>
                             <a href="index.html" class="is-size-7 has-text-link mb-2">About</a>
                         </div>
                         <div class="column is-flex fd--c">
                             <NuxtLink to="/login" class="is-size-7 has-text-link mb-2">Sign in</NuxtLink>
-                            <NuxtLink to="/privacy"" class="is-size-7 has-text-link mb-2">Privacy Policy</NuxtLink>
-                            <NuxtLink to="/Terms" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</NuxtLink>
+                            <NuxtLink to="/privacy" class="is-size-7 has-text-link mb-2">Privacy Policy</NuxtLink>
+                            <NuxtLink to="/terms" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -230,14 +221,14 @@
                     </h1>
                     <div class="is-flex ml-1 mb-4">
                         <i class="fas fa-envelope mr-2 has-text-primary"></i>
-                        <a href="mailto:sales@genealogia.com" class="is-size-7 has-text-link">
-                            sales@genealogia.com</a>
+                        <a href="mailto:support@familytree365.com" class="is-size-7 has-text-link">
+                            support@familytree365.com</a>
                     </div>
                     <div class="is-flex mb-4">
                         <!-- <img src="img/mobile.svg" alt="" class="ml-2 mr-2"> -->
                         <i class="fas fa-mobile-alt ml-2 mr-2 has-text-primary"></i>
-                        <a href="tel:+44 330 122 8571" class="is-size-7 has-text-link is-flex">
-                            +44 330 122 8571</a>
+                        <a href="tel:+44 20 8064 1187" class="is-size-7 has-text-link is-flex">
+                          +44 20 8064 1187</a>
                     </div>
                     <div class="is-flex ml-1 mb-5">
                         <i class="fab fa-whatsapp mr-2 has-text-primary"></i>
@@ -250,8 +241,8 @@
             <div class="footer-seprator"></div>
             <div class="content has-text-centered pt-6">
                 <div class="columns is-gapless">
-                    <div class="column has-text-centered is-flex-desktop-only">    
-                        <p class="is-size-7 has-text-light has-text-weight-regular">Copyright © 2020 Genealogia Ltd</p>
+                    <div class="column has-text-centered is-flex-desktop-only">
+                        <p class="is-size-7 has-text-light has-text-weight-regular">Copyright &copy; 2020 Family Tree 365 Ltd</p>
                     </div>
                 </div>
             </div>
