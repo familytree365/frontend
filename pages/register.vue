@@ -11,7 +11,7 @@
                         <div class="auth-inner-content my-6">
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
-                                Genealogia is a secure online website
+                                Family Tree 365 is a secure online website
                                 which you can use to create your own family tree(s) with.</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
@@ -20,16 +20,15 @@
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
-                                It is aimed to be affordable with a 7 day
-                                no obligation trial with different pricing levels depending on how many trees you
-                                require.</div>
+                              Set up your first family tree free of charge.
+                              We offer different pricing levels with optional subscriptions if you need to create extra trees.</div>
                         </div>
                         <img class="auth-img" src="~assets/images/mockup03@2x.png" alt="">
                     </div>
                 </div>
             </div>
             <form class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless is-flex ai--c">
-               
+
                 <div class="auth-form is-gapless">
                     <div class="mb-5">
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
@@ -117,7 +116,7 @@
                         </p>
                     </div>
                 </div>
-                
+
             </form>
         </div>
     </div>

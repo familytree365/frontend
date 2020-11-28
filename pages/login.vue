@@ -11,7 +11,7 @@
                         <div class="auth-inner-content my-6">
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
-                                Genealogia is a secure online website
+                                Family Tree 365 is a secure online website
                                 which you can use to create your own family tree(s) with.</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
@@ -20,9 +20,8 @@
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
-                                It is aimed to be affordable with a 7 day
-                                no obligation trial with different pricing levels depending on how many trees you
-                                require.</div>
+                              Set up your first family tree free of charge.
+                              We offer different pricing levels with optional subscriptions if you need to create extra trees.</div>
                         </div>
                         <img class="auth-img" src="~assets/images/mockup01@2x.png" alt="">
                     </div>
