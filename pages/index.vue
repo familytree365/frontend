@@ -53,11 +53,11 @@
                                 It is designed to have extensive features but be easy and accessible to use. You can
                                 easily import and export GEDCOM files, view and manipulate the data.
                             </h2>
-                            <a href="signup.html"
+                            <NuxtLink to="/register"
                                 class="button theme-button theme-button-xl has-background-secondary has-text-weight-medium has-text-white mt-6">
                                 Create Your Own Tree
-                            </a>
-                            <div class="is-size-6 has-text-light mt-5"> <a class="has-text-light" href="signin.html"> Already have an account? Sign in </a></div>
+                            </NuxtLink>
+                            <div class="is-size-6 has-text-light mt-5"> <NuxtLink class="has-text-light" to="/login"> Already have an account? Sign in </NuxtLink></div>
                         </div>
                     </div>
                 </div>
@@ -142,10 +142,10 @@
                             It is aimed to be affordable with a 7 day
                             no obligation<br> trial with different pricing levels depending on how<br> many trees you
                             require.</div>
-                        <a href="signup.html"
+                        <NuxtLink to="/register"
                             class="button theme-button theme-button-xl has-background-primary has-text-weight-medium has-text-white mt-5">
                             Create Your Own Tree
-                        </a>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
@@ -187,10 +187,10 @@
                     </div>
                 </div>
                 <div class="footer-action column is-5 is-flex ai--c jc--fe">
-                    <a href="signup.html"
+                    <NuxtLink to="/register"
                         class="button theme-button theme-button-xl has-background-primary has-text-weight-medium has-text-white">
                         Create Your Own Tree
-                    </a>
+                    </NuxtLink>
                 </div>
             </div>
             <div class="footer-seprator"></div>
@@ -212,15 +212,15 @@
                     </h1>
                     <div class="columns is-gapless is-multiline is-flex fd--r">
                         <div class="column is-flex fd--c">
-                            <a href="index.html" class="is-size-7 has-text-link mb-2">Home</a>
-                            <a href="index.html" class="is-size-7 has-text-link mb-2">Features</a>
+                            <NuxtLink to="/" class="is-size-7 has-text-link mb-2">Home</NuxtLink>
+                            <a href="#features" class="is-size-7 has-text-link mb-2">Features</a>
                             <a href="index.html" class="is-size-7 has-text-link mb-2">Why Genealogia?</a>
                             <a href="index.html" class="is-size-7 has-text-link mb-2">About</a>
                         </div>
                         <div class="column is-flex fd--c">
-                            <a href="signin.html" class="is-size-7 has-text-link mb-2">Sign in</a>
-                            <a href="policy.html" class="is-size-7 has-text-link mb-2">Privacy Policy</a>
-                            <a href="terms.html" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</a>
+                            <NuxtLink to="/login" class="is-size-7 has-text-link mb-2">Sign in</NuxtLink>
+                            <NuxtLink to="/privacy"" class="is-size-7 has-text-link mb-2">Privacy Policy</NuxtLink>
+                            <NuxtLink to="/Terms" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,8 @@
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
 
  <style scoped>

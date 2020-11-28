@@ -85,7 +85,7 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Confirm Password">
+                                <input class="input is-large" type="email" placeholder="Confirm Password" v-model="registration.password_confirmation">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
@@ -127,24 +127,25 @@
 <script>
 export default {
     data() {
-    return {
-      error: false,
-      message: "",
-      registration: {
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: ""
-      }
-    };
-  },
+        return {
+            error: false,
+            message: "",
+            registration: {
+                first_name: "",
+                last_name: "",
+                email: "",
+                password: "",
+                password_confirmation: ''
+            }
+        };
+    },
 
   methods: {
     register() {
       this.$axios
         .$post("/api/register", this.registration)
         .then(response => {
-          this.$router.push("/");
+          this.$router.push("/login");
         })
         .catch(error => {
           console.log(error)

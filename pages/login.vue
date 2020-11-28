@@ -114,9 +114,7 @@
           await this.$auth.loginWith('local', { data: formData });
 
           // Redirect user after login
-          this.$router.push({
-            path: '/',
-          });
+         
         } catch (err) {
           this.error = err;
           // do something with error

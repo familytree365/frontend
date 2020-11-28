@@ -61,12 +61,13 @@ auth: {
     login: '/login',
     logout: '/',
     callback: '/login',
-    home: '/'
+    home: '/dashboard'
   },
   strategies: {
     local: {
       endpoints: {
-        login: { url: '/api/login', method: 'post', propertyName: false },
+        login: { url: '/login', method: 'post', propertyName: false },
+        logout: { url: '/logout', method: 'post' },
         user: { url: '/api/user', method: 'get', propertyName: false }
       },
       tokenRequired: false,
