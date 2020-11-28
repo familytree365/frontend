@@ -51,29 +51,29 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Password" name="password">
+                                <input class="input is-large" type="password" placeholder="Password" name="password">
                                 <span class="icon is-small is-left">
                                 <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
                         </div>
-                    </div>   
+                    </div>
                     <div class="mb-5">
                         <div class="columns is-mobile is-gapless">
                             <div class="column">
                                 <label class="checkbox">
                                     <input class="mr-1" type="checkbox">
                                     Remember me
-                                </label>   
+                                </label>
                             </div>
                             <div class="column has-text-right">
                                 <a href="/forgotpassword" class="has-text-link has-text-weight-medium"> Forgot password? </a>
                             </div>
-                        </div> 
-                            
+                        </div>
+
                     </div>
                     <div class="mb-6">
-                        <button type="submit" 
+                        <button type="submit"
                             class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
                             Login
                         </button>
@@ -100,7 +100,7 @@
     },
     mounted() {
       // Before loading login page, obtain csrf cookie from the server.
-     
+
     },
     methods: {
       async login() {
@@ -114,7 +114,7 @@
           await this.$auth.loginWith('local', { data: formData });
 
           // Redirect user after login
-         
+
         } catch (err) {
           this.error = err;
           // do something with error
