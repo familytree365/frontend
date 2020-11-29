@@ -66,9 +66,17 @@ auth: {
   strategies: {
     local: {
       endpoints: {
-        login: { url: '/login', method: 'post', propertyName: false },
+        login: { url: '/login', method: 'post', propertyName: false, withCredentials: true,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json'
+          }  },
         logout: { url: '/logout', method: 'post' },
-        user: { url: '/api/user', method: 'get', propertyName: false }
+        user: { url: '/api/user', method: 'get', propertyName: false, withCredentials: true,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json'
+          }}
       },
       tokenRequired: false,
       tokenType: false

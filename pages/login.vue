@@ -29,7 +29,7 @@
             </div>
             <div class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless">
                 <div class="auth-form is-gapless">
-                	<form ref="loginform" @submit.prevent="login()">
+                	<form @submit.prevent="login()">
                     <div class="mb-5">
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
                             <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" /> Back to Home</NuxtLink>
@@ -40,7 +40,7 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                            <input class="input is-large" type="email" placeholder="Email address" name="email">
+                            <input class="input is-large" type="email" placeholder="Email address" v-model="email">
                             <span class="icon is-small is-left">
                                 <font-awesome-icon :icon="['fas', 'envelope']"/>
                             </span>
@@ -50,7 +50,7 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="password" placeholder="Password" name="password">
+                                <input class="input is-large" type="password" placeholder="Password" v-model="password">
                                 <span class="icon is-small is-left">
                                 <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
@@ -72,7 +72,7 @@
 
                     </div>
                     <div class="mb-6">
-                        <button type="submit"
+                        <button type="submit" v-on:click="login()"
                             class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
                             Login
                         </button>
@@ -91,36 +91,33 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        error: {},
-      };
-    },
-    mounted() {
-      // Before loading login page, obtain csrf cookie from the server.
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
 
-    },
-    methods: {
-      async login() {
-      	 this.$axios.$get('/sanctum/csrf-cookie');
-        this.error = {};
-        try {
-          // Prepare form data
-          const formData = new FormData(this.$refs.loginform);
-
-          // Pass form data to `loginWith` function
-          await this.$auth.loginWith('local', { data: formData });
-
-          // Redirect user after login
-
-        } catch (err) {
-          this.error = err;
-          // do something with error
-        }
-      },
-    },
-  };
+  methods: {
+    login() {
+      this.$axios.get('/sanctum/csrf-cookie', {
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        withCredentials: true,
+      })
+        .then(function () {
+          this.$auth.loginWith('local', {
+            data: {
+              email: this.email,
+              password: this.password
+            },
+          });
+        }.bind(this))
+    }
+  }
+}
 </script>
 
  <style scoped>
