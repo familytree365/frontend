@@ -78,7 +78,7 @@
                         </div>
                         {{this.$auth.user.name}}
                     </a>
-                    <div class="navbar-dropdown is-right">                          
+                    <div class="navbar-dropdown is-right">
                         <div class="profile_dropdown_content">
                             <div class="is-flex fd--r px-3 py-2">
                                 <div class="user-avatar has-background-primary mr-3">
@@ -93,11 +93,11 @@
                             <a href="#" class="navbar-item">
                                 <i class="fas fa-user-edit mr-2"></i>
                                 Edit Profile
-                            </a> 
+                            </a>
                             <a href="#" class="navbar-item">
                                 <i class="fas fa-money-bill mr-2"></i>
                                 Subscription Plan : Trial
-                            </a>                            
+                            </a>
                             <a @click.prevent="logout()" class="navbar-item">
                                 <i class="fas fa-sign-out-alt mr-2"></i>
                                 Log Out</a>
@@ -266,7 +266,7 @@
             <div class="p-1 wrapper">
                 <Nuxt />
                 <footer class="footer mt-5">
-                    Copyright &copy; 2020 Genealogia Ltd
+                    Copyright &copy; 2020 Family Tree 365 Ltd
                 </footer>
             </div>
         </div>
