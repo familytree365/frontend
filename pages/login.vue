@@ -72,7 +72,7 @@
 
                     </div>
                     <div class="mb-6">
-                        <button type="submit" v-on:click="login()"
+                        <button type="submit"
                             class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
                             Login
                         </button>

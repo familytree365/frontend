@@ -30,13 +30,13 @@ export const actions = {
     commit("SET_ACCOUNT", account);
   },
   async loadPeople({ commit }) {
-    const people = await this.$axios.$get("/api/people?start=0&length=10&sortBy=id&sort=asc");
+    const people = await this.$axios.$get("/api/person?start=0&length=10");
     commit("SET_PEOPLE", people);
   },
   async deletePeople({ commit, dispatch }, id) {
     this.$axios
-      .$delete("/api/people/" + id)
-      .then((response) => dispatch("loadPeople"));
+      .$delete("/api/person/" + id)
+      .then(response => ( this.$router.push('/people') )) 
   },
 };
 

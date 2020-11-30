@@ -28,12 +28,12 @@
                                   People
                                 </p>
                                 <p class="card-header-icon">
-                                 <NuxtLink to="/people/create" class="button is-primary">
+                                 <NuxtLink to="/people/create" class="button is-link has-background-primary">
                                 Create New People</NuxtLink>
                                 </p>
                               </header>
                             <div class="card-content is-flex jc--sb">
-                                <table class="table">
+                                <!-- <table class="table">
                                     <thead>
                                         <tr>
                                           <th><abbr title="Position">Id</abbr></th>
@@ -54,13 +54,47 @@
                                     </tr>
                                    
                                     </tbody>
-                                </table>
+                                </table> -->
                             </div>
                         </div>
                         
                     </div>
 
                 </div>
+                <template>
+  <div>
+    <vue-good-table
+        mode="remote"
+        :columns="columns"
+        :rows="rows"
+        @on-page-change="onPageChange"
+        @on-sort-change="onSortChange"
+        @on-column-filter="onColumnFilter"
+        @on-per-page-change="onPerPageChange"
+        @on-search="onSearch"
+        :totalRows="totalRecords"
+        :pagination-options="{
+            perPage: 5,
+            enabled: true
+        }"
+        :sort-options="{
+            enabled: true,
+            initialSortBy: {field: 'name', type: 'asc'}
+        }"
+        :line-numbers="true"
+        >
+        <template slot="table-row" slot-scope="props">
+            <span v-if="props.column.field == 'action'">
+                <NuxtLink :to="'people/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                    Edit</NuxtLink> 
+                <button @click="deletePeople(rows[props.row.originalIndex].id)" class="button is-danger">
+                    Delete</button>
+            </span>
+            
+        </template>
+    </vue-good-table>
+  </div>
+</template>
                 
     </div>
 </template>
@@ -71,11 +105,38 @@ export default {
     layout: 'auth',
     data() {
         return {
+            totalRecords: 0,
             columns: [
-                {label: 'title', field: 'title'},
-                {label: 'name', field: 'name', headerClass: 'class-in-header second-class'},
+                {
+                    label: 'Name',
+                    field: 'name',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Name', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                        trigger: 'enter', //only trigger on enter not on keyup 
+                    },
+                },
+                {
+                    label: 'Action',
+                    field: 'action',
+                    sortable: false,
+                    width: '250px',
+                },
             ],
-            rows: []
+            rows: [],
+            serverParams: {
+              columnFilters: {
+              },
+              sort: {
+                field: 'name', 
+                type: 'asc',
+              },
+              page: 1, 
+              perPage: 5
+            }
         };
     },
     head() {
@@ -96,14 +157,61 @@ export default {
     },
 
     methods: {
-    ...mapActions([
-      'loadPeople',
-      'deletePeople'
-    ])
-  },
+        ...mapActions([
+          'loadPeople',
+          'deletePeople'
+        ]),
+        updateParams(newProps) {
+          this.serverParams = Object.assign({}, this.serverParams, newProps);
+        },
+        onPageChange(params) {
+          this.updateParams({page: params.currentPage});
+          this.loadItems();
+        },
 
+        onPerPageChange(params) {
+          this.updateParams({perPage: params.currentPerPage});
+          this.loadItems();
+        },
+
+        onSortChange(params) {
+            console.log(params);
+          this.updateParams({
+            sort: [{
+              type: params[0].type,
+              field: params[0].field,
+            }],
+          });
+          this.loadItems();
+        },
+        
+        onColumnFilter(params) {
+          this.updateParams(params);
+          this.loadItems();
+        },
+        onSearch(params) {
+           
+        },
+        loadItems() {
+            this.$axios.$get("/api/person", {
+                params: this.serverParams
+            })
+            .then(response => {
+                this.totalRecords = response.total;
+                this.rows = response.data;
+            })
+        },
+
+        searchFunction(row, col, cellValue, searchTerm){
+            alert("gg");
+            console.log(searchTerm);
+        },
+
+
+    },
+    
     created() {
-        this.loadPeople();
+        // this.loadPeople();
     },
 }
 

@@ -17,7 +17,9 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-fontawesome": "^0.4.0",
-    "vuejs-datatable": "^2.0.0-alpha.7"
+    "pusher-js": "^7.0.2",
+    "vue-good-table": "^2.21.1",
+    "vuelidate": "^0.7.6"
   },
   "devDependencies": {}
 }

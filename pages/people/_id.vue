@@ -42,14 +42,14 @@ export default {
     },
     methods: {
         save() {
-        this.$axios.$put('/api/people/'+this.$route.params.id, this.people)
+        this.$axios.$put('/api/person/'+this.$route.params.id, this.people)
             .then(response => ( this.$router.push('/people') )) 
             .catch(error => {
             });
         },
     },
     async asyncData({ $axios,params }) {
-      const people = await $axios.$get('/api/people/'+params.id)
+      const people = await $axios.$get('/api/person/'+params.id)
       return { people }
     }
 }

@@ -2,7 +2,7 @@
     <div>
      <section class="hero main-hero" id="home">
         <div class="hero-body is-flex ai--c">
-            <div class="navbar is-fixed-top clearHeader" role="navigation" aria-label="main navigation">
+            <div class="navbar is-fixed-top " :class="{ 'clearHeader': isClear, 'darkHeader': isDark }" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="#">
                         <img src="~assets/images/logo1.svg">
@@ -250,9 +250,28 @@
     </footer>
     </div>
 </template>
-
 <script>
 export default {
+    data() {
+        return {
+            isDark: false,
+            isClear: true,
+        };
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll() {
+            if (window.scrollY >= 500) {
+                this.isClear = false;
+                this.isDark = true;
+            } else {
+                this.isClear = true;
+                this.isDark = false;
+            }
+        },
+    },
 }
 </script>
 

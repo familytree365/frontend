@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         save() {
-        this.$axios.$post('/api/people', this.people)
+        this.$axios.$post('/api/person', this.people)
             .then(response => ( this.$router.push('/people') )) 
             .catch(error => {
             });
