@@ -29,6 +29,7 @@
             </div>
             <div class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless">
                 <div class="auth-form is-gapless">
+                    
                 	<form @submit.prevent="login()">
                     <div class="mb-5">
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
@@ -37,24 +38,29 @@
                             Sign in to your account
                         </h1>
                     </div>
+                    <div v-if="error" class="notification is-danger">
+                        The provided credentials are incorrect.
+                    </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                            <input class="input is-large" type="email" placeholder="Email address" v-model="email">
+                            <input class="input is-large" :class="{ 'is-danger': $v.email.$error }" type="email" placeholder="Email address" v-model="email">
                             <span class="icon is-small is-left">
                                 <font-awesome-icon :icon="['fas', 'envelope']"/>
                             </span>
                             </p>
+                            <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
                         </div>
                     </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="password" placeholder="Password" v-model="password">
+                                <input class="input is-large" :class="{ 'is-danger': $v.password.$error }" type="password" placeholder="Password" v-model="password">
                                 <span class="icon is-small is-left">
                                 <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
+                            <p class="help"  :class="{ 'is-danger': $v.password.$error }" v-if="!$v.password.required">Field is required</p>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -91,30 +97,48 @@
 </template>
 
 <script>
+import { required } from 'vuelidate/lib/validators'
 export default {
-  data() {
-    return {
-      email: '',
-      password: ''
-    }
-  },
+    data() {
+        return {
+            email: '',
+            password: '',
+            error: false,
+        }
+    },
+    validations: {
+        email: {
+            required,
+        },
+        password: {
+            required
+        }
+    },
 
   methods: {
     login() {
-      this.$axios.get('/sanctum/csrf-cookie', {
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        withCredentials: true,
-      })
-        .then(function () {
-          this.$auth.loginWith('local', {
-            data: {
-              email: this.email,
-              password: this.password
-            },
-          });
-        }.bind(this))
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+            console.log("fail")
+        } else {
+            this.$axios.get('/sanctum/csrf-cookie', {
+                headers: {
+                  'X-Requested-With': 'XMLHttpRequest'
+                },
+                withCredentials: true,
+            })
+            .then(() => {
+                this.$auth.loginWith('local', {
+                    data: {
+                        email: this.email,
+                        password: this.password
+                    },
+                }).catch(error => {
+                    this.error = true;
+                })
+            })
+        }
+        
     }
   }
 }

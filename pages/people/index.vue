@@ -73,15 +73,21 @@
         @on-per-page-change="onPerPageChange"
         @on-search="onSearch"
         :totalRows="totalRecords"
+        :isLoading.sync="isLoading"
         :pagination-options="{
             perPage: 5,
-            enabled: true
+            enabled: true,
+            mode: 'pages',
+
         }"
         :sort-options="{
             enabled: true,
             initialSortBy: {field: 'name', type: 'asc'}
         }"
         :line-numbers="true"
+        :search-options="{
+            enabled: true
+        }"
         >
         <template slot="table-row" slot-scope="props">
             <span v-if="props.column.field == 'action'">
@@ -105,6 +111,7 @@ export default {
     layout: 'auth',
     data() {
         return {
+            isLoading: false,
             totalRecords: 0,
             columns: [
                 {
@@ -116,7 +123,29 @@ export default {
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
-                        trigger: 'enter', //only trigger on enter not on keyup 
+                        
+                    },
+                },
+                {
+                    label: 'Email',
+                    field: 'email',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Email', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Phone',
+                    field: 'phone',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Phone', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
@@ -128,14 +157,18 @@ export default {
             ],
             rows: [],
             serverParams: {
-              columnFilters: {
-              },
-              sort: {
-                field: 'name', 
-                type: 'asc',
-              },
-              page: 1, 
-              perPage: 5
+                columnFilters: {
+
+                },
+                searchTerm: {
+                    searchTerm:''
+                },
+                sort: {
+                    field: 'name', 
+                    type: 'asc',
+                },
+                page: 1, 
+                perPage: 5
             }
         };
     },
@@ -190,7 +223,9 @@ export default {
           this.loadItems();
         },
         onSearch(params) {
-           
+           console.log(params);
+           this.updateParams({searchTerm: params});
+          this.loadItems();
         },
         loadItems() {
             this.$axios.$get("/api/person", {
@@ -205,6 +240,13 @@ export default {
         searchFunction(row, col, cellValue, searchTerm){
             alert("gg");
             console.log(searchTerm);
+        },
+        deletePeople(id) {
+            this.$axios
+            .$delete("/api/person/" + id)
+            .then(response => {
+                this.loadItems();
+            })
         },
 
 

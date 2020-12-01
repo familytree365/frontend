@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <form class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless is-flex ai--c">
+            <form @submit.prevent="register()" class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless is-flex ai--c">
 
                 <div class="auth-form is-gapless">
                     <div class="mb-5">
@@ -42,21 +42,23 @@
                             <div class="column">
                                 <div class="field">
                                     <p class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="email" placeholder="First name" v-model="registration.first_name">
+                                        <input class="input is-large" type="text" placeholder="First name" :class="{ 'is-danger': $v.registration.first_name.$error }" v-model="registration.first_name">
                                         <span class="icon is-small is-left">
                                             <font-awesome-icon :icon="['fas', 'user']"/>
                                         </span>
                                     </p>
+                                    <p class="help" :class="{ 'is-danger': $v.registration.first_name.$error }" v-if="!$v.registration.first_name.required">Field is required</p>
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="field">
                                     <p class="control has-icons-left has-icons-right">
-                                        <input class="input is-large" type="email" placeholder="Last name" v-model="registration.last_name">
+                                        <input class="input is-large" type="text" :class="{ 'is-danger': $v.registration.last_name.$error }" placeholder="Last name" v-model="registration.last_name">
                                         <span class="icon is-small is-left">
                                             <font-awesome-icon :icon="['fas', 'user']"/>
                                         </span>
                                     </p>
+                                    <p class="help" :class="{ 'is-danger': $v.registration.last_name.$error }" v-if="!$v.registration.last_name.required">Field is required</p>
                                 </div>
                             </div>
                         </div>
@@ -64,31 +66,34 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Email address" v-model="registration.email">
+                                <input class="input is-large" type="email" placeholder="Email address" :class="{ 'is-danger': $v.registration.email.$error }" v-model="registration.email">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'envelope']"/>
                                 </span>
                             </p>
+                            <p class="help" :class="{ 'is-danger': $v.registration.email.$error }" v-if="!$v.registration.email.required">Field is required</p>
                         </div>
                     </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Password" v-model="registration.password">
+                                <input class="input is-large" type="email" placeholder="Password" :class="{ 'is-danger': $v.registration.password.$error }" v-model="registration.password">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
+                            <p class="help" :class="{ 'is-danger': $v.registration.password.$error }" v-if="!$v.registration.password.required">Field is required</p>
                         </div>
                     </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Confirm Password" v-model="registration.password_confirmation">
+                                <input class="input is-large" type="email" placeholder="Confirm Password" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-model="registration.password_confirmation">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
+                            <p class="help" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-if="!$v.registration.password_confirmation.required">Field is required</p>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -104,7 +109,7 @@
 
                     </div>
                     <div class="mb-6">
-                        <button @click.prevent="register()"
+                        <button
                             class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
                             register
                         </button>
@@ -124,6 +129,7 @@
 </template>
 
 <script>
+    import { required } from 'vuelidate/lib/validators'
 export default {
     data() {
         return {
@@ -138,19 +144,42 @@ export default {
             }
         };
     },
-
-  methods: {
-    register() {
-      this.$axios
-        .$post("/api/register", this.registration)
-        .then(response => {
-          this.$router.push("/login");
-        })
-        .catch(error => {
-          console.log(error)
-        });
+    validations: {
+            registration: {
+                first_name: {
+                    required,
+                },
+                last_name: {
+                    required,
+                },
+                email: {
+                    required,
+                },
+                password: {
+                    required,
+                },
+                password_confirmation: {
+                    required,
+                },
+            },
+    },
+    methods: {
+        register() {
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                console.log("fail")
+            } else {
+                this.$axios
+                .$post("/api/register", this.registration)
+                .then(response => {
+                  this.$router.push("/login");
+                })
+                .catch(error => {
+                  console.log(error)
+                });
+            }
+        }
     }
-  }
 }
 </script>
 
