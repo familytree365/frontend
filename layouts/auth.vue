@@ -74,19 +74,19 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a href="#" class="navbar-link user-navbar">
                         <div class="user-avatar has-background-primary mr-3">
-                            <i class="fas fa-user"></i>
+                            <font-awesome-icon :icon="['fas', 'user']"/>
                         </div>
-                        {{this.$auth.user.name}}
+                        {{ loggedInUser.first_name }}
                     </a>
                     <div class="navbar-dropdown is-right">
                         <div class="profile_dropdown_content">
                             <div class="is-flex fd--r px-3 py-2">
                                 <div class="user-avatar has-background-primary mr-3">
-                                    <i class="fas fa-user"></i>
+                                    <font-awesome-icon :icon="['fas', 'user']"/>
                                 </div>
                                 <div class="is-flex fd--c ai--fs">
-                                    <span class="is-size-7 has-text-black has-text-weight-medium">Curtis D.</span>
-                                    <span class="is-size-7 has-text-dark">curtisd@gmail.com</span>
+                                    <span class="is-size-7 has-text-black has-text-weight-medium"> {{ loggedInUser.first_name }}  </span>
+                                    <span class="is-size-7 has-text-dark">{{ loggedInUser.email }}  </span>
                                 </div>
                             </div>
                             <hr class="navbar-divider" />
@@ -118,143 +118,144 @@
                     <aside class="menu">
                         <ul class="menu-list">
                             <li>
-                                <NuxtLink to="/dashboard" class="is-active">
-                                    <i class="fas fa-tachometer-alt icon"></i>
+                                <NuxtLink to="/dashboard">
+                                    <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                             </li>
                             <li>
                                 <a href="calendar.html">
-                                    <i class="fas fa-calendar icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Caelndar</a>
                             </li>
                             <li>
                                 <a href="files.html">
-                                    <i class="fas fa-file icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
                                     Files</a>
                             </li>
                             <li>
                                 <a href="components.html">
-                                    <i class="fas fa-user-tie icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'user-tie']" class="mt-1 mr-2" />
                                     Components</a>
                             </li>
-                            <li class="collapsible">
+                            <li class="collapsible is-active">
                                 <a href="#">
-                                    <i class="fas fa-question-circle icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                     Information
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
                                 </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Objects</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Addresses</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Chan</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Refn</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Subm</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Subn</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Addresses</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Chan</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Refn</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subm</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</a></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
                                 <a href="#">
-                                    <i class="fas fa-cog icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'cog']" class="mt-1 mr-2" />
                                     Sources
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
                                 </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Repositories</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Sources</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Source Data</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Source Data Events</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Source Ref Events</a></li>
+                                    <li><a href="#"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</a></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
-                                <NuxtLink to="/people">
-                                    <i class="fas fa-user-friends icon"></i>
+                                <a>
+                                    <font-awesome-icon :icon="['fas', 'user-friends']" class="mt-1 mr-2" />
                                     People
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
-                                </NuxtLink>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
+                                </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> People</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person Aliases</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person Anci</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person Association</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person Events</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person LDS</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Person Subm</a></li>
+                                    <li><NuxtLink to="/people"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Events</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person LDS</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</a></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
                                 <a href="#">
-                                    <i class="fas fa-heart icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'heart']" class="mt-1 mr-2" />
                                     Family
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
                                 </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Families</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Family Events</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Family Slugs</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Families</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Events</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</a></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
                                 <a href="#">
-                                    <i class="fas fa-thumbs-up icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'thumbs-up']" class="mt-1 mr-2" />
                                     References
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
                                 </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Citations</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Notes</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Places</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Types</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Authors</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Publications</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Types</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</a></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
                                 <a href="#">
-                                    <i class="fas fa-users icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'users']" class="mt-1 mr-2" />
                                     Trees
-                                    <i class="fas fa-angle-down is-pulled-right"></i>
+                                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
                                 </a>
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Show</a></li>
-                                    <li><a href="#"> <i class="fas fa-angle-right mr-1"></i> Trees</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</a></li>
+                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</a></li>
                                 </ul>
                             </div>
                             <li>
-                                <a href="gedcom.html">
-                                    <i class="fas fa-file-import icon"></i>
-                                    GEDCOM Import</a>
+                                <NuxtLink to="/gedcom">
+                                    <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
+                                    GEDCOM Import
+                                </NuxtLink>
                             </li>
                             <li>
                                 <a href="subscription.html">
-                                    <i class="fas fa-rocket icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                                     Subscription</a>
                             </li>
                             <li>
                                 <a href="dnaupload.html">
-                                    <i class="fas fa-file-upload icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
                                     DNA Upload</a>
                             </li>
                             <li>
                                 <a href="dashboard.html">
-                                    <i class="fas fa-dna icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</a>
                             </li>
                             <li>
                                 <a href="videos.html">
-                                    <i class="fas fa-video icon"></i>
+                                    <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                     How to Videos</a>
                             </li>
                         </ul>
@@ -273,18 +274,41 @@
     </div>
     </div>
 </template>
-
 <script>
+import { mapGetters } from 'vuex'
 export default {
     middleware: "auth",
-    methods: {
-    async logout() {
-      await this.$auth.logout();
+    mounted() {
+        this.collapsible();
     },
-}
+    computed: {
+        ...mapGetters(['loggedInUser'])
+    },
+    methods: {
+        async logout() {
+          await this.$auth.logout();
+        },
+        collapsible() {
+            var coll = document.getElementsByClassName('collapsible') 
+            var i;
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        },
+    }
 }
 </script>
 
  <style scoped>
+    @import '~/assets/css/bulma.css';
     @import '~/assets/css/admin.css';
+    @import '~/assets/css/fontawesome.min.css';
 </style>

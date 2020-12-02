@@ -28,10 +28,12 @@
                         <a data-scroll class="navbar-item" href="#overview">
                             Overview
                         </a>
-                        <NuxtLink to="/login" class="navbar-item">
+                        <NuxtLink to="/login" class="navbar-item" v-if="!isAuthenticated">
                           Sign in
                         </NuxtLink>
-                        <div class="navbar-item">
+                        <a v-else @click.prevent="logout()" class="navbar-item">
+                                Log Out</a>
+                        <div class="navbar-item" v-if="!isAuthenticated">
                             <div class="buttons">
                                 <NuxtLink to="/register"
                                     class="button theme-button has-background-secondary has-text-weight-medium has-text-white">
@@ -54,10 +56,10 @@
                               You can easily import and export GEDCOM files, view and manipulate data, and unlock extra features. Sign-up to start your free family tree today!
                             </h2>
                             <NuxtLink to="/register"
-                                class="button theme-button theme-button-xl has-background-secondary has-text-weight-medium has-text-white mt-6">
+                                class="button theme-button theme-button-xl has-background-secondary has-text-weight-medium has-text-white mt-6" v-if="!isAuthenticated">
                                 Create Your Own Tree
                             </NuxtLink>
-                            <div class="is-size-6 has-text-light mt-5"> <NuxtLink class="has-text-light" to="/login"> Already have an account? Sign in </NuxtLink></div>
+                            <div class="is-size-6 has-text-light mt-5" v-if="!isAuthenticated"> <NuxtLink class="has-text-light" to="/login"> Already have an account? Sign in </NuxtLink></div>
                         </div>
                     </div>
                 </div>
@@ -134,7 +136,7 @@
                             <img src="~assets/images/Checkmark.svg" alt="" class="bullet mt-2 mr-3">
                       Set up your first family tree free of charge. We offer different pricing levels with optional subscriptions
                       if you need to create extra trees</div>
-                        <NuxtLink to="/register"
+                        <NuxtLink to="/register" v-if="!isAuthenticated"
                             class="button theme-button theme-button-xl has-background-primary has-text-weight-medium has-text-white mt-5">
                             Create Your Own Tree
                         </NuxtLink>
@@ -178,7 +180,7 @@
                     </div>
                 </div>
                 <div class="footer-action column is-5 is-flex ai--c jc--fe">
-                    <NuxtLink to="/register"
+                    <NuxtLink to="/register" v-if="!isAuthenticated"
                         class="button theme-button theme-button-xl has-background-primary has-text-weight-medium has-text-white">
                         Create Your Own Tree
                     </NuxtLink>
@@ -251,6 +253,7 @@
     </div>
 </template>
 <script>
+    import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
@@ -258,10 +261,16 @@ export default {
             isClear: true,
         };
     },
+    computed: {
+        ...mapGetters(['isAuthenticated', 'loggedInUser'])
+    },
     created() {
         window.addEventListener('scroll', this.handleScroll);
     },
     methods: {
+        async logout() {
+          await this.$auth.logout();
+        },
         handleScroll() {
             if (window.scrollY >= 500) {
                 this.isClear = false;

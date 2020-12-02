@@ -8,6 +8,13 @@ export const state = () => ({
 export const getters = {
   getPerson: (state) => state.person,
   getPeople: (state) => state.people,
+  isAuthenticated(state) {
+    return state.auth.loggedIn
+  },
+
+  loggedInUser(state) {
+    return state.auth.user
+  }
 };
 
 export const mutations = {

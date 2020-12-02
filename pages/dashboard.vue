@@ -3,7 +3,7 @@
         <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-12">
                 <h1 class="is-size-4 has-text-black">
-                    <span class="has-text-weight-medium">Hi Curtis</span>, <span class="has-text-weight-light">
+                    <span class="has-text-weight-medium">Hi {{ loggedInUser.first_name }}</span>, <span class="has-text-weight-light">
                         Welcome Back!</span>
                 </h1>
             </div>
@@ -158,7 +158,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    layout: 'auth'
+    layout: 'auth',
+    computed: {
+        ...mapGetters(['loggedInUser'])
+    },
 }
 </script>
+<style scoped>
+    @import '~/assets/css/admin.css';
+</style>

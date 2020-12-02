@@ -1,0 +1,115 @@
+<template>
+    <div>
+         <div class="columns is-gapless is-multiline is-mobile">
+                    <div class="column is-12">
+                        <h1 class="is-size-4 has-text-black">
+                            <span class="has-text-weight-medium">Gedcoms</span>
+                        </h1>
+                    </div>
+                    <div class="column is-12">
+                        <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
+                            <ul>
+                                <li><a class="is-size-7 has-text-weight-medium has-text-link"
+                                        href="dashboard.html">Home</a></li>
+                                <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                                        aria-current="page">Gedcoms</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <form @submit.prevent="submit()" enctype="multipart/form-data">
+                <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s">
+                    <div class="column is-12">
+                        <div class="card has-background-white has-text-black" style="height: 500px;">
+                            <div class="card-content">
+                                <input type="hidden" v-model="fileName">
+                                <div class="field import_block">
+                                    <div class="file is-large is-boxed has-background-primary">
+                                        <label class="file-label">
+                                            
+                                            <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput">
+                                            <span class="file-cta">
+                                                <span class="file-label">
+                                                    <span class="file-icon">
+                                                        <font-awesome-icon :icon="['fas', 'upload']"/>
+                                                    </span>
+                                                    Select GEDCOM File
+                                                </span>
+                                            </span>
+                                        </label>
+
+                                    </div>
+                                    <p class="help"  :class="{ 'is-danger': $v.fileName.$error }" v-if="!$v.fileName.required">Field is required</p>
+                                </div>
+                                <button type="submit"
+                                class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
+                                Submit
+                            </button>
+                                <ul class="bullet_list mt-5">
+                                    <li>We value your privacy and do not share your GEDCOM data with any third parties. Your GEDCOM file is used by the website only for processing your data and importing into your tree that you have selected.</li>
+                                    <li>One tree is free for life for everyone and if you require more you will need to subscribe which helps us continue to provide services and develop new features.</li>
+                                    <li>Please select a GEDCOM file exported from your desktop software or online website and click upload. It should begin to process and show imported data processing. If it stops before fully importing contact <a href="mailto:support@genealogia.co.uk" class="has-text-link">support@genealogia.co.uk</a></li>
+                                    <li>We do not use your GEDCOM file for any other purpose.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                </form>     
+    </div>
+</template>
+f
+<script>
+import { required } from 'vuelidate/lib/validators'
+export default {
+    layout: 'auth',
+    data() {
+        return {
+            error: false,
+            message: "",
+            file: undefined,
+            fileName: ''
+        };
+    },
+    validations: {
+        fileName: {
+            required,
+        },
+    },
+    methods: {
+        handleSelectedFiles(event) {
+            console.log(this.$refs.fileInput.files[0])
+            this.file = this.$refs.fileInput.files[0]
+            this.fileName = this.file.name
+
+      },
+        submit() {
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                console.log("fail")
+            } else {
+            let formData = new FormData()
+            formData.append('file',  this.file)
+                this.$axios
+                .$post("/api/gedcom", formData, {
+
+                    headers: {
+                      'content-type': 'multipart/form-data'
+                    }
+                })
+                .then(response => {
+                  
+                })
+                .catch(error => {
+                  console.log(error)
+                });
+            }
+            }
+        }
+    }
+
+</script>
+<style scoped>
+    @import '~/assets/css/admin.css';
+</style>
+

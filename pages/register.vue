@@ -131,6 +131,7 @@
 <script>
     import { required } from 'vuelidate/lib/validators'
 export default {
+    middleware: 'guest',
     data() {
         return {
             error: false,

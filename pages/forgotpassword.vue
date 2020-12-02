@@ -30,36 +30,44 @@
             </div>
             <div class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless">
                 <div class="auth-form is-gapless">
+                    <form @submit.prevent="submit()">
                     <div class="mb-5">
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
-                            <i class="fas fa-angle-left mt-1 mr-2"></i> Back to Home</NuxtLink>
+                            <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2"/> Back to Home</NuxtLink>
                         <h1 class="is-size-4 has-text-black has-text-weight-bold">
                             Forgot your password?
                         </h1>
                         <div class="is-size-6 has-text-black has-text-weight-regular mt-2">We will send an email to your email address to
                             reset your password. Please check it out. </div>
                     </div>
+                    <div class="notification is-success" v-if="message">
+                        {{ message }}
+                    </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                            <input class="input is-large" type="email" placeholder="Email address">
+                            <input class="input is-large" type="email" placeholder="Email address" :class="{ 'is-danger': $v.email.$error }" v-model="email">
                             <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
+                                <font-awesome-icon :icon="['fas', 'envelope']"/>
                             </span>
                             </p>
+                            <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
                         </div>
                     </div>  
                     <div class="mb-6">
-                        <a
+                        <div class="mb-6">
+                        <button
                             class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
-                            Submit
-                        </a>
+                            submit
+                        </button>
+                    </div>
                     </div>
                     <div>
                         <p class="is-size-6 has-text-dark has-text-centered has-text-weight-regular">
                             Back to <NuxtLink to="/login" class="has-text-link has-text-weight-medium"> Sigin in </NuxtLink>
                         </p>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -68,7 +76,41 @@
 </template>
 
 <script>
-export default {}
+    import { required } from 'vuelidate/lib/validators'
+export default {
+    middleware: 'guest',
+    data() {
+        return {
+            error: false,
+            message: null,
+            email: null,
+        };
+    },
+    validations: {
+        email: {
+            required,
+        },
+    },
+    methods: {
+        submit() {
+            console.log("hgh");
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                console.log("fail")
+            } else {
+                this.$axios
+                .$post("/api/password/email", {
+                        email: this.email,
+                }).then(response => {
+                    this.message =  response.msg;
+                })
+                .catch(error => {
+                  this.error = true;
+                });
+            }
+        }
+    }
+}
 </script>
 
  <style scoped>
