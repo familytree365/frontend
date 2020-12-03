@@ -3,7 +3,7 @@
        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create People
+                Create PersonAnci
                 </h1>
               <NuxtLink to="/people" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
@@ -39,7 +39,7 @@
                 </form>
             </div>
         </div>
-            
+
     </div>
 </template>
 
@@ -78,7 +78,7 @@ export default {
                 console.log("fail")
             } else {
                 this.$axios.$put('/api/person/'+this.$route.params.id, this.people)
-                    .then(response => ( this.$router.push('/people') )) 
+                    .then(response => ( this.$router.push('/people') ))
                     .catch(error => {
                     });
             }

@@ -24,11 +24,11 @@
                 <div class="card has-background-white has-text-black">
                      <header class="card-header">
                         <p class="card-header-title">
-                          People
+                          PersonEvent
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/people/create" class="button is-link has-background-primary">
-                        Create New People</NuxtLink>
+                         <NuxtLink to="/personeventevent/create" class="button is-link has-background-primary">
+                        Create New PersonEvent</NuxtLink>
                         </p>
                       </header>
                     <div class="card-content">
@@ -61,23 +61,23 @@
                     >
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'people/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink> 
-                            <button @click="deletePeople(rows[props.row.originalIndex].id)" class="button is-danger">
+                            <NuxtLink :to="'personeventevent/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                Edit</NuxtLink>
+                            <button @click="deletePersonEvent(rows[props.row.originalIndex].id)" class="button is-danger">
                                 Delete</button>
                         </span>
-                        
+
                     </template>
                 </vue-good-table>
         </template>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>
-        
-                
+
+
     </div>
 </template>
 
@@ -99,7 +99,7 @@ export default {
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
-                        
+
                     },
                 },
                 {
@@ -140,10 +140,10 @@ export default {
                     searchTerm:''
                 },
                 sort: {
-                    field: 'name', 
+                    field: 'name',
                     type: 'asc',
                 },
-                page: 1, 
+                page: 1,
                 perPage: 5
             }
         };
@@ -161,14 +161,14 @@ export default {
 
     computed: {
         ...mapGetters([
-          'getPeople'
+          'getPersonEvent'
         ])
     },
 
     methods: {
         ...mapActions([
-          'loadPeople',
-          'deletePeople'
+          'loadPersonEvent',
+          'deletePersonEvent'
         ]),
         updateParams(newProps) {
           this.serverParams = Object.assign({}, this.serverParams, newProps);
@@ -193,7 +193,7 @@ export default {
           });
           this.loadItems();
         },
-        
+
         onColumnFilter(params) {
           this.updateParams(params);
           this.loadItems();
@@ -204,7 +204,7 @@ export default {
           this.loadItems();
         },
         loadItems() {
-            this.$axios.$get("/api/person", {
+            this.$axios.$get("/api/personevent", {
                 params: this.serverParams
             })
             .then(response => {
@@ -217,20 +217,20 @@ export default {
             alert("gg");
             console.log(searchTerm);
         },
-        deletePeople(id) {
+        deletePersonEvent(id) {
              if(confirm("Do you really want to delete?")){
 
                 this.$axios
-                .$delete("/api/person/" + id)
+                .$delete("/api/personevent/" + id)
                 .then(response => {
                     this.loadItems();
                 })
             }
         },
     },
-    
+
     created() {
-        // this.loadPeople();
+        // this.loadPersonEvent();
     },
 }
 

@@ -3,9 +3,9 @@
        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create People
+                Create Event
                 </h1>
-              <NuxtLink to="/people" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+              <NuxtLink to="/event" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
@@ -13,23 +13,23 @@
                     <div class="field">
                       <label class="label">Name</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="people.name"  :class="{ 'is-danger': $v.people.name.$error }">
+                        <input class="input" type="text" placeholder="Name" v-model="event.name"  :class="{ 'is-danger': $v.event.name.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.name.$error }" v-if="!$v.people.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.event.name.$error }" v-if="!$v.event.name.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Email</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="people.email" :class="{ 'is-danger': $v.people.email.$error }">
+                        <input class="input" type="text" placeholder="Email" v-model="event.email" :class="{ 'is-danger': $v.event.email.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.email.$error }" v-if="!$v.people.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.event.email.$error }" v-if="!$v.event.email.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Phone</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="people.phone" :class="{ 'is-danger': $v.people.phone.$error }">
+                        <input class="input" type="text" placeholder="Phone" v-model="event.phone" :class="{ 'is-danger': $v.event.phone.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.phone.$error }" v-if="!$v.people.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.event.phone.$error }" v-if="!$v.event.phone.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -39,7 +39,7 @@
                 </form>
             </div>
         </div>
-            
+
     </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
         return {
             error: false,
             message: "",
-            people: {
+            event: {
                 name: "",
                 email: '',
                 phone: ''
@@ -59,7 +59,7 @@ export default {
         };
     },
     validations: {
-            people: {
+            event: {
                 name: {
                     required,
                 },
@@ -77,16 +77,16 @@ export default {
             if (this.$v.$invalid) {
                 console.log("fail")
             } else {
-                this.$axios.$put('/api/person/'+this.$route.params.id, this.people)
-                    .then(response => ( this.$router.push('/people') )) 
+                this.$axios.$put('/api/event/'+this.$route.params.id, this.event)
+                    .then(response => ( this.$router.push('/event') ))
                     .catch(error => {
                     });
             }
         },
     },
     async asyncData({ $axios,params }) {
-      const people = await $axios.$get('/api/person/'+params.id)
-      return { people }
+      const event = await $axios.$get('/api/event/'+params.id)
+      return { event }
     }
 }
 </script>

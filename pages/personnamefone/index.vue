@@ -27,7 +27,7 @@
                           People
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/people/create" class="button is-link has-background-primary">
+                         <NuxtLink to="/personnamefone/create" class="button is-link has-background-primary">
                         Create New People</NuxtLink>
                         </p>
                       </header>
@@ -61,23 +61,23 @@
                     >
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'people/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink> 
+                            <NuxtLink :to="'personnamefone/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                Edit</NuxtLink>
                             <button @click="deletePeople(rows[props.row.originalIndex].id)" class="button is-danger">
                                 Delete</button>
                         </span>
-                        
+
                     </template>
                 </vue-good-table>
         </template>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>
-        
-                
+
+
     </div>
 </template>
 
@@ -99,7 +99,7 @@ export default {
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
-                        
+
                     },
                 },
                 {
@@ -140,10 +140,10 @@ export default {
                     searchTerm:''
                 },
                 sort: {
-                    field: 'name', 
+                    field: 'name',
                     type: 'asc',
                 },
-                page: 1, 
+                page: 1,
                 perPage: 5
             }
         };
@@ -193,7 +193,7 @@ export default {
           });
           this.loadItems();
         },
-        
+
         onColumnFilter(params) {
           this.updateParams(params);
           this.loadItems();
@@ -204,7 +204,7 @@ export default {
           this.loadItems();
         },
         loadItems() {
-            this.$axios.$get("/api/person", {
+            this.$axios.$get("/api/personnamefone", {
                 params: this.serverParams
             })
             .then(response => {
@@ -221,14 +221,14 @@ export default {
              if(confirm("Do you really want to delete?")){
 
                 this.$axios
-                .$delete("/api/person/" + id)
+                .$delete("/api/personnamefone/" + id)
                 .then(response => {
                     this.loadItems();
                 })
             }
         },
     },
-    
+
     created() {
         // this.loadPeople();
     },

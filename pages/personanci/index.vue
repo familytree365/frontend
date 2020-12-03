@@ -24,11 +24,11 @@
                 <div class="card has-background-white has-text-black">
                      <header class="card-header">
                         <p class="card-header-title">
-                          People
+                          PersonAnci
                         </p>
                         <p class="card-header-icon">
                          <NuxtLink to="/people/create" class="button is-link has-background-primary">
-                        Create New People</NuxtLink>
+                        Create New PersonAnci</NuxtLink>
                         </p>
                       </header>
                     <div class="card-content">
@@ -62,22 +62,22 @@
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'">
                             <NuxtLink :to="'people/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink> 
-                            <button @click="deletePeople(rows[props.row.originalIndex].id)" class="button is-danger">
+                                Edit</NuxtLink>
+                            <button @click="deletePersonAnci(rows[props.row.originalIndex].id)" class="button is-danger">
                                 Delete</button>
                         </span>
-                        
+
                     </template>
                 </vue-good-table>
         </template>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>
-        
-                
+
+
     </div>
 </template>
 
@@ -99,7 +99,7 @@ export default {
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
-                        
+
                     },
                 },
                 {
@@ -140,10 +140,10 @@ export default {
                     searchTerm:''
                 },
                 sort: {
-                    field: 'name', 
+                    field: 'name',
                     type: 'asc',
                 },
-                page: 1, 
+                page: 1,
                 perPage: 5
             }
         };
@@ -161,14 +161,14 @@ export default {
 
     computed: {
         ...mapGetters([
-          'getPeople'
+          'getPersonAnci'
         ])
     },
 
     methods: {
         ...mapActions([
-          'loadPeople',
-          'deletePeople'
+          'loadPersonAnci',
+          'deletePersonAnci'
         ]),
         updateParams(newProps) {
           this.serverParams = Object.assign({}, this.serverParams, newProps);
@@ -193,7 +193,7 @@ export default {
           });
           this.loadItems();
         },
-        
+
         onColumnFilter(params) {
           this.updateParams(params);
           this.loadItems();
@@ -217,7 +217,7 @@ export default {
             alert("gg");
             console.log(searchTerm);
         },
-        deletePeople(id) {
+        deletePersonAnci(id) {
              if(confirm("Do you really want to delete?")){
 
                 this.$axios
@@ -228,9 +228,9 @@ export default {
             }
         },
     },
-    
+
     created() {
-        // this.loadPeople();
+        // this.loadPersonAnci();
     },
 }
 
