@@ -2,14 +2,14 @@
     <div>
         <nav class="navbar is-fixed-top box-shadow-y">
         <div class="navbar-brand">
-            <a role="button" class="navbar-burger toggler" aria-label="menu" aria-expanded="false">
+            <a role="button" class="navbar-burger toggler" @click="toggler"  aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
-            <a href="dashboard.html" class="is-hidden-tablet navbar-item has-text-weight-bold has-text-black">
+            <NuxtLink to="/" class="is-hidden-tablet navbar-item has-text-weight-bold has-text-black">
                 <img src="~assets/images/main-logo.svg" alt="">
-            </a>
+            </NuxtLink>
             <a role="button" class="navbar-burger nav-toggler" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -22,13 +22,13 @@
                     <p class="control has-icons-left has-icons-right">
                         <input class="input is-small" type="email" placeholder="Search something">
                         <span class="icon is-small is-left">
-                            <i class="fas fa-search"></i>
+                            <font-awesome-icon :icon="['fas', 'search']"/>
                         </span>
                     </p>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable nofication_dropdown">
                     <a href="#" class="navbar-item">
-                        <i class="far fa-bell"></i>
+                        <font-awesome-icon :icon="['far', 'bell']"/>
                     </a>
                     <div class="navbar-dropdown is-right pt-0">
                         <div class="nofication_dropdown_content">
@@ -90,16 +90,16 @@
                                 </div>
                             </div>
                             <hr class="navbar-divider" />
-                            <a href="#" class="navbar-item">
-                                <i class="fas fa-user-edit mr-2"></i>
+                            <NuxtLink to="/profile" class="navbar-item">
+                                <font-awesome-icon :icon="['fas', 'user-edit']" class="mr-2"/>
                                 Edit Profile
-                            </a>
+                            </NuxtLink>
                             <a href="#" class="navbar-item">
                                 <i class="fas fa-money-bill mr-2"></i>
                                 Subscription Plan : Trial
                             </a>
                             <a @click.prevent="logout()" class="navbar-item">
-                                <i class="fas fa-sign-out-alt mr-2"></i>
+                                <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="mr-2"/>
                                 Log Out</a>
                         </div>
                     </div>
@@ -110,10 +110,10 @@
 
     <div class="columns is-variable is-0 mb-0">
         <div>
-            <div class="menu-container has-background-primary">
-                <a href="dashboard.html" class="navbar-brand has-text-weight-bold has-text-black">
+            <div class="menu-container has-background-primary" v-bind:class="{ active: isActive }">
+                <NuxtLink to="/dashboard" class="navbar-brand has-text-weight-bold has-text-black">
                     <img src="~assets/images/admin-logo.svg" alt="">
-                </a>
+                </NuxtLink>
                 <div class="menu-wrapper py-1">
                     <aside class="menu">
                         <ul class="menu-list">
@@ -123,17 +123,17 @@
                                     Dashboard</NuxtLink>
                             </li>
                             <li>
-                                <a href="calendar.html">
+                                <NuxtLink to="calendar">
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
-                                    Caelndar</a>
+                                    Calendar</NuxtLink>
                             </li>
                             <li>
-                                <a href="files.html">
+                                <a href="#">
                                     <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
                                     Files</a>
                             </li>
                             <li>
-                                <a href="components.html">
+                                <a href="#">
                                     <font-awesome-icon :icon="['fas', 'user-tie']" class="mt-1 mr-2" />
                                     Components</a>
                             </li>
@@ -239,22 +239,22 @@
                                 </NuxtLink>
                             </li>
                             <li>
-                                <a href="subscription.html">
+                                <a href="#">
                                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                                     Subscription</a>
                             </li>
                             <li>
-                                <a href="dnaupload.html">
+                                <NuxtLink to="dnaupload">
                                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
-                                    DNA Upload</a>
+                                    DNA Upload</NuxtLink>
                             </li>
                             <li>
-                                <a href="dashboard.html">
+                                <NuxtLink to="dnaupload">
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
-                                    DNA Matching</a>
+                                    DNA Matching</NuxtLink>
                             </li>
                             <li>
-                                <a href="videos.html">
+                                <a href="#">
                                     <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                     How to Videos</a>
                             </li>
@@ -278,13 +278,23 @@
 import { mapGetters } from 'vuex'
 export default {
     middleware: "auth",
+    data() {
+        return {
+            isActive: false,
+        }
+    },
     mounted() {
+
         this.collapsible();
+
     },
     computed: {
         ...mapGetters(['loggedInUser'])
     },
     methods: {
+        toggler() {
+            this.isActive = !this.isActive;
+        },
         async logout() {
           await this.$auth.logout();
         },

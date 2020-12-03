@@ -40,8 +40,8 @@
                     </div>
                     <div class="notification is-success" v-if="message">
                         <p>{{ message }}</p>
-                        <NuxtLink to="/login" class="has-text-link has-text-weight-medium"> Login </NuxtLink>
                     </div>
+                    <a v-if="message" href="/login" class="has-text-link has-text-weight-medium"> Login </a>
                     <div v-if="error" class="notification is-danger">
                         {{ error }}
                     </div>

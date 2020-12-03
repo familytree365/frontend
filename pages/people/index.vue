@@ -31,37 +31,8 @@
                         Create New People</NuxtLink>
                         </p>
                       </header>
-                    <div class="card-content is-flex jc--sb">
-                        <!-- <table class="table">
-                            <thead>
-                                <tr>
-                                  <th><abbr title="Position">Id</abbr></th>
-                                  <th>Name</th>
-                                  <th>Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr v-for="people in getPeople.data">
-                                <th>{{ people.id }}</th>
-                                <td>{{ people.name }}</td>
-                                <th><NuxtLink :to="'people/' + people.id" class="button is-primary">
-                                    Edit</NuxtLink>
-                                    <button @click="deletePeople(people.id)" class="button is-danger">
-                                    Delete</button>
-                                </th>
-                            </tr>
-                           
-                            </tbody>
-                        </table> -->
-                    </div>
-                </div>
-                
-            </div>
-
-        </div>
-        <template>
-            <div>
+                    <div class="card-content">
+                        <template>
                 <vue-good-table
                     mode="remote"
                     :columns="columns"
@@ -98,8 +69,14 @@
                         
                     </template>
                 </vue-good-table>
-            </div>
         </template>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+        
                 
     </div>
 </template>
@@ -241,14 +218,15 @@ export default {
             console.log(searchTerm);
         },
         deletePeople(id) {
-            this.$axios
-            .$delete("/api/person/" + id)
-            .then(response => {
-                this.loadItems();
-            })
+             if(confirm("Do you really want to delete?")){
+
+                this.$axios
+                .$delete("/api/person/" + id)
+                .then(response => {
+                    this.loadItems();
+                })
+            }
         },
-
-
     },
     
     created() {
@@ -257,4 +235,5 @@ export default {
 }
 
 </script>
+
 

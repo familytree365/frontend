@@ -14,8 +14,8 @@ a,a:focus,a:hover,input:focus {
 
 .px-1,
 .p-1 {
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
+  padding-left: 1.75rem !important;
+  padding-right: 1.75rem !important;
 }
 
 body::-webkit-scrollbar {
@@ -133,9 +133,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .content ul {
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0.5rem 0 !important;
 }
 
 .content ul li {
@@ -154,7 +154,7 @@ body::-webkit-scrollbar-thumb {
 .content ul li a:hover,
 .content ul li a:focus {
     color: rgb(255 255 255 / 100%) !important;
-    background: transparent;
+    background: transparent !important;
 }
 
 
@@ -200,9 +200,9 @@ body::-webkit-scrollbar-thumb {
 
 .menu-list li a {
     color: #fff !important;
-    font-size: 14px;
-    line-height: 30px;
-    height: 40px;
+    font-size: 14px !important;
+    line-height: 30px !important;
+    height: 40px !important;
 }
 
 .menu-list li a i.is-pulled-right {
@@ -219,7 +219,7 @@ body::-webkit-scrollbar-thumb {
 .menu-list a:hover {
     color: #fff; 
     border-radius: 6px;
-    background: rgb(0 0 0 / 10%);
+    background: rgb(0 0 0 / 10%) !important;
 }
 
 /* Content Area */
@@ -284,7 +284,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .notification_block i {
-    color: #BFC9DC;
+    color: #BFC9DC !important;
     font-size: 2.55rem;
 }
 
@@ -299,7 +299,7 @@ body::-webkit-scrollbar-thumb {
 
 .nofication_dropdown_content a > i,
 .profile_dropdown_content a > i {
-    color: #BFC9DC;
+    color: #BFC9DC !important;
     font-size: 1.5rem;
 }
 
