@@ -9,7 +9,7 @@
                 <ul class="ml-0">
                   <li><NuxtLink to="/">Home</NuxtLink></li>
                   <li class="is-active">
-                    Terms &amp; Conditions</a>
+                    Terms &amp; Conditions
                   </li>
                 </ul>
               </nav>
