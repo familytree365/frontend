@@ -7,9 +7,9 @@
             <div class="column">
               <nav class="breadcrumb mb-2" aria-label="breadcrumbs">
                 <ul class="ml-0">
-                  <li><a href="#" class="has-text-link">Home</a></li>
+                  <li><NuxtLink to="/">Home</NuxtLink></li>
                   <li class="is-active">
-                    <a href="#" aria-current="page">Terms &amp; Conditions</a>
+                    Terms &amp; Conditions</a>
                   </li>
                 </ul>
               </nav>
@@ -352,8 +352,6 @@
   </div>
 </template>
 <script>
-import '@/bulma.css';
-import '@/base.css';
 
 export default {
   data() {
@@ -386,3 +384,6 @@ export default {
   },
 };
 </script>
+<style scoped>
+@import '~/assets/css/bulma.css';
+</style>
