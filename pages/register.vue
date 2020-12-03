@@ -77,7 +77,7 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Password" :class="{ 'is-danger': $v.registration.password.$error }" v-model="registration.password">
+                                <input class="input is-large" type="password" placeholder="Password" :class="{ 'is-danger': $v.registration.password.$error }" v-model="registration.password">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
