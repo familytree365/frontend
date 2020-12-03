@@ -16,7 +16,7 @@
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
                                 It has a tree viewer and DNA support
-                                more features are planned such as the inclusion of archive databases &amp;
+                                more features are planned such as the inclusion of archive databases and
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
@@ -29,7 +29,7 @@
             </div>
             <div class="column is-6-tablet is-7-desktop is-7-widescreen is-7-fullhd is-gapless">
                 <div class="auth-form is-gapless">
-                    
+
                 	<form @submit.prevent="login()">
                     <div class="mb-5">
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
@@ -139,7 +139,7 @@ export default {
                 })
             })
         }
-        
+
     }
   }
 }

@@ -16,7 +16,7 @@
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
                                 It has a tree viewer and DNA support
-                                more features are planned such as the inclusion of archive databases &amp;
+                                more features are planned such as the inclusion of archive databases and
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
                                 <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
