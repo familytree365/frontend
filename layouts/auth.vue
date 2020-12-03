@@ -123,19 +123,15 @@
                                     Dashboard</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="calendar">
+                                <NuxtLink to="/calendar">
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                             </li>
                             <li>
-                                <a href="#">
+                              <NuxtLink to="/files">
                                     <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
-                                    Files</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <font-awesome-icon :icon="['fas', 'user-tie']" class="mt-1 mr-2" />
-                                    Components</a>
+                                    Files
+                              </NuxtLink>
                             </li>
                             <li class="collapsible is-active">
                                 <a href="#">
@@ -146,12 +142,12 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Addresses</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Chan</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Refn</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subm</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</a></li>
+                                    <li><NuxtLink to="/mediaobject"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</NuxtLink></li>
+                                    <li><NuxtLink to="/addr"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Addresses</NuxtLink></li>
+                                    <li><NuxtLink to="/chan"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Chan</NuxtLink></li>
+                                    <li><NuxtLink to="/refn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Refn</NuxtLink></li>
+                                    <li><NuxtLink to="/subm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subm</NuxtLink></li>
+                                    <li><NuxtLink to="/subn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -163,11 +159,11 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</a></li>
+                                    <li><NuxtLink to="repository"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</NuxtLink></li>
+                                    <li><NuxtLink to="source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink></li>
+                                    <li><NuxtLink to="sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink></li>
+                                    <li><NuxtLink to="sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink></li>
+                                    <li><NuxtLink to="sourcedatarefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -179,13 +175,13 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><NuxtLink to="/people"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Events</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person LDS</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</a></li>
+                                    <li><NuxtLink to="/person"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
+                                    <li><NuxtLink to="/personalia"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</NuxtLink></li>
+                                    <li><NuxtLink to="/personanci"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</NuxtLink></li>
+                                    <li><NuxtLink to="/personasso"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</NuxtLink></li>
+                                    <li><NuxtLink to="/personevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Events</NuxtLink></li>
+                                    <li><NuxtLink to="/personlds"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person LDS</NuxtLink></li>
+                                    <li><NuxtLink to="/personsubm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -197,9 +193,9 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Families</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Events</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</a></li>
+                                    <li><NuxtLink to="/family"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Families</NuxtLink></li>
+                                    <li><NuxtLink to="/familyevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Events</NuxtLink></li>
+                                    <li><NuxtLink to="/familyslgs"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -211,12 +207,12 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Types</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</a></li>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</a></li>
+                                    <li><NuxtLink to="/citation"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</NuxtLink></li>
+                                    <li><NuxtLink to="/note"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</NuxtLink></li>
+                                    <li><NuxtLink to="/place"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</NuxtLink></li>
+                                    <li><NuxtLink to="/type"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Types</NuxtLink></li>
+                                    <li><NuxtLink to="/author"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</NuxtLink></li>
+                                    <li><NuxtLink to="/publication"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -267,7 +263,8 @@
             <div class="p-1 wrapper">
                 <Nuxt />
                 <footer class="footer mt-5">
-                    Copyright &copy; 2020 Family Tree 365 Ltd
+                  Copyright &copy; Family Tree 365 Ltd,<br> Unit A, 82 James Carter Road, Mildenhall, Suffolk, England, IP28 7DE<br> Company
+                  number 12734769
                 </footer>
             </div>
         </div>
@@ -299,7 +296,7 @@ export default {
           await this.$auth.logout();
         },
         collapsible() {
-            var coll = document.getElementsByClassName('collapsible') 
+            var coll = document.getElementsByClassName('collapsible')
             var i;
             for (i = 0; i < coll.length; i++) {
                 coll[i].addEventListener("click", function () {

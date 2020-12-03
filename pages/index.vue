@@ -191,7 +191,7 @@
                 <div class="column is-4">
                     <img src="~assets/images/footer-logo.svg" width="180px" class="mb-5">
                     <div class="is-size-7 has-text-light has-text-weight-regular" style="line-height: 1.4rem;">
-                        Family Tree 365 Ltd,<br> Unit A, 82 James Carter Road, Mildenhall, Suffolk, England, IP28 7DE<br> Company
+                        Copyright &copy; Family Tree 365 Ltd,<br> Unit A, 82 James Carter Road, Mildenhall, Suffolk, England, IP28 7DE<br> Company
                         number 12734769
                     </div>
                     <p class="mt-2">
