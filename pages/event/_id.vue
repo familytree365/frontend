@@ -16,21 +16,7 @@
                         <input class="input" type="text" placeholder="Name" v-model="event.name"  :class="{ 'is-danger': $v.event.name.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.event.name.$error }" v-if="!$v.event.name.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="event.email" :class="{ 'is-danger': $v.event.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.event.email.$error }" v-if="!$v.event.email.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="event.phone" :class="{ 'is-danger': $v.event.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.event.phone.$error }" v-if="!$v.event.phone.required">Field is required</p>
-                    </div>
+                    </div>                    
                     <div class="field is-grouped">
                       <div class="control">
                         <button  class="button is-link has-background-primary">Submit</button>
@@ -52,23 +38,15 @@ export default {
             error: false,
             message: "",
             event: {
-                name: "",
-                email: '',
-                phone: ''
+                name: ""
             }
         };
     },
     validations: {
             event: {
                 name: {
-                    required,
-                },
-                email: {
-                    required,
-                },
-                phone: {
-                    required,
-                },
+                    required
+                }
             },
     },
     methods: {

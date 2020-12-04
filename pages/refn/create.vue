@@ -11,25 +11,32 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="refn.name"  :class="{ 'is-danger': $v.refn.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="refn.group"  :class="{ 'is-danger': $v.refn.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.name.$error }" v-if="!$v.refn.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.refn.group.$error }" v-if="!$v.refn.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="refn.email" :class="{ 'is-danger': $v.refn.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="refn.gid" :class="{ 'is-danger': $v.refn.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.email.$error }" v-if="!$v.refn.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.refn.gid.$error }" v-if="!$v.refn.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Refn</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="refn.phone" :class="{ 'is-danger': $v.refn.phone.$error }">
+                        <input class="input" type="text" placeholder="Refn" v-model="refn.refn" :class="{ 'is-danger': $v.refn.refn.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.phone.$error }" v-if="!$v.refn.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.refn.refn.$error }" v-if="!$v.refn.refn.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Type</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Type" v-model="refn.type" :class="{ 'is-danger': $v.refn.type.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.refn.type.$error }" v-if="!$v.refn.type.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +59,28 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             refn: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                refn: "",
+                type: "",
             }
         };
     },
     validations: {
             refn: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                refn: {
+                    required,
+                },
+                type: {
                     required,
                 },
             },

@@ -103,22 +103,22 @@ export default {
                     },
                 },
                 {
-                    label: 'Email',
-                    field: 'email',
+                    label: 'Description',
+                    field: 'description',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Email', // placeholder for filter input
+                        placeholder: 'Filter Description', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
-                    label: 'Phone',
-                    field: 'phone',
+                    label: 'Is Active',
+                    field: 'is_active',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Phone', // placeholder for filter input
+                        placeholder: 'Filter Is Active', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that

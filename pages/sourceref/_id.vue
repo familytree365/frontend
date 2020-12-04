@@ -11,25 +11,46 @@
             <div class="card-content">
                  <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="sourceref.name"  :class="{ 'is-danger': $v.sourceref.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="sourceref.group"  :class="{ 'is-danger': $v.sourceref.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourceref.name.$error }" v-if="!$v.sourceref.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.group.$error }" v-if="!$v.sourceref.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="sourceref.email" :class="{ 'is-danger': $v.sourceref.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="sourceref.gid" :class="{ 'is-danger': $v.sourceref.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourceref.email.$error }" v-if="!$v.sourceref.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.gid.$error }" v-if="!$v.sourceref.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Sour Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="sourceref.phone" :class="{ 'is-danger': $v.sourceref.phone.$error }">
+                        <input class="input" type="text" placeholder="Sour Id" v-model="sourceref.sour_id" :class="{ 'is-danger': $v.sourceref.sour_id.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourceref.phone.$error }" v-if="!$v.sourceref.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.sour_id.$error }" v-if="!$v.sourceref.sour_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Text</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Text" v-model="sourceref.text" :class="{ 'is-danger': $v.sourceref.text.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.text.$error }" v-if="!$v.sourceref.text.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Quay</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Quay" v-model="sourceref.quay" :class="{ 'is-danger': $v.sourceref.quay.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.quay.$error }" v-if="!$v.sourceref.quay.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Page</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Page" v-model="sourceref.page" :class="{ 'is-danger': $v.sourceref.page.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourceref.page.$error }" v-if="!$v.sourceref.page.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,21 +73,29 @@ export default {
             error: false,
             message: "",
             sourceref: {
-                name: "",
-                email: '',
-                phone: ''
+                group: "",
+                gid: "",
+                sour_id: "",
+                text: "",
+                quay: ""
             }
         };
     },
     validations: {
             sourceref: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                sour_id: {
+                    required,
+                },
+                text: {
+                    required,
+                },
+                quay: {
                     required,
                 },
             },

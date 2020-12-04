@@ -1,40 +1,40 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create Person
+                    Create Person
                 </h1>
-              <NuxtLink to="/person" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/person" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="person.name"  :class="{ 'is-danger': $v.person.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.person.name.$error }" v-if="!$v.person.name.required">Field is required</p>
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Name" v-model="person.name"  :class="{ 'is-danger': $v.person.name.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.person.name.$error }" v-if="!$v.person.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="person.email" :class="{ 'is-danger': $v.person.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.person.email.$error }" v-if="!$v.person.email.required">Field is required</p>
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Email" v-model="person.email" :class="{ 'is-danger': $v.person.email.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.person.email.$error }" v-if="!$v.person.email.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="person.phone" :class="{ 'is-danger': $v.person.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.person.phone.$error }" v-if="!$v.person.phone.required">Field is required</p>
+                        <label class="label">Phone</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Phone" v-model="person.phone" :class="{ 'is-danger': $v.person.phone.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.person.phone.$error }" v-if="!$v.person.phone.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,20 +45,20 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
-            person: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                person: {
+                    name: "",
+                    email: '',
+                    phone: ''
+                }
+            };
+        },
+        validations: {
             person: {
                 name: {
                     required,
@@ -70,23 +70,23 @@ export default {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/person/'+this.$route.params.id, this.person)
-                    .then(response => ( this.$router.push('/person') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const person = await $axios.$get('/api/person/'+params.id)
-      return { person }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/person/' + this.$route.params.id, this.person)
+                            .then(response => (this.$router.push('/person')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const person = await $axios.$get('/api/person/' + params.id)
+            return {person}
+        }
     }
-}
 </script>

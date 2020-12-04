@@ -52,7 +52,7 @@
                     }"
                     :sort-options="{
                         enabled: true,
-                        initialSortBy: {field: 'name', type: 'asc'}
+                        initialSortBy: {field: 'description', type: 'asc'}
                     }"
                     :line-numbers="true"
                     :search-options="{
@@ -91,11 +91,11 @@ export default {
             totalRecords: 0,
             columns: [
                 {
-                    label: 'Name',
-                    field: 'name',
+                    label: 'Description',
+                    field: 'description',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Name', // placeholder for filter input
+                        placeholder: 'Filter Description', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -103,22 +103,77 @@ export default {
                     },
                 },
                 {
-                    label: 'Email',
-                    field: 'email',
+                    label: 'Is Active',
+                    field: 'is_active',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Email', // placeholder for filter input
+                        placeholder: 'Filter Is Active', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
-                    label: 'Phone',
-                    field: 'phone',
+                    label: 'Husband Id',
+                    field: 'husband_id',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Phone', // placeholder for filter input
+                        placeholder: 'Filter Husband Id', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Wife Id',
+                    field: 'wife_id',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Wife Id', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Type Id',
+                    field: 'type_id',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Type Id', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Chan',
+                    field: 'chan',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Chan', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Nchi',
+                    field: 'nchi',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Nchi', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Rin',
+                    field: 'rin',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Rin', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -140,7 +195,7 @@ export default {
                     searchTerm:''
                 },
                 sort: {
-                    field: 'name',
+                    field: 'description',
                     type: 'asc',
                 },
                 page: 1,

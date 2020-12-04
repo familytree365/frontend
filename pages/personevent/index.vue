@@ -52,7 +52,7 @@
                     }"
                     :sort-options="{
                         enabled: true,
-                        initialSortBy: {field: 'name', type: 'asc'}
+                        initialSortBy: {field: 'person_id', type: 'asc'}
                     }"
                     :line-numbers="true"
                     :search-options="{
@@ -91,11 +91,11 @@ export default {
             totalRecords: 0,
             columns: [
                 {
-                    label: 'Name',
-                    field: 'name',
+                    label: 'Person Id',
+                    field: 'person_id',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Name', // placeholder for filter input
+                        placeholder: 'Filter Person Id', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -103,22 +103,143 @@ export default {
                     },
                 },
                 {
-                    label: 'Email',
-                    field: 'email',
+                    label: 'Title',
+                    field: 'title',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Email', // placeholder for filter input
+                        placeholder: 'Filter Title', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
-                    label: 'Phone',
-                    field: 'phone',
+                    label: 'Type',
+                    field: 'type',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Phone', // placeholder for filter input
+                        placeholder: 'Filter Type', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Attr',
+                    field: 'attr',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Attr', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Date',
+                    field: 'date',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Date', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Plac',
+                    field: 'plac',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Plac', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Phon',
+                    field: 'phon',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Phon', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Age',
+                    field: 'age',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Age', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Agnc',
+                    field: 'agnc',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Agnc', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Places Id',
+                    field: 'places_id',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Places Id', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Description',
+                    field: 'description',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Description', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Year',
+                    field: 'year',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Year', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Month',
+                    field: 'month',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Month', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Day',
+                    field: 'day',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Day', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -140,7 +261,7 @@ export default {
                     searchTerm:''
                 },
                 sort: {
-                    field: 'name',
+                    field: 'person_id',
                     type: 'asc',
                 },
                 page: 1,

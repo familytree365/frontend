@@ -11,25 +11,32 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="sourcerepo.name"  :class="{ 'is-danger': $v.sourcerepo.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="sourcerepo.group"  :class="{ 'is-danger': $v.sourcerepo.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.name.$error }" v-if="!$v.sourcerepo.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.group.$error }" v-if="!$v.sourcerepo.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="sourcerepo.email" :class="{ 'is-danger': $v.sourcerepo.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="sourcerepo.gid" :class="{ 'is-danger': $v.sourcerepo.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.email.$error }" v-if="!$v.sourcerepo.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.gid.$error }" v-if="!$v.sourcerepo.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Repo Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="sourcerepo.phone" :class="{ 'is-danger': $v.sourcerepo.phone.$error }">
+                        <input class="input" type="text" placeholder="Repo Id" v-model="sourcerepo.repo_id" :class="{ 'is-danger': $v.sourcerepo.repo_id.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.phone.$error }" v-if="!$v.sourcerepo.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.repo_id.$error }" v-if="!$v.sourcerepo.repo_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Caln</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Caln" v-model="sourcerepo.caln" :class="{ 'is-danger': $v.sourcerepo.caln.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerepo.caln.$error }" v-if="!$v.sourcerepo.caln.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +59,28 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             sourcerepo: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                repo_id: "",
+                caln: "",
             }
         };
     },
     validations: {
             sourcerepo: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                repo_id: {
+                    required,
+                },
+                caln: {
                     required,
                 },
             },

@@ -1,40 +1,96 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create Repository
+                    Create Repository
                 </h1>
-              <NuxtLink to="/repository" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/repository" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="repository.name"  :class="{ 'is-danger': $v.repository.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.repository.name.$error }" v-if="!$v.repository.name.required">Field is required</p>
+                        <label class="label">Repo</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Repo" v-model="repository.repo"  :class="{ 'is-danger': $v.repository.repo.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.repo.$error }" v-if="!$v.repository.repo.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="repository.email" :class="{ 'is-danger': $v.repository.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.repository.email.$error }" v-if="!$v.repository.email.required">Field is required</p>
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Name" v-model="repository.name"  :class="{ 'is-danger': $v.repository.name.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.name.$error }" v-if="!$v.repository.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="repository.phone" :class="{ 'is-danger': $v.repository.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.repository.phone.$error }" v-if="!$v.repository.phone.required">Field is required</p>
+                        <label class="label">Addr Id</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Addr Id" v-model="repository.addr_id"  :class="{ 'is-danger': $v.repository.addr_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.addr_id.$error }" v-if="!$v.repository.addr_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Rin</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Rin" v-model="repository.rin"  :class="{ 'is-danger': $v.repository.rin.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.rin.$error }" v-if="!$v.repository.rin.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Email" v-model="repository.email" :class="{ 'is-danger': $v.repository.email.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.email.$error }" v-if="!$v.repository.email.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Phone</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Phone" v-model="repository.phon" :class="{ 'is-danger': $v.repository.phon.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.phon.$error }" v-if="!$v.repository.phon.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Fax</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Fax" v-model="repository.fax" :class="{ 'is-danger': $v.repository.fax.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.fax.$error }" v-if="!$v.repository.fax.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">www</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="www" v-model="repository.www" :class="{ 'is-danger': $v.repository.www.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.www.$error }" v-if="!$v.repository.www.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Description" v-model="repository.description" :class="{ 'is-danger': $v.repository.description.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.description.$error }" v-if="!$v.repository.description.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Type ID</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Type ID" v-model="repository.type_id" :class="{ 'is-danger': $v.repository.type_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.type_id.$error }" v-if="!$v.repository.type_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Is Active</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Is Active" v-model="repository.is_active" :class="{ 'is-danger': $v.repository.is_active.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.repository.is_active.$error }" v-if="!$v.repository.is_active.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,48 +101,80 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                repository: {
+                    repo: "",
+                    name: "",
+                    addr_id: "",
+                    rin: "",
+                    email: "",
+                    phon: "",
+                    fax: "",
+                    www: "",
+                    description: "",
+                    type_id: "",
+                    is_active: ""
+                }
+            };
+        },
+        validations: {
             repository: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
-            repository: {
+                repo: {
+                    required,
+                },
+                addr_id: {
+                    required,
+                },
                 name: {
+                    required,
+                },
+                rin: {
                     required,
                 },
                 email: {
                     required,
                 },
-                phone: {
+                phon: {
+                    required,
+                },
+                fax: {
+                    required,
+                },
+                www: {
+                    required,
+                },
+                description: {
+                    required,
+                },
+                type_id: {
+                    required,
+                },
+                is_active: {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/repository/'+this.$route.params.id, this.repository)
-                    .then(response => ( this.$router.push('/repository') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const repository = await $axios.$get('/api/repository/'+params.id)
-      return { repository }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/repository/' + this.$route.params.id, this.repository)
+                            .then(response => (this.$router.push('/repository')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const repository = await $axios.$get('/api/repository/' + params.id)
+            return {repository}
+        }
     }
-}
 </script>

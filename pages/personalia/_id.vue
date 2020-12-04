@@ -1,40 +1,47 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create PersonAlia
+                    Create PersonAlia
                 </h1>
-              <NuxtLink to="/personalia" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/personalia" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="personalia.name"  :class="{ 'is-danger': $v.personalia.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.personalia.name.$error }" v-if="!$v.personalia.name.required">Field is required</p>
+                        <label class="label">Group</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Group" v-model="personalia.group"  :class="{ 'is-danger': $v.personalia.group.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.personalia.group.$error }" v-if="!$v.personalia.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="personalia.email" :class="{ 'is-danger': $v.personalia.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.personalia.email.$error }" v-if="!$v.personalia.email.required">Field is required</p>
+                        <label class="label">Gid</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Gid" v-model="personalia.gid" :class="{ 'is-danger': $v.personalia.gid.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.personalia.gid.$error }" v-if="!$v.personalia.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="personalia.phone" :class="{ 'is-danger': $v.personalia.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.personalia.phone.$error }" v-if="!$v.personalia.phone.required">Field is required</p>
+                        <label class="label">Alia</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Alia" v-model="personalia.alia" :class="{ 'is-danger': $v.personalia.alia.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.personalia.alia.$error }" v-if="!$v.personalia.alia.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Import Confirm</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Import Confirm" v-model="personalia.import_confirm" :class="{ 'is-danger': $v.personalia.import_confirm.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.personalia.import_confirm.$error }" v-if="!$v.personalia.import_confirm.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,48 +52,52 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                personalia: {
+                    group: "",
+                    gid: "",
+                    alia: "",
+                    import_confirm: "",
+                }
+            };
+        },
+        validations: {
             personalia: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
-            personalia: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                alia: {
+                    required,
+                },
+                import_confirm: {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/personalia/'+this.$route.params.id, this.personalia)
-                    .then(response => ( this.$router.push('/personalia') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const personalia = await $axios.$get('/api/personalia/'+params.id)
-      return { personalia }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/personalia/' + this.$route.params.id, this.personalia)
+                            .then(response => (this.$router.push('/personalia')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const personalia = await $axios.$get('/api/personalia/' + params.id)
+            return {personalia}
+        }
     }
-}
 </script>

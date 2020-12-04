@@ -1,40 +1,75 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create Citation
+                    Create Citation
                 </h1>
-              <NuxtLink to="/citation" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/citation" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="citation.name"  :class="{ 'is-danger': $v.citation.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.citation.name.$error }" v-if="!$v.citation.name.required">Field is required</p>
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Name" v-model="citation.name"  :class="{ 'is-danger': $v.citation.name.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.name.$error }" v-if="!$v.citation.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="citation.email" :class="{ 'is-danger': $v.citation.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.citation.email.$error }" v-if="!$v.citation.email.required">Field is required</p>
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Description" v-model="citation.description" :class="{ 'is-danger': $v.citation.description.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.description.$error }" v-if="!$v.citation.description.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="citation.phone" :class="{ 'is-danger': $v.citation.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.citation.phone.$error }" v-if="!$v.citation.phone.required">Field is required</p>
+                        <label class="label">Repository Id</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Repository Id" v-model="citation.repository_id" :class="{ 'is-danger': $v.citation.repository_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.repository_id.$error }" v-if="!$v.citation.repository_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Volume</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Volume" v-model="citation.volume" :class="{ 'is-danger': $v.citation.volume.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.volume.$error }" v-if="!$v.citation.volume.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Page</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Page" v-model="citation.page" :class="{ 'is-danger': $v.citation.page.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.page.$error }" v-if="!$v.citation.page.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Is Active</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Is Active" v-model="citation.is_active" :class="{ 'is-danger': $v.citation.is_active.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.is_active.$error }" v-if="!$v.citation.is_active.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Confidence</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Confidence" v-model="citation.confidence" :class="{ 'is-danger': $v.citation.confidence.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.confidence.$error }" v-if="!$v.citation.confidence.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Source Id</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Source Id" v-model="citation.source_id" :class="{ 'is-danger': $v.citation.source_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.citation.source_id.$error }" v-if="!$v.citation.source_id.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,48 +80,68 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
-            citation: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                citation: {
+                    name: "",
+                    description: "",
+                    repository_id: "",
+                    volume: "",
+                    page: "",
+                    is_active: "",
+                    confidence: "",
+                    source_id: "",
+                }
+            };
+        },
+        validations: {
             citation: {
                 name: {
                     required,
                 },
-                email: {
+                description: {
                     required,
                 },
-                phone: {
+                repository_id: {
+                    required,
+                },
+                volume: {
+                    required,
+                },
+                page: {
+                    required,
+                },
+                is_active: {
+                    required,
+                },
+                confidence: {
+                    required,
+                },
+                source_id: {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/citation/'+this.$route.params.id, this.citation)
-                    .then(response => ( this.$router.push('/citation') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const citation = await $axios.$get('/api/citation/'+params.id)
-      return { citation }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/citation/' + this.$route.params.id, this.citation)
+                            .then(response => (this.$router.push('/citation')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const citation = await $axios.$get('/api/citation/' + params.id)
+            return {citation}
+        }
     }
-}
 </script>

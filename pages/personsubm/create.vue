@@ -11,25 +11,25 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="personsubm.name"  :class="{ 'is-danger': $v.personsubm.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="personsubm.group"  :class="{ 'is-danger': $v.personsubm.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personsubm.name.$error }" v-if="!$v.personsubm.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personsubm.group.$error }" v-if="!$v.personsubm.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="personsubm.email" :class="{ 'is-danger': $v.personsubm.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="personsubm.gid" :class="{ 'is-danger': $v.personsubm.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personsubm.email.$error }" v-if="!$v.personsubm.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personsubm.gid.$error }" v-if="!$v.personsubm.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Subm</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="personsubm.phone" :class="{ 'is-danger': $v.personsubm.phone.$error }">
+                        <input class="input" type="text" placeholder="Subm" v-model="personsubm.subm" :class="{ 'is-danger': $v.personsubm.subm.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personsubm.phone.$error }" v-if="!$v.personsubm.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personsubm.subm.$error }" v-if="!$v.personsubm.subm.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +52,24 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             personsubm: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                subm: "",
             }
         };
     },
     validations: {
             personsubm: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                subm: {
                     required,
                 },
             },

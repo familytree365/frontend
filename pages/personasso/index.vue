@@ -11,9 +11,9 @@
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                href="dashboard.html">Home</a></li>
+                               href="dashboard.html">Home</a></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                aria-current="page">Dashboard</a></li>
+                                                                                  aria-current="page">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
@@ -22,54 +22,54 @@
         <div class="columns is-variable is-3 is-desktop">
             <div class="column">
                 <div class="card has-background-white has-text-black">
-                     <header class="card-header">
+                    <header class="card-header">
                         <p class="card-header-title">
-                          PersonAsso
+                            PersonAsso
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/persondesiasso/create" class="button is-link has-background-primary">
-                        Create New PersonAsso</NuxtLink>
+                        <NuxtLink to="/persondesiasso/create" class="button is-link has-background-primary">
+                            Create New PersonAsso</NuxtLink>
                         </p>
-                      </header>
+                    </header>
                     <div class="card-content">
                         <template>
-                <vue-good-table
-                    mode="remote"
-                    :columns="columns"
-                    :rows="rows"
-                    @on-page-change="onPageChange"
-                    @on-sort-change="onSortChange"
-                    @on-column-filter="onColumnFilter"
-                    @on-per-page-change="onPerPageChange"
-                    @on-search="onSearch"
-                    :totalRows="totalRecords"
-                    :isLoading.sync="isLoading"
-                    :pagination-options="{
-                        perPage: 5,
-                        enabled: true,
-                        mode: 'pages',
+                            <vue-good-table
+                                mode="remote"
+                                :columns="columns"
+                                :rows="rows"
+                                @on-page-change="onPageChange"
+                                @on-sort-change="onSortChange"
+                                @on-column-filter="onColumnFilter"
+                                @on-per-page-change="onPerPageChange"
+                                @on-search="onSearch"
+                                :totalRows="totalRecords"
+                                :isLoading.sync="isLoading"
+                                :pagination-options="{
+                                perPage: 5,
+                                enabled: true,
+                                mode: 'pages',
 
-                    }"
-                    :sort-options="{
-                        enabled: true,
-                        initialSortBy: {field: 'name', type: 'asc'}
-                    }"
-                    :line-numbers="true"
-                    :search-options="{
-                        enabled: true
-                    }"
-                    >
-                    <template slot="table-row" slot-scope="props">
-                        <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'persondesiasso/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink>
-                            <button @click="deletePersonAsso(rows[props.row.originalIndex].id)" class="button is-danger">
-                                Delete</button>
-                        </span>
+                                }"
+                                :sort-options="{
+                                enabled: true,
+                                initialSortBy: {field: 'group', type: 'asc'}
+                                }"
+                                :line-numbers="true"
+                                :search-options="{
+                                enabled: true
+                                }"
+                                >
+                                <template slot="table-row" slot-scope="props">
+                                    <span v-if="props.column.field == 'action'">
+                                        <NuxtLink :to="'persondesiasso/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                            Edit</NuxtLink>
+                                        <button @click="deletePersonAsso(rows[props.row.originalIndex].id)" class="button is-danger">
+                                            Delete</button>
+                                    </span>
 
-                    </template>
-                </vue-good-table>
-        </template>
+                                </template>
+                            </vue-good-table>
+                        </template>
                     </div>
                 </div>
 
@@ -82,157 +82,179 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            isLoading: false,
-            totalRecords: 0,
-            columns: [
-                {
-                    label: 'Name',
-                    field: 'name',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Name', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+    import { mapGetters, mapActions } from "vuex";
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                isLoading: false,
+                totalRecords: 0,
+                columns: [
+                    {
+                        label: 'Group',
+                        field: 'group',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Group', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+
+                        },
+                    },
+                    {
+                        label: 'Gid',
+                        field: 'gid',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Gid', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+                        },
+                    },
+                    {
+                        label: 'Indi',
+                        field: 'indi',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Indi', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+                        },
+                    },
+                    {
+                        label: 'Rela',
+                        field: 'rela',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Rela', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+                        },
+                    },
+                    {
+                        label: 'Import Confirm',
+                        field: 'import_confirm',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Import Confirm', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+                        },
+                    },
+                    {
+                        label: 'Action',
+                        field: 'action',
+                        sortable: false,
+                        width: '250px',
+                    },
+                ],
+                rows: [],
+                serverParams: {
+                    columnFilters: {
 
                     },
-                },
-                {
-                    label: 'Email',
-                    field: 'email',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Email', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                    searchTerm: {
+                        searchTerm: ''
                     },
-                },
-                {
-                    label: 'Phone',
-                    field: 'phone',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Phone', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                    sort: {
+                        field: 'group',
+                        type: 'asc',
                     },
-                },
-                {
-                    label: 'Action',
-                    field: 'action',
-                    sortable: false,
-                    width: '250px',
-                },
-            ],
-            rows: [],
-            serverParams: {
-                columnFilters: {
-
-                },
-                searchTerm: {
-                    searchTerm:''
-                },
-                sort: {
-                    field: 'name',
-                    type: 'asc',
-                },
-                page: 1,
-                perPage: 5
+                    page: 1,
+                    perPage: 5
+                }
+            };
+        },
+        head() {
+            return {
+                link: [
+                    {
+                        rel: 'stylesheet',
+                        href: 'https://cdn.datatables.net/1.10.22/css/dataTables.bulma.min.css'
+                    }
+                ]
             }
-        };
-    },
-    head() {
-      return {
-        link: [
-          {
-            rel: 'stylesheet',
-            href: 'https://cdn.datatables.net/1.10.22/css/dataTables.bulma.min.css'
-          }
-        ]
-      }
-    },
-
-    computed: {
-        ...mapGetters([
-          'getPersonAsso'
-        ])
-    },
-
-    methods: {
-        ...mapActions([
-          'loadPersonAsso',
-          'deletePersonAsso'
-        ]),
-        updateParams(newProps) {
-          this.serverParams = Object.assign({}, this.serverParams, newProps);
-        },
-        onPageChange(params) {
-          this.updateParams({page: params.currentPage});
-          this.loadItems();
         },
 
-        onPerPageChange(params) {
-          this.updateParams({perPage: params.currentPerPage});
-          this.loadItems();
+        computed: {
+            ...mapGetters([
+                    'getPersonAsso'
+            ])
         },
 
-        onSortChange(params) {
-            console.log(params);
-          this.updateParams({
-            sort: [{
-              type: params[0].type,
-              field: params[0].field,
-            }],
-          });
-          this.loadItems();
-        },
+        methods: {
+            ...mapActions([
+                    'loadPersonAsso',
+                    'deletePersonAsso'
+            ]),
+            updateParams(newProps) {
+                this.serverParams = Object.assign({}, this.serverParams, newProps);
+            },
+            onPageChange(params) {
+                this.updateParams({page: params.currentPage});
+                this.loadItems();
+            },
 
-        onColumnFilter(params) {
-          this.updateParams(params);
-          this.loadItems();
-        },
-        onSearch(params) {
-           console.log(params);
-           this.updateParams({searchTerm: params});
-          this.loadItems();
-        },
-        loadItems() {
-            this.$axios.$get("/api/persondesi", {
-                params: this.serverParams
-            })
-            .then(response => {
-                this.totalRecords = response.total;
-                this.rows = response.data;
-            })
-        },
+            onPerPageChange(params) {
+                this.updateParams({perPage: params.currentPerPage});
+                this.loadItems();
+            },
 
-        searchFunction(row, col, cellValue, searchTerm){
-            alert("gg");
-            console.log(searchTerm);
-        },
-        deletePersonAsso(id) {
-             if(confirm("Do you really want to delete?")){
+            onSortChange(params) {
+                console.log(params);
+                this.updateParams({
+                    sort: [{
+                            type: params[0].type,
+                            field: params[0].field,
+                        }],
+                });
+                this.loadItems();
+            },
 
-                this.$axios
-                .$delete("/api/persondesi/" + id)
-                .then(response => {
-                    this.loadItems();
+            onColumnFilter(params) {
+                this.updateParams(params);
+                this.loadItems();
+            },
+            onSearch(params) {
+                console.log(params);
+                this.updateParams({searchTerm: params});
+                this.loadItems();
+            },
+            loadItems() {
+                this.$axios.$get("/api/persondesi", {
+                    params: this.serverParams
                 })
-            }
-        },
-    },
+                        .then(response => {
+                            this.totalRecords = response.total;
+                            this.rows = response.data;
+                        })
+            },
 
-    created() {
-        // this.loadPersonAsso();
-    },
-}
+            searchFunction(row, col, cellValue, searchTerm) {
+                alert("gg");
+                console.log(searchTerm);
+            },
+            deletePersonAsso(id) {
+                if (confirm("Do you really want to delete?")) {
+
+                    this.$axios
+                            .$delete("/api/persondesi/" + id)
+                            .then(response => {
+                                this.loadItems();
+                            })
+                }
+            },
+        },
+
+        created() {
+            // this.loadPersonAsso();
+        },
+    }
 
 </script>
 

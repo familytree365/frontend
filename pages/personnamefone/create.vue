@@ -5,31 +5,80 @@
                 <h1 class="card-header-title">
                 Create People
                 </h1>
-              <NuxtLink to="/personnamefone" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+              <NuxtLink to="/personnamefonefone" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
+                      <label class="label">Group</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Group" v-model="personnamefone.group"  :class="{ 'is-danger': $v.personnamefone.group.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.group.$error }" v-if="!$v.personnamefone.group.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Gid</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Gid" v-model="personnamefone.gid" :class="{ 'is-danger': $v.personnamefone.gid.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.gid.$error }" v-if="!$v.personnamefone.gid.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Type</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Type" v-model="personnamefone.type" :class="{ 'is-danger': $v.personnamefone.type.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.type.$error }" v-if="!$v.personnamefone.type.required">Field is required</p>
+                    </div>
+                    <div class="field">
                       <label class="label">Name</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="personnamefone.name"  :class="{ 'is-danger': $v.personnamefone.name.$error }">
+                        <input class="input" type="text" placeholder="Name" v-model="personnamefone.name" :class="{ 'is-danger': $v.personnamefone.name.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.personnamefone.name.$error }" v-if="!$v.personnamefone.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Npfx</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="personnamefone.email" :class="{ 'is-danger': $v.personnamefone.email.$error }">
+                        <input class="input" type="text" placeholder="Npfx" v-model="personnamefone.npfx" :class="{ 'is-danger': $v.personnamefone.npfx.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personnamefone.email.$error }" v-if="!$v.personnamefone.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.npfx.$error }" v-if="!$v.personnamefone.npfx.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Givn</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="personnamefone.phone" :class="{ 'is-danger': $v.personnamefone.phone.$error }">
+                        <input class="input" type="text" placeholder="Givn" v-model="personnamefone.givn" :class="{ 'is-danger': $v.personnamefone.givn.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personnamefone.phone.$error }" v-if="!$v.personnamefone.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.givn.$error }" v-if="!$v.personnamefone.givn.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Nick</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Nick" v-model="personnamefone.nick" :class="{ 'is-danger': $v.personnamefone.nick.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.nick.$error }" v-if="!$v.personnamefone.nick.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Spfx</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Spfx" v-model="personnamefone.spfx" :class="{ 'is-danger': $v.personnamefone.spfx.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.spfx.$error }" v-if="!$v.personnamefone.spfx.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Surn</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Surn" v-model="personnamefone.surn" :class="{ 'is-danger': $v.personnamefone.surn.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.surn.$error }" v-if="!$v.personnamefone.surn.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Nsfx</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Nsfx" v-model="personnamefone.nsfx" :class="{ 'is-danger': $v.personnamefone.nsfx.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personnamefone.nsfx.$error }" v-if="!$v.personnamefone.nsfx.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -54,22 +103,50 @@ export default {
             message: "",
             name: '',
             age: 0,
-            personnamefone: {
+            personnamefonefone: {
+                group: "",
+                gid: "",
+                type: "",
                 name: "",
-                email: "",
-                phone: "",
+                npfx: "",
+                givn: "",
+                nick: "",
+                spfx: "",
+                surn: "",
+                nsfx: ""
             }
         };
     },
     validations: {
-            personnamefone: {
+            personnamefonefone: {
+                group: {
+                    required,
+                },
+                gid: {
+                    required,
+                },
+                type: {
+                    required,
+                },
                 name: {
                     required,
                 },
-                email: {
+                npfx: {
                     required,
                 },
-                phone: {
+                givn: {
+                    required,
+                },
+                nick: {
+                    required,
+                },
+                spfx: {
+                    required,
+                },
+                surn: {
+                    required,
+                },
+                nsfx: {
                     required,
                 },
             },
@@ -81,8 +158,8 @@ export default {
             if (this.$v.$invalid) {
                 console.log("fail")
             } else {
-              this.$axios.$post('/api/personnamefone', this.personnamefone)
-                  .then(response => ( this.$router.push('/personnamefone') ))
+              this.$axios.$post('/api/personnamefonefone', this.personnamefonefone)
+                  .then(response => ( this.$router.push('/personnamefonefone') ))
                   .catch(error => {
                   });
             }

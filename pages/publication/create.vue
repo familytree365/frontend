@@ -18,18 +18,18 @@
                       <p class="help" :class="{ 'is-danger': $v.publication.name.$error }" v-if="!$v.publication.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Description</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="publication.email" :class="{ 'is-danger': $v.publication.email.$error }">
+                        <input class="input" type="text" placeholder="Description" v-model="publication.description" :class="{ 'is-danger': $v.publication.description.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.publication.email.$error }" v-if="!$v.publication.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.publication.description.$error }" v-if="!$v.publication.description.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Is Active</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="publication.phone" :class="{ 'is-danger': $v.publication.phone.$error }">
+                        <input class="input" type="text" placeholder="Is Active" v-model="publication.is_active" :class="{ 'is-danger': $v.publication.is_active.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.publication.phone.$error }" v-if="!$v.publication.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.publication.is_active.$error }" v-if="!$v.publication.is_active.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -56,8 +56,8 @@ export default {
             age: 0,
             publication: {
                 name: "",
-                email: "",
-                phone: "",
+                description: "",
+                is_active: "",
             }
         };
     },
@@ -66,10 +66,10 @@ export default {
                 name: {
                     required,
                 },
-                email: {
+                description: {
                     required,
                 },
-                phone: {
+                is_active: {
                     required,
                 },
             },

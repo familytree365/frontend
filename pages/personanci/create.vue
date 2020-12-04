@@ -11,25 +11,25 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="people.name"  :class="{ 'is-danger': $v.people.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="people.group"  :class="{ 'is-danger': $v.people.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.name.$error }" v-if="!$v.people.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.people.group.$error }" v-if="!$v.people.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="people.email" :class="{ 'is-danger': $v.people.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="people.gid" :class="{ 'is-danger': $v.people.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.email.$error }" v-if="!$v.people.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.people.gid.$error }" v-if="!$v.people.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Anci</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="people.phone" :class="{ 'is-danger': $v.people.phone.$error }">
+                        <input class="input" type="text" placeholder="Anci" v-model="people.anci" :class="{ 'is-danger': $v.people.anci.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.phone.$error }" v-if="!$v.people.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.people.anci.$error }" v-if="!$v.people.anci.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +52,24 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             people: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                anci: "",
             }
         };
     },
     validations: {
             people: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                anci: {
                     required,
                 },
             },

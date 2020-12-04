@@ -1,40 +1,54 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create MediaObject
+                    Create MediaObject
                 </h1>
-              <NuxtLink to="/mediaobject" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/mediaobject" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="mediaobject.name"  :class="{ 'is-danger': $v.mediaobject.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.mediaobject.name.$error }" v-if="!$v.mediaobject.name.required">Field is required</p>
+                        <label class="label">Gid</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Gid" v-model="mediaobject.gid"  :class="{ 'is-danger': $v.mediaobject.gid.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.mediaobject.gid.$error }" v-if="!$v.mediaobject.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="mediaobject.email" :class="{ 'is-danger': $v.mediaobject.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.mediaobject.email.$error }" v-if="!$v.mediaobject.email.required">Field is required</p>
+                        <label class="label">Group</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Group" v-model="mediaobject.group" :class="{ 'is-danger': $v.mediaobject.group.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.mediaobject.group.$error }" v-if="!$v.mediaobject.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="mediaobject.phone" :class="{ 'is-danger': $v.mediaobject.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.mediaobject.phone.$error }" v-if="!$v.mediaobject.phone.required">Field is required</p>
+                        <label class="label">Titl</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Titl" v-model="mediaobject.titl" :class="{ 'is-danger': $v.mediaobject.titl.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.mediaobject.titl.$error }" v-if="!$v.mediaobject.titl.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Obje Id</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Obje Id" v-model="mediaobject.obje_id" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }" v-if="!$v.mediaobject.obje_id.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Rin</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Rin" v-model="mediaobject.rin" :class="{ 'is-danger': $v.mediaobject.rin.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.mediaobject.rin.$error }" v-if="!$v.mediaobject.rin.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,48 +59,56 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                mediaobject: {
+                    gid: "",
+                    group: "",
+                    titl: "",
+                    obje_id: "",
+                    rin: ""
+                }
+            };
+        },
+        validations: {
             mediaobject: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
-            mediaobject: {
-                name: {
+                gid: {
                     required,
                 },
-                email: {
+                group: {
                     required,
                 },
-                phone: {
+                titl: {
+                    required,
+                },
+                obje_id: {
+                    required,
+                },
+                rin: {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/mediaobject/'+this.$route.params.id, this.mediaobject)
-                    .then(response => ( this.$router.push('/mediaobject') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const mediaobject = await $axios.$get('/api/mediaobject/'+params.id)
-      return { mediaobject }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/mediaobject/' + this.$route.params.id, this.mediaobject)
+                            .then(response => (this.$router.push('/mediaobject')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const mediaobject = await $axios.$get('/api/mediaobject/' + params.id)
+            return {mediaobject}
+        }
     }
-}
 </script>

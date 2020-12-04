@@ -11,25 +11,60 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="personlds.name"  :class="{ 'is-danger': $v.personlds.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="personlds.group"  :class="{ 'is-danger': $v.personlds.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.name.$error }" v-if="!$v.personlds.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.group.$error }" v-if="!$v.personlds.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="personlds.email" :class="{ 'is-danger': $v.personlds.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="personlds.gid" :class="{ 'is-danger': $v.personlds.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.email.$error }" v-if="!$v.personlds.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.gid.$error }" v-if="!$v.personlds.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Type</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="personlds.phone" :class="{ 'is-danger': $v.personlds.phone.$error }">
+                        <input class="input" type="text" placeholder="Type" v-model="personlds.type" :class="{ 'is-danger': $v.personlds.type.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.phone.$error }" v-if="!$v.personlds.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.type.$error }" v-if="!$v.personlds.type.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Stat</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Stat" v-model="personlds.stat" :class="{ 'is-danger': $v.personlds.stat.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.stat.$error }" v-if="!$v.personlds.stat.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Date</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Date" v-model="personlds.date" :class="{ 'is-danger': $v.personlds.date.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.date.$error }" v-if="!$v.personlds.date.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Plac</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Plac" v-model="personlds.plac" :class="{ 'is-danger': $v.personlds.plac.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.plac.$error }" v-if="!$v.personlds.plac.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Temp</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Temp" v-model="personlds.temp" :class="{ 'is-danger': $v.personlds.temp.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.temp.$error }" v-if="!$v.personlds.temp.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Slac Famc</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Slac Famc" v-model="personlds.slac_famc" :class="{ 'is-danger': $v.personlds.slac_famc.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.personlds.slac_famc.$error }" v-if="!$v.personlds.slac_famc.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +87,43 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             personlds: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                type: "",
+                stat: "",
+                date: "",
+                plac: "",
+                slac_famc: "",
             }
         };
     },
     validations: {
             personlds: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                type: {
+                    required,
+                },
+                stat: {
+                    required,
+                },
+                date: {
+                    required,
+                },
+                plac: {
+                    required,
+                },
+                temp: {
+                    required,
+                },
+                slac_famc: {
                     required,
                 },
             },

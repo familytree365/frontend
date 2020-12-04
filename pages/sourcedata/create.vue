@@ -11,25 +11,32 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="sourcedata.name"  :class="{ 'is-danger': $v.sourcedata.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="sourcedata.group"  :class="{ 'is-danger': $v.sourcedata.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.name.$error }" v-if="!$v.sourcedata.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedata.group.$error }" v-if="!$v.sourcedata.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="sourcedata.email" :class="{ 'is-danger': $v.sourcedata.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="sourcedata.gid" :class="{ 'is-danger': $v.sourcedata.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.email.$error }" v-if="!$v.sourcedata.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedata.gid.$error }" v-if="!$v.sourcedata.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="sourcedata.phone" :class="{ 'is-danger': $v.sourcedata.phone.$error }">
+                        <input class="input" type="text" placeholder="Date" v-model="sourcedata.date" :class="{ 'is-danger': $v.sourcedata.date.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.phone.$error }" v-if="!$v.sourcedata.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedata.date.$error }" v-if="!$v.sourcedata.date.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Text</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Text" v-model="sourcedata.text" :class="{ 'is-danger': $v.sourcedata.text.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedata.text.$error }" v-if="!$v.sourcedata.text.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +59,32 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             sourcedata: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                date: "",
+                text: "",
+                agnc: "",
             }
         };
     },
     validations: {
             sourcedata: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                date: {
+                    required,
+                },
+                text: {
+                    required,
+                },
+                agnc: {
                     required,
                 },
             },

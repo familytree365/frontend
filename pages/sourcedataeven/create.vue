@@ -11,25 +11,32 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="sourcedataeven.name"  :class="{ 'is-danger': $v.sourcedataeven.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="sourcedataeven.group"  :class="{ 'is-danger': $v.sourcedataeven.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.name.$error }" v-if="!$v.sourcedataeven.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.group.$error }" v-if="!$v.sourcedataeven.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="sourcedataeven.email" :class="{ 'is-danger': $v.sourcedataeven.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="sourcedataeven.gid" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.email.$error }" v-if="!$v.sourcedataeven.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }" v-if="!$v.sourcedataeven.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="sourcedataeven.phone" :class="{ 'is-danger': $v.sourcedataeven.phone.$error }">
+                        <input class="input" type="text" placeholder="Date" v-model="sourcedataeven.date" :class="{ 'is-danger': $v.sourcedataeven.date.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.phone.$error }" v-if="!$v.sourcedataeven.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.date.$error }" v-if="!$v.sourcedataeven.date.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Plac</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Plac" v-model="sourcedataeveneven.plac" :class="{ 'is-danger': $v.sourcedataeveneven.plac.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedataeveneven.plac.$error }" v-if="!$v.sourcedataeveneven.plac.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -55,21 +62,25 @@ export default {
             name: '',
             age: 0,
             sourcedataeven: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                date: "",
+                plac: ""
             }
         };
     },
     validations: {
             sourcedataeven: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                date: {
+                    required,
+                },
+                plac: {
                     required,
                 },
             },

@@ -11,25 +11,32 @@
             <div class="card-content">
                  <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="sourcerefeven.name"  :class="{ 'is-danger': $v.sourcerefeven.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="sourcerefeven.group"  :class="{ 'is-danger': $v.sourcerefeven.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.name.$error }" v-if="!$v.sourcerefeven.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.group.$error }" v-if="!$v.sourcerefeven.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="sourcerefeven.email" :class="{ 'is-danger': $v.sourcerefeven.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="sourcerefeven.gid" :class="{ 'is-danger': $v.sourcerefeven.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.email.$error }" v-if="!$v.sourcerefeven.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.gid.$error }" v-if="!$v.sourcerefeven.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Even</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="sourcerefeven.phone" :class="{ 'is-danger': $v.sourcerefeven.phone.$error }">
+                        <input class="input" type="text" placeholder="Even" v-model="sourcerefeven.even" :class="{ 'is-danger': $v.sourcerefeven.even.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.phone.$error }" v-if="!$v.sourcerefeven.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.even.$error }" v-if="!$v.sourcerefeven.even.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Role</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Role" v-model="sourcerefeven.role" :class="{ 'is-danger': $v.sourcerefeven.role.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.role.$error }" v-if="!$v.sourcerefeven.role.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,21 +59,25 @@ export default {
             error: false,
             message: "",
             sourcerefeven: {
-                name: "",
-                email: '',
-                phone: ''
+                group: "",
+                gid: "",
+                even: "",
+                role: "",
             }
         };
     },
     validations: {
             sourcerefeven: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                even: {
+                    required,
+                },
+                role: {
                     required,
                 },
             },

@@ -91,11 +91,83 @@ export default {
             totalRecords: 0,
             columns: [
                 {
+                    label: 'Group',
+                    field: 'group',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Group', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'gid',
+                    field: 'gid',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter gid', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
                     label: 'Name',
                     field: 'name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Name', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'Addr id',
+                    field: 'addr_id',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Addr id', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'rin',
+                    field: 'rin',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter rin', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'rfn',
+                    field: 'rfn',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter rfn', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'Lang',
+                    field: 'lang',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Lang', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -115,10 +187,32 @@ export default {
                 },
                 {
                     label: 'Phone',
-                    field: 'phone',
+                    field: 'phon',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Phone', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Fax',
+                    field: 'fax',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Fax', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'www',
+                    field: 'www',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter www', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that

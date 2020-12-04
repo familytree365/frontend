@@ -1,40 +1,54 @@
 <template>
     <div>
-       <div class="card">
+        <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                Create FamilySlgs
+                    Create FamilySlgs
                 </h1>
-              <NuxtLink to="/familyslgs" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
-                <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
+                <NuxtLink to="/familyslgs" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                    <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="familyslgs.name"  :class="{ 'is-danger': $v.familyslgs.name.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.familyslgs.name.$error }" v-if="!$v.familyslgs.name.required">Field is required</p>
+                        <label class="label">Family Id</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Family Id" v-model="familyslgs.family_id"  :class="{ 'is-danger': $v.familyslgs.family_id.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.familyslgs.family_id.$error }" v-if="!$v.familyslgs.family_id.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="familyslgs.email" :class="{ 'is-danger': $v.familyslgs.email.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.familyslgs.email.$error }" v-if="!$v.familyslgs.email.required">Field is required</p>
+                        <label class="label">Stat</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Stat" v-model="familyslgs.stat" :class="{ 'is-danger': $v.familyslgs.stat.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.familyslgs.stat.$error }" v-if="!$v.familyslgs.stat.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="familyslgs.phone" :class="{ 'is-danger': $v.familyslgs.phone.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.familyslgs.phone.$error }" v-if="!$v.familyslgs.phone.required">Field is required</p>
+                        <label class="label">Date</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Date" v-model="familyslgs.date" :class="{ 'is-danger': $v.familyslgs.date.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.familyslgs.date.$error }" v-if="!$v.familyslgs.date.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Plac</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Plac" v-model="familyslgs.plac" :class="{ 'is-danger': $v.familyslgs.plac.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.familyslgs.plac.$error }" v-if="!$v.familyslgs.plac.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Temp</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Temp" v-model="familyslgs.temp" :class="{ 'is-danger': $v.familyslgs.temp.$error }">
+                        </div>
+                        <p class="help" :class="{ 'is-danger': $v.familyslgs.temp.$error }" v-if="!$v.familyslgs.temp.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
-                      <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
-                      </div>
+                        <div class="control">
+                            <button  class="button is-link has-background-primary">Submit</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -45,48 +59,56 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
-export default {
-    layout: 'auth',
-    data() {
-        return {
-            error: false,
-            message: "",
+    export default {
+        layout: 'auth',
+        data() {
+            return {
+                error: false,
+                message: "",
+                familyslgs: {
+                    family_id: "",
+                    stat: "",
+                    date: "",
+                    plac: "",
+                    temp: ""
+                }
+            };
+        },
+        validations: {
             familyslgs: {
-                name: "",
-                email: '',
-                phone: ''
-            }
-        };
-    },
-    validations: {
-            familyslgs: {
-                name: {
+                family_id: {
                     required,
                 },
-                email: {
+                stat: {
                     required,
                 },
-                phone: {
+                date: {
+                    required,
+                },
+                plac: {
+                    required,
+                },
+                temp: {
                     required,
                 },
             },
-    },
-    methods: {
-        save() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.$axios.$put('/api/familyslgs/'+this.$route.params.id, this.familyslgs)
-                    .then(response => ( this.$router.push('/familyslgs') ))
-                    .catch(error => {
-                    });
-            }
         },
-    },
-    async asyncData({ $axios,params }) {
-      const familyslgs = await $axios.$get('/api/familyslgs/'+params.id)
-      return { familyslgs }
+        methods: {
+            save() {
+                this.$v.$touch();
+                if (this.$v.$invalid) {
+                    console.log("fail")
+                } else {
+                    this.$axios.$put('/api/familyslgs/' + this.$route.params.id, this.familyslgs)
+                            .then(response => (this.$router.push('/familyslgs')))
+                            .catch(error => {
+                            });
+                }
+            },
+        },
+        async asyncData( { $axios, params }) {
+            const familyslgs = await $axios.$get('/api/familyslgs/' + params.id)
+            return {familyslgs}
+        }
     }
-}
 </script>
