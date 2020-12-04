@@ -224,8 +224,9 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</a></li>
                                     <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</a></li>
+                                    <li><NuxtLink to="/tree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</NuxtLink></li>
+                                    <li><NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink></li>
                                 </ul>
                             </div>
                             <li>
