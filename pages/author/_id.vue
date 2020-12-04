@@ -18,18 +18,18 @@
                       <p class="help" :class="{ 'is-danger': $v.author.name.$error }" v-if="!$v.author.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Description</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="author.email" :class="{ 'is-danger': $v.author.email.$error }">
+                        <input class="input" type="text" placeholder="Description" v-model="author.description" :class="{ 'is-danger': $v.author.description.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.author.email.$error }" v-if="!$v.author.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.author.description.$error }" v-if="!$v.author.description.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Is Active</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="author.phone" :class="{ 'is-danger': $v.author.phone.$error }">
+                        <input class="input" type="text" placeholder="Is Active" v-model="author.is_active" :class="{ 'is-danger': $v.author.is_active.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.author.phone.$error }" v-if="!$v.author.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.author.is_active.$error }" v-if="!$v.author.is_active.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -53,8 +53,8 @@ export default {
             message: "",
             author: {
                 name: "",
-                email: '',
-                phone: ''
+                description: '',
+                is_active: ''
             }
         };
     },
@@ -63,10 +63,10 @@ export default {
                 name: {
                     required,
                 },
-                email: {
+                description: {
                     required,
                 },
-                phone: {
+                is_active: {
                     required,
                 },
             },

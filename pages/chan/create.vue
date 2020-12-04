@@ -11,25 +11,32 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="chan.name"  :class="{ 'is-danger': $v.chan.name.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="chan.group"  :class="{ 'is-danger': $v.chan.group.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.chan.name.$error }" v-if="!$v.chan.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.chan.group.$error }" v-if="!$v.chan.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="chan.email" :class="{ 'is-danger': $v.chan.email.$error }">
+                        <input class="input" type="text" placeholder="Gid" v-model="chan.gid" :class="{ 'is-danger': $v.chan.gid.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.chan.email.$error }" v-if="!$v.chan.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.chan.gid.$error }" v-if="!$v.chan.gid.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="chan.phone" :class="{ 'is-danger': $v.chan.phone.$error }">
+                        <input class="input" type="text" placeholder="Date" v-model="chan.date" :class="{ 'is-danger': $v.chan.date.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.chan.phone.$error }" v-if="!$v.chan.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.chan.date.$error }" v-if="!$v.chan.date.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Time</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Time" v-model="chan.time" :class="{ 'is-danger': $v.chan.time.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.chan.time.$error }" v-if="!$v.chan.time.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -52,24 +59,28 @@ export default {
         return {
             error: false,
             message: "",
-            name: '',
+            group: '',
             age: 0,
             chan: {
-                name: "",
-                email: "",
-                phone: "",
+                group: "",
+                gid: "",
+                date: "",
+                time: "",
             }
         };
     },
     validations: {
             chan: {
-                name: {
+                group: {
                     required,
                 },
-                email: {
+                gid: {
                     required,
                 },
-                phone: {
+                date: {
+                    required,
+                },
+                time: {
                     required,
                 },
             },
