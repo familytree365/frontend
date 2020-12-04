@@ -158,9 +158,9 @@
                 </div>
                 <div class="column is-12 has-text-centered">
                     <div class="fadein">
-                        <img src="~assets/images/mockup01@2x.png" alt="">
-                        <img src="~assets/images/mockup02@2x.png" alt="">
-                        <img src="~assets/images/mockup03@2x.png" alt="">
+                        <img src="~assets/images/mockup01@2x.webp" alt="">
+                        <img src="~assets/images/mockup02@2x.webp" alt="">
+                        <img src="~assets/images/mockup03@2x.webp" alt="">
                     </div>
                 </div>
             </div>
