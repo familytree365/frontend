@@ -362,10 +362,10 @@ export default {
   },
   computed: {
     slide1image() {
-      return '/images/main-hero.png';
+      return '/images/main-hero.webp';
     },
     footerimage() {
-      return '/images/footer-bg.png';
+      return '/images/footer-bg.webp';
     },
   },
   created() {

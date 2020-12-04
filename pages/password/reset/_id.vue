@@ -10,21 +10,21 @@
                         </div>
                         <div class="auth-inner-content my-6">
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                                 Genealogia is a secure online website
                                 which you can use to create your own family tree(s) with.</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                                 It has a tree viewer and DNA support
                                 more features are planned such as the inclusion of archive databases &amp;
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                                 It is aimed to be affordable with a 7 day
                                 no obligation trial with different pricing levels depending on how many trees you
                                 require.</div>
                         </div>
-                        <img class="auth-img" src="~assets/images/mockup01@2x.png" alt="">
+                        <img class="auth-img" src="~assets/images/mockup01@2x.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                             </p>
                             <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
                         </div>
-                    </div> 
+                    </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
@@ -77,7 +77,7 @@
                             </p>
                             <p class="help" :class="{ 'is-danger': $v.password_confirmation.$error }" v-if="!$v.password_confirmation.required">Field is required</p>
                         </div>
-                    </div> 
+                    </div>
                     <div class="mb-6">
                         <div class="mb-6">
                         <button

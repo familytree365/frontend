@@ -10,20 +10,20 @@
                         </div>
                         <div class="auth-inner-content my-6">
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                                 Family Tree 365 is a secure online website
                                 which you can use to create your own family tree(s) with.</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                                 It has a tree viewer and DNA support
                                 more features are planned such as the inclusion of archive databases and
                                 collections</div>
                             <div class="has-text-white has-text-weight-regular is-flex ai--fs">
-                                <img src="~assets/images/bcheckmark.png" alt="" class="bullet mt-1 mr-3">
+                                <img src="~assets/images/bcheckmark.webp" alt="" class="bullet mt-1 mr-3">
                               Set up your first family tree free of charge.
                               We offer different pricing levels with optional subscriptions if you need to create extra trees.</div>
                         </div>
-                        <img class="auth-img" src="~assets/images/mockup03@2x.png" alt="">
+                        <img class="auth-img" src="~assets/images/mockup03@2x.webp" alt="">
                     </div>
                 </div>
             </div>
