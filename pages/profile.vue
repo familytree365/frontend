@@ -19,7 +19,7 @@
             						</p><!---->
             					</header>
             					<div class="card-content">
-            						<form>
+            						<form @submit.prevent="editProfile">
             							<div class="field is-horizontal">
             								<div class="field-label is-normal">
             									<label class="label">Avatar</label>
@@ -52,9 +52,9 @@
             								<div class="field-body">
             									<div class="field"><!---->
             										<div class="control">
-            											<input type="text" autocomplete="on" name="name" required="required" class="input"><!----><!----><!---->
+            											<input type="text" autocomplete="on" name="name" required="required" class="input" v-model="user.first_name"  :class="{ 'is-danger': $v.user.first_name.$error }"><!----><!----><!---->
             										</div>
-            										<p class="help"> Required. Your name <!----></p>
+            										<p class="help" :class="{ 'is-danger': $v.user.first_name.$error }" v-if="!$v.user.first_name.required">Field is required</p>
             									</div>
             								</div><!---->
             							</div>
@@ -65,9 +65,9 @@
             								<div class="field-body">
             									<div class="field"><!---->
             										<div class="control">
-            											<input type="text" autocomplete="on" name="name" required="required" class="input"><!----><!----><!---->
+            											<input type="text" autocomplete="on" name="name" class="input" v-model="user.last_name" :class="{ 'is-danger': $v.user.last_name.$error }"><!----><!----><!---->
             										</div>
-            										<p class="help"> Required. Your name <!----></p>
+            										<p class="help" :class="{ 'is-danger': $v.user.last_name.$error }" v-if="!$v.user.last_name.required">Field is required</p>
             									</div>
             								</div><!---->
             							</div>
@@ -78,9 +78,9 @@
             								<div class="field-body">
             									<div class="field"><!---->
             										<div class="control">
-            											<input type="email" autocomplete="on" name="email" required="required" class="input"><!----><!----><!---->
+            											<input type="email" autocomplete="on" name="email" class="input" v-model="user.email"   :class="{ 'is-danger': $v.user.email.$error }"><!----><!----><!---->
             										</div>
-            										<p class="help"> Required. Your e-mail <!----></p>
+            										<p class="help" :class="{ 'is-danger': $v.user.email.$error }" v-if="!$v.user.email.required">Field is required</p>
             									</div>
             								</div><!---->
             							</div><hr>
@@ -114,19 +114,19 @@
             						<div class="field">
             							<label class="label">First Name</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" value="pintu" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="loggedInUser.first_name" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             						<div class="field">
             							<label class="label">Last Name</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" value="Kalasva" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="loggedInUser.last_name" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             						<div class="field">
             							<label class="label">E-mail</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" value="pintu1997.kalasva@gmail.com" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="loggedInUser.email" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             					</div><!---->
@@ -141,7 +141,7 @@
             				</p><!---->
             			</header>
             			<div class="card-content">
-            				<form>
+            				<form @submit.prevent="changePassword">
             					<div class="field is-horizontal">
             						<div class="field-label is-normal">
             							<label class="label">Current password</label>
@@ -149,9 +149,9 @@
             						<div class="field-body">
             							<div class="field"><!---->
             								<div class="control">
-            									<input type="password" autocomplete="on" name="password_current" required="required" autcomplete="current-password" class="input"><!----><!----><!---->
+            									<input type="password" autocomplete="on" name="password_current" autcomplete="current-password" class="input" v-model="password.old_password" :class="{ 'is-danger': $v.password.old_password.$error }"><!----><!----><!---->
             								</div>
-            								<p class="help"> Required. Your current password <!----></p>
+            								<p class="help" :class="{ 'is-danger': $v.password.old_password.$error }" v-if="!$v.password.old_password.required">Field is required</p>
             							</div>
             						</div><!---->
             					</div><hr>
@@ -162,9 +162,9 @@
             						<div class="field-body">
             							<div class="field"><!---->
             								<div class="control">
-            									<input type="password" autocomplete="new-password" name="password" required="required" class="input"><!----><!----><!---->
+            									<input type="password" autocomplete="new-password" name="password" class="input" v-model="password.new_password" :class="{ 'is-danger': $v.password.new_password.$error }"><!----><!----><!---->
             								</div>
-            								<p class="help"> Required. New password <!----></p>
+            								<p class="help" :class="{ 'is-danger': $v.password.new_password.$error }" v-if="!$v.password.new_password.required">Field is required</p>
             							</div>
             						</div><!---->
             					</div>
@@ -175,9 +175,9 @@
             						<div class="field-body">
             							<div class="field"><!---->
             								<div class="control">
-            									<input type="password" autocomplete="new-password" name="password_confirmation" required="required" class="input"><!----><!----><!---->
+            									<input type="password" autocomplete="new-password" name="password_confirmation" class="input" v-model="password.password_confirmation" :class="{ 'is-danger': $v.password.password_confirmation.$error }"><!----><!----><!---->
             								</div>
-            								<p class="help"> Required. New password one more time <!----></p>
+            								<p class="help" :class="{ 'is-danger': $v.password.password_confirmation.$error }" v-if="!$v.password.password_confirmation.required">Field is required</p>
             							</div>
             						</div><!---->
             					</div><hr>
@@ -205,19 +205,93 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { required } from 'vuelidate/lib/validators'
 export default {
     layout: 'auth',
     data() {
-        return {
-            error: false,
-            message: "",
-            people: {
-                name: "",
+            return {
+                  error: false,
+                  message: "",
+                  user: {
+                        first_name: "",
+                        last_name: "",
+                        email: "",
+                  },
+                  password: {
+                        old_password: null,
+                        new_password: null,
+                        password_confirmation: null
+                  }
+                  
+            };
+      },
+      validations: {
+            user: {
+                first_name: {
+                    required,
+                },
+                last_name: {
+                    required,
+                },
+                email: {
+                    required,
+                },
+            },
+            password: {
+                  old_password: {
+                        required,
+                  },
+                  new_password: {
+                        required,
+                  },
+                  password_confirmation: {
+                        required,
+                  },
             }
-        };
-    },
-    computed: {
+            
+      },
+      computed: {
         ...mapGetters(['loggedInUser'])
-    },
+        
+      },
+      mounted() {
+          this.user.first_name = this.loggedInUser.first_name;
+          this.user.last_name = this.loggedInUser.last_name;
+          this.user.email = this.loggedInUser.email;
+      },
+     methods: {
+        editProfile() {
+            this.$v.user.first_name.$touch();
+            this.$v.user.last_name.$touch();
+            this.$v.user.email.$touch();
+
+            if (!this.$v.user.first_name.$invalid && !this.$v.user.last_name.$invalid && !this.$v.user.email.$invalid) {
+                this.$axios
+                .$post("/api/editprofile", this.user)
+                .then(response => {
+                  
+                })
+                .catch(error => {
+                  console.log(error)
+                });
+            }
+        },
+        changePassword() {
+            this.$v.password.old_password.$touch();
+            this.$v.password.new_password.$touch();
+            this.$v.password.password_confirmation.$touch();
+
+            if (!this.$v.password.old_password.$invalid && !this.$v.password.new_password.$invalid && !this.$v.password.password_confirmation.$invalid) {
+                this.$axios
+                .$post("/api/editprofile", this.password)
+                .then(response => {
+                  
+                })
+                .catch(error => {
+                  console.log(error)
+                });
+            }
+        }
+    }
 }
 </script>

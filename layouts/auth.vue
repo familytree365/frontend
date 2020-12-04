@@ -235,9 +235,9 @@
                                 </NuxtLink>
                             </li>
                             <li>
-                                <a href="#">
+                                <NuxtLink to="/subscription">
                                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
-                                    Subscription</a>
+                                    Subscription</NuxtLink>
                             </li>
                             <li>
                                 <NuxtLink to="dnaupload">
