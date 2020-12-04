@@ -91,11 +91,11 @@ export default {
             totalRecords: 0,
             columns: [
                 {
-                    label: 'Name',
-                    field: 'name',
+                    label: 'Adr 1',
+                    field: 'adr1',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Name', // placeholder for filter input
+                        placeholder: 'Filter Adr1', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
@@ -103,27 +103,61 @@ export default {
                     },
                 },
                 {
-                    label: 'Email',
-                    field: 'email',
+                    label: 'Adr 2',
+                    field: 'adr2',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Email', // placeholder for filter input
+                        placeholder: 'Filter Adr2', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+
+                    },
+                },
+                {
+                    label: 'City',
+                    field: 'city',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter City', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
-                    label: 'Phone',
-                    field: 'phone',
+                    label: 'State',
+                    field: 'stae',
                     filterOptions: {
                         enabled: true, // enable filter for this column
-                        placeholder: 'Filter Phone', // placeholder for filter input
+                        placeholder: 'Filter State', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
+                {
+                    label: 'Post',
+                    field: 'post',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Post', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },
+                {
+                    label: 'Country',
+                    field: 'ctry',
+                    filterOptions: {
+                        enabled: true, // enable filter for this column
+                        placeholder: 'Filter Country', // placeholder for filter input
+                        filterValue: '', // initial populated value for this filter
+                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                        filterFn: this.columnFilterFn, //custom filter function that
+                    },
+                },                
                 {
                     label: 'Action',
                     field: 'action',

@@ -11,25 +11,46 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                      <label class="label">Name</label>
+                      <label class="label">Address 1</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Name" v-model="addr.name"  :class="{ 'is-danger': $v.addr.name.$error }">
+                        <input class="input" type="text" placeholder="Address 1" v-model="addr.adr1"  :class="{ 'is-danger': $v.addr.adr1.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.name.$error }" v-if="!$v.addr.name.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.addr.adr1.$error }" v-if="!$v.addr.adr1.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Email</label>
+                      <label class="label">Address 2</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="addr.email" :class="{ 'is-danger': $v.addr.email.$error }">
+                        <input class="input" type="text" placeholder="Address 2" v-model="addr.adr2"  :class="{ 'is-danger': $v.addr.adr2.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.email.$error }" v-if="!$v.addr.email.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.addr.adr2.$error }" v-if="!$v.addr.adr2.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Phone</label>
+                      <label class="label">City</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="addr.phone" :class="{ 'is-danger': $v.addr.phone.$error }">
+                        <input class="input" type="text" placeholder="City" v-model="addr.city" :class="{ 'is-danger': $v.addr.city.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.phone.$error }" v-if="!$v.addr.phone.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.addr.city.$error }" v-if="!$v.addr.city.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">State</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="State" v-model="addr.stae" :class="{ 'is-danger': $v.addr.stae.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.addr.stae.$error }" v-if="!$v.addr.stae.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Post</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Post" v-model="addr.post" :class="{ 'is-danger': $v.addr.post.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.addr.post.$error }" v-if="!$v.addr.post.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                      <label class="label">Country</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Country" v-model="addr.ctry" :class="{ 'is-danger': $v.addr.ctry.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.addr.ctry.$error }" v-if="!$v.addr.ctry.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -55,21 +76,33 @@ export default {
             name: '',
             age: 0,
             addr: {
-                name: "",
-                email: "",
-                phone: "",
+                adr1: "",
+                adr2: "",
+                city: "",
+                stae: "",
+                post: "",
+                ctry: "",
             }
         };
     },
     validations: {
             addr: {
-                name: {
+                adr1: {
                     required,
                 },
-                email: {
+                adr2: {
                     required,
                 },
-                phone: {
+                city: {
+                    required,
+                },
+                stae: {
+                    required,
+                },
+                post: {
+                    required,
+                },
+                ctry: {
                     required,
                 },
             },
