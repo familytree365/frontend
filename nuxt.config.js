@@ -39,6 +39,9 @@ export default {
 
   ],
   script: [
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
+    }
   ],
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -86,7 +89,7 @@ export default {
   ],
 
 axios: {
-  baseURL: "http://localhost:8000",
+  baseURL: "https://api.familytree365.com",
   credentials: true
 },
 auth: {
