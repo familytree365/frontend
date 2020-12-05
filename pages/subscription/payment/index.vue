@@ -48,7 +48,7 @@
                                 </p>
                                 <p class="help" :class="{ 'is-danger': $v.payment.cvv.$error }" v-if="!$v.payment.cvv.required">Field is required</p>
                                 <p class="help" :class="{ 'is-danger': $v.payment.cvv.$error }" v-if="!$v.payment.cvv.minLength">Name must have at least {{$v.payment.cvv.$params.minLength.min}} letters.</p>
-                            </div>                                    
+                            </div>
                         </div>
                         <button href="#" class="button is-block is-uppercase has-text-white has-background-primary has-text-weight-medium is-fullwidth is-medium">Proceed to Pay</button>
                         <ul class="bullet_list mt-5">
@@ -64,23 +64,27 @@
                     <div class="card plan_info_block has-background-primary has-text-black">
                         <img src="~assets/images/plan_info_img.svg" alt="">
                         <div class="card-content">
-                            <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
-                                <i class="fas fa-check mr-2 mt-1"></i>
-                                <p class="is-size-7">Genealogia is a secure online website which you can use to create your own family tree(s) with.</p>
-                            </div>
-                            <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
-                                <i class="fas fa-check mr-2 mt-1"></i>
-                                <p class="is-size-7">It has a tree viewer and DNA support more features are planned such as the inclusion of archive databases & collections</p>
-                            </div>
-                            <div class="has-text-black has-text-weight-medium is-flex plans_info">
-                                <i class="fas fa-check mr-2 mt-1"></i>
-                                <p class="is-size-7">It is aimed to be affordable with a 7 day no obligation trial with different pricing levels depending on how many trees you require.</p>
-                            </div>
+                          <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
+                            <i class="fas fa-check mr-2 mt-1"></i>
+                            <p class="is-size-7">Family Tree 365 is a secure online website
+                              which you can use to create your own family tree(s) with.</p>
+                          </div>
+                          <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
+                            <i class="fas fa-check mr-2 mt-1"></i>
+                            <p class="is-size-7">It has a tree viewer and DNA support
+                              more features are planned such as the inclusion of archive databases and
+                              collections.</p>
+                          </div>
+                          <div class="has-text-black has-text-weight-medium is-flex plans_info">
+                            <i class="fas fa-check mr-2 mt-1"></i>
+                            <p class="is-size-7">Set up your first family tree free of charge.
+                              We offer different pricing levels with optional subscriptions if you need to create extra trees.</p>
+                          </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 </template>
 <script>
@@ -125,7 +129,7 @@ export default {
                 this.$axios
                 .$post("/api/payment", this.payment)
                 .then(response => {
-                    
+
                 })
                 .catch(error => {
                   console.log(error)

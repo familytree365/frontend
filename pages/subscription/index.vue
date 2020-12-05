@@ -83,21 +83,25 @@
                                 <div class="card-content">
                                     <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
                                         <i class="fas fa-check mr-2 mt-1"></i>
-                                        <p class="is-size-7">Genealogia is a secure online website which you can use to create your own family tree(s) with.</p>
+                                        <p class="is-size-7">Family Tree 365 is a secure online website
+                                          which you can use to create your own family tree(s) with.</p>
                                     </div>
                                     <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
                                         <i class="fas fa-check mr-2 mt-1"></i>
-                                        <p class="is-size-7">It has a tree viewer and DNA support more features are planned such as the inclusion of archive databases & collections</p>
+                                        <p class="is-size-7">It has a tree viewer and DNA support
+                                          more features are planned such as the inclusion of archive databases and
+                                          collections.</p>
                                     </div>
                                     <div class="has-text-black has-text-weight-medium is-flex plans_info">
                                         <i class="fas fa-check mr-2 mt-1"></i>
-                                        <p class="is-size-7">It is aimed to be affordable with a 7 day no obligation trial with different pricing levels depending on how many trees you require.</p>
+                                        <p class="is-size-7">Set up your first family tree free of charge.
+                                          We offer different pricing levels with optional subscriptions if you need to create extra trees.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>     
+                </div>
     </div>
 </template>
 <script>
@@ -134,7 +138,7 @@ export default {
                     }
                 })
                 .then(response => {
-                  
+
                 })
                 .catch(error => {
                   console.log(error)

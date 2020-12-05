@@ -26,7 +26,7 @@
                                 <div class="field import_block">
                                     <div class="file is-large is-boxed has-background-primary">
                                         <label class="file-label">
-                                            
+
                                             <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput">
                                             <span class="file-cta">
                                                 <span class="file-label">
@@ -48,14 +48,14 @@
                                 <ul class="bullet_list mt-5">
                                     <li>We value your privacy and do not share your GEDCOM data with any third parties. Your GEDCOM file is used by the website only for processing your data and importing into your tree that you have selected.</li>
                                     <li>One tree is free for life for everyone and if you require more you will need to subscribe which helps us continue to provide services and develop new features.</li>
-                                    <li>Please select a GEDCOM file exported from your desktop software or online website and click upload. It should begin to process and show imported data processing. If it stops before fully importing contact <a href="mailto:support@genealogia.co.uk" class="has-text-link">support@genealogia.co.uk</a></li>
+                                    <li>Please select a GEDCOM file exported from your desktop software or online website and click upload. It should begin to process and show imported data processing. If it stops before fully importing contact <a href="mailto:support@familytree365.com" class="has-text-link">support@familytree365.com</a></li>
                                     <li>We do not use your GEDCOM file for any other purpose.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>  
-                </form>     
+                </div>
+                </form>
     </div>
 </template>
 f
@@ -98,7 +98,7 @@ export default {
                     }
                 })
                 .then(response => {
-                  
+
                 })
                 .catch(error => {
                   console.log(error)
