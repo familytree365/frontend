@@ -210,7 +210,6 @@
                                     <li><NuxtLink to="/citation"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</NuxtLink></li>
                                     <li><NuxtLink to="/note"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</NuxtLink></li>
                                     <li><NuxtLink to="/place"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</NuxtLink></li>
-                                    <li><NuxtLink to="/type"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Types</NuxtLink></li>
                                     <li><NuxtLink to="/author"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</NuxtLink></li>
                                     <li><NuxtLink to="/publication"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</NuxtLink></li>
                                 </ul>
