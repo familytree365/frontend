@@ -159,11 +159,11 @@
                             </li>
                             <div class="content mb-0">
                                 <ul>
-                                    <li><NuxtLink to="repository"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</NuxtLink></li>
-                                    <li><NuxtLink to="source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink></li>
-                                    <li><NuxtLink to="sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink></li>
-                                    <li><NuxtLink to="sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink></li>
-                                    <li><NuxtLink to="sourcedatarefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
+                                    <li><NuxtLink to="/repository"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</NuxtLink></li>
+                                    <li><NuxtLink to="/source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink></li>
+                                    <li><NuxtLink to="/sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink></li>
+                                    <li><NuxtLink to="/sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink></li>
+                                    <li><NuxtLink to="/sourcedatarefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
@@ -241,12 +241,12 @@
                                     Subscription</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="dnaupload">
+                                <NuxtLink to="/dnaupload">
                                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
                                     DNA Upload</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="dnaupload">
+                                <NuxtLink to="/dnaupload">
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</NuxtLink>
                             </li>
