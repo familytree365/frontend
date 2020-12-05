@@ -163,7 +163,7 @@
                                     <li><NuxtLink to="/source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink></li>
                                     <li><NuxtLink to="/sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink></li>
                                     <li><NuxtLink to="/sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink></li>
-                                    <li><NuxtLink to="/sourcedatarefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
+                                    <li><NuxtLink to="/sourcerefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
                                 </ul>
                             </div>
                             <li class="collapsible">
