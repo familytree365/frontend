@@ -147,8 +147,8 @@
                 <div class="card has-background-white has-text-black">
                     <div class="card-content has-text-centered py-5">
                         <i class="fas fa-user-circle has-text-primary mb-5" style="font-size: 55px;"></i>
-                        <p class="is-size-7 mb-2 has-text-weight-medium">Curtisd@gmail.com</p>
-                        <p class="is-size-7 mb-4 has-text-weight-medium">Curtis Delicata</p>
+                        <p class="is-size-7 mb-2 has-text-weight-medium">{{ loggedInUser.email }}</p>
+                        <p class="is-size-7 mb-4 has-text-weight-medium">{{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</p>
                         <p class="is-size-7 is-uppercase">Use Tree</p>
                     </div>
                 </div>
