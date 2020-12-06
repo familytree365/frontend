@@ -1,22 +1,32 @@
-version: "3"
-
+version: "3.8"
 services:
-  nuxt:
-    build: ./
-    container_name: familytree365-frontend
+  app:
+    build:
+      args:
+        user: familytree365
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
     image: familytree365/frontend
-    restart: always
-    ports:
-      - "3333:3333"
-    command:
-      "npm run start"
-
-  nginx:
-    image: nginx:1.13
-    container_name: familytree365-nginx
-    ports:
-      - "8080:80"
+    container_name: familytree365-frontend
+    restart: unless-stopped
+    working_dir: /var/www/
     volumes:
-      - ./.docker/nginx:/etc/nginx/conf.d
-    depends_on:
-      - nuxt
+      - ./:/var/www
+    networks:
+      - familytree365
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: familytree365-nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - familytree365
+
+networks:
+  familytree365:
+    driver: bridge
