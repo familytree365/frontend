@@ -4,6 +4,7 @@ services:
   nuxt:
     build: ./
     container_name: familytree365-frontend
+    image: familytree365/frontend
     restart: always
     ports:
       - "3333:3333"
