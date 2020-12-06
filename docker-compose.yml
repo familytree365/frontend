@@ -2,7 +2,7 @@ version: "3"
 
 services:
   nuxt:
-    build: ./app/
+    build: ./
     container_name: familytree365-frontend
     restart: always
     ports:
