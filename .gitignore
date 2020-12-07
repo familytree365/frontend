@@ -89,3 +89,6 @@ sw.*
 # Vim swap files
 *.swp
 /nbproject/private/
+
+# Sitemap
+/sitemap.xml

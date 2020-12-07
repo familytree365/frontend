@@ -7,8 +7,12 @@ export default {
   ssr: false,
 
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+    baseURL: process.env.BASE_URL || 'http://localhost:8000',
   },
+
+  sitemap: [
+    { hostname: process.env.HOSTNAME || 'http://localhost:3000' }
+  ],
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -72,6 +76,7 @@ export default {
     '@nuxtjs/bulma',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/sitemap',
     [
       'nuxt-fontawesome', {
         imports: [
