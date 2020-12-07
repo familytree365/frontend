@@ -20,6 +20,12 @@
                 <form @submit.prevent="submit()" enctype="multipart/form-data">
                 <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s">
                     <div class="column is-12">
+                        <div v-if="error" class="notification is-danger">
+                            {{ message }}
+                        </div>
+                        <div v-for="error in errors" class="notification is-danger">
+                            {{ error[0] }} 
+                        </div>
                         <div class="card has-background-white has-text-black" style="height: 500px;">
                             <div class="card-content">
                                 <input type="hidden" v-model="fileName">
@@ -27,7 +33,7 @@
                                     <div class="file is-large is-boxed has-background-primary">
                                         <label class="file-label">
 
-                                            <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput">
+                                            <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput" accept=".ged">
                                             <span class="file-cta">
                                                 <span class="file-label">
                                                     <span class="file-icon">
@@ -67,6 +73,7 @@ export default {
         return {
             error: false,
             message: "",
+            errors:null,
             file: undefined,
             fileName: ''
         };
@@ -98,10 +105,12 @@ export default {
                     }
                 })
                 .then(response => {
-
+                        
                 })
                 .catch(error => {
-                  console.log(error)
+                    this.error = true;
+                    this.message = error.response.data.message;
+                    this.errors =  error.response.data.errors;
                 });
             }
             }
