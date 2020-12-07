@@ -145,7 +145,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 /* Footer */
 
 .footer {
-    background: url(~assets/images/footer-bg.png) #011109 bottom left no-repeat;
+    background: url(~assets/images/footer-bg.webp) #011109 bottom left no-repeat;
     background-size: contain;
     padding: 3rem 1.5rem 3rem;
 }
