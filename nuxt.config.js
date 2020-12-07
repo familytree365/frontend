@@ -6,6 +6,10 @@ export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
 
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
@@ -89,7 +93,7 @@ export default {
   ],
 
 axios: {
-  baseURL: "https://api.familytree365.com",
+  baseURL: process.env.BASE_URL,
   credentials: true
 },
 auth: {
