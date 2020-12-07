@@ -39,7 +39,10 @@
                         </h1>
                     </div>
                     <div v-if="error" class="notification is-danger">
-                        The provided credentials are incorrect.
+                        {{ message }}
+                    </div>
+                    <div v-for="error in errors" class="notification is-danger">
+                        {{ error[0] }} 
                     </div>
                     <div class="mb-5">
                         <div class="field">
@@ -104,7 +107,9 @@ export default {
         return {
             email: '',
             password: '',
+            errors:null,
             error: false,
+            message: null,
         }
     },
     validations: {
@@ -136,6 +141,8 @@ export default {
                     },
                 }).catch(error => {
                     this.error = true;
+                    this.message = error.response.data.message;
+                    this.errors =  error.response.data.errors;
                 })
             })
         }

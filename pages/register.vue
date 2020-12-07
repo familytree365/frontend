@@ -37,6 +37,12 @@
                             Create your account
                         </h1>
                     </div>
+                    <div v-if="error" class="notification is-danger">
+                        {{ message }}
+                    </div>
+                    <div v-for="error in errors" class="notification is-danger">
+                        {{ error[0] }} 
+                    </div>
                     <div class="mb-5">
                         <div class="columns">
                             <div class="column">
@@ -136,6 +142,7 @@ export default {
         return {
             error: false,
             message: "",
+            errors:null,
             registration: {
                 first_name: "",
                 last_name: "",
@@ -176,7 +183,9 @@ export default {
                   this.$router.push("/login");
                 })
                 .catch(error => {
-                  console.log(error)
+                    this.error = true;
+                    this.message = error.response.data.message;
+                    this.errors =  error.response.data.errors;
                 });
             }
         }
