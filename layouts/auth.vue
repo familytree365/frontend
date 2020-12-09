@@ -245,7 +245,7 @@
                                     DNA Upload</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/dnaupload">
+                                <NuxtLink to="/dnamatching">
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</NuxtLink>
                             </li>

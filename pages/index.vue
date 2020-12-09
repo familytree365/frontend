@@ -28,9 +28,13 @@
                         <a data-scroll class="navbar-item" href="#overview">
                             Overview
                         </a>
+                        <NuxtLink to="/dashboard" class="navbar-item" v-if="isAuthenticated">
+                          Dashboard
+                        </NuxtLink>
                         <NuxtLink to="/login" class="navbar-item" v-if="!isAuthenticated">
                           Sign in
                         </NuxtLink>
+                        
                         <a v-else @click.prevent="logout()" class="navbar-item">
                                 Log Out</a>
                         <div class="navbar-item" v-if="!isAuthenticated">

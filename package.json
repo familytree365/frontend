@@ -27,6 +27,7 @@
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "vue-good-table": "^2.21.1",
+    "vue-loading-overlay": "^3.4.2",
     "vue-select": "^3.10.8",
     "vuelidate": "^0.7.6"
   },

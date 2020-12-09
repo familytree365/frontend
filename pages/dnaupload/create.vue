@@ -1,10 +1,10 @@
 <template>
-    <div> 
+    <div>
         <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
          <div class="columns is-gapless is-multiline is-mobile">
                     <div class="column is-12">
                         <h1 class="is-size-4 has-text-black">
-                            <span class="has-text-weight-medium">Gedcoms</span>
+                            <span class="has-text-weight-medium">DNA Upload</span>
                         </h1>
                     </div>
                     <div class="column is-12">
@@ -13,7 +13,7 @@
                                 <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                         href="dashboard.html">Home</a></li>
                                 <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                        aria-current="page">Gedcoms</a></li>
+                                        aria-current="page">DNA Upload</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -21,7 +21,6 @@
                 <form @submit.prevent="submit()" enctype="multipart/form-data">
                 <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s">
                     <div class="column is-12">
-                        
                         <div class="card has-background-white has-text-black" style="height: 500px;">
                             <div class="card-content">
                                 <div v-if="response" class="notification is-success">
@@ -37,14 +36,14 @@
                                 <div class="field import_block">
                                     <div class="file is-large is-boxed has-background-primary">
                                         <label class="file-label">
-
-                                            <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput" accept=".ged">
+                                            
+                                            <input class="file-input" type="file" @change="handleSelectedFiles" name="file" ref="fileInput">
                                             <span class="file-cta">
                                                 <span class="file-label">
                                                     <span class="file-icon">
                                                         <font-awesome-icon :icon="['fas', 'upload']"/>
                                                     </span>
-                                                    Select GEDCOM File
+                                                    Select DNA File
                                                 </span>
                                             </span>
                                         </label>
@@ -57,16 +56,16 @@
                                 Submit
                             </button>
                                 <ul class="bullet_list mt-5">
-                                    <li>We value your privacy and do not share your GEDCOM data with any third parties. Your GEDCOM file is used by the website only for processing your data and importing into your tree that you have selected.</li>
-                                    <li>One tree is free for life for everyone and if you require more you will need to subscribe which helps us continue to provide services and develop new features.</li>
-                                    <li>Please select a GEDCOM file exported from your desktop software or online website and click upload. It should begin to process and show imported data processing. If it stops before fully importing contact <a href="mailto:support@familytree365.com" class="has-text-link">support@familytree365.com</a></li>
-                                    <li>We do not use your GEDCOM file for any other purpose.</li>
+                                    <li>We value your privacy and do not share your DNA data with any third parties. Your DNA file is used by the website only for processing your matches to other DNA data uploaded. We do not use your DNA file for any other purpose.</li>
+                                    <li>We currently support exports from: Ancestry, Family Tree DNA, 23andMe, MyHeritage, DNA.Land, Codigo 46, Genes for Good, LivingDNA, Mapmygenome, Sano Genetics and tellmeGen.
+                                    </li>
+                                    <li>DNA uploading and matching is free for everyone.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-                </form>
+                </div>  
+                </form>     
     </div>
 </template>
 f
@@ -114,7 +113,7 @@ export default {
                 let formData = new FormData()
                 formData.append('file',  this.file)
                 this.$axios
-                .$post("/api/gedcom", formData, {
+                .$post("/api/dnaupload", formData, {
 
                     headers: {
                       'content-type': 'multipart/form-data'
@@ -136,6 +135,7 @@ export default {
 
 </script>
 <style scoped>
+    @import '~/assets/css/bulma.css';
     @import '~/assets/css/admin.css';
 </style>
 
