@@ -24,11 +24,7 @@
                 <div class="card has-background-white has-text-black">
                     <header class="card-header">
                         <p class="card-header-title">
-                            Dna
-                        </p>
-                        <p class="card-header-icon">
-                        <NuxtLink to="/dnaupload/create" class="button is-link has-background-primary">
-                            Create New Dna</NuxtLink>
+                            DnaMatching
                         </p>
                     </header>
                     <div class="card-content">
@@ -52,7 +48,6 @@
                                 }"
                                 :sort-options="{
                                 enabled: true,
-                                initialSortBy: {field: 'name', type: 'asc'}
                                 }"
                                 :line-numbers="true"
                                 :search-options="{
@@ -89,11 +84,23 @@
                 totalRecords: 0,
                 columns: [
                     {
-                        label: 'Name',
-                        field: 'name',
+                        label: 'File1',
+                        field: 'file1',
                         filterOptions: {
                             enabled: true, // enable filter for this column
-                            placeholder: 'Filter Name', // placeholder for filter input
+                            placeholder: 'Filter File1', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+
+                        },
+                    },
+                    {
+                        label: 'File2',
+                        field: 'file2',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Fileter File2', // placeholder for filter input
                             filterValue: '', // initial populated value for this filter
                             filterDropdownItems: [], // dropdown (with selected values) instead of text input
                             filterFn: this.columnFilterFn, //custom filter function that
@@ -116,8 +123,6 @@
                         searchTerm: ''
                     },
                     sort: {
-                        field: 'name',
-                        type: 'asc',
                     },
                     page: 1,
                     perPage: 5
@@ -173,7 +178,7 @@
                 this.loadItems();
             },
             loadItems() {
-                this.$axios.$get("/api/dnaupload", {
+                this.$axios.$get("/api/dnamatching", {
                     params: this.serverParams
                 })
                         .then(response => {
@@ -190,7 +195,7 @@
                 if (confirm("Do you really want to delete?")) {
 
                     this.$axios
-                            .$delete("/api/dnaupload/" + id)
+                            .$delete("/api/dnamatching/" + id)
                             .then(response => {
                                 this.loadItems();
                             })

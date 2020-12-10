@@ -5,7 +5,7 @@
                 <p class="card-header-title is-4 is-centered title">
                 Profile
                 </p>
-              <NuxtLink to="/people" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+              <NuxtLink to="/dashboard" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
