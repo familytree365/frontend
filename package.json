@@ -23,9 +23,11 @@
     "d3-tip": "^0.9.1",
     "nuxt": "^2.14.6",
     "nuxt-fontawesome": "^0.4.0",
+    "nuxt-socket-io": "^1.1.13",
     "pusher-js": "^7.0.2",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
+    "vue-beautiful-chat": "^2.5.0",
     "vue-good-table": "^2.21.1",
     "vue-select": "^3.10.8",
     "vuelidate": "^0.7.6"
