@@ -1,24 +1,24 @@
 <template>
     <div> 
         <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
-         <div class="columns is-gapless is-multiline is-mobile">
-                    <div class="column is-12">
-                        <h1 class="is-size-4 has-text-black">
-                            <span class="has-text-weight-medium">Gedcoms</span>
-                        </h1>
-                    </div>
-                    <div class="column is-12">
-                        <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
-                            <ul>
-                                <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                        href="dashboard.html">Home</a></li>
-                                <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                        aria-current="page">Gedcoms</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+            <div class="columns is-gapless is-multiline is-mobile">
+                <div class="column is-12">
+                    <h1 class="is-size-4 has-text-black">
+                        <span class="has-text-weight-medium">Gedcoms</span>
+                    </h1>
                 </div>
-                <form @submit.prevent="submit()" enctype="multipart/form-data">
+                <div class="column is-12">
+                    <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
+                        <ul>
+                            <li><a class="is-size-7 has-text-weight-medium has-text-link"
+                                    href="dashboard.html">Home</a></li>
+                            <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                                    aria-current="page">Gedcoms</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <form @submit.prevent="submit()" enctype="multipart/form-data">
                 <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s">
                     <div class="column is-12">
                         
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                </form>
+            </form>
     </div>
 </template>
 f
@@ -117,7 +117,8 @@ export default {
                 .$post("/api/gedcom", formData, {
 
                     headers: {
-                      'content-type': 'multipart/form-data'
+                      'content-type': 'multipart/form-data',
+                      'Access-Control-Allow-Origin': '*'
                     }
                 })
                 .then(response => {
