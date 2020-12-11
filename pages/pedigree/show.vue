@@ -24,7 +24,7 @@
             return {
                 data :{
                     start: 4,
-                    links: [[3, "u1"], [2, "u2"], [2, "u1"], ["u2", 4]],
+                    links: [['3', "u1"], ['2', "u2"], ['2', "u1"], ["u2", '4']],
                     unions: {'u1': {id: "u1", partner: [2, 3], children: []},
                         'u2': {id: "u2", partner: [2, null], children: [4]} },
                     persons: {
@@ -383,11 +383,15 @@
             },
             update(source) {
                 // Assigns the x and y position for the nodes
-                var dag_tree = this.tree(this.dag),
-                    nodes = this.dag.descendants(),
-                    links = this.dag.links();
+                console.log('*********');
+                console.log(source);
+                // var dag_tree = this.tree(this.dag);
+                var nodes = this.dag.descendants();
+                var links = this.dag.links();
+
                 // ****************** Nodes section ***************************
                 // Update the nodes...
+                // console.log(dag_tree);
                 var node = this.g.selectAll('g.node')
                     .data(nodes, function (d) { return d.id || (d.id = ++i); })
                 // Enter any new nodes at the parent's previous position.
@@ -471,6 +475,7 @@
                 nodeUpdate.transition()
                     .duration(this.duration)
                     .attr("style", function (d) {
+                        console.log('style trasform d.x and d.y',d.y, d.x);
                         return "transform: translate(" + d.y + "px, " + d.x + "px) rotate(180deg)";
                     });
 
@@ -546,14 +551,14 @@
                     );
 
                 // Store the old positions for transition.
-                nodes.forEach(function (d) {
-                    d.x0 = d.x;
-                    d.y0 = d.y;
-                });
+                // nodes.forEach(function (d) {
+                //     d.x0 = d.x;
+                //     d.y0 = d.y;
+                // });
             },
             diagonal(s, d, id) {
                 const path = `M ${s.y} ${s.x}C ${(s.y + d.y) / 2} ${s.x},
-            ${(s.y + d.y) / 2} ${d.x},${d.y} ${d.x}`;
+                ${(s.y + d.y) / 2} ${d.x},${d.y} ${d.x}`;
                 return path
             },
             // Toggle unions, children, partners on click.
@@ -584,7 +589,7 @@
 
                 // initialize panning, zooming
                 this.zoom = d3.zoom()
-                    .on("zoom", _ => this.g.attr("transform", d3.event.transform));
+                    .on("zoom", (event,d) => this.g.attr("transform", event.transform));
                 // initialize tooltips
                 // let tip = d3.tip()
                 //     .attr('class', 'd3-tip')
@@ -628,17 +633,18 @@
                     .layering(_dag.layeringSimplex())
                     .decross(_dag.decrossOpt)
                     .coord(_dag.coordVert())
-                    .separation(
-                        (a, b) => { return 1 }
-                    );
+                    // .separation( 
+                    //     function(a,b) {return 1}
+                    // );
                 // make dag from edge list
                 const _links = this.data.links;
                 let links = [];
                 _links.forEach(
                     item => links.push([item[0], item[1]])
                 );
-                this.dag = _dag.dagConnect()(this.data.links);
-
+                console.log(this.data.links);
+                console.log(links);
+                this.dag = _dag.dagConnect()(links);
                 // in order to make the family tree work, the dag
                 // must be a node with id undefined. create that node if
                 // not done automaticaly
@@ -649,7 +655,6 @@
                     root.children = [this.dag];
                     this.dag = root;
                 }
-
                 // prepare node data
                 this.all_nodes = this.dag.descendants()
                 this.all_nodes.forEach(n => {
@@ -663,23 +668,21 @@
                     n.visible = false;
                     n.inserted_connections = [];
                 });
-
                 // find root node and assign data
                 root = this.all_nodes.find(n => n.id == this.data.start);
-
                 if(root !== undefined) {
+                console.log('root before:', root);
                     root.visible = true;
                     root.neighbors = this.getNeighbors(root);
-                    root.x0 = screen_height / 2;
-                    root.y0 = screen_width / 2;
+                    root.x = screen_height/2;
+                    root.y = screen_width/2;
+                console.log('root after:', root);
                     this.dag.children = [root];
-
                     // draw dag
                     this.update(root);
                     setTimeout(this.expand, 1000);
                     setTimeout(this.expand, 2000);
                     setTimeout(this.expand, 3000);
-
                 }
                 // overwrite dag root nodes
             },
@@ -700,16 +703,21 @@
                     'start_id': start_id,
                     'nest':this.nest,
                 };
-                axios
-                    .get(this.fetchLink, { params })
+                this.$axios
+                    .$get(this.fetchLink, { params })
                     .then(res => {
-                        this.data = (res['data']);
+                        console.log(res);
+                        // this.data = (res['data']);
+                        // this.data = res['persons'];
+                        console.log(this.data);
                         const results = [];
-                        const keys = Object.keys(res['data']['persons']);
+                        const keys = Object.keys(res['persons']);
                         for(let i = 0 ; i < keys.length ; i++) {
+                            console.log('_____________');
+                            console.log(res['persons'][keys[i]].name);
                             results.push({
-                                id: res['data']['persons'][keys[i]].id,
-                                name: res['data']['persons'][keys[i]].name
+                                id: res['persons'][keys[i]].id,
+                                name: res['persons'][keys[i]].name
                             });
                         }
                         this.results = results;
@@ -723,8 +731,8 @@
                     'start_id': people.id,
                     'nest':this.nest,
                 };
-                axios
-                    .get(this.fetchLink, { params })
+                this.$axios
+                    .$get(this.fetchLink, { params })
                     .then(res => {
                         this.data = (res['data']);
                         d3.selectAll("svg").remove();
