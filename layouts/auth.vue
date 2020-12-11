@@ -71,6 +71,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="navbar-item is-hoverable">
+                        <a href="/chat" class="navbar-item">
+                            <font-awesome-icon icon="envelope"/>
+                        </a>                        
+                    </div>
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a href="#" class="navbar-link user-navbar">
                             <div class="user-avatar has-background-primary mr-3">

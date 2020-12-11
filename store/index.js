@@ -3,6 +3,7 @@ import Vuex from "vuex";
 export const state = () => ({
   person: {},
   people: {},
+  chatMessages: ''
 });
 
 export const getters = {
