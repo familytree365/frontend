@@ -122,7 +122,7 @@ export default {
             this.file = this.$refs.fileInput.files[0]
             this.fileName = this.file.name
 
-      },
+        },
         submit() {
             this.$v.$touch();
             if (this.$v.$invalid) {
@@ -144,9 +144,19 @@ export default {
                   console.log(error)
                 });
             }
-            }
-        }
-    }
+        },
+        loadItems() {
+            this.$axios.$get("/api/subscription")
+            .then(response => {
+                this.totalRecords = response.total;
+                this.rows = response.data;
+            })
+        },
+    },
+    created() {
+        this.loadItems();
+    },
+}
 
 </script>
 <style scoped>

@@ -57,7 +57,8 @@ export default {
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
         {src: '~/plugins/vue-good-table', ssr: false},
-        {src: '~/plugins/vuelidate.js', ssr: false}
+        {src: '~/plugins/vuelidate.js', ssr: false},
+        { src: '~plugins/v-calendar.js', ssr: false }
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)

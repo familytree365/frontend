@@ -99,10 +99,10 @@
                                     <font-awesome-icon :icon="['fas', 'user-edit']" class="mr-2"/>
                                     Edit Profile
                                 </NuxtLink>
-                                <a href="#" class="navbar-item">
-                                    <i class="fas fa-money-bill mr-2"></i>
+                                <NuxtLink to="/subscription" class="navbar-item">
+                                    <font-awesome-icon :icon="['fas', 'money-bill']" class="mr-2"/>
                                     Subscription Plan : Trial
-                                </a>
+                                </NuxtLink>
                                 <a @click.prevent="logout()" class="navbar-item">
                                     <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="mr-2"/>
                                     Log Out</a>
