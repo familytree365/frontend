@@ -158,7 +158,6 @@ export default {
         },
     },
   created() {
-    this.loadItems();
     this.loadPlans();
   },
   selectCurrency(currency) {
