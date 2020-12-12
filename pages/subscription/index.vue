@@ -2,6 +2,20 @@
     <div>
         <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
          <div class="columns is-gapless is-multiline is-mobile">
+           <div class="currency-div">
+             <span>Currency: </span>
+             <div class="currency-inside-div">
+               <v-select :options="currency_options" :placeholder="selected_currency"
+                         @input="selectCurrency" :clearable="false"/>
+             </div>
+           </div>
+           <div class="column" v-for="plan in plans" :key="plan.id">
+                 <div class="content">
+                   {{ plan.title.replace('$Amount',
+                   (plan.amount * selected_currency_rate).toFixed(2))
+                   .replace('$Currency', selected_currency_symbol) }}
+                 </div>
+           </div>
                     <div class="column is-12">
                         <h1 class="is-size-4 has-text-black">
                             <span class="has-text-weight-medium">Subscription</span>
@@ -39,7 +53,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="column is-3">
@@ -90,6 +104,10 @@ export default {
             has_payment_method: false,
             plans: [],
             selectedPlanId: null,
+           currency_options: ['USD', 'GBP', 'EUR'],
+           selected_currency: 'GBP',
+           selected_currency_symbol: '£',
+           selected_currency_rate: 1,
         };
     },
     methods: {
@@ -100,7 +118,7 @@ export default {
 
         },
         submit() {
-            
+
         },
         loadPlans() {
             this.$axios.$get("/api/get-plans")
@@ -108,7 +126,7 @@ export default {
                 this.getCurrentSubscription();
                 this.plans = response.data;
                 this.isLoading = false
-                
+
             })
         },
          getCurrentSubscription() {
@@ -139,11 +157,37 @@ export default {
                 });
         },
     },
-    created() {
-        this.loadPlans();
-    },
-}
-
+  created() {
+    this.loadItems();
+    this.loadPlans();
+  },
+  selectCurrency(currency) {
+    const url = 'https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a';
+    axios
+      .get(url)
+      .then(res => {
+        switch (currency) {
+          case 'GBP':
+            this.selected_currency_symbol = '£';
+            this.selected_currency_rate = 1;
+            break;
+          case 'USD':
+            this.selected_currency_symbol = '$';
+            this.selected_currency_rate = 1 / res.data.rates.GBP;
+            break;
+          case 'EUR':
+            this.selected_currency_symbol = '€';
+            this.selected_currency_rate = res.data.rates.EUR / res.data.rates.GBP;
+            break;
+          default:
+            this.selected_currency_symbol = '£';
+            this.selected_currency_rate = 1;
+            break;
+        }
+      })
+  .catch(() => { });
+  },
+};
 </script>
 <style scoped>
     @import '~/assets/css/admin.css';
