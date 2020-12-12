@@ -190,6 +190,6 @@ export default {
     @import '~/assets/css/admin.css';
 </style>
 <style lang="scss">
-@import "vue-select/src/scss/vue-select.scss";
+@import "~vue-select/src/scss/vue-select.scss";
 </style>
 
