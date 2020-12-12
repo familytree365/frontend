@@ -1,5 +1,5 @@
 <style lang="css">
-@import "~node_modules/vue-select/dist/vue-select.css";
+@import "~/node_modules/vue-select/dist/vue-select.css";
 </style>
 <template>
     <div>
