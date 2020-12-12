@@ -58,7 +58,6 @@ export default {
     plugins: [
         {src: '~/plugins/vue-good-table', ssr: false},
         {src: '~/plugins/vuelidate.js', ssr: false},
-        { src: '~plugins/v-calendar.js', ssr: false }
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -93,7 +92,10 @@ export default {
                     }
                 ]
             }
-        ]
+        ],
+        ['nuxt-stripe-module', {
+            publishableKey: 'pk_test_51H7yygJZEMHu7eXxCr3ZJfotMBatunOIqfyZOKUPo3An1z2JF5YH8YhsxmCufKtb2PxxPiXah7xGmIxUXskTvDWp00fEsEHvSS',
+        }],
     ],
 
     axios: {

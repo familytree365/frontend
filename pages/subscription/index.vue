@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
          <div class="columns is-gapless is-multiline is-mobile">
                     <div class="column is-12">
                         <h1 class="is-size-4 has-text-black">
@@ -20,60 +21,25 @@
                 <div class="columns is-variable is-3 is-desktop">
                     <div class="column is-9">
                         <div class="columns is-multiline is-variable is-3">
-                            <div class="column is-6">
+
+                            <div class="column is-6" v-for="plan in plans" :key="plan.id">
                                 <div class="card has-background-white has-text-black">
                                     <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">50 GBP</div>
+                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{ plan.title }}</div>
                                         <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> Unlimited Trees </span> Yearly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
+                                        <NuxtLink :to="'/subscription/payment/' + plan.id" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
+                                        <div
+                                            class="card-footer-item"
+                                            v-if="has_payment_method && plan.subscribed == false">
+                                            <button @click="open(plan.id)"
+                                                class="button">
+                                                Subscribe1
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="column is-6">
-                                <div class="card has-background-white has-text-black">
-                                    <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">5 GBP</div>
-                                        <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> Unlimited Trees </span> Yearly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="card has-background-white has-text-black">
-                                    <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">25 GBP</div>
-                                        <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> 10 Trees </span> Yearly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="card has-background-white has-text-black">
-                                    <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">2.50 GBP</div>
-                                        <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> 10 Trees </span> Monthly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="card has-background-white has-text-black">
-                                    <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">10 GBP</div>
-                                        <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> 1 Tree </span> Monthly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column is-6">
-                                <div class="card has-background-white has-text-black">
-                                    <div class="card-content">
-                                        <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">1 GBP</div>
-                                        <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> 1 Tree </span> Monthly</div>
-                                        <NuxtLink to="/subscription/payment" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="column is-3">
@@ -105,15 +71,25 @@
     </div>
 </template>
 <script>
-
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
     layout: 'auth',
+    components: {
+        Loading
+    },
     data() {
         return {
             error: false,
             message: "",
-            file: undefined,
-            fileName: ''
+            isLoading: true,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
+            response : null,
+            has_payment_method: false,
+            plans: [],
+            selectedPlanId: null,
         };
     },
     methods: {
@@ -124,37 +100,47 @@ export default {
 
         },
         submit() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-            let formData = new FormData()
-            formData.append('file',  this.file)
-                this.$axios
-                .$post("/api/gedcom", formData, {
-
-                    headers: {
-                      'content-type': 'multipart/form-data'
-                    }
-                })
-                .then(response => {
-
-                })
-                .catch(error => {
-                  console.log(error)
-                });
-            }
+            
         },
-        loadItems() {
-            this.$axios.$get("/api/subscription")
+        loadPlans() {
+            this.$axios.$get("/api/get-plans")
             .then(response => {
-                this.totalRecords = response.total;
-                this.rows = response.data;
+                this.getCurrentSubscription();
+                this.plans = response.data;
+                this.isLoading = false
+                
             })
+        },
+         getCurrentSubscription() {
+            this.$axios.$get('/api/get-current-subscription')
+                .then(response => {
+                    console.log(response.has_payment_method)
+                    this.has_payment_method = response.has_payment_method;
+                    if (response.subscribed) {
+                        this.plans
+                            .find(plan => plan.id === response.data.plan_id)
+                            .subscribed = true;
+                        this.plans
+                            .find(plan => plan.id !== response.data.plan_id)
+                            .subscribed = false;
+                    }
+                });
+        },
+        subscribe() {
+            axios.post('/api/subscribe', {
+                plan_id: this.selectedPlanId,
+            })
+                .then(response => {
+                    if (response.data.success) {
+                        this.isActive = false;
+                        this.$toastr.success('Subscribe Successfully!');
+                        this.getCurrentSubscription();
+                    }
+                });
         },
     },
     created() {
-        this.loadItems();
+        this.loadPlans();
     },
 }
 
