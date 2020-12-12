@@ -14,10 +14,14 @@
     import * as d3 from 'd3';
     import * as _dag from 'd3-dag';
     import {tip} from 'd3-tip';
-    import Vue from "vue";
-    import vSelect from "vue-select";
-
-    Vue.component('v-select', vSelect);
+    import Vue from 'vue'
+    import vSelect from 'vue-select';
+    const VueSelect = {
+      install(Vue, options) {
+        Vue.component('v-select', vSelect)
+      }
+    };
+    Vue.use(VueSelect);
     export default {
         name: 'Show',
         data() {
