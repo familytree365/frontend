@@ -14,7 +14,6 @@
           .replace('$Currency', selected_currency_symbol) }}
         </div>
       </div>
-      <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
                     <div class="column is-12">
                         <h1 class="is-size-4 has-text-black">
                             <span class="has-text-weight-medium">Subscription</span>
