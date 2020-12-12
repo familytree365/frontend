@@ -43,7 +43,7 @@
                                             v-if="has_payment_method && plan.subscribed === false">
                                             <button @click="open(plan.id)"
                                                 class="button">
-                                                Subscribe1
+                                                Subscribe
                                             </button>
                                         </div>
                                     </div>
