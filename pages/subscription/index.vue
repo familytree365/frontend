@@ -86,14 +86,10 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import Vue from 'vue'
+import Vue from 'vue';
 import vSelect from 'vue-select';
-const VueSelect = {
-  install(Vue, options) {
-    Vue.component('v-select', vSelect)
-  }
-};
-Vue.use(VueSelect);
+
+Vue.component('v-select', vSelect);
 
 export default {
     layout: 'auth',
