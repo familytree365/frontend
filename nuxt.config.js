@@ -148,5 +148,6 @@ export default {
                 }
             }
         },
+      vendor: ['vue-select'],
     }
 }
