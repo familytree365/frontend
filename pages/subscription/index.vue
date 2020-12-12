@@ -162,8 +162,7 @@ export default {
     },
   selectCurrency(currency) {
     const url = 'https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a';
-    axios
-      .get(url)
+    axios.get(url)
       .then(res => {
         switch (currency) {
           case 'GBP':
