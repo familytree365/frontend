@@ -1,19 +1,6 @@
 <template>
     <div>
-      <div class="currency-div">
-        <span>Currency: </span>
-        <div class="currency-inside-div">
-          <v-select :options="currency_options" :placeholder="selected_currency"
-                    @input="selectCurrency" :clearable="false"/>
-        </div>
-      </div>
-      <div class="column is-6" v-for="plan in plans" :key="plan.id">
-        <div class="card-content">
-          {{ plan.title.replace('$Amount',
-          (plan.amount * selected_currency_rate).toFixed(2))
-          .replace('$Currency', selected_currency_symbol) }}
-        </div>
-      </div>
+      <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
                     <div class="column is-12">
                         <h1 class="is-size-4 has-text-black">
                             <span class="has-text-weight-medium">Subscription</span>
@@ -30,6 +17,20 @@
                         </nav>
                     </div>
                 </div>
+  <div class="currency-div">
+    <span>Currency: </span>
+    <div class="currency-inside-div">
+      <v-select :options="currency_options" :placeholder="selected_currency"
+                @input="selectCurrency" :clearable="false"/>
+    </div>
+  </div>
+  <div class="column is-6" v-for="plan in plans" :key="plan.id">
+    <div class="card-content">
+      {{ plan.title.replace('$Amount',
+      (plan.amount * selected_currency_rate).toFixed(2))
+      .replace('$Currency', selected_currency_symbol) }}
+    </div>
+  </div>
                 <div class="columns is-variable is-3 is-desktop">
                     <div class="column is-9">
                         <div class="columns is-multiline is-variable is-3">
