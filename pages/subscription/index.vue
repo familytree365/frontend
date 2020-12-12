@@ -44,7 +44,7 @@
                                         <NuxtLink :to="'/subscription/payment/' + plan.id" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
                                         <div
                                             class="card-footer-item"
-                                            v-if="has_payment_method && plan.subscribed == false">
+                                            v-if="has_payment_method && plan.subscribed === false">
                                             <button @click="open(plan.id)"
                                                 class="button">
                                                 Subscribe1
@@ -87,6 +87,9 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import vSelect from 'vue-select';
+Vue.component('v-select', vSelect);
+
 export default {
     layout: 'auth',
     components: {
@@ -157,9 +160,6 @@ export default {
                 });
         },
     },
-  created() {
-    this.loadPlans();
-  },
   selectCurrency(currency) {
     const url = 'https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a';
     axios
@@ -185,6 +185,9 @@ export default {
         }
       })
   .catch(() => { });
+  },
+  created() {
+    this.loadPlans();
   },
 };
 </script>
