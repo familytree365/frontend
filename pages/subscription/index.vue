@@ -188,7 +188,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
     @import '~/assets/css/admin.css';
     @import "~/node_modules/vue-select/dist/vue-select.css";
 </style>
