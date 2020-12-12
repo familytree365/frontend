@@ -1,5 +1,5 @@
-<style lang="scss">
-    @import "vue-select/src/scss/vue-select.scss";
+<style lang="css">
+@import "~node_modules/vue-select/dist/vue-select.css";
 </style>
 <template>
     <div>
@@ -633,7 +633,7 @@
                     .layering(_dag.layeringSimplex())
                     .decross(_dag.decrossOpt)
                     .coord(_dag.coordVert())
-                    // .separation( 
+                    // .separation(
                     //     function(a,b) {return 1}
                     // );
                 // make dag from edge list
