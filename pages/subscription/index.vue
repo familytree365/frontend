@@ -28,8 +28,8 @@
                                           @input="selectCurrency" :clearable="false"/>
                               </div>
                             </div>
-                            <div class="column" v-for="plan in plans" :key="plan.id">
-                              <div class="content">
+                            <div class="column is-6" v-for="plan in plans" :key="plan.id">
+                              <div class="card-content">
                                 {{ plan.title.replace('$Amount',
                                 (plan.amount * selected_currency_rate).toFixed(2))
                                 .replace('$Currency', selected_currency_symbol) }}
@@ -147,13 +147,13 @@ export default {
                 });
         },
         subscribe() {
-            axios.post('/api/subscribe', {
+          this.$axios.post('/api/subscribe', {
                 plan_id: this.selectedPlanId,
             })
                 .then(response => {
                     if (response.data.success) {
                         this.isActive = false;
-                        this.$toastr.success('Subscribe Successfully!');
+                 //       this.$toastr.success('Subscribe Successfully!');
                         this.getCurrentSubscription();
                     }
                 });
@@ -161,7 +161,7 @@ export default {
     },
   selectCurrency(currency) {
     const url = 'https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a';
-    axios.get(url)
+    this.$axios.get(url)
       .then(res => {
         switch (currency) {
           case 'GBP':
@@ -183,9 +183,6 @@ export default {
         }
       })
   .catch(() => { });
-  },
-  created() {
-    this.loadPlans();
   },
 };
 </script>
