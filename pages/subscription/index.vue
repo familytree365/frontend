@@ -86,8 +86,6 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import vSelect from 'vue-select';
-Vue.component('v-select', vSelect);
 
 export default {
     layout: 'auth',
@@ -188,6 +186,6 @@ export default {
 </script>
 <style scoped>
     @import '~/assets/css/admin.css';
-    @import "~node_modules/vue-select/dist/vue-select.css";
+    @import "~/vue-select/dist/vue-select.css";
 </style>
 
