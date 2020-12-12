@@ -30,6 +30,7 @@
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "v-calendar": "^2.1.1",
+    "vue": "^2.6.12",
     "vue-beautiful-chat": "^2.5.0",
     "vue-cal": "^3.9.0",
     "vue-good-table": "^2.21.1",
