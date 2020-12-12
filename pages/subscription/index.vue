@@ -189,4 +189,7 @@ export default {
 <style scoped>
     @import '~/assets/css/admin.css';
 </style>
+<style lang="scss">
+@import "vue-select/src/scss/vue-select.scss";
+</style>
 

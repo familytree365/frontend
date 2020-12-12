@@ -1326,6 +1326,11 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
+"@stripe/stripe-js@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.11.0.tgz#00e812d72a7760dae08237875066d263671478ee"
+  integrity sha512-SDNZKuETBEVkernd1tq8tL6wNfVKrl24Txs3p+4NYxoaIbNaEO7mrln/2Y/WRcQBWjagvhDIM5I6+X1rfK0qhQ==
+
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
@@ -3589,7 +3594,12 @@ d3@^6.3.0:
     d3-transition "2"
     d3-zoom "2"
 
-date-fns@^2.0.0-beta.4:
+date-fns-tz@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/date-fns-tz/-/date-fns-tz-1.0.12.tgz#2d680e1099767775cff7a30eac34362d52639fed"
+  integrity sha512-Ca+9pjGkU90XDHnclfSjz9o7g/ZqyYyYI0aCYmbf65P75oy8gktuaRslO3UPXl3ADgAnF9/KCykQkpU3/xvtWQ==
+
+date-fns@^2.0.0-beta.4, date-fns@^2.8.1:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
@@ -6147,6 +6157,13 @@ nuxt-socket-io@^1.1.13:
     socket.io "^2.3.0"
     socket.io-client "^2.3.0"
     vue-template-compiler "^2.6.12"
+
+nuxt-stripe-module@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/nuxt-stripe-module/-/nuxt-stripe-module-3.0.1.tgz#3cac0263073e670a7ccb86b8b3f53eb44ef75712"
+  integrity sha512-yenDUU05ig9SVtx/7aw2zK1JHNJANvUhDevIIWbsDhfJYxr6JCXULDGC3g0Pfs5EK8tKOTni9R3I9EUiwT3TsA==
+  dependencies:
+    "@stripe/stripe-js" "^1.11.0"
 
 nuxt@^2.14.6:
   version "2.14.7"
@@ -8724,6 +8741,16 @@ uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+v-calendar@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/v-calendar/-/v-calendar-2.1.1.tgz#797cea240b79eb4b49bd1f3e250f15b1fd613baa"
+  integrity sha512-9JyObLeA85OEy0HfSUcjnsJLEv1UFpB0oiRDWXiCSIpPWrkTJ4U8XexIdBPwGsiObvzyMEssHpwsSL7v4QfXNw==
+  dependencies:
+    core-js "^3.6.5"
+    date-fns "^2.8.1"
+    date-fns-tz "^1.0.12"
+    lodash "^4.17.15"
+
 v-tooltip@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.3.tgz#34fd64096656f032b1616567bf62f6165c57d529"
@@ -8761,6 +8788,11 @@ vue-beautiful-chat@^2.5.0:
     minimist "1.2.3"
     msgdown "^1.0.2"
     v-tooltip "^2.0.1"
+
+vue-cal@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/vue-cal/-/vue-cal-3.9.0.tgz#c40a071a4fd233911313f3848288e0f33bb84e43"
+  integrity sha512-rD5BWeUW4TiaOtA/qdHSBlLBKdF1tc3GayqiEDpCB3kxx/fmJiUtyqSfLtG1UWsPPWBcYQuFE+tjPm3LCtoMEA==
 
 vue-client-only@^2.0.0:
   version "2.0.0"
