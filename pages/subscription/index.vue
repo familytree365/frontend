@@ -149,7 +149,7 @@ export default {
                 });
         },
         subscribe() {
-          this.$axios.post('/api/subscribe', {
+          this.$axios.$post('/api/subscribe', {
                 plan_id: this.selectedPlanId,
             })
                 .then(response => {
@@ -163,7 +163,7 @@ export default {
     },
   selectCurrency(currency) {
     const url = 'https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a';
-    this.$axios.get(url)
+    this.$axios.$get(url)
       .then(res => {
         switch (currency) {
           case 'GBP':
