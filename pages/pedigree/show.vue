@@ -19,6 +19,7 @@
 
     Vue.component('v-select', vSelect);
     export default {
+        layout: 'auth',
         name: 'Show',
         data() {
             return {
