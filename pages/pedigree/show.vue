@@ -1,5 +1,5 @@
-<style lang="scss">
-    @import "vue-select/src/scss/vue-select.scss";
+<style lang="css">
+@import "~/node_modules/vue-select/dist/vue-select.css";
 </style>
 <template>
     <div>
@@ -14,11 +14,12 @@
     import * as d3 from 'd3';
     import * as _dag from 'd3-dag';
     import {tip} from 'd3-tip';
-    import Vue from "vue";
-    import vSelect from "vue-select";
+    import Vue from 'vue';
+    import vSelect from 'vue-select';
 
     Vue.component('v-select', vSelect);
     export default {
+        layout: 'auth',
         name: 'Show',
         data() {
             return {
@@ -633,7 +634,7 @@
                     .layering(_dag.layeringSimplex())
                     .decross(_dag.decrossOpt)
                     .coord(_dag.coordVert())
-                    // .separation( 
+                    // .separation(
                     //     function(a,b) {return 1}
                     // );
                 // make dag from edge list

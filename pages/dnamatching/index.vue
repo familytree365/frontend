@@ -108,6 +108,19 @@
                         },
                     },
                     {
+                        label: 'Image',
+                        field: 'image',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Fileter Image', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+
+                        },
+                    },
+                    
+                    {
                         label: 'Action',
                         field: 'action',
                         sortable: false,

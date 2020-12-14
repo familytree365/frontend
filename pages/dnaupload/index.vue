@@ -89,11 +89,23 @@
                 totalRecords: 0,
                 columns: [
                     {
-                        label: 'Name',
-                        field: 'name',
+                        label: 'Variable name',
+                        field: 'variable_name',
                         filterOptions: {
                             enabled: true, // enable filter for this column
-                            placeholder: 'Filter Name', // placeholder for filter input
+                            placeholder: 'Filter variable name', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+
+                        },
+                    },
+                    {
+                        label: 'File name',
+                        field: 'file_name',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter file name', // placeholder for filter input
                             filterValue: '', // initial populated value for this filter
                             filterDropdownItems: [], // dropdown (with selected values) instead of text input
                             filterFn: this.columnFilterFn, //custom filter function that
