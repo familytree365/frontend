@@ -3,106 +3,106 @@
     <div>
         <div class="columns is-variable is-5 is-desktop is-flex-desktop-only ai--s">
             <div class="column is-4 is-flex-desktop-only ai--s">               
-                        <div class="card has-background-white has-text-black">
-                            <div class="card-header">
-                                <div class="card-header-title has-text-black">
-                                    Chats List
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <ul class="friend-list">
-                                    <li class="active bounceInDown">
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>John Doe</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Hello, Are you there?</div>
-                                            <small class="time text-muted">Just now</small>
-                                            <small class="chat-alert label label-danger">1</small>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Jane Doe</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">5 mins ago</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-                                        </a>
-                                    </li> 
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Kate</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">Yesterday</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                                        </a>
-                                    </li>  
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Kate</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">Yesterday</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                                        </a>
-                                    </li>     
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Kate</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">Yesterday</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                                        </a>
-                                    </li>        
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Kate</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">Yesterday</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                                        </a>
-                                    </li>          
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_5.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Kate</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">Yesterday</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="clearfix">
-                                            <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                                            <div class="friend-name">	
-                                                <strong>Jane Doe</strong>
-                                            </div>
-                                            <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                                            <small class="time text-muted">5 mins ago</small>
-                                            <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-                                        </a>
-                                    </li>                 
-                                </ul>
-                            </div>
+                <div class="card has-background-white has-text-black">
+                    <div class="card-header">
+                        <div class="card-header-title has-text-black">
+                            Chats List {{ loggedInUser.first_name }}
                         </div>
-                    
+                    </div>
+                    <div class="card-content">
+                        <ul class="friend-list">
+                            <li class="active bounceInDown">
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>John Doe</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Hello, Are you there?</div>
+                                    <small class="time text-muted">Just now</small>
+                                    <small class="chat-alert label label-danger">1</small>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Jane Doe</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">5 mins ago</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Kate</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">Yesterday</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                </a>
+                            </li>  
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Kate</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">Yesterday</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                </a>
+                            </li>     
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="~assets/images/admin-logo.svg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Kate</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">Yesterday</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                </a>
+                            </li>        
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_6.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Kate</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">Yesterday</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                </a>
+                            </li>          
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_5.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Kate</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">Yesterday</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="clearfix">
+                                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                    <div class="friend-name">	
+                                        <strong>Jane Doe</strong>
+                                    </div>
+                                    <div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                    <small class="time text-muted">5 mins ago</small>
+                                    <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                                </a>
+                            </li>                 
+                        </ul>
+                    </div>
+                </div>
+
             </div>
             <div class="column is-7">
                 <div class="card has-background-white has-text-black">
@@ -211,7 +211,7 @@
                                     </p>
                                 </div>
                                 <span class="chat-img pull-right">
-                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                                    <img src="~assets/images/avatar.jpg" alt="User Avatar">
                                 </span>
                             </li>                    
                         </ul>
@@ -227,34 +227,68 @@
 
 <script>
     import io from 'socket.io-client';
+    import { mapGetters } from 'vuex'
+    import Echo from 'laravel-echo'
+   window.io = require('socket.io-client')
+        window.Echo = new Echo({
+            broadcaster: 'socket.io',
+            host: 'http://localhost:6001'            
+        }) 
+    
+    var socket = io('http://localhost:6001');
 
     export default {
         layout: 'auth',
+        computed: {
+            ...mapGetters(['loggedInUser'])
+        },
         data() {
             return {
                 user: '',
                 message: '',
                 chats: [],
-                messages: [],
-                socket: io('http://localhost:3002', {path: '/'})
+                messages: []
             }
         },
         methods: {
             sendMessage(e) {
                 e.preventDefault();
 
-                this.socket.emit('SEND_MESSAGE', {
-                    user: this.user,
-                    message: this.message
-                });
-                this.message = ''
+                this.$axios
+                        .$post("/api/chats", {sender: 1, receiver: 2})
+                        .then(response => {
+                            console.log(response);
+                        })
+                        .catch(error => {
+                            this.error = true;
+                            this.message = error.response.data.message;
+                            this.errors = error.response.data.errors;
+                        });
+
+//                this.socket.emit('SEND_MESSAGE', {
+//                    user: this.user,
+//                    message: this.message
+//                });
+//                this.message = ''
             }
         },
-        mounted() {
-            this.socket.on('MESSAGE', (data) => {
-                this.messages = [...this.messages, data];
+        mounted() {  
+            window.Echo.channel('chat-channel')
+                    .listen('.laravel_database_chat-channel', function(e){
+                        console.log(e);
+                    })
+            //socket.emit('ChatMessageSentEvent');
+            socket.on('ChatMessageSentEvent', (data) => {
+                console.log("New message sent...");
+                console.log(data);
+                //this.messages = [...this.messages, data];
                 // you can also do this.messages.push(data)
             });
+        },
+        async asyncData( { $axios, params }) {
+            const source = await $axios.$get('/api/chats')
+            console.log(source)
+            return {source}
         }
     }
 </script>

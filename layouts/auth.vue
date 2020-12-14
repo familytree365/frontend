@@ -233,6 +233,19 @@
                                         <li><NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink></li>
                                     </ul>
                                 </div>
+                                <li class="collapsible">
+                                    <a href="#">
+                                        <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
+                                        Forum
+                                        <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
+                                    </a>
+                                </li>
+                                <div class="content mb-0">
+                                    <ul>
+                                        <li><NuxtLink to="/forum"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subjects</NuxtLink></li>
+                                        <li><NuxtLink to="/forumcategory"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Categories</NuxtLink></li>
+                                    </ul>
+                                </div>
                                 <li>
                                 <NuxtLink to="/gedcom">
                                     <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
@@ -258,7 +271,7 @@
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                         How to Videos</a>
-                                </li>
+                                </li>                                
                             </ul>
                         </aside>
                     </div>
