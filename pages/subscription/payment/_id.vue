@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-12">
                 <h1 class="is-size-4 has-text-black">
@@ -22,7 +23,9 @@
                 <div class="card has-background-white has-text-black">
                     <div class="card-content payment_block">
                         <form @submit.prevent="submit()">
-                            <div id="card-element"/>
+                            <div id="card-element">
+                              <!-- A Stripe Element will be inserted here. -->
+                            </div>
                         <div class="field mb-5">
                             <p class="control">
                                 <input class="input is-large is-size-6" type="text" placeholder="Card Holder Name" :class="{ 'is-danger': $v.payment.card_holder_name.$error }" v-model="payment.card_holder_name">
@@ -91,8 +94,13 @@
 <script>
 import { required, minLength } from 'vuelidate/lib/validators'
 import {loadStripe} from '@stripe/stripe-js';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
     layout: 'auth',
+    components: {
+        Loading
+    },
     data() {
         return {
             error: false,
@@ -112,6 +120,10 @@ export default {
             plan_id: null,
             intent: null,
             payment_method: null,
+            isLoading: true,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
         };
     },
     validations: {
@@ -133,6 +145,7 @@ export default {
     },
     methods: {
        async confirmCard() {
+            this.isLoading = true
             const { setupIntent, error } = await this.stripe.confirmCardSetup(
                 this.clientSecret, {
                     payment_method: {
@@ -142,6 +155,7 @@ export default {
                 },
             );
             if (error) {
+                this.isLoading = false
                 // Display "error.message" to the user...
                 console.log(error.message);
             } else {
@@ -152,14 +166,15 @@ export default {
         },
 
         subscribe() {
+            this.isLoading = true
             this.$axios.post('/api/subscribe', {
                 payment_method: this.payment_method,
                 plan_id: this.plan_id,
                 card_holder_name: this.cardHolderName,
             })
                 .then(response => {
-                    if (response.data.success) {
-                    }
+                    this.isLoading = false
+                    this.$router.push("/subscription");
                 });
         },
     },
@@ -168,6 +183,7 @@ export default {
         this.plan_id = this.$route.params.id;
         this.$axios.get('/api/get-intent')
             .then(response => {
+                this.isLoading = false
                 this.clientSecret = response.data.intent.client_secret;
             });
         this.stripe = await loadStripe('pk_test_51H7yygJZEMHu7eXxCr3ZJfotMBatunOIqfyZOKUPo3An1z2JF5YH8YhsxmCufKtb2PxxPiXah7xGmIxUXskTvDWp00fEsEHvSS');
@@ -182,5 +198,35 @@ export default {
 </script>
 <style scoped>
     @import '~/assets/css/admin.css';
+    /**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;}
 </style>
 

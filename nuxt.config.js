@@ -58,6 +58,7 @@ export default {
     plugins: [
         {src: '~/plugins/vue-good-table', ssr: false},
         {src: '~/plugins/vuelidate.js', ssr: false},
+        {src: '~/plugins/vue-gates'},
   //      {src: '~/plugins/vue-select.js', ssr: false},
     ],
 
