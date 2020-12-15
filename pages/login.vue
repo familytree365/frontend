@@ -139,7 +139,10 @@ export default {
                         email: this.email,
                         password: this.password
                     },
-                }).catch(error => {
+                })
+                .then(() => {
+                })
+                .catch(error => {
                     this.error = true;
                     this.message = error.response.data.message;
                     this.errors =  error.response.data.errors;
@@ -147,7 +150,17 @@ export default {
             })
         }
 
-    }
+    },
+
+    async asyncData ({ $axios, $gates }) {
+        const [roles, permissions] = await Promise.all([
+          $axios.$get('/api/roles'),
+          $axios.$get('/api/permissions')
+        ])
+
+        $gates.setRoles(roles)
+        $gates.setPermissions(permissions)
+    },
   }
 }
 </script>

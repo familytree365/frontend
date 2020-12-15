@@ -23,7 +23,7 @@
                 </ul>
             </nav>
         </div>
-        <div class="columns is-variable is-3 is-desktop">
+        <div class="columns is-variable is-3 is-desktop" v-role="'admin'">
             <div class="column is-9">
                 <div class="columns is-multiline is-variable is-3">
                     <div class="column is-6" v-for="plan in plans" :key="plan.id">
@@ -106,6 +106,7 @@ Vue.component('v-select', vSelect);
 
 export default {
     layout: 'auth',
+    middleware: 'admin',
     components: {
         Loading
     },
@@ -213,9 +214,6 @@ export default {
             this.isActive = false;
         },
     },
-    created() {
-        this.loadPlans();
-    },
     async asyncData ({ $axios, $gates }) {
         const [roles, permissions] = await Promise.all([
           $axios.$get('/api/roles'),
@@ -224,7 +222,11 @@ export default {
 
         $gates.setRoles(roles)
         $gates.setPermissions(permissions)
-    }
+    },
+    created() {
+        this.loadPlans();
+
+    },
   
 };
 </script>

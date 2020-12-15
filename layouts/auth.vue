@@ -171,7 +171,7 @@
                                         <li><NuxtLink to="/sourcerefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-role="'admin'">
                                     <a>
                                         <font-awesome-icon :icon="['fas', 'user-friends']" class="mt-1 mr-2" />
                                         People
@@ -271,7 +271,17 @@
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                         How to Videos</a>
-                                </li>                                
+                                </li> 
+                                <li>
+                                <NuxtLink to="/roles">
+                                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
+                                    Roles</NuxtLink>
+                                </li>
+                                <li>
+                                <NuxtLink to="/permissions">
+                                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
+                                    Permissions</NuxtLink>
+                                </li>                               
                             </ul>
                         </aside>
                     </div>
