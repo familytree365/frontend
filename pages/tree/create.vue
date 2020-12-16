@@ -9,7 +9,7 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control">
@@ -17,9 +17,15 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.tree.name.$error }" v-if="!$v.tree.name.required">Field is required</p>
                     </div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Name" v-model="tree.description">
+                        </div>
+                    </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -42,6 +48,7 @@
                 age: 0,
                 tree: {
                     name: "",
+                    description: "",
                 }
             };
         },

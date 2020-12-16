@@ -122,13 +122,13 @@
                     <div class="menu-wrapper py-1">
                         <aside class="menu">
                             <ul class="menu-list">
-                                <li>
-                                <NuxtLink to="/dashboard" v-permission="'dashboard'">
+                                <li v-role="'free'">
+                                <NuxtLink to="/dashboard">
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                                 </li>
-                                <li>
-                                <NuxtLink to="/calendar" v-permission="'calendar'">
+                                <li v-permission="'calendar1'">
+                                <NuxtLink to="/calendar" >
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                                 </li>
@@ -380,8 +380,8 @@
           const { data: permissions } = await this.$axios.get("/api/permissions");
           const { data: roles } = await this.$axios.get("/api/roles");
           this.currentRole = roles[0];
-          await this.$gates.setRoles(roles)
-          await this.$gates.setPermissions(permissions)        
+          this.$gates.setPermissions(permissions)
+          this.$gates.setRoles(roles)        
         },
         mounted() {
 

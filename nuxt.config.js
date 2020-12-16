@@ -96,7 +96,7 @@ export default {
             }
         ],
         ['nuxt-stripe-module', {
-            publishableKey: 'pk_test_51H7yygJZEMHu7eXxCr3ZJfotMBatunOIqfyZOKUPo3An1z2JF5YH8YhsxmCufKtb2PxxPiXah7xGmIxUXskTvDWp00fEsEHvSS',
+            publishableKey: process.env.STRIPE_KEY,
         }],
     ],
 

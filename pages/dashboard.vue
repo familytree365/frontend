@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-12">
                 <h1 class="is-size-4 has-text-black">
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-content" style="height: 400px;">
-                        <bar-chart :data="barChartData" :options="barChartOptions" :height="300" />
+                        <bar-chart  v-if="loaded" :data="barChartData" :height="300" />
                     </div>
                 </div>
             </div>
@@ -158,43 +159,48 @@
 </template>
 
 <script>
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 import { mapGetters } from 'vuex'
 export default {
     layout: 'auth',
+    components: {
+        Loading
+    },
     data() {
         return {
-          barChartData: {
-            datasets: [{
-                data: [10, 20, 30],
-                backgroundColor: [
-                    'rgba(79, 207, 141, 1)',
-                    'rgba(251, 145, 58, 1)',
-                    'rgba(244, 91, 21, 1)'
-                ],
-            }],
-
-            // These labels appear in the legend and in the tooltips when hovering different arcs
-            labels: [
-                'Male',
-                'Female',
-                'Other'
-            ]
-          },
-
-
+            loaded: false,
+            isLoading: true,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
+            barChartData: {
+                datasets: [{
+                    data: [],
+                    backgroundColor: [
+                        'rgba(79, 207, 141, 1)',
+                        'rgba(251, 145, 58, 1)',
+                        'rgba(244, 91, 21, 1)'
+                    ],
+                }],
+                labels: [
+                    'Male',
+                    'Female',
+                    'Other'
+                ]
+            },
         }
+    },
+      async mounted () {
+            this.loaded = false
+            const { data: data } = await this.$axios.get("/api/dashboard"); 
+            this.barChartData.datasets[0].data = data.chart
+            console.log(data.chart)  
+            this.loaded = true
+            this.isLoading = false 
       },
     computed: {
         ...mapGetters(['loggedInUser'])
-    },
-    async asyncData ({ $axios, $gates }) {
-        const [roles, permissions] = await Promise.all([
-          $axios.$get('/api/roles'),
-          $axios.$get('/api/permissions')
-        ])
-
-        $gates.setRoles(roles)
-        $gates.setPermissions(permissions)
     },
 }
 </script>

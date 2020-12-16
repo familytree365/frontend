@@ -17,6 +17,12 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.tree.name.$error }" v-if="!$v.tree.name.required">Field is required</p>
                     </div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Name" v-model="tree.description">
+                        </div>
+                    </div>
                     <div class="field is-grouped">
                         <div class="control">
                             <button @click.prevent="update()"  class="button is-link has-background-primary">Submit</button>

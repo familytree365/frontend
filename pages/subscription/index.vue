@@ -44,7 +44,7 @@
                                 <div v-if="plan.subscribed">
                                     <button
                                         @click="open(null)"
-                                        class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4" :class="{ 'is-success': plan.subscribed }">
+                                        class="button is-size-7 is-uppercase is-danger has-text-weight-medium is-light mt-4" :class="{ 'is-success': plan.subscribed }">
                                         Unsubscribe
                                     </button>
                                 </div>
