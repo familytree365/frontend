@@ -101,7 +101,7 @@
                                 </NuxtLink>
                                 <NuxtLink to="/subscription" class="navbar-item">
                                     <font-awesome-icon :icon="['fas', 'money-bill']" class="mr-2"/>
-                                    Subscription Plan : Trial
+                                    Subscription Plan : {{ currentRole }}
                                 </NuxtLink>
                                 <a @click.prevent="logout()" class="navbar-item">
                                     <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="mr-2"/>
@@ -123,12 +123,12 @@
                         <aside class="menu">
                             <ul class="menu-list">
                                 <li>
-                                <NuxtLink to="/dashboard">
+                                <NuxtLink to="/dashboard" v-permission="'dashboard'">
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                                 </li>
                                 <li>
-                                <NuxtLink to="/calendar">
+                                <NuxtLink to="/calendar" v-permission="'calendar'">
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                                 </li>
@@ -138,7 +138,7 @@
                                     Files
                                 </NuxtLink>
                                 </li>
-                                <li class="collapsible is-active">
+                                <li class="collapsible is-active" v-permission="'information menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Information
@@ -155,7 +155,7 @@
                                         <li><NuxtLink to="/subn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-permission="'sources menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'cog']" class="mt-1 mr-2" />
                                         Sources
@@ -171,7 +171,7 @@
                                         <li><NuxtLink to="/sourcerefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-role="'admin'">
+                                <li class="collapsible" v-permission="'people menu'">
                                     <a>
                                         <font-awesome-icon :icon="['fas', 'user-friends']" class="mt-1 mr-2" />
                                         People
@@ -189,7 +189,7 @@
                                         <li><NuxtLink to="/personsubm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-permission="'family menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'heart']" class="mt-1 mr-2" />
                                         Family
@@ -203,7 +203,7 @@
                                         <li><NuxtLink to="/familyslgs"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-permission="'references menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'thumbs-up']" class="mt-1 mr-2" />
                                         References
@@ -219,7 +219,7 @@
                                         <li><NuxtLink to="/publication"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-permission="'trees menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'users']" class="mt-1 mr-2" />
                                         Trees
@@ -228,12 +228,12 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><a href="#"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</a></li>
+                                        <li><NuxtLink to="/tree"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</NuxtLink></li>
                                         <li><NuxtLink to="/tree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</NuxtLink></li>
                                         <li><NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li class="collapsible">
+                                <li class="collapsible" v-permission="'forum menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Forum
@@ -246,39 +246,39 @@
                                         <li><NuxtLink to="/forumcategory"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Categories</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li>
-                                <NuxtLink to="/gedcom">
+                                <li v-permission="'gedcom import'">
+                                <NuxtLink to="/gedcom" >
                                     <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
                                     GEDCOM Import
                                 </NuxtLink>
                                 </li>
-                                <li>
-                                <NuxtLink to="/subscription">
+                                <li v-permission="'subscription'">
+                                <NuxtLink to="/subscription" >
                                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                                     Subscription</NuxtLink>
                                 </li>
-                                <li>
-                                <NuxtLink to="/dnaupload">
+                                <li v-permission="'dna upload'">
+                                <NuxtLink to="/dnaupload" >
                                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
                                     DNA Upload</NuxtLink>
                                 </li>
-                                <li>
-                                <NuxtLink to="/dnamatching">
+                                <li v-permission="'dna matching'">
+                                <NuxtLink to="/dnamatching" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</NuxtLink>
                                 </li>
-                                <li>
+                                <li v-permission="'dna matching'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                         How to Videos</a>
                                 </li> 
                                 <li>
-                                <NuxtLink to="/roles">
+                                <NuxtLink to="/roles" v-permission="'roles'">
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Roles</NuxtLink>
                                 </li>
                                 <li>
-                                <NuxtLink to="/permissions">
+                                <NuxtLink to="/permissions" v-permission="'permissions'">
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Permissions</NuxtLink>
                                 </li>                               
@@ -331,6 +331,7 @@
         data() {
             return {
                 isActive: false,
+                currentRole: null,
                 participants: [
                     {
                         id: 'support_ft',
@@ -373,6 +374,14 @@
                 alwaysScrollToBottom: false, // when set to true always scrolls the chat to the bottom when new events are in (new message, user starts typing...)
                 messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattezza/msgdown)
             }
+        },
+        async created() {
+
+          const { data: permissions } = await this.$axios.get("/api/permissions");
+          const { data: roles } = await this.$axios.get("/api/roles");
+          this.currentRole = roles[0];
+          await this.$gates.setRoles(roles)
+          await this.$gates.setPermissions(permissions)        
         },
         mounted() {
 
@@ -435,7 +444,8 @@
                 m.isEdited = true;
                 m.data.text = message.data.text;
             }
-        }
+        },
+        
     }
 </script>
 

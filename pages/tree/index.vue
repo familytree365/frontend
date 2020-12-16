@@ -24,11 +24,11 @@
                 <div class="card has-background-white has-text-black">
                     <header class="card-header">
                         <p class="card-header-title">
-                            Roles
+                            Trees
                         </p>
                         <p class="card-header-icon">
-                        <NuxtLink to="/roles/create" class="button is-link has-background-primary">
-                            Create New Role</NuxtLink>
+                        <NuxtLink to="/tree/create" class="button is-link has-background-primary">
+                            Create New Tree</NuxtLink>
                         </p>
                     </header>
                     <div class="card-content">
@@ -59,6 +59,15 @@
                                 enabled: true
                                 }"
                                 >
+                                <template slot="table-row" slot-scope="props">
+                                    <span v-if="props.column.field == 'action'">
+                                        <NuxtLink :to="'tree/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                            Edit</NuxtLink>
+                                        <button @click="deleteTree(rows[props.row.originalIndex].id)" class="button is-danger">
+                                            Delete</button>
+                                    </span>
+
+                                </template>
                             </vue-good-table>
                         </template>
                     </div>
@@ -92,6 +101,24 @@
                             filterFn: this.columnFilterFn, //custom filter function that
 
                         },
+                    },
+                    {
+                        label: 'Description',
+                        field: 'description',
+                        filterOptions: {
+                            enabled: true, // enable filter for this column
+                            placeholder: 'Filter Description', // placeholder for filter input
+                            filterValue: '', // initial populated value for this filter
+                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                            filterFn: this.columnFilterFn, //custom filter function that
+
+                        },
+                    },
+                    {
+                        label: 'Action',
+                        field: 'action',
+                        sortable: false,
+                        width: '250px',
                     },
                 ],
                 rows: [],
@@ -129,10 +156,6 @@
         },
 
         methods: {
-            ...mapActions([
-                    'loadPerson',
-                    'deletePerson'
-            ]),
             updateParams(newProps) {
                 this.serverParams = Object.assign({}, this.serverParams, newProps);
             },
@@ -167,7 +190,7 @@
                 this.loadItems();
             },
             loadItems() {
-                this.$axios.$get("/api/getroles", {
+                this.$axios.$get("/api/tree", {
                     params: this.serverParams
                 })
                         .then(response => {
@@ -177,14 +200,13 @@
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
-                alert("gg");
                 console.log(searchTerm);
             },
-            deletePerson(id) {
+            deleteTree(id) {
                 if (confirm("Do you really want to delete?")) {
 
                     this.$axios
-                            .$delete("/api/person/" + id)
+                            .$delete("/api/tree/" + id)
                             .then(response => {
                                 this.loadItems();
                             })
@@ -193,7 +215,6 @@
         },
 
         created() {
-            // this.loadPerson();
         },
     }
 

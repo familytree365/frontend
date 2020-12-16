@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <div class="card-content" style="height: 400px;">
-                        <canvas id="chart-area" height="200" width="200"></canvas>
+                        <bar-chart :data="barChartData" :options="barChartOptions" :height="300" />
                     </div>
                 </div>
             </div>
@@ -161,6 +161,29 @@
 import { mapGetters } from 'vuex'
 export default {
     layout: 'auth',
+    data() {
+        return {
+          barChartData: {
+            datasets: [{
+                data: [10, 20, 30],
+                backgroundColor: [
+                    'rgba(79, 207, 141, 1)',
+                    'rgba(251, 145, 58, 1)',
+                    'rgba(244, 91, 21, 1)'
+                ],
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Male',
+                'Female',
+                'Other'
+            ]
+          },
+
+
+        }
+      },
     computed: {
         ...mapGetters(['loggedInUser'])
     },

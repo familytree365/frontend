@@ -151,16 +151,6 @@ export default {
         }
 
     },
-
-    async asyncData ({ $axios, $gates }) {
-        const [roles, permissions] = await Promise.all([
-          $axios.$get('/api/roles'),
-          $axios.$get('/api/permissions')
-        ])
-
-        $gates.setRoles(roles)
-        $gates.setPermissions(permissions)
-    },
   }
 }
 </script>

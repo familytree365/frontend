@@ -23,12 +23,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="columns is-variable is-3 is-desktop" v-role="'admin'">
+        <div class="columns is-variable is-3 is-desktop">
             <div class="column is-9">
                 <div class="columns is-multiline is-variable is-3">
                     <div class="column is-6" v-for="plan in plans" :key="plan.id">
                         <div class="card has-background-white has-text-black">
-                            <div class="card-content" v-role="'admin'">
+                            <div class="card-content">
                                 {{ plan.title.replace('$Amount',
                                   (plan.amount * selected_currency_rate).toFixed(2))
                                   .replace('$Currency', selected_currency_symbol) }}
@@ -106,7 +106,6 @@ Vue.component('v-select', vSelect);
 
 export default {
     layout: 'auth',
-    middleware: 'admin',
     components: {
         Loading
     },
@@ -213,15 +212,6 @@ export default {
         close() {
             this.isActive = false;
         },
-    },
-    async asyncData ({ $axios, $gates }) {
-        const [roles, permissions] = await Promise.all([
-          $axios.$get('/api/roles'),
-          $axios.$get('/api/permissions')
-        ])
-
-        $gates.setRoles(roles)
-        $gates.setPermissions(permissions)
     },
     created() {
         this.loadPlans();
