@@ -127,7 +127,7 @@
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                                 </li>
-                                <li v-permission="'calendar1'">
+                                <li v-permission="'gfgfgfg[calendar1]'">
                                 <NuxtLink to="/calendar" >
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
@@ -138,7 +138,7 @@
                                     Files
                                 </NuxtLink>
                                 </li>
-                                <li class="collapsible is-active" v-permission="'information menu'">
+                                <li class="collapsible is-active" v-permission:any="'da1shboard|edit articles'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Information
@@ -381,7 +381,10 @@
           const { data: roles } = await this.$axios.get("/api/roles");
           this.currentRole = roles[0];
           this.$gates.setPermissions(permissions)
-          this.$gates.setRoles(roles)        
+          console.log(roles)
+          console.log(permissions)
+          this.$gates.setRoles(roles) 
+          console.log(localStorage.permissions);       
         },
         mounted() {
 

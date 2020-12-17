@@ -29,9 +29,8 @@
                     <div class="column is-6" v-for="plan in plans" :key="plan.id">
                         <div class="card has-background-white has-text-black">
                             <div class="card-content">
-                                {{ plan.title.replace('$Amount',
-                                  (plan.amount * selected_currency_rate).toFixed(2))
-                                  .replace('$Currency', selected_currency_symbol) }}
+                                {{ (plan.amount * selected_currency_rate).toFixed(2)
+                                  + selected_currency_symbol }}
                                 <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{ plan.title }}</div>
                                 <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> Unlimited Trees </span> Yearly</div>
                                 <NuxtLink  v-if="has_payment_method == false" :to="'/subscription/payment/' + plan.id" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>

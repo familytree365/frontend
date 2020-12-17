@@ -132,7 +132,7 @@
         </div>
         <div class="columns is-variable is-flex-desktop-only ai--s">
             <div class="column is-4-desktop is-6-tablet is-flex">
-                <div class="card has-background-primary has-text-white">
+                <div class="card has-background-primary has-text-white" v-role:unless="'free'">
                     <div class="card-content">
                         <p class="is-size-7">Your Plan Expires in</p>
                         <p class="is-size-4 mb-2 has-text-weight-medium">06 Days</p>
@@ -143,14 +143,23 @@
                             Plan</button>
                     </div>
                 </div>
+                <div class="card has-background-primary has-text-centered" v-role="'free'">
+                    <div class="card-content">
+                        <p class="is-size-7">Buy Plan</p>
+                        <NuxtLink to="subscription"
+                            class="button is-size-7 is-uppercase has-text-weight-medium has-text-primary is-light mt-4">Subscribe</NuxtLink>
+                    </div>
+                </div>
             </div>
             <div class="column is-4-desktop is-6-tablet is-flex">
                 <div class="card has-background-white has-text-black">
                     <div class="card-content has-text-centered py-5">
-                        <i class="fas fa-user-circle has-text-primary mb-5" style="font-size: 55px;"></i>
+                         <v-select label="name"  v-model="selected_option" :reduce="tree => tree.id" :options="options" @input="setSelected"></v-select>
+                        <font-awesome-icon :icon="['fas', 'user-circle']" class="has-text-primary mb-5" style="font-size: 55px;"/>
                         <p class="is-size-7 mb-2 has-text-weight-medium">{{ loggedInUser.email }}</p>
                         <p class="is-size-7 mb-4 has-text-weight-medium">{{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</p>
                         <p class="is-size-7 is-uppercase">Use Tree</p>
+ 
                     </div>
                 </div>
             </div>
@@ -159,6 +168,10 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import vSelect from 'vue-select';
+
+Vue.component('v-select', vSelect);
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { mapGetters } from 'vuex'
@@ -170,6 +183,8 @@ export default {
     data() {
         return {
             loaded: false,
+            options: [],
+            selected_option: null,
             isLoading: true,
             fullPage: true,
             color: '#4fcf8d',
@@ -191,17 +206,47 @@ export default {
             },
         }
     },
+    methods: {
+      setSelected(value) {
+         console.log(value)
+         this.$axios.$get("/api/changetree", {
+                    params: { id : value }
+                })
+                .then(response => {
+                })
+      },
+      getallTree() {
+        this.$axios.$get("/api/tree")
+            .then(response => {
+                this.selected_option = response[0].id
+                this.options = response
+            })
+        }
+    },
+    async created() {
+            const { data: permissions } = await this.$axios.get("/api/permissions");
+            const { data: roles } = await this.$axios.get("/api/roles");
+            this.currentRole = roles[0];
+            this.$gates.setPermissions(permissions)
+            this.$gates.setRoles(roles)  
+            console.log(this.$gates.getRoles())
+            console.log(this.$gates.getPermissions()) 
+            console.log('roles-'+this.$gates.hasRole('free'))
+            console.log('permissions-'+this.$gates.hasPermission('dashboard1'))
+            console.log(this.$gates.getPermissions())    
+            this.getallTree(); 
+        },
       async mounted () {
             this.loaded = false
             const { data: data } = await this.$axios.get("/api/dashboard"); 
-            this.barChartData.datasets[0].data = data.chart
-            console.log(data.chart)  
+            this.barChartData.datasets[0].data = data.chart 
             this.loaded = true
             this.isLoading = false 
       },
     computed: {
         ...mapGetters(['loggedInUser'])
     },
+    
 }
 </script>
 
