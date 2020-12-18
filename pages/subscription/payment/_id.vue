@@ -186,7 +186,7 @@ export default {
                 this.isLoading = false
                 this.clientSecret = response.data.intent.client_secret;
             });
-        this.stripe = await loadStripe('pk_test_51H7yygJZEMHu7eXxCr3ZJfotMBatunOIqfyZOKUPo3An1z2JF5YH8YhsxmCufKtb2PxxPiXah7xGmIxUXskTvDWp00fEsEHvSS');
+        this.stripe = await loadStripe(process.env.STRIPE_KEY);
         const elements = this.stripe.elements();
         this.cardElement = elements.create('card');
         this.cardElement.mount('#card-element');

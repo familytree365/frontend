@@ -103,6 +103,11 @@
                         },
                     },
                     {
+                        label: 'company',
+                        field: 'company.name',
+                        sortable: false,
+                    },
+                    {
                         label: 'Description',
                         field: 'description',
                         filterOptions: {

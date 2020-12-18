@@ -122,23 +122,23 @@
                     <div class="menu-wrapper py-1">
                         <aside class="menu">
                             <ul class="menu-list">
-                                <li v-role="'free'">
+                                <li v-permission="'dashboard menu'">
                                 <NuxtLink to="/dashboard">
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                                 </li>
-                                <li v-permission="'gfgfgfg[calendar1]'">
+                                <li v-permission="'calendar menu'">
                                 <NuxtLink to="/calendar" >
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                                 </li>
-                                <li>
+                                <li  v-permission="'files menu'">
                                 <NuxtLink to="/files">
                                     <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
                                     Files
                                 </NuxtLink>
                                 </li>
-                                <li class="collapsible is-active" v-permission:any="'da1shboard|edit articles'">
+                                <li class="collapsible is-active" v-permission="'information menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Information
@@ -180,7 +180,7 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/person"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
+                                        <li v-permission="'people index'"><NuxtLink to="/person"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
                                         <li><NuxtLink to="/personalia"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</NuxtLink></li>
                                         <li><NuxtLink to="/personanci"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</NuxtLink></li>
                                         <li><NuxtLink to="/personasso"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</NuxtLink></li>
@@ -246,39 +246,39 @@
                                         <li><NuxtLink to="/forumcategory"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Categories</NuxtLink></li>
                                     </ul>
                                 </div>
-                                <li v-permission="'gedcom import'">
+                                <li v-permission="'gedcom import menu'">
                                 <NuxtLink to="/gedcom" >
                                     <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
                                     GEDCOM Import
                                 </NuxtLink>
                                 </li>
-                                <li v-permission="'subscription'">
+                                <li v-permission="'subscription menu'">
                                 <NuxtLink to="/subscription" >
                                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                                     Subscription</NuxtLink>
                                 </li>
-                                <li v-permission="'dna upload'">
+                                <li v-permission="'dna upload menu'">
                                 <NuxtLink to="/dnaupload" >
                                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
                                     DNA Upload</NuxtLink>
                                 </li>
-                                <li v-permission="'dna matching'">
+                                <li v-permission="'dna matching menu'">
                                 <NuxtLink to="/dnamatching" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</NuxtLink>
                                 </li>
-                                <li v-permission="'dna matching'">
+                                <li v-permission="'how to videos menu'">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                         How to Videos</a>
                                 </li> 
-                                <li>
-                                <NuxtLink to="/roles" v-permission="'roles'">
+                                <li v-permission="'roles menu'">
+                                <NuxtLink to="/roles" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Roles</NuxtLink>
                                 </li>
-                                <li>
-                                <NuxtLink to="/permissions" v-permission="'permissions'">
+                                <li v-permission="'permissions menu'">
+                                <NuxtLink to="/permissions" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Permissions</NuxtLink>
                                 </li>                               
@@ -381,10 +381,7 @@
           const { data: roles } = await this.$axios.get("/api/roles");
           this.currentRole = roles[0];
           this.$gates.setPermissions(permissions)
-          console.log(roles)
-          console.log(permissions)
-          this.$gates.setRoles(roles) 
-          console.log(localStorage.permissions);       
+          this.$gates.setRoles(roles)       
         },
         mounted() {
 

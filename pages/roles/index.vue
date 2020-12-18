@@ -59,6 +59,15 @@
                                 enabled: true
                                 }"
                                 >
+                                <template slot="table-row" slot-scope="props">
+                                    <span v-if="props.column.field == 'action'">
+                                        <NuxtLink :to="'roles/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                            Edit</NuxtLink>
+                                        <!-- <button  @click="deletePerson(rows[props.row.originalIndex].id)" class="button is-danger">
+                                            Delete</button> -->
+                                    </span>
+
+                                </template>
                             </vue-good-table>
                         </template>
                     </div>
@@ -92,6 +101,12 @@
                             filterFn: this.columnFilterFn, //custom filter function that
 
                         },
+                    },
+                    {
+                        label: 'Action',
+                        field: 'action',
+                        sortable: false,
+                        width: '250px',
                     },
                 ],
                 rows: [],

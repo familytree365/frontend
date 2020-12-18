@@ -10,10 +10,10 @@
             </header>
             <div class="card-content">
                 <form >
-                    <div class="field">
+                	<div class="field">
                         <label class="label">Assign Permission</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="role.permissions" :reduce="tree => tree.id" :options="options" @input="setSelected"></v-select>
+                            <v-select label="name" multiple  v-model="role.permissions" :reduce="tree => tree.id" :options="options"></v-select>
                         </div>
                     </div>
                     <div class="field">
@@ -50,7 +50,6 @@ Vue.component('v-select', vSelect);
             return {
                 error: false,
                 options: [],
-                
                 message: "",
                 name: '',
                 age: 0,
@@ -74,20 +73,31 @@ Vue.component('v-select', vSelect);
                 if (this.$v.$invalid) {
                     console.log("fail")
                 } else {
-                    this.$axios.$post('/api/roles', this.role)
-                            .then(response => (this.$router.push('/roles')))
-                            .catch(error => {
-                            });
+                    this.$axios.$put('/api/roles/' + this.$route.params.id , this.role)
+                        .then(response => {
+                			this.$router.push('/roles')
+                        })
+                        .catch(error => {
+                        });
                 }
             },
-      getallPermission() {
-        this.$axios.$get("/api/getpermissions")
-            .then(response => {
-                this.options = response
-            })
-        }
-        },
+      		getallPermission() {
+  		    	this.$axios.$get("/api/getpermissions")
+  		            .then(response => {
+  		                this.options = response
+  		            })
+  		    },
+      	    getRolePermission() {
+      	    	this.$axios.$get("/api/getrolepermission/"+this.$route.params.id)
+  		            .then(response => {
+  		            	this.role.name = response.role.name
+  		               	this.role.permissions = response.permissions
+  		               	console.log(response.permissions)
+  		            })
+  		    },
+      	},
         created() {
+        	this.getRolePermission()
             this.getallPermission()
         }
     }

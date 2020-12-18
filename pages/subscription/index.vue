@@ -148,15 +148,24 @@ export default {
          getCurrentSubscription() {
             this.$axios.$get('/api/get-current-subscription')
                 .then(response => {
+                    this.isLoading = true
                     this.has_payment_method = response.has_payment_method;
                     if (response.subscribed) {
-                        this.plans
-                            .find(plan => plan.id === response.plan_id)
-                            .subscribed = true;
-                        this.plans
-                            .find(plan => plan.id !== response.plan_id)
-                            .subscribed = false;
+                        // this.plans
+                        //     .find(plan => plan.id === response.plan_id)
+                        //     .subscribed = true;
+                        // this.plans
+                        //     .find(plan => plan.id !== response.plan_id)
+                        //     .subscribed = false;
+                        this.plans.find((plan) => {
+                            if(plan.id == response.plan_id) {
+                                plan.subscribed = true
+                            } else {
+                                plan.subscribed = false
+                            }
+                        });
                     }
+                    this.isLoading = false
                 });
         },
         subscribe() {

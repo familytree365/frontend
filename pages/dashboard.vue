@@ -224,25 +224,20 @@ export default {
         }
     },
     async created() {
-            const { data: permissions } = await this.$axios.get("/api/permissions");
-            const { data: roles } = await this.$axios.get("/api/roles");
-            this.currentRole = roles[0];
-            this.$gates.setPermissions(permissions)
-            this.$gates.setRoles(roles)  
-            console.log(this.$gates.getRoles())
-            console.log(this.$gates.getPermissions()) 
-            console.log('roles-'+this.$gates.hasRole('free'))
-            console.log('permissions-'+this.$gates.hasPermission('dashboard1'))
-            console.log(this.$gates.getPermissions())    
-            this.getallTree(); 
-        },
-      async mounted () {
-            this.loaded = false
-            const { data: data } = await this.$axios.get("/api/dashboard"); 
-            this.barChartData.datasets[0].data = data.chart 
-            this.loaded = true
-            this.isLoading = false 
-      },
+        const { data: permissions } = await this.$axios.get("/api/permissions");
+        const { data: roles } = await this.$axios.get("/api/roles");
+        this.currentRole = roles[0];
+        this.$gates.setPermissions(permissions)
+        this.$gates.setRoles(roles)    
+        this.getallTree(); 
+    },
+    async mounted () {
+        this.loaded = false
+        const { data: data } = await this.$axios.get("/api/dashboard"); 
+        this.barChartData.datasets[0].data = data.chart 
+        this.loaded = true
+        this.isLoading = false 
+    },
     computed: {
         ...mapGetters(['loggedInUser'])
     },
