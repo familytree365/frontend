@@ -3,7 +3,9 @@ import Vuex from "vuex";
 export const state = () => ({
   person: {},
   people: {},
-  chatMessages: ''
+  chatMessages: '',
+  role: {},
+  permission: [],
 });
 
 export const getters = {
@@ -15,7 +17,9 @@ export const getters = {
 
   loggedInUser(state) {
     return state.auth.user
-  }
+  },
+  getRole: (state) => state.role,
+  getPermission: (state) => state.permission,
 };
 
 export const mutations = {
@@ -25,6 +29,12 @@ export const mutations = {
   SET_PEOPLE(state, people) {
     state.people = people;
   },
+  SET_ROLE(state , role) {
+    state.role = role
+  },
+  SET_PERMISSION(state , permission) {
+    state.permission = permission
+  }
 };
 
 export const actions = {
@@ -45,6 +55,15 @@ export const actions = {
     this.$axios
       .$delete("/api/person/" + id)
       .then(response => ( this.$router.push('/people') )) 
+  },
+  async loadRole({ commit }) {
+    const role = await this.$axios.$get("/api/roles");
+
+    commit("SET_ROLE", role);
+  },
+  async loadPermission({ commit }) {
+    const permission = await this.$axios.$get("/api/permissions");
+    commit("SET_PERMISSION", permission);
   },
 };
 

@@ -138,9 +138,7 @@
         },
 
         computed: {
-            ...mapGetters([
-                    'getPerson'
-            ])
+            ...mapGetters(['loggedInUser','getRole','getPermission'])
         },
 
         methods: {
@@ -162,7 +160,6 @@
             },
 
             onSortChange(params) {
-                console.log(params);
                 this.updateParams({
                     sort: [{
                             type: params[0].type,
@@ -177,7 +174,6 @@
                 this.loadItems();
             },
             onSearch(params) {
-                console.log(params);
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
@@ -192,8 +188,6 @@
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
-                alert("gg");
-                console.log(searchTerm);
             },
             deletePerson(id) {
                 if (confirm("Do you really want to delete?")) {
@@ -205,10 +199,15 @@
                             })
                 }
             },
+            ...mapActions([
+                "loadRole",
+                "loadPermission"
+            ]),
         },
 
         created() {
-            // this.loadPerson();
+            this.loadRole()
+            this.loadPermission()
         },
     }
 

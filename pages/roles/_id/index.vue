@@ -38,9 +38,10 @@
 </template>
 
 <script>
-    import Vue from 'vue';
+import Vue from 'vue';
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
+import { mapGetters, mapActions } from "vuex";
 Vue.component('v-select', vSelect);
     import { required } from 'vuelidate/lib/validators'
     export default {
@@ -66,6 +67,9 @@ Vue.component('v-select', vSelect);
                 },
             },
         },
+        computed: {
+            ...mapGetters(['getRole','getPermission'])
+        },
         methods: {
 
             save() {
@@ -75,6 +79,8 @@ Vue.component('v-select', vSelect);
                 } else {
                     this.$axios.$put('/api/roles/' + this.$route.params.id , this.role)
                         .then(response => {
+                            this.loadRole()
+                            this.loadPermission()
                 			this.$router.push('/roles')
                         })
                         .catch(error => {
@@ -92,9 +98,12 @@ Vue.component('v-select', vSelect);
   		            .then(response => {
   		            	this.role.name = response.role.name
   		               	this.role.permissions = response.permissions
-  		               	console.log(response.permissions)
   		            })
   		    },
+             ...mapActions([
+                "loadRole",
+                "loadPermission"
+            ]),
       	},
         created() {
         	this.getRolePermission()

@@ -220,8 +220,14 @@ export default {
         close() {
             this.isActive = false;
         },
+        ...mapActions([
+                "loadRole",
+                "loadPermission"
+        ]),
     },
     created() {
+        this.loadRole()
+        this.loadPermission()
         this.loadPlans();
 
     },

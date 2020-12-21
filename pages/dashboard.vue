@@ -132,7 +132,7 @@
         </div>
         <div class="columns is-variable is-flex-desktop-only ai--s">
             <div class="column is-4-desktop is-6-tablet is-flex">
-                <div class="card has-background-primary has-text-white" v-role:unless="'free'">
+                <div class="card has-background-primary has-text-white">
                     <div class="card-content">
                         <p class="is-size-7">Your Plan Expires in</p>
                         <p class="is-size-4 mb-2 has-text-weight-medium">06 Days</p>
@@ -143,7 +143,7 @@
                             Plan</button>
                     </div>
                 </div>
-                <div class="card has-background-primary has-text-centered" v-role="'free'">
+                <div class="card has-background-primary has-text-centered">
                     <div class="card-content">
                         <p class="is-size-7">Buy Plan</p>
                         <NuxtLink to="subscription"
@@ -168,13 +168,14 @@
 </template>
 
 <script>
+
 import Vue from 'vue';
 import vSelect from 'vue-select';
 
 Vue.component('v-select', vSelect);
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 export default {
     layout: 'auth',
     components: {
@@ -206,9 +207,15 @@ export default {
             },
         }
     },
+    computed: {
+        ...mapGetters(['loggedInUser','getRole','getPermission'])
+    },
     methods: {
+        ...mapActions([
+                "loadRole",
+                "loadPermission"
+            ]),
       setSelected(value) {
-         console.log(value)
          this.$axios.$get("/api/changetree", {
                     params: { id : value }
                 })
@@ -221,15 +228,11 @@ export default {
                 this.selected_option = response[0].id
                 this.options = response
             })
-        }
+        },
     },
-    async created() {
-        const { data: permissions } = await this.$axios.get("/api/permissions");
-        const { data: roles } = await this.$axios.get("/api/roles");
-        this.currentRole = roles[0];
-        this.$gates.setPermissions(permissions)
-        this.$gates.setRoles(roles)    
-        this.getallTree(); 
+    created() {
+        this.loadRole()
+        this.loadPermission()     
     },
     async mounted () {
         this.loaded = false
@@ -238,9 +241,7 @@ export default {
         this.loaded = true
         this.isLoading = false 
     },
-    computed: {
-        ...mapGetters(['loggedInUser'])
-    },
+    
     
 }
 </script>

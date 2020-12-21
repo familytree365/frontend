@@ -95,11 +95,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>h
 	</div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import { required } from 'vuelidate/lib/validators'
 export default {
     middleware: 'guest',
@@ -141,6 +142,7 @@ export default {
                     },
                 })
                 .then(() => {
+                    this.loadRole()
                 })
                 .catch(error => {
                     this.error = true;
@@ -151,6 +153,9 @@ export default {
         }
 
     },
+    ...mapActions([
+            "loadRole"
+    ])
   }
 }
 </script>
