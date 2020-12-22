@@ -79,6 +79,10 @@ export default {
     components: {
         Loading
     },
+    middleware: 'permission',
+    meta: {
+        permission: { name: 'gedcom import menu' }
+    },
     data() {
         return {
             error: false,

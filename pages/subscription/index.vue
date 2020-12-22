@@ -100,11 +100,15 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import Vue from 'vue';
 import vSelect from 'vue-select';
-
+import { mapGetters, mapActions } from "vuex";
 Vue.component('v-select', vSelect);
 
 export default {
     layout: 'auth',
+    middleware: 'permission',
+    meta: {
+        permission: { name: 'subscription menu' }
+    },
     components: {
         Loading
     },
@@ -126,6 +130,9 @@ export default {
             selected_currency_rate: 1,
             isActive: false,
         };
+    },
+    computed: {
+        ...mapGetters(['loggedInUser','getRole','getPermission'])
     },
     methods: {
         handleSelectedFiles(event) {

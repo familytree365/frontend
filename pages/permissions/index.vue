@@ -72,6 +72,10 @@
     import { mapGetters, mapActions } from "vuex";
     export default {
         layout: 'auth',
+        middleware: 'permission',
+        meta: {
+            permission: { name: 'permissions menu' }
+        },
         data() {
             return {
                 isLoading: false,

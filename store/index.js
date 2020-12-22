@@ -1,4 +1,4 @@
-import Vuex from "vuex";
+  import Vuex from "vuex";
 
 export const state = () => ({
   person: {},
@@ -6,6 +6,7 @@ export const state = () => ({
   chatMessages: '',
   role: {},
   permission: [],
+
 });
 
 export const getters = {
@@ -58,7 +59,6 @@ export const actions = {
   },
   async loadRole({ commit }) {
     const role = await this.$axios.$get("/api/roles");
-
     commit("SET_ROLE", role);
   },
   async loadPermission({ commit }) {

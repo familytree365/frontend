@@ -1,5 +1,6 @@
 <template>
     <div>
+    <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
     <div class="container auth is-fluid px-0">
         <div class="columns is-multiline is-gapless">
             <div class="column is-6-tablet is-5-desktop is-5-widescreen is-5-fullhd">
@@ -135,14 +136,23 @@
 </template>
 
 <script>
-    import { required } from 'vuelidate/lib/validators'
+import { required } from 'vuelidate/lib/validators'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
     middleware: 'guest',
+    components: {
+        Loading
+    },
     data() {
         return {
             error: false,
             message: "",
             errors:null,
+            isLoading: false,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
             registration: {
                 first_name: "",
                 last_name: "",
@@ -177,12 +187,16 @@ export default {
             if (this.$v.$invalid) {
                 console.log("fail")
             } else {
+                this.isLoading = true 
                 this.$axios
                 .$post("/api/register", this.registration)
                 .then(response => {
+                    
                   this.$router.push("/login");
+                  this.isLoading = false
                 })
                 .catch(error => {
+                    this.isLoading = false
                     this.error = true;
                     this.message = error.response.data.message;
                     this.errors =  error.response.data.errors;

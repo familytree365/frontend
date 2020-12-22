@@ -72,6 +72,10 @@ import 'vue-cal/dist/vuecal.css'
 import { mapGetters } from 'vuex'
 export default {
     layout: 'auth',
+    middleware: 'permission',
+    meta: {
+        permission: { name: 'calendar menu' }
+    },
     components: { VueCal },
     data() {
       const month = new Date().getMonth();

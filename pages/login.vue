@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
      <div class="container auth is-fluid px-0">
         <div class="columns is-multiline is-gapless">
             <div class="column is-6-tablet is-5-desktop is-5-widescreen is-5-fullhd">
@@ -102,8 +103,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import { required } from 'vuelidate/lib/validators'
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
     middleware: 'guest',
+    components: {
+        Loading
+    },
     data() {
         return {
             email: '',
@@ -111,6 +117,10 @@ export default {
             errors:null,
             error: false,
             message: null,
+            isLoading: false,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
         }
     },
     validations: {
@@ -128,6 +138,7 @@ export default {
         if (this.$v.$invalid) {
             console.log("fail")
         } else {
+            this.isLoading = true
             this.$axios.get('/sanctum/csrf-cookie', {
                 headers: {
                   'X-Requested-With': 'XMLHttpRequest'
@@ -143,8 +154,10 @@ export default {
                 })
                 .then(() => {
                     this.loadRole()
+                    this.isLoading = false
                 })
                 .catch(error => {
+                    this.isLoading = false
                     this.error = true;
                     this.message = error.response.data.message;
                     this.errors =  error.response.data.errors;

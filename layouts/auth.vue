@@ -298,6 +298,7 @@
                 </div>
             </div>
         </div>
+        <!-- :icons="icons" -->
         <beautiful-chat
             :participants="participants"
             :titleImageUrl="titleImageUrl"
@@ -306,7 +307,6 @@
             :newMessagesCount="newMessagesCount"
             :isOpen="isChatOpen"
             :close="closeChat"
-            :icons="icons"
             :open="openChat"
             :showEmoji="true"
             :showFile="true"
@@ -380,7 +380,7 @@
             ...mapGetters(['loggedInUser','getRole','getPermission'])
         },
         created() {
-               
+            this.loadPermission()   
         },
         mounted() {
             this.loadRole()
@@ -397,6 +397,9 @@
                 "loadPermission"
             ]),
             async logout() {
+                this.$auth.setToken(false)
+                this.$auth.setRefreshToken(false)
+                this.$axios.setHeader('Authorization', false)
                 await this.$auth.logout();
             },
             collapsible() {

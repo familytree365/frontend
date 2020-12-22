@@ -7,7 +7,7 @@
                     <span class="has-text-weight-medium">Hi {{ loggedInUser.first_name }}</span>, <span class="has-text-weight-light">
                         Welcome Back!</span>
                 </h1>
-            </div>
+            </div>s
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
@@ -180,6 +180,10 @@ export default {
     layout: 'auth',
     components: {
         Loading
+    },
+    middleware: 'permission',
+    meta: {
+        permission: { name: 'dashboard menu' }
     },
     data() {
         return {
