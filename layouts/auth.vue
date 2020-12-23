@@ -123,23 +123,23 @@
                     <div class="menu-wrapper py-1">
                         <aside class="menu">
                             <ul class="menu-list">
-                                <li v-if="getPermission.includes('dashboard menu')">
+                                <li v-if="getPermission.includes('dashboard menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/dashboard" >
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Dashboard</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('calendar menu')">
+                                <li v-if="getPermission.includes('calendar menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/calendar">
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('files menu')">
+                                <li v-if="getPermission.includes('files menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/files" >
                                     <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
                                     Files
                                 </NuxtLink>
                                 </li>
-                                <li class="collapsible is-active" v-if="getPermission.includes('information menu')">
+                                <li class="collapsible" id="information" v-if="getPermission.includes('files menu')" @click="menuDropdown('information')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Information
@@ -148,15 +148,27 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/mediaobject"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</NuxtLink></li>
-                                        <li><NuxtLink to="/addr"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Addresses</NuxtLink></li>
-                                        <li><NuxtLink to="/chan"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Chan</NuxtLink></li>
-                                        <li><NuxtLink to="/refn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Refn</NuxtLink></li>
-                                        <li><NuxtLink to="/subm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subm</NuxtLink></li>
-                                        <li><NuxtLink to="/subn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</NuxtLink></li>
+                                        <li v-if="getPermission.includes('objects index')">
+                                            <NuxtLink to="/mediaobject"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('addresses index')">
+                                            <NuxtLink to="/addr"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Addresses</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('chan index')">
+                                            <NuxtLink to="/chan"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Chan</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('refn index')">
+                                            <NuxtLink to="/refn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Refn</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('subm index')">
+                                            <NuxtLink to="/subm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subm</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('subn index')">
+                                            <NuxtLink to="/subn"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subn</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('sources menu')">
+                                <li class="collapsible" id="sources"  v-if="getPermission.includes('sources menu')" @click="menuDropdown('sources')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'cog']" class="mt-1 mr-2" />
                                         Sources
@@ -165,14 +177,24 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/repository"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</NuxtLink></li>
-                                        <li><NuxtLink to="/source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink></li>
-                                        <li><NuxtLink to="/sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink></li>
-                                        <li><NuxtLink to="/sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink></li>
-                                        <li><NuxtLink to="/sourcerefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink></li>
+                                        <li v-if="getPermission.includes('repositories index')">
+                                            <NuxtLink to="/repository"><font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" />Repositories</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('sources index')">
+                                            <NuxtLink to="/source"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Sources</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('source data index')">
+                                            <NuxtLink to="/sourcedata"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('source data events index')">
+                                            <NuxtLink to="/sourcedataeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Data Events</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('source ref events index')">
+                                            <NuxtLink to="/sourcerefeven"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Source Ref Events</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('people menu')">
+                                <li class="collapsible" id="people" v-if="getPermission.includes('people menu')" @click="menuDropdown('people')">
                                     <a>
                                         <font-awesome-icon :icon="['fas', 'user-friends']" class="mt-1 mr-2" />
                                         People
@@ -181,16 +203,30 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/person"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink></li>
-                                        <li><NuxtLink to="/personalia"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</NuxtLink></li>
-                                        <li><NuxtLink to="/personanci"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</NuxtLink></li>
-                                        <li><NuxtLink to="/personasso"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</NuxtLink></li>
-                                        <li><NuxtLink to="/personevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Events</NuxtLink></li>
-                                        <li><NuxtLink to="/personlds"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person LDS</NuxtLink></li>
-                                        <li><NuxtLink to="/personsubm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</NuxtLink></li>
+                                        <li v-if="getPermission.includes('people index')">
+                                            <NuxtLink to="/person"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> People</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person aliases index')">
+                                            <NuxtLink to="/personalia"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Aliases</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person anci index')">
+                                            <NuxtLink to="/personanci"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Anci</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person association index')">
+                                            <NuxtLink to="/personasso"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Association</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person events index')">
+                                            <NuxtLink to="/personevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Events</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person lds index')">
+                                            <NuxtLink to="/personlds"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person LDS</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('person subm index')">
+                                            <NuxtLink to="/personsubm"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Person Subm</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('family menu')">
+                                <li class="collapsible" id="family" v-if="getPermission.includes('family menu')" @click="menuDropdown('family')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'heart']" class="mt-1 mr-2" />
                                         Family
@@ -199,12 +235,18 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/family"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Families</NuxtLink></li>
-                                        <li><NuxtLink to="/familyevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Events</NuxtLink></li>
-                                        <li><NuxtLink to="/familyslgs"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</NuxtLink></li>
+                                        <li v-if="getPermission.includes('families index')">
+                                            <NuxtLink to="/family"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Families</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('family events index')">
+                                            <NuxtLink to="/familyevent"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Events</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('family slugs index')">
+                                            <NuxtLink to="/familyslgs"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Family Slugs</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('references menu')">
+                                <li class="collapsible" id="references" v-if="getPermission.includes('references menu')" @click="menuDropdown('references')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'thumbs-up']" class="mt-1 mr-2" />
                                         References
@@ -213,14 +255,24 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/citation"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</NuxtLink></li>
-                                        <li><NuxtLink to="/note"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</NuxtLink></li>
-                                        <li><NuxtLink to="/place"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</NuxtLink></li>
-                                        <li><NuxtLink to="/author"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</NuxtLink></li>
-                                        <li><NuxtLink to="/publication"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</NuxtLink></li>
+                                        <li v-if="getPermission.includes('citations index')">
+                                            <NuxtLink to="/citation"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Citations</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('notes index')">
+                                            <NuxtLink to="/note"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Notes</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('places index')">
+                                            <NuxtLink to="/place"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Places</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('authors index')">
+                                            <NuxtLink to="/author"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Authors</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('publications index')">
+                                            <NuxtLink to="/publication"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Publications</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('trees menu')">
+                                <li class="collapsible" id="trees" v-if="getPermission.includes('trees menu')" @click="menuDropdown('trees')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'users']" class="mt-1 mr-2" />
                                         Trees
@@ -229,12 +281,18 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/tree"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</NuxtLink></li>
-                                        <li><NuxtLink to="/tree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</NuxtLink></li>
-                                        <li><NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink></li>
+                                        <li v-if="getPermission.includes('trees index')">
+                                            <NuxtLink to="/tree"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('trees show index')">
+                                            <NuxtLink to="/tree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('pedigree index')">
+                                            <NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li class="collapsible" v-if="getPermission.includes('forum menu')">
+                                <li class="collapsible" id="forum" v-if="getPermission.includes('forum menu')" @click="menuDropdown('forum')">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                                         Forum
@@ -243,42 +301,46 @@
                                 </li>
                                 <div class="content mb-0">
                                     <ul>
-                                        <li><NuxtLink to="/forum"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subjects</NuxtLink></li>
-                                        <li><NuxtLink to="/forumcategory"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Categories</NuxtLink></li>
+                                        <li v-if="getPermission.includes('subjects index')">
+                                            <NuxtLink to="/forum"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Subjects</NuxtLink>
+                                        </li>
+                                        <li v-if="getPermission.includes('categories index')">
+                                            <NuxtLink to="/forumcategory"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Categories</NuxtLink>
+                                        </li>
                                     </ul>
                                 </div>
-                                <li v-if="getPermission.includes('gedcom import menu')">
+                                <li v-if="getPermission.includes('gedcom import menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/gedcom" >
                                     <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
                                     GEDCOM Import
                                 </NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('subscription menu')">
+                                <li v-if="getPermission.includes('subscription menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/subscription" >
                                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                                     Subscription</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('dna upload menu')"> 
+                                <li v-if="getPermission.includes('dna upload menu')" @click="menu" class="simplemenu"> 
                                 <NuxtLink to="/dnaupload" >
                                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
                                     DNA Upload</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('dna matching menu')">
+                                <li v-if="getPermission.includes('dna matching menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/dnamatching" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     DNA Matching</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('how to videos menu')">
+                                <li v-if="getPermission.includes('how to videos menu')" @click="menu" class="simplemenu">
                                     <a href="#">
                                         <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                                         How to Videos</a>
                                 </li> 
-                                <li v-if="getPermission.includes('roles menu')">
+                                <li v-if="getPermission.includes('roles menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/roles" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Roles</NuxtLink>
                                 </li>
-                                <li v-if="getPermission.includes('permissions menu')">
+                                <li v-if="getPermission.includes('permissions menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/permissions" >
                                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                                     Permissions</NuxtLink>
@@ -380,15 +442,50 @@
             ...mapGetters(['loggedInUser','getRole','getPermission'])
         },
         created() {
-            this.loadPermission()   
+            this.loadPermission() 
+            //this.collapsible();  
         },
         mounted() {
             this.loadRole()
             this.loadPermission() 
-            this.collapsible();
+            //this.collapsible();
         },
         
         methods: {
+            menuDropdown(id) {
+                var element = document.getElementsByClassName("collapsible");
+                var i;
+                for (i = 0; i < element.length; i++) {
+                    element[i].classList.remove("active");
+                    var content = element[i].nextElementSibling;
+                    if(element[i].id != id) {
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                        }
+                    }
+                    
+                }
+                var coll = document.getElementById(id)
+                var content = coll.nextElementSibling;
+                coll.classList.add("active");
+                if (content.style.maxHeight) {
+                   content.style.maxHeight = null;
+                }
+                else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            },
+            menu(el) {
+                var element = document.getElementsByClassName("collapsible");
+                var i;
+                for (i = 0; i < element.length; i++) {
+                    element[i].classList.remove("active");
+                    var content = element[i].nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    }
+                }
+            },
             toggler() {
                 this.isActive = !this.isActive;
             },
@@ -403,6 +500,7 @@
                 await this.$auth.logout();
             },
             collapsible() {
+                console.log("hgh")
                 var coll = document.getElementsByClassName('collapsible')
                 var i;
                 for (i = 0; i < coll.length; i++) {
