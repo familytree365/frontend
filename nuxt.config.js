@@ -46,7 +46,9 @@ export default {
             },
         ],
         script: [
-
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js'},
+            {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js'},
+            {src: 'https://cdn.jsdelivr.net/npm/d3-dag@0.3.4/dist/d3-dag.min.js'},
         ],
 
         // Global CSS (https://go.nuxtjs.dev/config-css)
