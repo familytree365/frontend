@@ -1,15 +1,22 @@
 <template>
     <div>
+        <v-select label="name"  v-model="selected_option" :reduce="person => person.id" :options="persons" @input="setSelected"></v-select>
   <div id="tree"></div>
   <button id='saveButton'>Export my PNG</button>
 </div>  
 </template>
 <script>
+    import Vue from 'vue';
+import vSelect from 'vue-select';
+
+Vue.component('v-select', vSelect);
 export default {
-  
+    layout: 'auth',
     data() {
         return {
-            data:{}
+            persons: [],
+            selected_option: null,
+            data:{},
         }
     }, 
     mounted() {
@@ -26,7 +33,24 @@ export default {
 
         this.fetchdata()
     },
+    created() {
+        this.$axios.$get("/api/person")
+                .then(response => {
+                    this.persons = response
+                })
+    },
     methods: {
+        setSelected(value) {
+            const params = {
+                    'start_id': value,
+                };
+         this.$axios.$get("/api/pedigree/show", { params })
+                .then(response => {
+                        this.data = response;
+                        d3.selectAll("svg").remove();
+                        setTimeout(this.generate, 1000);
+                })
+        },
         fetchdata() {
         this.$axios.$get("/api/pedigree/show")
             .then(response => {
