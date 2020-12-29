@@ -1,58 +1,19 @@
 <template>
+    <div>
   <div id="tree"></div>
-
+  <button id='saveButton'>Export my PNG</button>
+</div>  
 </template>
 <script>
 export default {
-    layout: 'auth',
+  
     data() {
         return {
-            data:{
-            "start":"id4",
-            "persons": {
-                "id1": { "id": "id1", "name": "Adam", "birthyear": 1900, "deathyear": 1980, "own_unions": ["u1"], "birthplace":"Alberta", "deathplace":"Austin"},
-                "id2": { "id": "id2", "name": "Berta", "birthyear": 1901, "deathyear": 1985, "own_unions": ["u1"], "birthplace":"Berlin", "deathplace":"Bern" },
-                "id3": { "id": "id3", "name": "Charlene", "birthyear": 1930, "deathyear": 2010, "own_unions": ["u3", "u4"], "parent_union": "u1", "birthplace":"Château", "deathplace":"Cuxhaven" },
-                "id4": { "id": "id4", "name": "Dan", "birthyear": 1926, "deathyear": 2009, "own_unions": [], "parent_union": "u1", "birthplace":"den Haag", "deathplace":"Derince" },
-                "id5": { "id": "id5", "name": "Eric", "birthyear": 1931, "deathyear": 2015, "own_unions": ["u3"], "parent_union": "u2", "birthplace":"Essen", "deathplace":"Edinburgh" },
-                "id6": { "id": "id6", "name": "Francis", "birthyear": 1902, "deathyear": 1970, "own_unions": ["u2"], "birthplace":"Firenze", "deathplace":"Faizabad" },
-                "id7": { "id": "id7", "name": "Greta", "birthyear": 1905, "deathyear": 1990, "own_unions": ["u2"] },
-                "id8": { "id": "id8", "name": "Heinz", "birthyear": 1970, "own_unions": ["u5"], "parent_union": "u3" },
-                "id9": { "id": "id9", "name": "Iver", "birthyear": 1925, "deathyear": 1963, "own_unions": ["u4"] },
-                "id10": { "id": "id10", "name": "Jennifer", "birthyear": 1950, "own_unions": [], "parent_union": "u4" },
-                "id11": { "id": "id11", "name": "Klaus", "birthyear": 1933, "deathyear": 2013, "own_unions": [], "parent_union": "u1" },
-                "id12": { "id": "id12", "name": "Lennart", "birthyear": 1999, "own_unions": [], "parent_union": "u5" },
-            },
-            "unions": {
-                "u1": { "id": "u1", "partner": ["id1", "id2"], "children": ["id3", "id4", "id11"] },
-                "u2": { "id": "u2", "partner": ["id6", "id7"], "children": ["id5"] },
-                "u3": { "id": "u3", "partner": ["id3", "id5"], "children": ["id8"] },
-                "u4": { "id": "u4", "partner": ["id3", "id9"], "children": ["id10"] },
-                "u5": { "id": "u5", "partner": ["id8"], "children": ["id12"] },
-            },
-            "links": [
-                ["id1", "u1"],
-                ["id2", "u1"],
-                ["u1", "id3"],
-                ["u1", "id4"],
-                ["id6", "u2"],
-                ["id7", "u2"],
-                ["u2", "id5"],
-                ["id3", "u3"],
-                ["id5", "u3"],
-                ["u3", "id8"],
-                ["id3", "u4"],
-                ["id9", "u4"],
-                ["u4", "id10"],
-                ["u1", "id11"],
-                ["id8", "u5"],
-                ["u5", "id12"],
-            ]
-            }
+            data:{}
         }
-    },
+    }, 
     mounted() {
-     Array.prototype.remove = function () {
+        Array.prototype.remove = function () {
             var what, a = arguments, L = a.length, ax;
             while (L && this.length) {
                 what = a[--L];
@@ -63,7 +24,18 @@ export default {
             return this;
         };
 
-        // mark unions
+        this.fetchdata()
+    },
+    methods: {
+        fetchdata() {
+        this.$axios.$get("/api/pedigree/show")
+            .then(response => {
+                this.data = response
+                this.generate();
+            })
+        },
+        generate() {
+            // mark unions
         for (var k in this.data.unions) {
             this.data.unions[k].isUnion = true
         }
@@ -72,9 +44,9 @@ export default {
             this.data.persons[k].isUnion = false
         }
 
-       var margin = {top: 20, right: 90, bottom: 30, left: 0},
+       var margin = {top: 20, right: 0, bottom: 30, left: 0},
             width = 1500 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            height = 800 - margin.top - margin.bottom;
         // Set the dimensions and margins of the diagram
         var screen_width = width,
             screen_height = height;
@@ -588,8 +560,119 @@ export default {
 
                 update(d);
             }
+            d3.select('#saveButton').on('click', function(){
+                var svgString = getSVGString(svg.node());
+                svgString2Image( svgString, 2*width, 2*height, 'png', save ); // passes Blob and filesize String to the callback
+
+                function save( dataBlob, filesize ){
+                    saveAs( dataBlob, 'D3 vis exported to PNG.png' ); // FileSaver.js function
+                }
+            });
+
+            // Below are the functions that handle actual exporting:
+            // getSVGString ( svgNode ) and svgString2Image( svgString, width, height, format, callback )
+            function getSVGString( svgNode ) {
+                svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
+                var cssStyleText = getCSSStyles( svgNode );
+                appendCSS( cssStyleText, svgNode );
+
+                var serializer = new XMLSerializer();
+                var svgString = serializer.serializeToString(svgNode);
+                svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+                svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
+
+                return svgString;
+
+                function getCSSStyles( parentElement ) {
+                    var selectorTextArr = [];
+
+                    // Add Parent element Id and Classes to the list
+                    selectorTextArr.push( '#'+parentElement.id );
+                    for (var c = 0; c < parentElement.classList.length; c++)
+                            if ( !contains('.'+parentElement.classList[c], selectorTextArr) )
+                                selectorTextArr.push( '.'+parentElement.classList[c] );
+
+                    // Add Children element Ids and Classes to the list
+                    var nodes = parentElement.getElementsByTagName("*");
+                    for (var i = 0; i < nodes.length; i++) {
+                        var id = nodes[i].id;
+                        if ( !contains('#'+id, selectorTextArr) )
+                            selectorTextArr.push( '#'+id );
+
+                        var classes = nodes[i].classList;
+                        for (var c = 0; c < classes.length; c++)
+                            if ( !contains('.'+classes[c], selectorTextArr) )
+                                selectorTextArr.push( '.'+classes[c] );
+                    }
+
+                    // Extract CSS Rules
+                    var extractedCSSText = "";
+                    for (var i = 0; i < document.styleSheets.length; i++) {
+                        var s = document.styleSheets[i];
+                        
+                        try {
+                            if(!s.cssRules) continue;
+                        } catch( e ) {
+                                if(e.name !== 'SecurityError') throw e; // for Firefox
+                                continue;
+                            }
+
+                        var cssRules = s.cssRules;
+                        for (var r = 0; r < cssRules.length; r++) {
+                            if ( contains( cssRules[r].selectorText, selectorTextArr ) )
+                                extractedCSSText += cssRules[r].cssText;
+                        }
+                    }
+                    
+
+                    return extractedCSSText;
+
+                    function contains(str,arr) {
+                        return arr.indexOf( str ) === -1 ? false : true;
+                    }
+
+                }
+
+                function appendCSS( cssText, element ) {
+                    var styleElement = document.createElement("style");
+                    styleElement.setAttribute("type","text/css"); 
+                    styleElement.innerHTML = cssText;
+                    var refNode = element.hasChildNodes() ? element.children[0] : null;
+                    element.insertBefore( styleElement, refNode );
+                }
+            }
+
+
+            function svgString2Image( svgString, width, height, format, callback ) {
+                var format = format ? format : 'png';
+
+                var imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ); // Convert SVG string to data URL
+
+                var canvas = document.createElement("canvas");
+                var context = canvas.getContext("2d");
+
+                canvas.width = width;
+                canvas.height = height;
+
+                var image = new Image();
+                image.onload = function() {
+                    context.clearRect ( 0, 0, width, height );
+                    context.drawImage(image, 0, 0, width, height);
+
+                    canvas.toBlob( function(blob) {
+                        var filesize = Math.round( blob.length/1024 ) + ' KB';
+                        if ( callback ) callback( blob, filesize );
+                    });
+
+                    
+                };
+
+                image.src = imgsrc;
+            }
         }
-  }
+
+        }
+    },
 }
 </script>
 <style>
