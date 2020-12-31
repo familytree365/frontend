@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <v-select label="name"  v-model="selected_option" :reduce="person => person.id" :options="persons" @input="setSelected"></v-select>
   <div id="tree"></div>
   <button id='saveButton'>Export my PNG</button>
@@ -8,15 +9,23 @@
 <script>
     import Vue from 'vue';
 import vSelect from 'vue-select';
-
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 Vue.component('v-select', vSelect);
 export default {
     layout: 'auth',
+    components: {
+        Loading
+    },
     data() {
         return {
             persons: [],
             selected_option: null,
             data:{},
+            isLoading: true,
+            fullPage: true,
+            color: '#4fcf8d',
+            backgroundColor: '#ffffff',
         }
     }, 
     mounted() {
@@ -41,6 +50,7 @@ export default {
     },
     methods: {
         setSelected(value) {
+            this.isLoading = true
             const params = {
                     'start_id': value,
                 };
@@ -48,15 +58,24 @@ export default {
                 .then(response => {
                         this.data = response;
                         d3.selectAll("svg").remove();
+                        this.isLoading = false
                         setTimeout(this.generate, 1000);
                 })
+                .catch(error => {
+                  this.isLoading = false
+                });
         },
         fetchdata() {
+            this.isLoading = true
         this.$axios.$get("/api/pedigree/show")
             .then(response => {
                 this.data = response
                 this.generate();
+                this.isLoading = false
             })
+            .catch(error => {
+                  this.isLoading = false
+            });
         },
         generate() {
             // mark unions
