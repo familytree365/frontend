@@ -27,7 +27,7 @@
                             Person
                         </p>
                         <p class="card-header-icon">
-                        <NuxtLink v-permission="''" to="/person/create" class="button is-link has-background-primary">
+                        <NuxtLink  to="/person/create" class="button is-link has-background-primary">
                             Create New Person</NuxtLink>
                         </p>
                     </header>
@@ -61,9 +61,9 @@
                                 >
                                 <template slot="table-row" slot-scope="props">
                                     <span v-if="props.column.field == 'action'">
-                                        <NuxtLink v-permission="'people'" :to="'person/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                        <NuxtLink :to="'person/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
                                             Edit</NuxtLink>
-                                        <button v-permission="'people'" @click="deletePerson(rows[props.row.originalIndex].id)" class="button is-danger">
+                                        <button @click="deletePerson(rows[props.row.originalIndex].id)" class="button is-danger">
                                             Delete</button>
                                     </span>
 

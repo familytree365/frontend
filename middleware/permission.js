@@ -1,4 +1,5 @@
 export default function ({store,route,redirect ,context}) {
+  store.dispatch("loadRole")
 	store.dispatch("loadPermission")
     .then(result => {
     	const authorizationLevels = route.meta.map((meta) => {

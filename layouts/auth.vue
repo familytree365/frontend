@@ -443,6 +443,7 @@
         },
         created() {
             this.loadPermission() 
+            this.loadRole()
             //this.collapsible();  
         },
         mounted() {

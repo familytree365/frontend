@@ -132,24 +132,25 @@
         </div>
         <div class="columns is-variable is-flex-desktop-only ai--s">
             <div class="column is-4-desktop is-6-tablet is-flex">
-                <div class="card has-background-primary has-text-white">
-                    <div class="card-content">
-                        <p class="is-size-7">Your Plan Expires in</p>
-                        <p class="is-size-4 mb-2 has-text-weight-medium">06 Days</p>
-                        <p class="is-size-7">Upgrade your plan &amp; join nearly 100 people who have already
-                            registered.</p>
-                        <button
-                            class="button is-size-7 is-uppercase has-background-white has-text-weight-medium has-text-primary is-light mt-4">Upgrade
-                            Plan</button>
-                    </div>
-                </div>
-                <div class="card has-background-primary has-text-centered">
-                    <div class="card-content">
+                <div v-if="getRole[0] == 'free'" class="card has-background-primary has-text-centered">
+                    <div   class="card-content">
                         <p class="is-size-7">Buy Plan</p>
                         <NuxtLink to="subscription"
                             class="button is-size-7 is-uppercase has-text-weight-medium has-text-primary is-light mt-4">Subscribe</NuxtLink>
                     </div>
                 </div>
+                <div v-else class="card has-background-primary has-text-white">
+                    <div class="card-content">
+                        <p class="is-size-7">Your Plan Expires in</p>
+                        <p class="is-size-4 mb-2 has-text-weight-medium">{{trial ? trial.days : ''}} Days</p>
+                        <p class="is-size-7">Upgrade your plan &amp; join nearly 100 people who have already
+                            registered.</p>
+                        <NuxtLink to="subscription"
+                            class="button is-size-7 is-uppercase has-background-white has-text-weight-medium has-text-primary is-light mt-4">Upgrade
+                            Plan </NuxtLink>
+                    </div>
+                </div>
+                
             </div>
             <div class="column is-4-desktop is-6-tablet is-flex">
                 <div class="card has-background-white has-text-black">
@@ -209,6 +210,7 @@ export default {
                     'Other'
                 ]
             },
+            trial: null,
         }
     },
     computed: {
@@ -240,10 +242,13 @@ export default {
     },
     async mounted () {
         this.loaded = false
-        const { data: data } = await this.$axios.get("/api/dashboard"); 
+        const { data: data } = await this.$axios.get("/api/dashboard");
+        const { data: trial } = await this.$axios.get("/api/trial"); 
         this.barChartData.datasets[0].data = data.chart 
         this.loaded = true
         this.isLoading = false 
+        this.trial = trial
+        console.log(trial)
     },
     
     
