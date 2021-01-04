@@ -12,8 +12,10 @@
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                href="dashboard.html">Home</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                                                                  aria-current="page">Dashboard</a></li>
+                        <li class="is-size-7 has-text-weight-medium is-active">
+                            <a href="dashboard.html"
+                                aria-current="page">Dashboard</a>
+                            </li>
                     </ul>
                 </nav>
             </div>
@@ -26,7 +28,7 @@
                         <p class="card-header-title">
                             Trees
                         </p>
-                        <p class="card-header-icon">
+                        <p class="card-header-icon" v-if="create_tree === true">
                         <NuxtLink to="/tree/create" class="button is-link has-background-primary">
                             Create New Tree</NuxtLink>
                         </p>
@@ -89,6 +91,7 @@
             return {
                 isLoading: false,
                 totalRecords: 0,
+                create_tree: false,
                 columns: [
                     {
                         label: 'Name',
@@ -217,9 +220,16 @@
                             })
                 }
             },
+            createTree() {
+                this.$axios.$get("/api/tree/create")
+                        .then(response => {
+                            this.create_tree = response.create_tree
+                        })
+            },
         },
 
         created() {
+            this.createTree();
         },
     }
 
