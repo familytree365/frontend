@@ -155,7 +155,10 @@
             <div class="column is-4-desktop is-6-tablet is-flex">
                 <div class="card has-background-white has-text-black">
                     <div class="card-content has-text-centered py-5">
-                         <v-select label="name"  v-model="selected_option" :reduce="tree => tree.id" :options="options" @input="setSelected"></v-select>
+                        <label>Select Company</label>
+                         <v-select label="name"  v-model="selected_company" :reduce="company => company.id" :options="companies" @input="setSelected"></v-select>
+                        <label>Select Tree</label>
+                         <v-select label="name"  v-model="selected_tree" :reduce="tree => tree.id" :options="trees" @input="setSelected"></v-select>
                         <font-awesome-icon :icon="['fas', 'user-circle']" class="has-text-primary mb-5" style="font-size: 55px;"/>
                         <p class="is-size-7 mb-2 has-text-weight-medium">{{ loggedInUser.email }}</p>
                         <p class="is-size-7 mb-4 has-text-weight-medium">{{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</p>
@@ -189,8 +192,10 @@ export default {
     data() {
         return {
             loaded: false,
-            options: [],
-            selected_option: null,
+            trees: [],
+            companies: [],
+            selected_company: null,
+            selected_tree: null,
             isLoading: true,
             fullPage: true,
             color: '#4fcf8d',
@@ -221,24 +226,45 @@ export default {
                 "loadRole",
                 "loadPermission"
             ]),
-      setSelected(value) {
-         this.$axios.$get("/api/changetree", {
-                    params: { id : value }
-                })
+        setSelected(value) {
+            this.$axios.$post("/api/changedb", {
+                    company_id : this.selected_company , tree_id : this.selected_tree})
                 .then(response => {
                 })
-      },
-      getallTree() {
-        this.$axios.$get("/api/tree")
-            .then(response => {
-                this.selected_option = response[0].id
-                this.options = response
-            })
+        },
+        
+        getCompanies() {
+            this.$axios.$get("/api/get_companies")
+                .then(response => {
+                    this.companies = response
+                    this.companies.map((company) => {
+                        if(company.current_tenant == 1) {
+                            this.selected_company = company.id
+                            this.getTree()
+                        }
+                            
+                    })
+                })
+        },
+        getTree() {
+            this.$axios.$get("/api/get_tree",{
+                    params: { company_id : this.selected_company }
+                })
+                .then(response => {
+                    this.trees = response
+                    this.trees.map((tree) => {
+                        if(tree.current_tenant == 1) {
+                            this.selected_tree = tree.id
+                        }
+                            
+                    })
+                })
         },
     },
     created() {
         this.loadRole()
-        this.loadPermission()     
+        this.loadPermission()
+        this.getCompanies()  
     },
     async mounted () {
         this.loaded = false

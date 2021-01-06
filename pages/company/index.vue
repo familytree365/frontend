@@ -12,10 +12,7 @@
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                href="dashboard.html">Home</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active">
-                            <a href="dashboard.html"
-                                aria-current="page">Dashboard</a>
-                            </li>
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html" aria-current="page">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
@@ -26,11 +23,11 @@
                 <div class="card has-background-white has-text-black">
                     <header class="card-header">
                         <p class="card-header-title">
-                            Trees
+                            company
                         </p>
-                        <p class="card-header-icon" v-if="create_tree === true">
-                        <NuxtLink to="/tree/create" class="button is-link has-background-primary">
-                            Create New Tree</NuxtLink>
+                        <p class="card-header-icon">
+                        <NuxtLink  to="/company/create" class="button is-link has-background-primary">
+                            Create New company</NuxtLink>
                         </p>
                     </header>
                     <div class="card-content">
@@ -63,9 +60,9 @@
                                 >
                                 <template slot="table-row" slot-scope="props">
                                     <span v-if="props.column.field == 'action'">
-                                        <NuxtLink :to="'tree/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                        <NuxtLink :to="'company/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
                                             Edit</NuxtLink>
-                                        <button @click="deleteTree(rows[props.row.originalIndex].id)" class="button is-danger">
+                                        <button @click="deleteCompany(rows[props.row.originalIndex].id)" class="button is-danger">
                                             Delete</button>
                                     </span>
 
@@ -91,7 +88,6 @@
             return {
                 isLoading: false,
                 totalRecords: 0,
-                create_tree: true,
                 columns: [
                     {
                         label: 'Name',
@@ -99,23 +95,6 @@
                         filterOptions: {
                             enabled: true, // enable filter for this column
                             placeholder: 'Filter Name', // placeholder for filter input
-                            filterValue: '', // initial populated value for this filter
-                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                            filterFn: this.columnFilterFn, //custom filter function that
-
-                        },
-                    },
-                    {
-                        label: 'company',
-                        field: 'company.name',
-                        sortable: false,
-                    },
-                    {
-                        label: 'Description',
-                        field: 'description',
-                        filterOptions: {
-                            enabled: true, // enable filter for this column
-                            placeholder: 'Filter Description', // placeholder for filter input
                             filterValue: '', // initial populated value for this filter
                             filterDropdownItems: [], // dropdown (with selected values) instead of text input
                             filterFn: this.columnFilterFn, //custom filter function that
@@ -158,9 +137,6 @@
         },
 
         computed: {
-            ...mapGetters([
-                    'getPerson'
-            ])
         },
 
         methods: {
@@ -198,7 +174,7 @@
                 this.loadItems();
             },
             loadItems() {
-                this.$axios.$get("/api/tree", {
+                this.$axios.$get("/api/company", {
                     params: this.serverParams
                 })
                         .then(response => {
@@ -210,26 +186,20 @@
             searchFunction(row, col, cellValue, searchTerm) {
                 console.log(searchTerm);
             },
-            deleteTree(id) {
+            deleteCompany(id) {
                 if (confirm("Do you really want to delete?")) {
 
                     this.$axios
-                            .$delete("/api/tree/" + id)
+                            .$delete("/api/company/" + id)
                             .then(response => {
                                 this.loadItems();
                             })
                 }
             },
-            createTree() {
-                this.$axios.$get("/api/tree/create")
-                        .then(response => {
-                            this.create_tree = response.create_tree
-                        })
-            },
         },
 
         created() {
-            //this.createTree();
+            // this.loadcompany();
         },
     }
 
