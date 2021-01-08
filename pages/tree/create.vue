@@ -11,6 +11,12 @@
             <div class="card-content">
                 <form>
                     <div class="field">
+                        <label class="label">Select Company</label>
+                        <div class="control">
+                            <v-select label="name"  v-model="tree.company_id" :reduce="company => company.id" :options="companies"></v-select>
+                        </div>
+                    </div>
+                    <div class="field">
                         <label class="label">Name</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Name" v-model="tree.name"  :class="{ 'is-danger': $v.tree.name.$error }">
@@ -48,18 +54,32 @@
                 age: 0,
                 tree: {
                     name: "",
+                    company_id : "",
                     description: "",
-                }
+                },
+                companies: [],
+                selected_company: "",
             };
         },
         validations: {
             tree: {
+                company_id: {
+                    required,
+                },
                 name: {
                     required,
                 },
+
             },
         },
         methods: {
+            getCompany() {
+                this.$axios.$get("/api/company")
+                        .then(response => {
+                           console.log(response);
+                           this.companies = response
+                        })
+            },
 
             save() {
                 this.$v.$touch();
@@ -72,6 +92,9 @@
                             });
                 }
             },
-        }
+        },
+        created() {
+            this.getCompany();
+        },
     }
 </script>

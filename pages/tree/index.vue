@@ -91,7 +91,7 @@
             return {
                 isLoading: false,
                 totalRecords: 0,
-                create_tree: true,
+                create_tree: false,
                 columns: [
                     {
                         label: 'Name',
@@ -218,7 +218,7 @@
                             .then(response => {
                                 this.loadItems();
                             })
-                }
+                }k
             },
             createTree() {
                 this.$axios.$get("/api/tree/create")
@@ -229,7 +229,7 @@
         },
 
         created() {
-            //this.createTree();
+            this.createTree();
         },
     }
 

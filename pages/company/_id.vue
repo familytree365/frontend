@@ -3,13 +3,13 @@
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                    Create company
+                    Edit company
                 </h1>
                 <NuxtLink to="/company" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>

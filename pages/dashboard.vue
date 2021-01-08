@@ -7,7 +7,7 @@
                     <span class="has-text-weight-medium">Hi {{ loggedInUser.first_name }}</span>, <span class="has-text-weight-light">
                         Welcome Back!</span>
                 </h1>
-            </div>s
+            </div>
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
@@ -155,8 +155,14 @@
             <div class="column is-4-desktop is-6-tablet is-flex">
                 <div class="card has-background-white has-text-black">
                     <div class="card-content has-text-centered py-5">
+                        <div v-if="changedb == true" class="notification is-success">
+                        Changed Tree successfully!
+                        </div>
+                        <div v-if="changedb == false" class="notification is-danger">
+                            Somthing Wrong!
+                        </div>
                         <label>Select Company</label>
-                         <v-select label="name"  v-model="selected_company" :reduce="company => company.id" :options="companies" @input="setSelected"></v-select>
+                         <v-select label="name"  v-model="selected_company" :reduce="company => company.id" :options="companies" @input="setSelectedCompany"></v-select>
                         <label>Select Tree</label>
                          <v-select label="name"  v-model="selected_tree" :reduce="tree => tree.id" :options="trees" @input="setSelected"></v-select>
                         <font-awesome-icon :icon="['fas', 'user-circle']" class="has-text-primary mb-5" style="font-size: 55px;"/>
@@ -173,10 +179,6 @@
 
 <script>
 
-import Vue from 'vue';
-import vSelect from 'vue-select';
-
-Vue.component('v-select', vSelect);
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { mapGetters, mapActions } from "vuex";
@@ -199,6 +201,7 @@ export default {
             isLoading: true,
             fullPage: true,
             color: '#4fcf8d',
+            changedb: null,
             backgroundColor: '#ffffff',
             barChartData: {
                 datasets: [{
@@ -226,10 +229,16 @@ export default {
                 "loadRole",
                 "loadPermission"
             ]),
+        setSelectedCompany(value) {
+            this.selected_tree = null
+            this.getTree();
+        },
         setSelected(value) {
             this.$axios.$post("/api/changedb", {
                     company_id : this.selected_company , tree_id : this.selected_tree})
                 .then(response => {
+                    console.log(response)
+                    this.changedb = response.changedb
                 })
         },
         
@@ -247,6 +256,7 @@ export default {
                 })
         },
         getTree() {
+            this.selected_tree = null
             this.$axios.$get("/api/get_tree",{
                     params: { company_id : this.selected_company }
                 })
