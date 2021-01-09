@@ -20,7 +20,7 @@
                     <div class="field">
                       <label class="label">gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="gid" v-model="subm.gid"  :class="{ 'is-danger': $v.subm.gid.$error }">
+                        <v-select label="name"  v-model="subm.gid" :reduce="subm => subm.id" :options="options" :class="{ 'is-danger': $v.subm.gid.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.subm.gid.$error }" v-if="!$v.subm.gid.required">Field is required</p>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="field">
                       <label class="label">addr id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="addr id" v-model="subm.addr_id"  :class="{ 'is-danger': $v.subm.addr_id.$error }">
+                        <v-select label="name"  v-model="subm.addr_id" :reduce="subm => subm.id" :options="options" :class="{ 'is-danger': $v.subm.addr_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.subm.addr_id.$error }" v-if="!$v.subm.addr_id.required">Field is required</p>
                     </div>
@@ -119,7 +119,21 @@ export default {
                 phon: "",
                 fax: "",
                 www: ""
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

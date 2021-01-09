@@ -76,35 +76,35 @@
                     <div class="field">
                         <label class="label">repository id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="repository id" v-model="source.repository_id" :class="{ 'is-danger': $v.source.repository_id.$error }">
+                            <v-select label="name"  v-model="source.repository_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.repository_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.repository_id.$error }" v-if="!$v.source.repository_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">author id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="author id" v-model="source.author_id" :class="{ 'is-danger': $v.source.author_id.$error }">
+                            <v-select label="name"  v-model="source.author_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.author_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.author_id.$error }" v-if="!$v.source.author_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">publication id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="publication id" v-model="source.publication_id" :class="{ 'is-danger': $v.source.publication_id.$error }">
+                            <v-select label="name"  v-model="source.publication_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.publication_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.publication_id.$error }" v-if="!$v.source.publication_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">type id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="type id" v-model="source.type_id" :class="{ 'is-danger': $v.source.type_id.$error }">
+                            <v-select label="name"  v-model="source.type_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.type_id.$error }" v-if="!$v.source.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">is active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="is active" v-model="source.is_active" :class="{ 'is-danger': $v.source.is_active.$error }">
+                            <v-select label="name"  v-model="source.is_active" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.is_active.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.is_active.$error }" v-if="!$v.source.is_active.required">Field is required</p>
                     </div>
@@ -118,7 +118,7 @@
                     <div class="field">
                         <label class="label">gid</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="gid" v-model="source.gid" :class="{ 'is-danger': $v.source.gid.$error }">
+                            <v-select label="name"  v-model="source.gid" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.gid.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.gid.$error }" v-if="!$v.source.gid.required">Field is required</p>
                     </div>
@@ -178,7 +178,21 @@
                     gid: "",
                     quay: "",
                     page: ""
-                }
+                },
+                options : [
+                  {
+                    id: 1,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 2,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 3,
+                    name: "HTML5",
+                  },
+                ],
             };
         },
         validations: {

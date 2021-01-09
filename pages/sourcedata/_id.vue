@@ -20,7 +20,7 @@
                     <div class="field">
                       <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Gid" v-model="sourcedata.gid" :class="{ 'is-danger': $v.sourcedata.gid.$error }">
+                        <v-select label="name"  v-model="sourcedata.gid" :reduce="sourcedata => sourcedata.id" :options="options" :class="{ 'is-danger': $v.sourcedata.gid.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcedata.gid.$error }" v-if="!$v.sourcedata.gid.required">Field is required</p>
                     </div>
@@ -64,7 +64,21 @@ export default {
                 date: "",
                 text: "",
                 agnc: ""
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

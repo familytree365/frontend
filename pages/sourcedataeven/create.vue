@@ -20,7 +20,7 @@
                     <div class="field">
                       <label class="label">Gid</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Gid" v-model="sourcedataeven.gid" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }">
+                         <v-select label="name"  v-model="sourcedataeven.gid" :reduce="sourcedataeven => sourcedataeven.id" :options="options" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }" v-if="!$v.sourcedataeven.gid.required">Field is required</p>
                     </div>
@@ -34,9 +34,9 @@
                     <div class="field">
                       <label class="label">Plac</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Plac" v-model="sourcedataeveneven.plac" :class="{ 'is-danger': $v.sourcedataeveneven.plac.$error }">
+                        <input class="input" type="text" placeholder="Plac" v-model="sourcedataeven.plac" :class="{ 'is-danger': $v.sourcedataeven.plac.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedataeveneven.plac.$error }" v-if="!$v.sourcedataeveneven.plac.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.plac.$error }" v-if="!$v.sourcedataeven.plac.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -66,7 +66,21 @@ export default {
                 gid: "",
                 date: "",
                 plac: ""
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

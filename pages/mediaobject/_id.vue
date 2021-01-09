@@ -13,7 +13,7 @@
                     <div class="field">
                         <label class="label">Gid</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Gid" v-model="mediaobject.gid"  :class="{ 'is-danger': $v.mediaobject.gid.$error }">
+                            <v-select label="name"  v-model="mediaobject.gid" :reduce="mediaobject => mediaobject.id" :options="options" :class="{ 'is-danger': $v.mediaobject.gid.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.mediaobject.gid.$error }" v-if="!$v.mediaobject.gid.required">Field is required</p>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="field">
                         <label class="label">Obje Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Obje Id" v-model="mediaobject.obje_id" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }">
+                            <v-select label="name"  v-model="mediaobject.obje_id" :reduce="mediaobject => mediaobject.id" :options="options" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }" v-if="!$v.mediaobject.obje_id.required">Field is required</p>
                     </div>
@@ -71,7 +71,21 @@
                     titl: "",
                     obje_id: "",
                     rin: ""
-                }
+                },
+                options : [
+                  {
+                    id: 1,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 2,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 3,
+                    name: "HTML5",
+                  },
+                ],
             };
         },
         validations: {

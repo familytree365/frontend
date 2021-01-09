@@ -27,7 +27,7 @@
                     <div class="field">
                       <label class="label">Addr Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Addr Id" v-model="repository.addr_id"  :class="{ 'is-danger': $v.repository.addr_id.$error }">
+                        <v-select label="name"  v-model="repository.addr_id" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.addr_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.addr_id.$error }" v-if="!$v.repository.addr_id.required">Field is required</p>
                     </div>
@@ -76,14 +76,14 @@
                     <div class="field">
                       <label class="label">Type ID</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Type ID" v-model="repository.type_id" :class="{ 'is-danger': $v.repository.type_id.$error }">
+                        <v-select label="name"  v-model="repository.type_id" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.type_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.type_id.$error }" v-if="!$v.repository.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Is Active</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Is Active" v-model="repository.is_active" :class="{ 'is-danger': $v.repository.is_active.$error }">
+                         <v-select label="name"  v-model="repository.is_active" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.is_active.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.is_active.$error }" v-if="!$v.repository.is_active.required">Field is required</p>
                     </div>
@@ -122,7 +122,21 @@ export default {
                 description: "",
                 type_id: "",
                 is_active: "",
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

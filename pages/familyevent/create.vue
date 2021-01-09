@@ -13,14 +13,14 @@
                     <div class="field">
                       <label class="label">Family Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Family Id" v-model="familyevent.family_id"  :class="{ 'is-danger': $v.familyevent.family_id.$error }">
+                        <v-select label="name" multiple  v-model="familyevent.family_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.family_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.family_id.$error }" v-if="!$v.familyevent.family_id.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Places Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Places Id" v-model="familyevent.places_id" :class="{ 'is-danger': $v.familyevent.places_id.$error }">
+                        <v-select label="name" multiple  v-model="familyevent.places_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.places_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.places_id.$error }" v-if="!$v.familyevent.places_id.required">Field is required</p>
                     </div>
@@ -154,7 +154,21 @@ export default {
                 age: "",
                 husb: "",
                 wife: "",
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

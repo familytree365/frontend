@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
@@ -42,9 +43,13 @@
 </template>
 
 <script>
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
     import { required } from 'vuelidate/lib/validators'
     export default {
-
+         components: {
+            Loading
+        },
         layout: 'auth',
         data() {
             return {
@@ -59,6 +64,10 @@
                 },
                 companies: [],
                 selected_company: "",
+                isLoading: true,
+                fullPage: true,
+                color: '#4fcf8d',
+                backgroundColor: '#ffffff',
             };
         },
         validations: {
@@ -71,6 +80,9 @@
                 },
 
             },
+        },
+        mounted() {
+            this.createTree()
         },
         methods: {
             getCompany() {
@@ -91,6 +103,16 @@
                             .catch(error => {
                             });
                 }
+            },
+            createTree() {
+                this.$axios.$get("/api/tree/create")
+                        .then(response => {
+                            if(response.create_tree == false) {
+                                this.$router.push("/error");
+                            } else {
+                                this.isLoading = false
+                            }
+                        })
             },
         },
         created() {

@@ -13,7 +13,7 @@
                     <div class="field">
                         <label class="label">Family Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Family Id" v-model="familyslgs.family_id"  :class="{ 'is-danger': $v.familyslgs.family_id.$error }">
+                            <v-select label="name" multiple  v-model="familyslgs.family_id" :reduce="familyslgs => familyslgs.id" :options="options" :class="{ 'is-danger': $v.familyslgs.family_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.familyslgs.family_id.$error }" v-if="!$v.familyslgs.family_id.required">Field is required</p>
                     </div>
@@ -74,7 +74,21 @@
                     date: "",
                     plac: "",
                     temp: "",
-                }
+                },
+                options : [
+                  {
+                    id: 1,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 2,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 3,
+                    name: "HTML5",
+                  },
+                ],
             };
         },
         validations: {

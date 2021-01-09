@@ -27,21 +27,21 @@
                     <div class="field">
                         <label class="label">Husband Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Husband Id" v-model="family.husband_id" :class="{ 'is-danger': $v.family.husband_id.$error }">
+                            <v-select label="name" multiple  v-model="family.husband_id" :reduce="husband => husband.id" :options="options" :class="{ 'is-danger': $v.family.husband_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.husband_id.$error }" v-if="!$v.family.husband_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Wife Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Wife Id" v-model="family.wife_id" :class="{ 'is-danger': $v.family.wife_id.$error }">
+                            <v-select label="name" multiple  v-model="family.wife_id" :reduce="wife => wife.id" :options="options" :class="{ 'is-danger': $v.family.wife_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.wife_id.$error }" v-if="!$v.family.wife_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Type Id" v-model="family.type_id" :class="{ 'is-danger': $v.family.type_id.$error }">
+                            <v-select label="name" multiple  v-model="family.type_id" :reduce="type => type.id" :options="options" :class="{ 'is-danger': $v.family.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.type_id.$error }" v-if="!$v.family.type_id.required">Field is required</p>
                     </div>
@@ -98,7 +98,21 @@
                     chan: "",
                     nchi: "",
                     rin: "",
-                }
+                },
+                options : [
+                  {
+                    id: 1,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 2,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 3,
+                    name: "HTML5",
+                  },
+                ],
             };
         },
         validations: {
