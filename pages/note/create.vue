@@ -13,7 +13,8 @@
                     <div class="field">
                         <label class="label">Gid</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Gid" v-model="note.gid"  :class="{ 'is-danger': $v.note.gid.$error }">
+                               <v-select label="name" multiple  v-model="note.gid
+                            " :reduce="note => note.id" :options="options" :class="{ 'is-danger': $v.note.gid.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.note.gid.$error }" v-if="!$v.note.gid.required">Field is required</p>
                     </div>
@@ -55,7 +56,8 @@
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Type Id" v-model="note.type_id" :class="{ 'is-danger': $v.note.type_id.$error }">
+                               <v-select label="name" multiple  v-model="note.type_id
+                            " :reduce="note => note.id" :options="options" :class="{ 'is-danger': $v.note.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.note.type_id.$error }" v-if="!$v.note.type_id.required">Field is required</p>
                     </div>
@@ -98,7 +100,21 @@
                     is_active: "",
                     type_id: "",
                     group: "",
-                }
+                },
+                options : [
+                  {
+                    id: 1,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 2,
+                    name: "HTML5",
+                  },
+                  {
+                    id: 3,
+                    name: "HTML5",
+                  },
+                ],
             };
         },
         validations: {

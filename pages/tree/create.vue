@@ -68,6 +68,19 @@
                 fullPage: true,
                 color: '#4fcf8d',
                 backgroundColor: '#ffffff',
+                male : [],
+                female: [],
+                types : [],
+                status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
             };
         },
         validations: {

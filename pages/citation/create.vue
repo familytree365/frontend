@@ -27,7 +27,8 @@
                     <div class="field">
                       <label class="label">Repository Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Repository Id" v-model="citation.repository_id" :class="{ 'is-danger': $v.citation.repository_id.$error }">
+                        <v-select label="name" multiple  v-model="citation.repository_id
+                        " :reduce="citation => citation.id" :options="options" :class="{ 'is-danger': $v.citation.repository_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.citation.repository_id.$error }" v-if="!$v.citation.repository_id.required">Field is required</p>
                     </div>
@@ -62,7 +63,8 @@
                     <div class="field">
                       <label class="label">Source Id</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Source Id" v-model="citation.source_id" :class="{ 'is-danger': $v.citation.source_id.$error }">
+                        <v-select label="name" multiple  v-model="citation.source_id
+                        " :reduce="citation => citation.id" :options="options" :class="{ 'is-danger': $v.citation.source_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.citation.source_id.$error }" v-if="!$v.citation.source_id.required">Field is required</p>
                     </div>
@@ -98,7 +100,21 @@ export default {
                 is_active: "",
                 confidence: "",
                 source_id: "",
-            }
+            },
+            options : [
+              {
+                id: 1,
+                name: "HTML5",
+              },
+              {
+                id: 2,
+                name: "HTML5",
+              },
+              {
+                id: 3,
+                name: "HTML5",
+              },
+            ],
         };
     },
     validations: {

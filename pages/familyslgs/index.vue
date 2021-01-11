@@ -13,7 +13,7 @@
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                href="dashboard.html">Home</a></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                                                                  aria-current="page">Dashboard</a></li>
+                            aria-current="page">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
@@ -91,8 +91,8 @@
                 totalRecords: 0,
                 columns: [
                     {
-                        label: 'Family Id',
-                        field: 'family_id',
+                        label: 'Family',
+                        field: 'family.description',
                         filterOptions: {
                             enabled: true, // enable filter for this column
                             placeholder: 'Filter Family Id', // placeholder for filter input

@@ -11,9 +11,9 @@
             <div class="card-content">
                 <form @click.prevent="save()">
                     <div class="field">
-                        <label class="label">Family Id</label>
+                        <label class="label">Family</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="familyslgs.family_id" :reduce="familyslgs => familyslgs.id" :options="options" :class="{ 'is-danger': $v.familyslgs.family_id.$error }"></v-select>
+                            <v-select label="description"  v-model="familyslgs.family_id" :reduce="familyslgs => familyslgs.id" :options="family" :class="{ 'is-danger': $v.familyslgs.family_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.familyslgs.family_id.$error }" v-if="!$v.familyslgs.family_id.required">Field is required</p>
                     </div>
@@ -75,20 +75,7 @@
                     plac: "",
                     temp: "",
                 },
-                options : [
-                  {
-                    id: 1,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 2,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 3,
-                    name: "HTML5",
-                  },
-                ],
+                family : [],
             };
         },
         validations: {
@@ -123,6 +110,15 @@
                             });
                 }
             },
+            getFamily() {
+                this.$axios.$get("/api/family")
+                .then(response => {
+                    this.family = response;
+                })
+            },
+        },
+        created() {
+            this.getFamily()
         }
     }
 </script>

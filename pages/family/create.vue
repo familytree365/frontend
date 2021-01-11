@@ -1,5 +1,6 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
@@ -20,30 +21,27 @@
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Is Active" v-model="family.is_active" :class="{ 'is-danger': $v.family.is_active.$error }">
+                            <v-select label="name"  v-model="family.is_active" :reduce="family => family.id" :options="status" :class="{ 'is-danger': $v.family.is_active.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.is_active.$error }" v-if="!$v.family.is_active.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Husband Id</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="family.husband_id" :reduce="husband => husband.id" :options="options" :class="{ 'is-danger': $v.family.husband_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.husband_id" :reduce="husband => husband.id" :options="male" :class="{ 'is-danger': $v.family.husband_id.$error }"></v-select>
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.husband_id.$error }" v-if="!$v.family.husband_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Wife Id</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="family.wife_id" :reduce="wife => wife.id" :options="options" :class="{ 'is-danger': $v.family.wife_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.wife_id" :reduce="wife => wife.id" :options="female" :class="{ 'is-danger': $v.family.wife_id.$error }"></v-select>
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.wife_id.$error }" v-if="!$v.family.wife_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="family.type_id" :reduce="type => type.id" :options="options" :class="{ 'is-danger': $v.family.type_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.type_id" :reduce="type => type.id" :options="types" :class="{ 'is-danger': $v.family.type_id.$error }"></v-select>
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.type_id.$error }" v-if="!$v.family.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Chan</label>
@@ -80,9 +78,14 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
     export default {
 
         layout: 'auth',
+        components: {
+            Loading
+        },
         data() {
             return {
                 error: false,
@@ -99,18 +102,21 @@
                     nchi: "",
                     rin: "",
                 },
-                options : [
+                isLoading: true,
+                fullPage: true,
+                color: '#4fcf8d',
+                backgroundColor: '#ffffff',
+                male : [],
+                female: [],
+                types : [],
+                status : [
                   {
                     id: 1,
-                    name: "HTML5",
+                    name: "Active",
                   },
                   {
-                    id: 2,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 3,
-                    name: "HTML5",
+                    id: 0,
+                    name: "Inactive",
                   },
                 ],
             };
@@ -156,6 +162,19 @@
                             });
                 }
             },
-        }
+            create() {
+                this.isLoading = true
+                this.$axios.$get("/api/family/create")
+                        .then(response => {
+                           this.male = response.male
+                           this.female = response.female
+                           this.types = response.types
+                           this.isLoading = false
+                        })
+            },
+        },
+        created() {
+            this.create();
+        },
     }
 </script>

@@ -1,19 +1,20 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                    Create FamilySlgs
+                    Edit FamilySlgs
                 </h1>
                 <NuxtLink to="/familyslgs" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
-                        <label class="label">Family Id</label>
+                        <label class="label">Family</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Family Id" v-model="familyslgs.family_id"  :class="{ 'is-danger': $v.familyslgs.family_id.$error }">
+                            <v-select label="description"  v-model="familyslgs.family_id" :reduce="familyslgs => familyslgs.id" :options="family" :class="{ 'is-danger': $v.familyslgs.family_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.familyslgs.family_id.$error }" v-if="!$v.familyslgs.family_id.required">Field is required</p>
                     </div>
@@ -47,7 +48,7 @@
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button  class="button is-link has-background-primary" @click.prevent="save()">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -59,8 +60,13 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
     export default {
         layout: 'auth',
+        components: {
+            Loading
+        },
         data() {
             return {
                 error: false,
@@ -71,7 +77,12 @@
                     date: "",
                     plac: "",
                     temp: ""
-                }
+                },
+                family: [],
+                isLoading: true,
+                fullPage: true,
+                color: '#4fcf8d',
+                backgroundColor: '#ffffff',
             };
         },
         validations: {
@@ -105,10 +116,21 @@
                             });
                 }
             },
+            getFamily() {
+                this.isLoading = true
+                this.$axios.$get("/api/family")
+                .then(response => {
+                    this.family = response;
+                    this.isLoading = false
+                })
+            },
         },
         async asyncData( { $axios, params }) {
             const familyslgs = await $axios.$get('/api/familyslgs/' + params.id)
             return {familyslgs}
+        },
+        created() {
+            this.getFamily()
         }
     }
 </script>

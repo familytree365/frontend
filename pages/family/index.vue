@@ -114,8 +114,8 @@ export default {
                     },
                 },
                 {
-                    label: 'Husband Id',
-                    field: 'husband_id',
+                    label: 'Husband',
+                    field: 'husband.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Husband Id', // placeholder for filter input
@@ -125,8 +125,8 @@ export default {
                     },
                 },
                 {
-                    label: 'Wife Id',
-                    field: 'wife_id',
+                    label: 'Wife',
+                    field: 'wife.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Wife Id', // placeholder for filter input

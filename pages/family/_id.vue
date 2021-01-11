@@ -1,15 +1,16 @@
 <template>
     <div>
+        <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                    Create Family
+                    Edit Family
                 </h1>
                 <NuxtLink to="/family" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form >
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
@@ -20,28 +21,28 @@
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Is Active" v-model="family.is_active" :class="{ 'is-danger': $v.family.is_active.$error }">
+                            <v-select label="name"  v-model="family.is_active" :reduce="family => family.id" :options="status" :class="{ 'is-danger': $v.family.is_active.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.is_active.$error }" v-if="!$v.family.is_active.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Husband Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Husband Id" v-model="family.husband_id" :class="{ 'is-danger': $v.family.husband_id.$error }">
+                            <v-select label="name"  v-model="family.husband_id" :reduce="husband => husband.id" :options="male" :class="{ 'is-danger': $v.family.husband_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.husband_id.$error }" v-if="!$v.family.husband_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Wife Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Wife Id" v-model="family.wife_id" :class="{ 'is-danger': $v.family.wife_id.$error }">
+                            <v-select label="name"  v-model="family.wife_id" :reduce="wife => wife.id" :options="female" :class="{ 'is-danger': $v.family.wife_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.wife_id.$error }" v-if="!$v.family.wife_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Type Id" v-model="family.type_id" :class="{ 'is-danger': $v.family.type_id.$error }">
+                            <v-select label="name"  v-model="family.type_id" :reduce="type => type.id" :options="types" :class="{ 'is-danger': $v.family.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.family.type_id.$error }" v-if="!$v.family.type_id.required">Field is required</p>
                     </div>
@@ -68,7 +69,7 @@
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -80,8 +81,13 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
     export default {
         layout: 'auth',
+        components: {
+            Loading
+        },
         data() {
             return {
                 error: false,
@@ -95,7 +101,24 @@
                     chan: "",
                     nchi: "",
                     rin: "",
-                }
+                },
+                male : [],
+                female: [],
+                types : [],
+                status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
+                isLoading: true,
+                fullPage: true,
+                color: '#4fcf8d',
+                backgroundColor: '#ffffff',
             };
         },
         validations: {
@@ -138,10 +161,24 @@
                             });
                 }
             },
+            create() {
+                this.isLoading = true
+                this.$axios.$get("/api/family/create")
+                        .then(response => {
+                           this.male = response.male
+                           this.female = response.female
+                           this.types = response.types
+                           this.isLoading = false
+                        })
+            },
         },
         async asyncData( { $axios, params }) {
             const family = await $axios.$get('/api/family/' + params.id)
             return {family}
-        }
+        },
+        
+        created() {
+            this.create();
+        },
     }
 </script>
