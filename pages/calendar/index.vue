@@ -17,7 +17,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s" style="height: 550px;">
+                <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s" style="height: 750px;">
                     <div class="column is-3 is-flex-desktop-only ai--s">
                         <div class="columns is-gapless is-multiline is-flex-desktop-only ai--s" style="height: 100%;">
                             <div class="column is-12 is-flex-desktop-only ai--s">
@@ -28,15 +28,15 @@
                                         </div>
                                     </div>
                                     <div class="card-content is-flex jc--sb">
-                              <vue-cal
-    class="vuecal--rounded-theme vuecal--green-theme"
-    xsmall
-    hide-view-selector
-    :time="false"
-    active-view="month"
-    :disable-views="['week']"
-    style="width: 270px;height: 300px">
-</vue-cal>
+                                      <vue-cal
+                                        class="vuecal--rounded-theme vuecal--green-theme"
+                                        xsmall
+                                        hide-view-selector
+                                        :time="false"
+                                        active-view="month"
+                                        :disable-views="['week']"
+                                        style="width: 270px;height: 300px">
+                                      </vue-cal>
 
                                     </div>
                                 </div>
@@ -52,17 +52,39 @@
                             </div>
                             <div class="card-content is-flex jc--sb">
                             <vue-cal style="height: 600px" selected-date="2018-11-19"
-          :time-from="9 * 60"
-          :time-to="23 * 60"
-          events-on-month-view="short"
-          :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
-          :disable-views="['years', 'year']"
-          :events="events" />
-
+                              :time-from="9 * 60"
+                              :time-to="23 * 60"
+                              events-on-month-view="short"
+                              :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
+                              :events="events" 
+                              editable-events
+                              :on-event-create="onEventCreate"
+                              />
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="modal" v-bind:class="{ 'is-active': showEventCreationDialog }">
+                    <div class="modal-background" v-on:click="showEventCreationDialog = false"></div>
+                    <div class="modal-card">
+                      <header class="modal-card-head">
+                        <p class="modal-card-title">Modal title</p>
+                        <button class="delete" aria-label="close" v-on:click="showEventCreationDialog = false"></button>
+                      </header>
+                      <section class="modal-card-body">
+                        <div class="field">
+                          <label class="label">Title</label>
+                          <div class="control">
+                            <input class="input" type="text" v-model="calendar_event.title" placeholder="Text input">
+                          </div>
+                        </div>
+                      </section>
+                      <footer class="modal-card-foot">
+                        <button class="button is-success" @click.prevent="save()">Save changes</button>
+                        <button class="button" v-on:click="showEventCreationDialog = false">Cancel</button>
+                      </footer>
+                    </div>
+                  </div>
   </div>
 </template>
 
@@ -76,40 +98,73 @@ export default {
     meta: {
         permission: { name: 'calendar menu' }
     },
+    
     components: { VueCal },
     data() {
       const month = new Date().getMonth();
-    const year = new Date().getFullYear();
+      const year = new Date().getFullYear();
       return {
+          isShowModal: false,
+          selectedEvent: {
+            title : null,
+          },
+          calendar_event : {
+            title : null,
+          },
+          showEventCreationDialog: false,
+          eventsCssClasses: ['leisure', 'sport', 'health'],
           events: [
-    {
-      start: '2018-11-21 14:00',
-      end: '2018-11-21 18:00',
-      title: 'Need to go shopping',
-      content: '<i class="v-icon material-icons">shopping_cart</i>',
-      class: 'leisure'
-    },
-    {
-      start: '2018-11-21 11:00',
-      end: '2018-11-21 12:00',
-      title: 'Golf with John',
-      content: '<i class="v-icon material-icons">golf_course</i>',
-      class: 'sport'
-    },
-    {
-      start: '2018-11-22 09:00',
-      end: '2018-11-22 09:30',
-      title: 'Dad\'s birthday!',
-      content: '<i class="v-icon material-icons">cake</i>',
-      class: 'sport'
-    }
-  ]
-
+          {
+            start: '2018-11-21 14:00',
+            end: '2018-11-21 18:00',
+            title: 'Need to go shopping',
+            content: '<i class="v-icon material-icons">shopping_cart</i>',
+            class: 'leisure'
+          },
+          {
+            start: '2018-11-21 11:00',
+            end: '2018-11-21 12:00',
+            title: 'Golf with John',
+            content: '<i class="v-icon material-icons">golf_course</i>',
+            class: 'sport'
+          },
+          {
+            start: '2018-11-22 09:00',
+            end: '2018-11-22 09:30',
+            title: 'Dad\'s birthday!',
+            content: '<i class="v-icon material-icons">cake</i>',
+            class: 'sport'
+          }
+        ]
       }
     },
     computed: {
         ...mapGetters(['loggedInUser'])
     },
+    methods: {
+      onEventCreate (event, deleteEventFunction) {
+        console.log('fgfg')
+        this.selectedEvent = event
+        this.showEventCreationDialog = true
+        this.deleteEventFunction = deleteEventFunction
+
+        return event
+      },
+      cancelEventCreation () {
+        this.closeCreationDialog()
+        this.deleteEventFunction()
+      },
+      closeCreationDialog () {
+        this.showEventCreationDialog = false
+        this.selectedEvent = {}
+      },
+      save() {
+        this.$axios.$post('/api/calendar_event', this.calendar_event)
+                .then(response => console.log('fggf'))
+                .catch(error => {
+                });
+      },
+    }
 }
 </script>
 <style>

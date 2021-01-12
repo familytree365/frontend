@@ -27,7 +27,15 @@
                     <div class="field">
                         <label class="label">Date</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Date" v-model="familyslgs.date" :class="{ 'is-danger': $v.familyslgs.date.$error }">
+                            <v-date-picker v-model="familyslgs.date" :model-config="modelConfig">
+                              <template v-slot="{ inputValue, inputEvents }">
+                                <input
+                                  class="bg-white border px-2 py-1 rounded input"
+                                  :value="inputValue"
+                                  v-on="inputEvents"
+                                :class="{ 'is-danger': $v.familyslgs.date.$error }" />
+                              </template>
+                            </v-date-picker>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.familyslgs.date.$error }" v-if="!$v.familyslgs.date.required">Field is required</p>
                     </div>
@@ -71,11 +79,15 @@
                 familyslgs: {
                     family_id: "",
                     stat: "",
-                    date: "",
+                    date: new Date(),
                     plac: "",
                     temp: "",
                 },
                 family : [],
+                modelConfig: {
+                    type: 'string',
+                    mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+                },
             };
         },
         validations: {

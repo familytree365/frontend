@@ -133,7 +133,7 @@
                                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                                     Calendar</NuxtLink>
                                 </li>
-                                <li @click="menu" class="simplemenu">
+                                <li v-if="getPermission.includes('company menu')" @click="menu" class="simplemenu">
                                 <NuxtLink to="/company" >
                                     <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
                                     Company</NuxtLink>
