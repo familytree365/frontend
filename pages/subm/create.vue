@@ -18,13 +18,6 @@
                       <p class="help" :class="{ 'is-danger': $v.subm.group.$error }" v-if="!$v.subm.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">gid</label>
-                      <div class="control">
-                        <v-select label="name"  v-model="subm.gid" :reduce="subm => subm.id" :options="options" :class="{ 'is-danger': $v.subm.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.gid.$error }" v-if="!$v.subm.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                       <label class="label">Name</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Name" v-model="subm.name"  :class="{ 'is-danger': $v.subm.name.$error }">
@@ -112,7 +105,6 @@ export default {
             age: 0,
             subm: {
                 group: "",
-                gid: "",
                 name: "",
                 addr_id: "",
                 rin: "",
@@ -142,9 +134,6 @@ export default {
     validations: {
             subm: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 name: {

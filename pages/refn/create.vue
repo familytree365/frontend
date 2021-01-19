@@ -18,13 +18,6 @@
                       <p class="help" :class="{ 'is-danger': $v.refn.group.$error }" v-if="!$v.refn.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <v-select label="name"  v-model="refn.gid" :reduce="refn => refn.id" :options="options" :class="{ 'is-danger': $v.refn.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.gid.$error }" v-if="!$v.refn.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                       <label class="label">Refn</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Refn" v-model="refn.refn" :class="{ 'is-danger': $v.refn.refn.$error }">
@@ -63,7 +56,6 @@ export default {
             age: 0,
             refn: {
                 group: "",
-                gid: "",
                 refn: "",
                 type: "",
             },
@@ -86,9 +78,6 @@ export default {
     validations: {
             refn: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 refn: {

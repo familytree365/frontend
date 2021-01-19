@@ -211,13 +211,13 @@
                         <div class="column is-flex fd--c">
                             <NuxtLink to="/" class="is-size-7 has-text-link mb-2">Home</NuxtLink>
                             <a href="#features" class="is-size-7 has-text-link mb-2">Features</a>
-                            <a href="index.html" class="is-size-7 has-text-link mb-2">Why Family Tree 365?</a>
-                            <a href="index.html" class="is-size-7 has-text-link mb-2">About</a>
+                            <a href="#why" class="is-size-7 has-text-link mb-2">Why Family Tree 365?</a>
+                            <a href="#" class="is-size-7 has-text-link mb-2">About</a>
                         </div>
                         <div class="column is-flex fd--c">
                             <NuxtLink to="/login" class="is-size-7 has-text-link mb-2">Sign in</NuxtLink>
                             <NuxtLink to="/privacy" class="is-size-7 has-text-link mb-2">Privacy Policy</NuxtLink>
-                            <NuxtLink to="/terms" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</NuxtLink>
+                            <NuxtLink to="/termsandconditions" class="is-size-7 has-text-link mb-2">Terms &amp; Conditions</NuxtLink>
                         </div>
                     </div>
                 </div>

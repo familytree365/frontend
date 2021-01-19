@@ -42,6 +42,9 @@
                     <div class="notification is-success" v-if="message">
                         {{ message }}
                     </div>
+                    <div class="notification is-danger" v-if="error_msg">
+                        {{ error_msg }}
+                    </div>
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
@@ -83,6 +86,7 @@ export default {
             error: false,
             message: null,
             email: null,
+            error_msg : null,
         };
     },
     validations: {
@@ -102,9 +106,11 @@ export default {
                         email: this.email,
                 }).then(response => {
                     this.message =  response.msg;
+                    this.error_msg = response.error_msg
                 })
                 .catch(error => {
-                  this.error = true;
+                  this.error = response.error;
+                  
                 });
             }
         }

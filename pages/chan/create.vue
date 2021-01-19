@@ -17,24 +17,33 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.chan.group.$error }" v-if="!$v.chan.group.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                       <label class="label">Gid</label>
                       <div class="control">
                         <v-select label="name"  v-model="chan.gid" :reduce="chan => chan.id" :options="options" :class="{ 'is-danger': $v.chan.gid.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.chan.gid.$error }" v-if="!$v.chan.gid.required">Field is required</p>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Date" v-model="chan.date" :class="{ 'is-danger': $v.chan.date.$error }">
-                      </div>
+                            <v-date-picker v-model="chan.date" :model-config="modelConfig">
+                              <template v-slot="{ inputValue, inputEvents }">
+                                <input
+                                  class="bg-white border px-2 py-1 rounded input"
+                                  :value="inputValue"
+                                  v-on="inputEvents"
+                                :class="{ 'is-danger': $v.chan.date.$error }" />
+                              </template>
+                            </v-date-picker>
+                        </div>
                       <p class="help" :class="{ 'is-danger': $v.chan.date.$error }" v-if="!$v.chan.date.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Time</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Time" v-model="chan.time" :class="{ 'is-danger': $v.chan.time.$error }">
+                        
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.chan.time.$error }" v-if="!$v.chan.time.required">Field is required</p>
                     </div>
@@ -81,14 +90,15 @@ export default {
                 name: "HTML5",
               },
             ],
+            modelConfig: {
+                type: 'string',
+                mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+            },
         };
     },
     validations: {
             chan: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 date: {

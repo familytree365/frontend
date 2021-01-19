@@ -52,7 +52,7 @@
                     }"
                     :sort-options="{
                         enabled: true,
-                        initialSortBy: {field: 'name', type: 'asc'}
+                        initialSortBy: {field: 'adr1', type: 'asc'}
                     }"
                     :line-numbers="true"
                     :search-options="{

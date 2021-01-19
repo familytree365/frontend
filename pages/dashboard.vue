@@ -238,6 +238,7 @@ export default {
                     company_id : this.selected_company , tree_id : this.selected_tree})
                 .then(response => {
                     console.log(response)
+                    this.loadChart()
                     this.changedb = response.changedb
                 })
         },
@@ -270,6 +271,15 @@ export default {
                     })
                 })
         },
+        async loadChart() {
+            this.loaded = false
+            const { data: data } = await this.$axios.get("/api/dashboard");
+            const { data: trial } = await this.$axios.get("/api/trial"); 
+            this.barChartData.datasets[0].data = data.chart 
+            this.loaded = true
+            this.isLoading = false 
+            this.trial = trial
+        }
     },
     created() {
         this.loadRole()
@@ -277,14 +287,7 @@ export default {
         this.getCompanies()  
     },
     async mounted () {
-        this.loaded = false
-        const { data: data } = await this.$axios.get("/api/dashboard");
-        const { data: trial } = await this.$axios.get("/api/trial"); 
-        this.barChartData.datasets[0].data = data.chart 
-        this.loaded = true
-        this.isLoading = false 
-        this.trial = trial
-        console.log(trial)
+        this.loadChart()
     },
     
     

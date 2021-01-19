@@ -9,20 +9,13 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                 <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Group" v-model="subm.group"  :class="{ 'is-danger': $v.subm.group.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.subm.group.$error }" v-if="!$v.subm.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">gid</label>
-                      <div class="control">
-                        <v-select label="name"  v-model="subm.gid" :reduce="subm => subm.id" :options="options" :class="{ 'is-danger': $v.subm.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.gid.$error }" v-if="!$v.subm.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Name</label>
@@ -89,7 +82,7 @@
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -109,7 +102,6 @@ export default {
             message: "",
             subm: {
                 group: "",
-                gid: "",
                 name: "",
                 addr_id: "",
                 rin: "",
@@ -139,9 +131,6 @@ export default {
     validations: {
             subm: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 name: {

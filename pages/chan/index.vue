@@ -11,7 +11,7 @@
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                href="dashboard.html">Home</a></li>
+                            href="dashboard.html">Home</a></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
                                 aria-current="page">Dashboard</a></li>
                     </ul>
@@ -27,57 +27,53 @@
                           Chan
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/chan/create" class="button is-link has-background-primary">
+                        <NuxtLink to="/chan/create" class="button is-link has-background-primary">
                         Create New Chan</NuxtLink>
                         </p>
                       </header>
                     <div class="card-content">
-                        <template>
-                <vue-good-table
-                    mode="remote"
-                    :columns="columns"
-                    :rows="rows"
-                    @on-page-change="onPageChange"
-                    @on-sort-change="onSortChange"
-                    @on-column-filter="onColumnFilter"
-                    @on-per-page-change="onPerPageChange"
-                    @on-search="onSearch"
-                    :totalRows="totalRecords"
-                    :isLoading.sync="isLoading"
-                    :pagination-options="{
-                        perPage: 5,
-                        enabled: true,
-                        mode: 'pages',
+                    <template>
+                        <vue-good-table
+                            mode="remote"
+                            :columns="columns"
+                            :rows="rows"
+                            @on-page-change="onPageChange"
+                            @on-sort-change="onSortChange"
+                            @on-column-filter="onColumnFilter"
+                            @on-per-page-change="onPerPageChange"
+                            @on-search="onSearch"
+                            :totalRows="totalRecords"
+                            :isLoading.sync="isLoading"
+                            :pagination-options="{
+                                perPage: 5,
+                                enabled: true,
+                                mode: 'pages',
 
-                    }"
-                    :sort-options="{
-                        enabled: true,
-                        initialSortBy: {field: 'group', type: 'asc'}
-                    }"
-                    :line-numbers="true"
-                    :search-options="{
-                        enabled: true
-                    }"
-                    >
-                    <template slot="table-row" slot-scope="props">
-                        <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'chan/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink>
-                            <button @click="deleteChan(rows[props.row.originalIndex].id)" class="button is-danger">
-                                Delete</button>
-                        </span>
+                            }"
+                            :sort-options="{
+                                enabled: true,
+                                initialSortBy: {field: 'group', type: 'asc'}
+                            }"
+                            :line-numbers="true"
+                            :search-options="{
+                                enabled: true
+                            }"
+                            >
+                            <template slot="table-row" slot-scope="props">
+                                <span v-if="props.column.field == 'action'">
+                                    <NuxtLink :to="'chan/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                        Edit</NuxtLink>
+                                    <button @click="deleteChan(rows[props.row.originalIndex].id)" class="button is-danger">
+                                        Delete</button>
+                                </span>
 
+                            </template>
+                        </vue-good-table>
                     </template>
-                </vue-good-table>
-        </template>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
-
     </div>
 </template>
 
@@ -100,17 +96,6 @@ export default {
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
-                {
-                    label: 'Gid',
-                    field: 'gid',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Gid', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {

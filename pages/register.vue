@@ -108,8 +108,8 @@
                             <div class="column">
                                 <label class="checkbox">
                                     <input type="checkbox">
-                                    Agree to <a href="terms.html" class="has-text-link has-text-weight-medium">terms and
-                                        conditions</a>
+                                    Agree to <NuxtLink to="/termsandconditions" class="has-text-link has-text-weight-medium">terms and
+                                        conditions</NuxtLink>
                                 </label>
                             </div>
                         </div>

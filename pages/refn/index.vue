@@ -33,43 +33,43 @@
                       </header>
                     <div class="card-content">
                         <template>
-                <vue-good-table
-                    mode="remote"
-                    :columns="columns"
-                    :rows="rows"
-                    @on-page-change="onPageChange"
-                    @on-sort-change="onSortChange"
-                    @on-column-filter="onColumnFilter"
-                    @on-per-page-change="onPerPageChange"
-                    @on-search="onSearch"
-                    :totalRows="totalRecords"
-                    :isLoading.sync="isLoading"
-                    :pagination-options="{
-                        perPage: 5,
-                        enabled: true,
-                        mode: 'pages',
+                            <vue-good-table
+                                mode="remote"
+                                :columns="columns"
+                                :rows="rows"
+                                @on-page-change="onPageChange"
+                                @on-sort-change="onSortChange"
+                                @on-column-filter="onColumnFilter"
+                                @on-per-page-change="onPerPageChange"
+                                @on-search="onSearch"
+                                :totalRows="totalRecords"
+                                :isLoading.sync="isLoading"
+                                :pagination-options="{
+                                    perPage: 5,
+                                    enabled: true,
+                                    mode: 'pages',
 
-                    }"
-                    :sort-options="{
-                        enabled: true,
-                        initialSortBy: {field: 'group', type: 'asc'}
-                    }"
-                    :line-numbers="true"
-                    :search-options="{
-                        enabled: true
-                    }"
-                    >
-                    <template slot="table-row" slot-scope="props">
-                        <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'refn/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
-                                Edit</NuxtLink>
-                            <button @click="deleteRefn(rows[props.row.originalIndex].id)" class="button is-danger">
-                                Delete</button>
-                        </span>
+                                }"
+                                :sort-options="{
+                                    enabled: true,
+                                    initialSortBy: {field: 'group', type: 'asc'}
+                                }"
+                                :line-numbers="true"
+                                :search-options="{
+                                    enabled: true
+                                }"
+                                >
+                                <template slot="table-row" slot-scope="props">
+                                    <span v-if="props.column.field == 'action'">
+                                        <NuxtLink :to="'refn/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                                            Edit</NuxtLink>
+                                        <button @click="deleteRefn(rows[props.row.originalIndex].id)" class="button is-danger">
+                                            Delete</button>
+                                    </span>
 
-                    </template>
-                </vue-good-table>
-        </template>
+                                </template>
+                            </vue-good-table>
+                        </template>
                     </div>
                 </div>
 
@@ -100,17 +100,6 @@ export default {
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
-                {
-                    label: 'Gid',
-                    field: 'gid',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Gid', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {

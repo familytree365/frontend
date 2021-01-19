@@ -120,19 +120,19 @@
             						<div class="field">
             							<label class="label">First Name</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" :value="loggedInUser.first_name" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="user.first_name" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             						<div class="field">
             							<label class="label">Last Name</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" :value="loggedInUser.last_name" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="user.last_name" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             						<div class="field">
             							<label class="label">E-mail</label>
             							<div class="control is-clearfix">
-            								<input type="text" autocomplete="on" :value="loggedInUser.email" readonly="readonly" class="input is-static"><!----><!----><!---->
+            								<input type="text" autocomplete="on" :value="user.email" readonly="readonly" class="input is-static"><!----><!----><!---->
             							</div><!---->
             						</div>
             					</div><!---->
@@ -285,7 +285,7 @@ export default {
                 this.$axios
                 .$post("/api/profile/update", this.user)
                 .then(response => {
-                  
+                  this.loggedInUser()
                 })
                 .catch(error => {
                     this.error = true;

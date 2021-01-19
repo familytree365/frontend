@@ -34,11 +34,17 @@
                         <NuxtLink to="/" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2">
                             <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2"/> Back to Home</NuxtLink>
                         <h1 class="is-size-4 has-text-black has-text-weight-bold">
-                            Reset PAssword
+                            Reset Password
                         </h1>
                     </div>
                     <div class="notification is-success" v-if="message">
                         <p>{{ message }}</p>
+                    </div>
+                    <div class="notification is-danger" v-if="error_msg">
+                        {{ error_msg }}
+                    </div>
+                    <div v-for="error in errors" class="notification is-danger">
+                        {{ error[0] }} 
                     </div>
                     <a v-if="message" href="/login" class="has-text-link has-text-weight-medium"> Login </a>
                     <div v-if="error" class="notification is-danger">
@@ -104,6 +110,8 @@ export default {
             email: null,
             password:null,
             password_confirmation: null,
+            errors: null,
+            error_msg: null,
         };
     },
     validations: {
@@ -135,9 +143,11 @@ export default {
                         password_confirmation: this.password_confirmation
                 }).then(response => {
                     this.message =  response.msg;
+                    this.error_msg = response.error_msg;
                 })
                 .catch(error => {
                     this.error = error.msg;
+                    this.errors =  error.response.data.errors;
                 });
             }
         }
