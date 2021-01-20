@@ -9,7 +9,7 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
@@ -18,16 +18,17 @@
                       <p class="help" :class="{ 'is-danger': $v.sourcedata.group.$error }" v-if="!$v.sourcedata.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <v-select label="name"  v-model="sourcedata.gid" :reduce="sourcedata => sourcedata.id" :options="options" :class="{ 'is-danger': $v.sourcedata.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.gid.$error }" v-if="!$v.sourcedata.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                       <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Date" v-model="sourcedata.date" :class="{ 'is-danger': $v.sourcedata.date.$error }">
+                        <v-date-picker v-model="sourcedata.date" :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="bg-white border px-2 py-1 rounded input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            :class="{ 'is-danger': $v.sourcedata.date.$error }" />
+                          </template>
+                        </v-date-picker>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcedata.date.$error }" v-if="!$v.sourcedata.date.required">Field is required</p>
                     </div>
@@ -38,9 +39,16 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcedata.text.$error }" v-if="!$v.sourcedata.text.required">Field is required</p>
                     </div>
+                    <div class="field">
+                      <label class="label">Agnc</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="Agnc" v-model="sourcedata.agnc" :class="{ 'is-danger': $v.sourcedata.agnc.$error }">
+                      </div>
+                      <p class="help" :class="{ 'is-danger': $v.sourcedata.agnc.$error }" v-if="!$v.sourcedata.agnc.required">Field is required</p>
+                    </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -82,14 +90,15 @@ export default {
                 name: "HTML5",
               },
             ],
+            modelConfig: {
+                type: 'string',
+                mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+            },
         };
     },
     validations: {
             sourcedata: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 date: {

@@ -9,7 +9,7 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Repo</label>
                         <div class="control">
@@ -27,7 +27,7 @@
                     <div class="field">
                         <label class="label">Addr Id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="repository.addr_id" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.addr_id.$error }"></v-select>
+                            <v-select label="adr1"  v-model="repository.addr_id" :reduce="repository => repository.id" :options="address" :class="{ 'is-danger': $v.repository.addr_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.repository.addr_id.$error }" v-if="!$v.repository.addr_id.required">Field is required</p>
                     </div>
@@ -76,20 +76,20 @@
                     <div class="field">
                         <label class="label">Type ID</label>
                         <div class="control">
-                            <v-select label="name"  v-model="repository.type_id" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.type_id.$error }"></v-select>
+                            <v-select label="name"  v-model="repository.type_id" :reduce="repository => repository.id" :options="types" :class="{ 'is-danger': $v.repository.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.repository.type_id.$error }" v-if="!$v.repository.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <v-select label="name"  v-model="repository.is_active" :reduce="repository => repository.id" :options="options" :class="{ 'is-danger': $v.repository.is_active.$error }"></v-select>
+                            <v-select label="name"  v-model="repository.is_active" :reduce="repository => repository.id" :options="status" :class="{ 'is-danger': $v.repository.is_active.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.repository.is_active.$error }" v-if="!$v.repository.is_active.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -120,20 +120,18 @@
                     type_id: "",
                     is_active: ""
                 },
-                options : [
+                status : [
                   {
                     id: 1,
-                    name: "HTML5",
+                    name: "Active",
                   },
                   {
-                    id: 2,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 3,
-                    name: "HTML5",
+                    id: 0,
+                    name: "Inactive",
                   },
                 ],
+                address: [],
+                types: [],
             };
         },
         validations: {
@@ -185,10 +183,26 @@
                             });
                 }
             },
+            getAddress() {
+                this.$axios.$get("/api/addrname")
+                .then(response => {
+                    this.address = response;
+                })
+            },
+            getType() {
+                this.$axios.$get("/api/alltype")
+                .then(response => {
+                    this.types = response;
+                })
+            },
         },
         async asyncData( { $axios, params }) {
             const repository = await $axios.$get('/api/repository/' + params.id)
             return {repository}
+        },
+        created() {
+            this.getAddress()
+            this.getType()
         }
     }
 </script>

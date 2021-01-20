@@ -9,7 +9,7 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
@@ -18,16 +18,17 @@
                       <p class="help" :class="{ 'is-danger': $v.sourcedataeven.group.$error }" v-if="!$v.sourcedataeven.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                         <v-select label="name"  v-model="sourcedataeven.gid" :reduce="sourcedataeven => sourcedataeven.id" :options="options" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedataeven.gid.$error }" v-if="!$v.sourcedataeven.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                       <label class="label">Date</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Date" v-model="sourcedataeven.date" :class="{ 'is-danger': $v.sourcedataeven.date.$error }">
+                        <v-date-picker v-model="sourcedataeven.date" :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="bg-white border px-2 py-1 rounded input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            :class="{ 'is-danger': $v.sourcedataeven.date.$error }" />
+                          </template>
+                        </v-date-picker>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcedataeven.date.$error }" v-if="!$v.sourcedataeven.date.required">Field is required</p>
                     </div>
@@ -40,7 +41,7 @@
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -63,7 +64,6 @@ export default {
             age: 0,
             sourcedataeven: {
                 group: "",
-                gid: "",
                 date: "",
                 plac: ""
             },
@@ -81,14 +81,15 @@ export default {
                 name: "HTML5",
               },
             ],
+            modelConfig: {
+                type: 'string',
+                mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+            },
         };
     },
     validations: {
             sourcedataeven: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 date: {

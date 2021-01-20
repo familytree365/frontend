@@ -9,7 +9,7 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Sour</label>
                         <div class="control">
@@ -76,35 +76,35 @@
                     <div class="field">
                         <label class="label">repository id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="source.repository_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.repository_id.$error }"></v-select>
+                            <v-select label="name"  v-model="source.repository_id" :reduce="source => source.id" :options="repository" :class="{ 'is-danger': $v.source.repository_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.repository_id.$error }" v-if="!$v.source.repository_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">author id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="source.author_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.author_id.$error }"></v-select>
+                            <v-select label="name"  v-model="source.author_id" :reduce="source => source.id" :options="author" :class="{ 'is-danger': $v.source.author_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.author_id.$error }" v-if="!$v.source.author_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">publication id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="source.publication_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.publication_id.$error }"></v-select>
+                            <v-select label="name"  v-model="source.publication_id" :reduce="source => source.id" :options="author" :class="{ 'is-danger': $v.source.publication_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.publication_id.$error }" v-if="!$v.source.publication_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">type id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="source.type_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.type_id.$error }"></v-select>
+                            <v-select label="name"  v-model="source.type_id" :reduce="source => source.id" :options="type" :class="{ 'is-danger': $v.source.type_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.type_id.$error }" v-if="!$v.source.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">is active</label>
                         <div class="control">
-                            <v-select label="name"  v-model="source.is_active" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.is_active.$error }"></v-select>
+                            <v-select label="name"  v-model="source.is_active" :reduce="source => source.id" :options="status" :class="{ 'is-danger': $v.source.is_active.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.is_active.$error }" v-if="!$v.source.is_active.required">Field is required</p>
                     </div>
@@ -114,13 +114,6 @@
                             <input class="input" type="text" placeholder="group" v-model="source.group" :class="{ 'is-danger': $v.source.group.$error }">
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.group.$error }" v-if="!$v.source.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                        <label class="label">gid</label>
-                        <div class="control">
-                            <v-select label="name"  v-model="source.gid" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.gid.$error }"></v-select>
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.gid.$error }" v-if="!$v.source.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">quay</label>
@@ -138,7 +131,7 @@
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -179,20 +172,19 @@
                     quay: "",
                     page: ""
                 },
-                options : [
+                status : [
                   {
                     id: 1,
-                    name: "HTML5",
+                    name: "Active",
                   },
                   {
-                    id: 2,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 3,
-                    name: "HTML5",
+                    id: 0,
+                    name: "Inactive",
                   },
                 ],
+                repository: [],
+                author: [],
+                type: [],
             };
         },
         validations: {
@@ -242,9 +234,6 @@
                 group: {
                     required,
                 },
-                gid: {
-                    required,
-                },
                 quay: {
                     required,
                 },
@@ -266,6 +255,29 @@
                             });
                 }
             },
+            getRepository() {
+                this.$axios.$get("/api/allrepository")
+                .then(response => {
+                    this.repository = response;
+                })
+            },
+            getAuthor() {
+                this.$axios.$get("/api/allauthor")
+                .then(response => {
+                    this.author = response;
+                })
+            },
+            getType() {
+                this.$axios.$get("/api/alltype")
+                .then(response => {
+                    this.type = response;
+                })
+            },
+        },
+        created() {
+            this.getRepository()
+            this.getAuthor()
+            this.getType()
         }
     }
 </script>

@@ -9,20 +9,13 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                 <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Group" v-model="sourcerefeven.group"  :class="{ 'is-danger': $v.sourcerefeven.group.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.sourcerefeven.group.$error }" v-if="!$v.sourcerefeven.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <v-select label="name"  v-model="sourcerefeven.gid" :reduce="sourcerefeven => sourcerefeven.id" :options="options" :class="{ 'is-danger': $v.sourcerefeven.gid.$error }"></v-select>
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcerefeven.gid.$error }" v-if="!$v.sourcerefeven.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Even</label>
@@ -40,7 +33,7 @@
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -60,7 +53,6 @@ export default {
             message: "",
             sourcerefeven: {
                 group: "",
-                gid: "",
                 even: "",
                 role: "",
             },
@@ -83,9 +75,6 @@ export default {
     validations: {
             sourcerefeven: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 even: {
