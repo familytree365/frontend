@@ -9,28 +9,25 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Gid</label>
                         <div class="control">
                              <v-select label="name" multiple  v-model="note.gid
-                            " :reduce="note => note.id" :options="options" :class="{ 'is-danger': $v.note.gid.$error }"></v-select>
+                            " :reduce="note => note.id" :options="options"></v-select>
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.gid.$error }" v-if="!$v.note.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Note</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Note" v-model="note.note" :class="{ 'is-danger': $v.note.note.$error }">
+                            <input class="input" type="text" placeholder="Note" v-model="note.note">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.note.$error }" v-if="!$v.note.note.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Rin</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Rin" v-model="note.rin" :class="{ 'is-danger': $v.note.rin.$error }">
+                            <input class="input" type="text" placeholder="Rin" v-model="note.rin">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.rin.$error }" v-if="!$v.note.rin.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Name</label>
@@ -42,35 +39,31 @@
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Description" v-model="note.description" :class="{ 'is-danger': $v.note.description.$error }">
+                            <input class="input" type="text" placeholder="Description" v-model="note.description">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.description.$error }" v-if="!$v.note.description.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Is Active" v-model="note.is_active" :class="{ 'is-danger': $v.note.is_active.$error }">
+                            <input class="input" type="text" placeholder="Is Active" v-model="note.is_active">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.is_active.$error }" v-if="!$v.note.is_active.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
                             <v-select label="name" multiple  v-model="note.type_id
-                            " :reduce="note => note.id" :options="options" :class="{ 'is-danger': $v.note.type_id.$error }"></v-select>
+                            " :reduce="note => note.id" :options="options" ></v-select>
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.type_id.$error }" v-if="!$v.note.type_id.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Group</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Group" v-model="note.group" :class="{ 'is-danger': $v.note.group.$error }">
+                            <input class="input" type="text" placeholder="Group" v-model="note.group" >
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.note.group.$error }" v-if="!$v.note.group.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -116,25 +109,7 @@
         },
         validations: {
             note: {
-                gid: {
-                    required,
-                },
-                note: {
-                    required,
-                },
-                rin: {
-                    required,
-                },
                 name: {
-                    required,
-                },
-                description: {
-                    required,
-                },
-                is_active: {
-                    required,
-                },
-                group: {
                     required,
                 },
             },

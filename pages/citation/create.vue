@@ -9,7 +9,7 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Name</label>
                       <div class="control">
@@ -24,14 +24,14 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.citation.description.$error }" v-if="!$v.citation.description.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                       <label class="label">Repository Id</label>
                       <div class="control">
                         <v-select label="name" multiple  v-model="citation.repository_id
                         " :reduce="citation => citation.id" :options="options" :class="{ 'is-danger': $v.citation.repository_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.citation.repository_id.$error }" v-if="!$v.citation.repository_id.required">Field is required</p>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <label class="label">Volume</label>
                       <div class="control">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>

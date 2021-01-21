@@ -10,10 +10,10 @@
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
-                        <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                href="dashboard.html">Home</a></li>
+                        <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
+                                to="/dashboard">Home</NuxtLink></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                aria-current="page">Dashboard</a></li>
+                                aria-current="page">Source</a></li>
                     </ul>
                 </nav>
             </div>
@@ -114,42 +114,42 @@ export default {
 
                     },
                 },
-                {
-                    label: 'auth',
-                    field: 'auth',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter auth', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                // {
+                //     label: 'auth',
+                //     field: 'auth',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter auth', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
-                {
-                    label: 'data',
-                    field: 'data',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter data', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'data',
+                //     field: 'data',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter data', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
-                {
-                    label: 'text',
-                    field: 'text',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter text', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'text',
+                //     field: 'text',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter text', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
+                //     },
+                // },
                 {
                     label: 'publ',
                     field: 'publ',
@@ -162,18 +162,18 @@ export default {
 
                     },
                 },
-                {
-                    label: 'abbr',
-                    field: 'abbr',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter publ', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                // {
+                //     label: 'abbr',
+                //     field: 'abbr',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter publ', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
+                //     },
+                // },
                 {
                     label: 'Name',
                     field: 'name',
@@ -186,17 +186,17 @@ export default {
 
                     },
                 },
-                {
-                    label: 'description',
-                    field: 'description',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter description', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
+                // {
+                //     label: 'description',
+                //     field: 'description',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter description', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
                 {
                     label: 'repository id',
                     field: 'repository_id',
@@ -252,50 +252,50 @@ export default {
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
-                {
-                    label: 'group',
-                    field: 'group',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter group', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'gid',
-                    field: 'gid',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter gid', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'quay',
-                    field: 'quay',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter quay', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'page',
-                    field: 'page',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter page', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
+                // {
+                //     label: 'group',
+                //     field: 'group',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter group', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'gid',
+                //     field: 'gid',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter gid', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'quay',
+                //     field: 'quay',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter quay', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'page',
+                //     field: 'page',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter page', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
                 {
                     label: 'Action',
                     field: 'action',

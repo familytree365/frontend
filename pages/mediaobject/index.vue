@@ -10,9 +10,9 @@
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
-                        <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                               href="dashboard.html">Home</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html" aria-current="page">Dashboard</a></li>
+                        <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
+                               to="/dashboard">Home</NuxtLink></li>
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html" aria-current="page">MediaObject</a></li>
                     </ul>
                 </nav>
             </div>

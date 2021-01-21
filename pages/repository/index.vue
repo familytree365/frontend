@@ -10,10 +10,10 @@
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
-                        <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                href="dashboard.html">Home</a></li>
+                        <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
+                                to="/dashboard">Home</NuxtLink></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                aria-current="page">Dashboard</a></li>
+                                aria-current="page">Repository</a></li>
                     </ul>
                 </nav>
             </div>
@@ -126,18 +126,18 @@ export default {
 
                     },
                 },
-                {
-                    label: 'Rin',
-                    field: 'rin',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Rin', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                // {
+                //     label: 'Rin',
+                //     field: 'rin',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Rin', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
+                //     },
+                // },
                 {
                     label: 'Email',
                     field: 'email',
@@ -160,28 +160,28 @@ export default {
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
-                {
-                    label: 'Fax',
-                    field: 'fax',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Fax', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'www',
-                    field: 'www',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter www', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
+                // {
+                //     label: 'Fax',
+                //     field: 'fax',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Fax', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'www',
+                //     field: 'www',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter www', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
                 {
                     label: 'Description',
                     field: 'description',
