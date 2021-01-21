@@ -3,7 +3,7 @@
         <div class="card">
             <header class="card-header">
                 <h1 class="card-header-title">
-                    Create Source
+                    Edit Source
                 </h1>
                 <NuxtLink to="/source" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
@@ -88,14 +88,14 @@
                         <p class="help" :class="{ 'is-danger': $v.source.author_id.$error }" v-if="!$v.source.author_id.required">Field is required</p>
                     </div>
                     <div class="field">
-                        <label class="label">publication id</label>
+                        <label class="label">publication</label>
                         <div class="control">
                             <v-select label="name"  v-model="source.publication_id" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.publication_id.$error }"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.publication_id.$error }" v-if="!$v.source.publication_id.required">Field is required</p>
                     </div>
                     <div class="field">
-                        <label class="label">type id</label>
+                        <label class="label">type</label>
                         <div class="control">
                             <v-select label="name"  v-model="source.type_id" :reduce="source => source.id" :options="type" :class="{ 'is-danger': $v.source.type_id.$error }"></v-select>
                         </div>
@@ -114,13 +114,6 @@
                             <input class="input" type="text" placeholder="group" v-model="source.group" :class="{ 'is-danger': $v.source.group.$error }">
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.group.$error }" v-if="!$v.source.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                        <label class="label">gid</label>
-                        <div class="control">
-                            <v-select label="name"  v-model="source.gid" :reduce="source => source.id" :options="options" :class="{ 'is-danger': $v.source.gid.$error }"></v-select>
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.gid.$error }" v-if="!$v.source.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">quay</label>
@@ -172,7 +165,6 @@
                     type_id: "",
                     is_active: "",
                     group: "",
-                    gid: "",
                     quay: "",
                     page: ""
                 },
@@ -250,9 +242,6 @@
                     required,
                 },
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 quay: {
