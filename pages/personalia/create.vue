@@ -9,20 +9,12 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Group</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Group" v-model="personalia.group"  :class="{ 'is-danger': $v.personalia.group.$error }">
+                            <input class="input" type="text" placeholder="Group" v-model="personalia.group">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personalia.group.$error }" v-if="!$v.personalia.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                        <label class="label">Gid</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Gid" v-model="personalia.gid" :class="{ 'is-danger': $v.personalia.gid.$error }">
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.personalia.gid.$error }" v-if="!$v.personalia.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Alia</label>
@@ -34,13 +26,12 @@
                     <div class="field">
                         <label class="label">Import Confirm</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Import Confirm" v-model="personalia.import_confirm" :class="{ 'is-danger': $v.personalia.import_confirm.$error }">
+                            <input class="input" type="number" placeholder="Import Confirm" v-model="personalia.import_confirm">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personalia.import_confirm.$error }" v-if="!$v.personalia.import_confirm.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -63,7 +54,6 @@
                 age: 0,
                 personalia: {
                     group: "",
-                    gid: "",
                     alia: "",
                     import_confirm: "",
                 }
@@ -71,16 +61,7 @@
         },
         validations: {
             personalia: {
-                group: {
-                    required,
-                },
-                gid: {
-                    required,
-                },
                 alia: {
-                    required,
-                },
-                import_confirm: {
                     required,
                 },
             },

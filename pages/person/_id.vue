@@ -9,7 +9,7 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control">
@@ -20,20 +20,155 @@
                     <div class="field">
                         <label class="label">Email</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Email" v-model="person.email" :class="{ 'is-danger': $v.person.email.$error }">
+                            <input class="input" type="email" placeholder="Email" v-model="person.email">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.person.email.$error }" v-if="!$v.person.email.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Phone</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Phone" v-model="person.phone" :class="{ 'is-danger': $v.person.phone.$error }">
+                            <input class="input" type="number" placeholder="Phone" v-model="person.phone">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.person.phone.$error }" v-if="!$v.person.phone.required">Field is required</p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Appellative </label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Appellative" v-model="person.appellative">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">birthday</label>
+                        <div class="control">
+                        <v-date-picker v-model="person.birthday" :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="bg-white border px-2 py-1 rounded input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            />
+                          </template>
+                        </v-date-picker>
+                      </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Deathday</label>
+                       <div class="control">
+                        <v-date-picker v-model="person.deathday" :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="bg-white border px-2 py-1 rounded input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            />
+                          </template>
+                        </v-date-picker>
+                      </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">bank</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Bank" v-model="person.bank">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">bank_account</label>
+                        <div class="control">
+                            <input class="input" type="number" placeholder="bank_account" v-model="person.bank_account">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">obs</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="obs" v-model="person.obs">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">givn</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="givn" v-model="person.givn">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">surn</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="surn" v-model="person.surn">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">type</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="type" v-model="person.type">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">npfx</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="npfx" v-model="person.npfx">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">nick</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="nick" v-model="person.nick">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">spfx</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="spfx" v-model="person.spfx">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">nsfx</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="nsfx" v-model="person.nsfx">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">sex</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="sex" v-model="person.sex">
+                            <v-select label="name"  v-model="person.sex" :reduce="repository => repository.id" :options="gender"></v-select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">description</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="description" v-model="person.description">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">chan</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="chan" v-model="person.chan">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">rin</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="rin" v-model="person.rin">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">resn</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="resn" v-model="person.resn">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">rfn</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="rfn" v-model="person.rfn">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">afn</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="afn" v-model="person.afn">
+                        </div>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -53,9 +188,45 @@
                 message: "",
                 person: {
                     name: "",
-                    email: '',
-                    phone: ''
-                }
+                    email: "",
+                    phone: "",
+                    appellative : null,
+                    uid: null,
+                    birthday : null,
+                    deathday: null,
+                    bank : null,
+                    bank_account: null,
+                    obs : null,
+                    givn: null,
+                    surn : null,
+                    type: null,
+                    npfx : null,
+                    nick: null,
+                    spfx : null,
+                    nsfx: null,
+                    sex : null,
+                    description: null,
+                    child_in_family_id : null,
+                    chan: null,
+                    rin : null,
+                    resn: null,
+                    rfn : null,
+                    afn: null,
+                },
+                gender : [
+                  {
+                    id: 'M',
+                    name: "Male",
+                  },
+                  {
+                    id: 'F',
+                    name: "Female",
+                  },
+                ],
+                modelConfig: {
+                    type: 'string',
+                    mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+                },
             };
         },
         validations: {

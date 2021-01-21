@@ -127,8 +127,9 @@
                         <label class="label">sex</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="sex" v-model="person.sex">
+                            <v-select label="name"  v-model="person.sex" :reduce="repository => repository.id" :options="gender"></v-select>
                         </div>
-                    </div>
+                    </div> 
                     <div class="field">
                         <label class="label">description</label>
                         <div class="control">
@@ -215,6 +216,16 @@
                     rfn : null,
                     afn: null,
                 },
+                gender : [
+                  {
+                    id: 'M',
+                    name: "Male",
+                  },
+                  {
+                    id: 'F',
+                    name: "Female",
+                  },
+                ],
                 modelConfig: {
                     type: 'string',
                     mask: 'YYYY-MM-DD', // Uses 'iso' if missing

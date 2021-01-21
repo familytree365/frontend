@@ -25,9 +25,9 @@
                       <p class="help" :class="{ 'is-danger': $v.subm.name.$error }" v-if="!$v.subm.name.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">addr id</label>
+                      <label class="label">addr</label>
                       <div class="control">
-                        <v-select label="name"  v-model="subm.addr_id" :reduce="subm => subm.id" :options="options"></v-select>
+                        <v-select label="adr1"  v-model="subm.addr_id" :reduce="subm => subm.id" :options="address"></v-select>
                       </div>
                     </div>
                     <div class="field">
@@ -95,6 +95,7 @@ export default {
             message: "",
             name: '',
             age: 0,
+            address: [],
             subm: {
                 group: "",
                 name: "",
@@ -143,6 +144,15 @@ export default {
                   });
             }
         },
+         getAddress() {
+            this.$axios.$get("/api/addrname")
+            .then(response => {
+                this.address = response;
+            })
+        },
+    },
+    created() {
+        this.getAddress()
     }
 }
 </script>

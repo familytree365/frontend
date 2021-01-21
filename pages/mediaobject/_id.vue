@@ -9,20 +9,12 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
-                    <div class="field">
-                        <label class="label">Gid</label>
-                        <div class="control">
-                            <v-select label="name"  v-model="mediaobject.gid" :reduce="mediaobject => mediaobject.id" :options="options" :class="{ 'is-danger': $v.mediaobject.gid.$error }"></v-select>
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.mediaobject.gid.$error }" v-if="!$v.mediaobject.gid.required">Field is required</p>
-                    </div>
+                <form>
                     <div class="field">
                         <label class="label">Group</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Group" v-model="mediaobject.group" :class="{ 'is-danger': $v.mediaobject.group.$error }">
+                            <input class="input" type="text" placeholder="Group" v-model="mediaobject.group">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.mediaobject.group.$error }" v-if="!$v.mediaobject.group.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Titl</label>
@@ -32,22 +24,14 @@
                         <p class="help" :class="{ 'is-danger': $v.mediaobject.titl.$error }" v-if="!$v.mediaobject.titl.required">Field is required</p>
                     </div>
                     <div class="field">
-                        <label class="label">Obje Id</label>
-                        <div class="control">
-                            <v-select label="name"  v-model="mediaobject.obje_id" :reduce="mediaobject => mediaobject.id" :options="options" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }"></v-select>
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.mediaobject.obje_id.$error }" v-if="!$v.mediaobject.obje_id.required">Field is required</p>
-                    </div>
-                    <div class="field">
                         <label class="label">Rin</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Rin" v-model="mediaobject.rin" :class="{ 'is-danger': $v.mediaobject.rin.$error }">
+                            <input class="input" type="text" placeholder="Rin" v-model="mediaobject.rin">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.mediaobject.rin.$error }" v-if="!$v.mediaobject.rin.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -66,7 +50,6 @@
                 error: false,
                 message: "",
                 mediaobject: {
-                    gid: "",
                     group: "",
                     titl: "",
                     obje_id: "",
@@ -90,19 +73,7 @@
         },
         validations: {
             mediaobject: {
-                gid: {
-                    required,
-                },
-                group: {
-                    required,
-                },
                 titl: {
-                    required,
-                },
-                obje_id: {
-                    required,
-                },
-                rin: {
                     required,
                 },
             },

@@ -27,7 +27,7 @@
                           PersonAnci
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/people/create" class="button is-link has-background-primary">
+                         <NuxtLink to="/personanci/create" class="button is-link has-background-primary">
                         Create New PersonAnci</NuxtLink>
                         </p>
                       </header>
@@ -61,7 +61,7 @@
                     >
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'people/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                            <NuxtLink :to="'personanci/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
                                 Edit</NuxtLink>
                             <button @click="deletePersonAnci(rows[props.row.originalIndex].id)" class="button is-danger">
                                 Delete</button>
@@ -100,17 +100,6 @@ export default {
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
-                {
-                    label: 'Gid',
-                    field: 'gid',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Gid', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
                 {
@@ -204,7 +193,7 @@ export default {
           this.loadItems();
         },
         loadItems() {
-            this.$axios.$get("/api/person", {
+            this.$axios.$get("/api/personanci", {
                 params: this.serverParams
             })
             .then(response => {
@@ -221,7 +210,7 @@ export default {
              if(confirm("Do you really want to delete?")){
 
                 this.$axios
-                .$delete("/api/person/" + id)
+                .$delete("/api/personanci/" + id)
                 .then(response => {
                     this.loadItems();
                 })

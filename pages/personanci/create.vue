@@ -5,35 +5,27 @@
                 <h1 class="card-header-title">
                 Create PersonAnci
                 </h1>
-              <NuxtLink to="/people" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+              <NuxtLink to="/personanci" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Group" v-model="people.group"  :class="{ 'is-danger': $v.people.group.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="personanci.group">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.group.$error }" v-if="!$v.people.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Gid" v-model="people.gid" :class="{ 'is-danger': $v.people.gid.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.gid.$error }" v-if="!$v.people.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Anci</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Anci" v-model="people.anci" :class="{ 'is-danger': $v.people.anci.$error }">
+                        <input class="input" type="text" placeholder="Anci" v-model="personanci.anci" :class="{ 'is-danger': $v.personanci.anci.$error }">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.people.anci.$error }" v-if="!$v.people.anci.required">Field is required</p>
+                      <p class="help" :class="{ 'is-danger': $v.personanci.anci.$error }" v-if="!$v.personanci.anci.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -54,21 +46,14 @@ export default {
             message: "",
             group: '',
             age: 0,
-            people: {
+            personanci: {
                 group: "",
-                gid: "",
                 anci: "",
             }
         };
     },
     validations: {
-            people: {
-                group: {
-                    required,
-                },
-                gid: {
-                    required,
-                },
+            personanci: {
                 anci: {
                     required,
                 },
@@ -81,8 +66,8 @@ export default {
             if (this.$v.$invalid) {
                 console.log("fail")
             } else {
-              this.$axios.$post('/api/person', this.people)
-                  .then(response => ( this.$router.push('/people') ))
+              this.$axios.$post('/api/personanci', this.personanci)
+                  .then(response => ( this.$router.push('/personanci') ))
                   .catch(error => {
                   });
             }

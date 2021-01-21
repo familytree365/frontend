@@ -12,8 +12,7 @@
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                href="dashboard.html">Home</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                                                                  aria-current="page">Dashboard</a></li>
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html" aria-current="page">Dashboard</a></li>
                     </ul>
                 </nav>
             </div>
@@ -52,7 +51,6 @@
                                 }"
                                 :sort-options="{
                                 enabled: true,
-                                initialSortBy: {field: 'gid', type: 'asc'}
                                 }"
                                 :line-numbers="true"
                                 :search-options="{
@@ -91,18 +89,6 @@
                 totalRecords: 0,
                 columns: [
                     {
-                        label: 'Gid',
-                        field: 'gid',
-                        filterOptions: {
-                            enabled: true, // enable filter for this column
-                            placeholder: 'Filter Gid', // placeholder for filter input
-                            filterValue: '', // initial populated value for this filter
-                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                            filterFn: this.columnFilterFn, //custom filter function that
-
-                        },
-                    },
-                    {
                         label: 'Group',
                         field: 'group',
                         filterOptions: {
@@ -119,17 +105,6 @@
                         filterOptions: {
                             enabled: true, // enable filter for this column
                             placeholder: 'Filter Titl', // placeholder for filter input
-                            filterValue: '', // initial populated value for this filter
-                            filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                            filterFn: this.columnFilterFn, //custom filter function that
-                        },
-                    },
-                    {
-                        label: 'Obje Id',
-                        field: 'obje_id',
-                        filterOptions: {
-                            enabled: true, // enable filter for this column
-                            placeholder: 'Filter Obje ID', // placeholder for filter input
                             filterValue: '', // initial populated value for this filter
                             filterDropdownItems: [], // dropdown (with selected values) instead of text input
                             filterFn: this.columnFilterFn, //custom filter function that
