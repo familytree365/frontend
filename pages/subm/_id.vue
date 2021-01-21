@@ -13,9 +13,8 @@
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Group" v-model="subm.group"  :class="{ 'is-danger': $v.subm.group.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="subm.group" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.group.$error }" v-if="!$v.subm.group.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Name</label>
@@ -27,58 +26,50 @@
                     <div class="field">
                       <label class="label">addr id</label>
                       <div class="control">
-                        <v-select label="name"  v-model="subm.addr_id" :reduce="subm => subm.id" :options="options" :class="{ 'is-danger': $v.subm.addr_id.$error }"></v-select>
+                        <v-select label="name"  v-model="subm.addr_id" :reduce="subm => subm.id" :options="options"></v-select>
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.addr_id.$error }" v-if="!$v.subm.addr_id.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Rin</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Rin" v-model="subm.rin" :class="{ 'is-danger': $v.subm.rin.$error }">
+                        <input class="input" type="text" placeholder="Rin" v-model="subm.rin">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.rin.$error }" v-if="!$v.subm.rin.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">rfn</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="rfn" v-model="subm.rfn" :class="{ 'is-danger': $v.subm.rfn.$error }">
+                        <input class="input" type="text" placeholder="rfn" v-model="subm.rfn" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.rfn.$error }" v-if="!$v.subm.rfn.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Lang</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Lang" v-model="subm.lang" :class="{ 'is-danger': $v.subm.lang.$error }">
+                        <input class="input" type="text" placeholder="Lang" v-model="subm.lang">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.lang.$error }" v-if="!$v.subm.lang.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Email</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Email" v-model="subm.email" :class="{ 'is-danger': $v.subm.email.$error }">
+                        <input class="input" type="text" placeholder="Email" v-model="subm.email" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.email.$error }" v-if="!$v.subm.email.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Phone</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phone" v-model="subm.phon" :class="{ 'is-danger': $v.subm.phon.$error }">
+                        <input class="input" type="text" placeholder="Phone" v-model="subm.phon" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.phon.$error }" v-if="!$v.subm.phon.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Fax</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Fax" v-model="subm.fax" :class="{ 'is-danger': $v.subm.fax.$error }">
+                        <input class="input" type="text" placeholder="Fax" v-model="subm.fax" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.fax.$error }" v-if="!$v.subm.fax.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">www</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="www" v-model="subm.www" :class="{ 'is-danger': $v.subm.www.$error }">
+                        <input class="input" type="text" placeholder="www" v-model="subm.www" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subm.www.$error }" v-if="!$v.subm.www.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -130,34 +121,7 @@ export default {
     },
     validations: {
             subm: {
-                group: {
-                    required,
-                },
                 name: {
-                    required,
-                },
-                addr_id: {
-                    required,
-                },
-                rin: {
-                    required,
-                },
-                rfn: {
-                    required,
-                },
-                lang: {
-                    required,
-                },
-                email: {
-                    required,
-                },
-                phon: {
-                    required,
-                },
-                fax: {
-                    required,
-                },
-                www: {
                     required,
                 },
             },

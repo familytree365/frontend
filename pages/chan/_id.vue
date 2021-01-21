@@ -26,18 +26,16 @@
                                 class="bg-white border px-2 py-1 rounded input"
                                 :value="inputValue"
                                 v-on="inputEvents"
-                              :class="{ 'is-danger': $v.chan.date.$error }" />
+                             />
                             </template>
                           </v-date-picker>
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.chan.date.$error }" v-if="!$v.chan.date.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Time</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Time" v-model="chan.time" :class="{ 'is-danger': $v.chan.time.$error }">
+                        <input class="input" type="text" placeholder="Time" v-model="chan.time">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.chan.time.$error }" v-if="!$v.chan.time.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -87,12 +85,6 @@ export default {
     validations: {
             chan: {
                 group: {
-                    required,
-                },
-                date: {
-                    required,
-                },
-                time: {
                     required,
                 },
             },

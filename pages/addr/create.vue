@@ -9,20 +9,18 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Address 1</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Address 1" v-model="addr.adr1"  :class="{ 'is-danger': $v.addr.adr1.$error }">
+                        <input class="input" type="text" placeholder="Address 1" v-model="addr.adr1">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.adr1.$error }" v-if="!$v.addr.adr1.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Address 2</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Address 2" v-model="addr.adr2"  :class="{ 'is-danger': $v.addr.adr2.$error }">
+                        <input class="input" type="text" placeholder="Address 2" v-model="addr.adr2">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.adr2.$error }" v-if="!$v.addr.adr2.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">City</label>
@@ -41,20 +39,18 @@
                     <div class="field">
                       <label class="label">Post</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Post" v-model="addr.post" :class="{ 'is-danger': $v.addr.post.$error }">
+                        <input class="input" type="text" placeholder="Post" v-model="addr.post">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.post.$error }" v-if="!$v.addr.post.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Country</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Country" v-model="addr.ctry" :class="{ 'is-danger': $v.addr.ctry.$error }">
+                        <input class="input" type="text" placeholder="Country" v-model="addr.ctry">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.addr.ctry.$error }" v-if="!$v.addr.ctry.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -87,22 +83,10 @@ export default {
     },
     validations: {
             addr: {
-                adr1: {
-                    required,
-                },
-                adr2: {
-                    required,
-                },
                 city: {
                     required,
                 },
                 stae: {
-                    required,
-                },
-                post: {
-                    required,
-                },
-                ctry: {
                     required,
                 },
             },

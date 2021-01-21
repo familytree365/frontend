@@ -9,13 +9,12 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Group" v-model="refn.group"  :class="{ 'is-danger': $v.refn.group.$error }">
+                        <input class="input" type="text" placeholder="Group" v-model="refn.group">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.group.$error }" v-if="!$v.refn.group.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Refn</label>
@@ -27,13 +26,12 @@
                     <div class="field">
                       <label class="label">Type</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Type" v-model="refn.type" :class="{ 'is-danger': $v.refn.type.$error }">
+                        <input class="input" type="text" placeholder="Type" v-model="refn.type">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.refn.type.$error }" v-if="!$v.refn.type.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -77,13 +75,7 @@ export default {
     },
     validations: {
             refn: {
-                group: {
-                    required,
-                },
                 refn: {
-                    required,
-                },
-                type: {
                     required,
                 },
             },

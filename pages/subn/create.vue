@@ -13,30 +13,26 @@
                     <div class="field">
                       <label class="label">Subm</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Subm" v-model="subn.subm"  :class="{ 'is-danger': $v.subn.subm.$error }">
+                        <input class="input" type="text" placeholder="Subm" v-model="subn.subm">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subn.subm.$error }" v-if="!$v.subn.subm.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">famf</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="famf" v-model="subn.famf" :class="{ 'is-danger': $v.subn.famf.$error }">
+                        <input class="input" type="text" placeholder="famf" v-model="subn.famf">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subn.famf.$error }" v-if="!$v.subn.famf.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Temp</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Temp" v-model="subn.temp" :class="{ 'is-danger': $v.subn.temp.$error }">
+                        <input class="input" type="text" placeholder="Temp" v-model="subn.temp">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subn.temp.$error }" v-if="!$v.subn.temp.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">ance</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="ance" v-model="subn.ance" :class="{ 'is-danger': $v.subn.ance.$error }">
+                        <input class="input" type="text" placeholder="ance" v-model="subn.ance" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subn.ance.$error }" v-if="!$v.subn.ance.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">desc</label>
@@ -48,9 +44,8 @@
                     <div class="field">
                       <label class="label">rin</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="rin" v-model="subn.rin" :class="{ 'is-danger': $v.subn.rin.$error }">
+                        <input class="input" type="text" placeholder="rin" v-model="subn.rin" >
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.subn.rin.$error }" v-if="!$v.subn.rin.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -87,22 +82,7 @@ export default {
     },
     validations: {
             subn: {
-                subm: {
-                    required,
-                },
-                famf: {
-                    required,
-                },
-                temp: {
-                    required,
-                },
-                ance: {
-                    required,
-                },
                 desc: {
-                    required,
-                },
-                rin: {
                     required,
                 },
             },
