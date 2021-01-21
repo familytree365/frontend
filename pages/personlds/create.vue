@@ -9,7 +9,7 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
@@ -18,57 +18,52 @@
                       <p class="help" :class="{ 'is-danger': $v.personlds.group.$error }" v-if="!$v.personlds.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Gid" v-model="personlds.gid" :class="{ 'is-danger': $v.personlds.gid.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.gid.$error }" v-if="!$v.personlds.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                       <label class="label">Type</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Type" v-model="personlds.type" :class="{ 'is-danger': $v.personlds.type.$error }">
+                        <input class="input" type="text" placeholder="Type" v-model="personlds.type">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.type.$error }" v-if="!$v.personlds.type.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Stat</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Stat" v-model="personlds.stat" :class="{ 'is-danger': $v.personlds.stat.$error }">
+                        <input class="input" type="text" placeholder="Stat" v-model="personlds.stat">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.stat.$error }" v-if="!$v.personlds.stat.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Date</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Date" v-model="personlds.date" :class="{ 'is-danger': $v.personlds.date.$error }">
+                       <div class="control">
+                        <v-date-picker v-model="personlds.date" :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="bg-white border px-2 py-1 rounded input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            />
+                          </template>
+                        </v-date-picker>
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.date.$error }" v-if="!$v.personlds.date.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Plac</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Plac" v-model="personlds.plac" :class="{ 'is-danger': $v.personlds.plac.$error }">
+                        <input class="input" type="text" placeholder="Plac" v-model="personlds.plac">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.plac.$error }" v-if="!$v.personlds.plac.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Temp</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Temp" v-model="personlds.temp" :class="{ 'is-danger': $v.personlds.temp.$error }">
+                        <input class="input" type="text" placeholder="Temp" v-model="personlds.temp">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.temp.$error }" v-if="!$v.personlds.temp.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Slac Famc</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Slac Famc" v-model="personlds.slac_famc" :class="{ 'is-danger': $v.personlds.slac_famc.$error }">
+                        <input class="input" type="text" placeholder="Slac Famc" v-model="personlds.slac_famc">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.personlds.slac_famc.$error }" v-if="!$v.personlds.slac_famc.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -91,39 +86,21 @@ export default {
             age: 0,
             personlds: {
                 group: "",
-                gid: "",
                 type: "",
                 stat: "",
                 date: "",
                 plac: "",
                 slac_famc: "",
-            }
+            },
+            modelConfig: {
+                type: 'string',
+                mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+            },
         };
     },
     validations: {
             personlds: {
                 group: {
-                    required,
-                },
-                gid: {
-                    required,
-                },
-                type: {
-                    required,
-                },
-                stat: {
-                    required,
-                },
-                date: {
-                    required,
-                },
-                plac: {
-                    required,
-                },
-                temp: {
-                    required,
-                },
-                slac_famc: {
                     required,
                 },
             },

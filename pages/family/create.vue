@@ -10,7 +10,7 @@
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
@@ -28,45 +28,42 @@
                     <div class="field">
                         <label class="label">Husband Id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="family.husband_id" :reduce="husband => husband.id" :options="male" :class="{ 'is-danger': $v.family.husband_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.husband_id" :reduce="husband => husband.id" :options="male"></v-select>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Wife Id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="family.wife_id" :reduce="wife => wife.id" :options="female" :class="{ 'is-danger': $v.family.wife_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.wife_id" :reduce="wife => wife.id" :options="female"></v-select>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <v-select label="name"  v-model="family.type_id" :reduce="type => type.id" :options="types" :class="{ 'is-danger': $v.family.type_id.$error }"></v-select>
+                            <v-select label="name"  v-model="family.type_id" :reduce="type => type.id" :options="types"></v-select>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Chan</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Chan" v-model="family.chan" :class="{ 'is-danger': $v.family.chan.$error }">
+                            <input class="input" type="text" placeholder="Chan" v-model="family.chan">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.chan.$error }" v-if="!$v.family.chan.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Nchi</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Nchi" v-model="family.nchi" :class="{ 'is-danger': $v.family.nchi.$error }">
+                            <input class="input" type="text" placeholder="Nchi" v-model="family.nchi">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.nchi.$error }" v-if="!$v.family.nchi.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Rin</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Rin" v-model="family.rin" :class="{ 'is-danger': $v.family.rin.$error }">
+                            <input class="input" type="text" placeholder="Rin" v-model="family.rin">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.family.rin.$error }" v-if="!$v.family.rin.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -127,24 +124,6 @@
                     required,
                 },
                 is_active: {
-                    required,
-                },
-                husband_id: {
-                    required,
-                },
-                wife_id: {
-                    required,
-                },
-                type_id: {
-                    required,
-                },
-                chan: {
-                    required,
-                },
-                nchi: {
-                    required,
-                },
-                rin: {
                     required,
                 },
             },

@@ -103,17 +103,6 @@ export default {
                     },
                 },
                 {
-                    label: 'Gid',
-                    field: 'gid',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Gid', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
                     label: 'Subm',
                     field: 'subm',
                     filterOptions: {

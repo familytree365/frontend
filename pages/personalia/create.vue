@@ -26,8 +26,9 @@
                     <div class="field">
                         <label class="label">Import Confirm</label>
                         <div class="control">
-                            <input class="input" type="number" placeholder="Import Confirm" v-model="personalia.import_confirm">
+                            <input class="input" type="number" placeholder="Import Confirm" v-model="personalia.import_confirm" :class="{ 'is-danger': $v.personalia.import_confirm.$error }">
                         </div>
+                        <p class="help" :class="{ 'is-danger': $v.personalia.import_confirm.$error }" v-if="!$v.personalia.import_confirm.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
@@ -64,6 +65,10 @@
                 alia: {
                     required,
                 },
+                import_confirm: {
+                    required,
+                }
+                
             },
         },
         methods: {

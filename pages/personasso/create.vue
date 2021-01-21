@@ -5,11 +5,11 @@
                 <h1 class="card-header-title">
                     Create PersonAsso
                 </h1>
-                <NuxtLink to="/persondesiasso" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                <NuxtLink to="/personasso" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Group</label>
                         <div class="control">
@@ -18,36 +18,27 @@
                         <p class="help" :class="{ 'is-danger': $v.persondesiasso.group.$error }" v-if="!$v.persondesiasso.group.required">Field is required</p>
                     </div>
                     <div class="field">
-                        <label class="label">Gid</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Gid" v-model="persondesiasso.gid" :class="{ 'is-danger': $v.persondesiasso.gid.$error }">
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.persondesiasso.gid.$error }" v-if="!$v.persondesiasso.gid.required">Field is required</p>
-                    </div>
-                    <div class="field">
                         <label class="label">Indi</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Indi" v-model="persondesiasso.indi" :class="{ 'is-danger': $v.persondesiasso.indi.$error }">
+                            <input class="input" type="text" placeholder="Indi" v-model="persondesiasso.indi">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.persondesiasso.indi.$error }" v-if="!$v.persondesiasso.indi.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Rela</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Rela" v-model="persondesiasso.rela" :class="{ 'is-danger': $v.persondesiasso.rela.$error }">
+                            <input class="input" type="text" placeholder="Rela" v-model="persondesiasso.rela">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.persondesiasso.rela.$error }" v-if="!$v.persondesiasso.rela.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Import Confirm</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Import Confirm" v-model="persondesiasso.import_confirm" :class="{ 'is-danger': $v.persondesiasso.import_confirm.$error }">
+                            <input class="input" type="number" placeholder="Import Confirm" v-model="persondesiasso.import_confirm" :class="{ 'is-danger': $v.persondesiasso.import_confirm.$error }">
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.persondesiasso.import_confirm.$error }" v-if="!$v.persondesiasso.import_confirm.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -70,7 +61,6 @@
                 age: 0,
                 persondesiasso: {
                     group: "",
-                    gid: "",
                     indi: "",
                     rela: "",
                     import_confirm: "",
@@ -80,15 +70,6 @@
         validations: {
             persondesiasso: {
                 group: {
-                    required,
-                },
-                gid: {
-                    required,
-                },
-                indi: {
-                    required,
-                },
-                rela: {
                     required,
                 },
                 import_confirm: {
@@ -103,8 +84,8 @@
                 if (this.$v.$invalid) {
                     console.log("fail")
                 } else {
-                    this.$axios.$post('/api/persondesi', this.persondesiasso)
-                            .then(response => (this.$router.push('/persondesiasso')))
+                    this.$axios.$post('/api/personasso', this.persondesiasso)
+                            .then(response => (this.$router.push('/personasso')))
                             .catch(error => {
                             });
                 }

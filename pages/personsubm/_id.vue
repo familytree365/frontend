@@ -9,20 +9,13 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                 <form @click.prevent="save()">
+                 <form>
                     <div class="field">
                       <label class="label">Group</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Group" v-model="personsubm.group"  :class="{ 'is-danger': $v.personsubm.group.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.personsubm.group.$error }" v-if="!$v.personsubm.group.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                      <label class="label">Gid</label>
-                      <div class="control">
-                        <input class="input" type="text" placeholder="Gid" v-model="personsubm.gid" :class="{ 'is-danger': $v.personsubm.gid.$error }">
-                      </div>
-                      <p class="help" :class="{ 'is-danger': $v.personsubm.gid.$error }" v-if="!$v.personsubm.gid.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Subm</label>
@@ -33,7 +26,7 @@
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>
@@ -53,7 +46,6 @@ export default {
             message: "",
             personsubm: {
                 group: "",
-                gid: '',
                 subm: ''
             }
         };
@@ -61,9 +53,6 @@ export default {
     validations: {
             personsubm: {
                 group: {
-                    required,
-                },
-                gid: {
                     required,
                 },
                 subm: {
