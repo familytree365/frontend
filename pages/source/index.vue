@@ -90,18 +90,18 @@ export default {
             isLoading: false,
             totalRecords: 0,
             columns: [
-                {
-                    label: 'titl',
-                    field: 'titl',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter titl', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                // {
+                //     label: 'titl',
+                //     field: 'titl',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter titl', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
+                //     },
+                // },
                 {
                     label: 'sour',
                     field: 'sour',
@@ -150,18 +150,18 @@ export default {
 
                 //     },
                 // },
-                {
-                    label: 'publ',
-                    field: 'publ',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter publ', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
+                // {
+                //     label: 'publ',
+                //     field: 'publ',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter publ', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
 
-                    },
-                },
+                //     },
+                // },
                 // {
                 //     label: 'abbr',
                 //     field: 'abbr',

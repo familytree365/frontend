@@ -31,13 +31,13 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.addr_id.$error }" v-if="!$v.repository.addr_id.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                       <label class="label">Rin</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Rin" v-model="repository.rin"  :class="{ 'is-danger': $v.repository.rin.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.rin.$error }" v-if="!$v.repository.rin.required">Field is required</p>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <label class="label">Email</label>
                       <div class="control">
@@ -52,7 +52,7 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.phon.$error }" v-if="!$v.repository.phon.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                       <label class="label">Fax</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Fax" v-model="repository.fax" :class="{ 'is-danger': $v.repository.fax.$error }">
@@ -65,7 +65,7 @@
                         <input class="input" type="text" placeholder="www" v-model="repository.www" :class="{ 'is-danger': $v.repository.www.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.www.$error }" v-if="!$v.repository.www.required">Field is required</p>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <label class="label">Description</label>
                       <div class="control">
@@ -73,13 +73,13 @@
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.description.$error }" v-if="!$v.repository.description.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                       <label class="label">Type ID</label>
                       <div class="control">
                         <v-select label="name"  v-model="repository.type_id" :reduce="repository => repository.id" :options="types" :class="{ 'is-danger': $v.repository.type_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.repository.type_id.$error }" v-if="!$v.repository.type_id.required">Field is required</p>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <label class="label">Is Active</label>
                       <div class="control">
@@ -148,27 +148,27 @@ export default {
                 name: {
                     required,
                 },
-                rin: {
-                    required,
-                },
+                // rin: {
+                //     required,
+                // },
                 email: {
                     required,
                 },
                 phon: {
                     required,
                 },
-                fax: {
-                    required,
-                },
-                www: {
-                    required,
-                },
+                // fax: {
+                //     required,
+                // },
+                // www: {
+                //     required,
+                // },
                 description: {
                     required,
                 },
-                type_id: {
-                    required,
-                },
+                // type_id: {
+                //     required,
+                // },
                 is_active: {
                     required,
                 },
