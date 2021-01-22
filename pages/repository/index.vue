@@ -115,8 +115,8 @@ export default {
                     },
                 },
                 {
-                    label: 'Addr Id',
-                    field: 'addr_id',
+                    label: 'Addr',
+                    field: 'addr.adr1',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Addr Id', // placeholder for filter input
@@ -194,8 +194,8 @@ export default {
                     },
                 },
                 {
-                    label: 'Type ID',
-                    field: 'type_id',
+                    label: 'Type',
+                    field: 'type.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Type ID', // placeholder for filter input

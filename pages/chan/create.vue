@@ -41,7 +41,7 @@
                     <div class="field">
                       <label class="label">Time</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Time" v-model="chan.time">
+                        <vue-timepicker v-model="chan.time" format="hh:mm:ss a" drop-direction="up"></vue-timepicker>
 
                       </div>
                     </div>

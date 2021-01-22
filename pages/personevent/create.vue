@@ -11,9 +11,9 @@
             <div class="card-content">
                 <form>
                     <div class="field">
-                        <label class="label">Person Id</label>
+                        <label class="label">Person</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Person Id" v-model="personevent.person_id"  :class="{ 'is-danger': $v.personevent.person_id.$error }">
+                            <v-select label="name"  v-model="personevent.person_id" :reduce="subm => subm.id" :options="people"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.person_id.$error }" v-if="!$v.personevent.person_id.required">Field is required</p>
                     </div>
@@ -91,6 +91,7 @@
                         <label class="label">Year</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Year" v-model="personevent.year" :class="{ 'is-danger': $v.personevent.year.$error }">
+                            <!-- <datepicker :value="personevent.year" v-model="personevent.year"minimum-view="year" format="yyyy"></datepicker> -->
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.year.$error }" v-if="!$v.personevent.year.required">Field is required</p>
                     </div>
@@ -98,6 +99,7 @@
                         <label class="label">Month</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Month" v-model="personevent.month" :class="{ 'is-danger': $v.personevent.month.$error }">
+                            <!-- <datepicker :value="personevent.month" v-model="personevent.month" :minimumView="'month'" :maximumView="'month'" format="MMM"></datepicker> -->
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.month.$error }" v-if="!$v.personevent.month.required">Field is required</p>
                     </div>
@@ -105,6 +107,7 @@
                         <label class="label">Day</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Day" v-model="personevent.day" :class="{ 'is-danger': $v.personevent.day.$error }">
+                            <!-- <datepicker :value="personevent.month" v-model="personevent.month" :minimumView="'day'" :maximumView="'day'" format="dd"></datepicker> -->
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.day.$error }" v-if="!$v.personevent.day.required">Field is required</p>
                     </div>
@@ -122,8 +125,11 @@
 
 <script>
     import { required } from 'vuelidate/lib/validators'
+    import Datepicker from 'vuejs-datepicker';
     export default {
-
+        components: {
+          Datepicker
+        },
         layout: 'auth',
         data() {
             return {
@@ -146,7 +152,8 @@
                     year: "",
                     month: "",
                     day: "",
-                }
+                },
+                people: [],
             };
         },
         validations: {
@@ -207,6 +214,12 @@
                             .catch(error => {
                             });
                 }
+            },
+            people() {
+                this.$axios.$get("/api/person")
+                .then(response => {
+                    this.people = response;
+                })
             },
         }
     }

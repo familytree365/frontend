@@ -115,8 +115,8 @@ export default {
                     },
                 },
                 {
-                    label: 'Addr id',
-                    field: 'addr_id',
+                    label: 'Addr',
+                    field: 'addr.adr2',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter Addr id', // placeholder for filter input
@@ -132,30 +132,6 @@ export default {
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter rin', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-
-                    },
-                },
-                {
-                    label: 'rfn',
-                    field: 'rfn',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter rfn', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-
-                    },
-                },
-                {
-                    label: 'Lang',
-                    field: 'lang',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Lang', // placeholder for filter input
                         filterValue: '', // initial populated value for this filter
                         filterDropdownItems: [], // dropdown (with selected values) instead of text input
                         filterFn: this.columnFilterFn, //custom filter function that
