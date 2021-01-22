@@ -9,18 +9,18 @@
                 <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                       <label class="label">Family Id</label>
                       <div class="control">
-                        <v-select label="name" multiple  v-model="familyevent.family_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.family_id.$error }"></v-select>
+                        <v-select label="name"   v-model="familyevent.family_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.family_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.family_id.$error }" v-if="!$v.familyevent.family_id.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Places Id</label>
                       <div class="control">
-                        <v-select label="name" multiple  v-model="familyevent.places_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.places_id.$error }"></v-select>
+                        <v-select label="name"   v-model="familyevent.places_id" :reduce="familyevent => familyevent.id" :options="options" :class="{ 'is-danger': $v.familyevent.places_id.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.places_id.$error }" v-if="!$v.familyevent.places_id.required">Field is required</p>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="field">
                       <label class="label">Phon</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Phon" v-model="familyevent.phon" :class="{ 'is-danger': $v.familyevent.phon.$error }">
+                        <input class="input" type="number" placeholder="Phon" v-model="familyevent.phon" :class="{ 'is-danger': $v.familyevent.phon.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.phon.$error }" v-if="!$v.familyevent.phon.required">Field is required</p>
                     </div>
@@ -97,27 +97,27 @@
                     <div class="field">
                       <label class="label">Age</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Age" v-model="familyevent.age" :class="{ 'is-danger': $v.familyevent.age.$error }">
+                        <input class="input" type="number" placeholder="Age" v-model="familyevent.age" :class="{ 'is-danger': $v.familyevent.age.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.age.$error }" v-if="!$v.familyevent.age.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Husb</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Husb" v-model="familyevent.husb" :class="{ 'is-danger': $v.familyevent.husb.$error }">
+                        <input class="input" type="number" placeholder="Husb" v-model="familyevent.husb" :class="{ 'is-danger': $v.familyevent.husb.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.husb.$error }" v-if="!$v.familyevent.husb.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Wife</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Wife" v-model="familyevent.wife" :class="{ 'is-danger': $v.familyevent.wife.$error }">
+                        <input class="input" type="number" placeholder="Wife" v-model="familyevent.wife" :class="{ 'is-danger': $v.familyevent.wife.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.familyevent.wife.$error }" v-if="!$v.familyevent.wife.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
-                        <button  class="button is-link has-background-primary">Submit</button>
+                        <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                       </div>
                     </div>
                 </form>

@@ -5,112 +5,112 @@
                 <h1 class="card-header-title">
                     Create PersonEvent
                 </h1>
-                <NuxtLink to="/personeventevent" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
+                <NuxtLink to="/personevent" class="is-size-6 is-flex has-text-link has-text-weight-medium mb-2 card-header-icon">
                     <font-awesome-icon :icon="['fas', 'angle-left']" class="mt-1 mr-2" />Back</NuxtLink>
             </header>
             <div class="card-content">
-                <form @click.prevent="save()">
+                <form>
                     <div class="field">
                         <label class="label">Person Id</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Person Id" v-model="personeventevent.person_id"  :class="{ 'is-danger': $v.personeventevent.person_id.$error }">
+                            <input class="input" type="text" placeholder="Person Id" v-model="personevent.person_id"  :class="{ 'is-danger': $v.personevent.person_id.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.person_id.$error }" v-if="!$v.personeventevent.person_id.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.person_id.$error }" v-if="!$v.personevent.person_id.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                         <label class="label">Title</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Title" v-model="personeventevent.title" :class="{ 'is-danger': $v.personeventevent.title.$error }">
+                            <input class="input" type="text" placeholder="Title" v-model="personevent.title" :class="{ 'is-danger': $v.personevent.title.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.title.$error }" v-if="!$v.personeventevent.title.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.title.$error }" v-if="!$v.personevent.title.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Type</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Type" v-model="personeventevent.type" :class="{ 'is-danger': $v.personeventevent.type.$error }">
+                            <input class="input" type="text" placeholder="Type" v-model="personevent.type" :class="{ 'is-danger': $v.personevent.type.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.type.$error }" v-if="!$v.personeventevent.type.required">Field is required</p>
-                    </div>
-                    <div class="field">
+                        <p class="help" :class="{ 'is-danger': $v.personevent.type.$error }" v-if="!$v.personevent.type.required">Field is required</p>
+                    </div> -->
+                    <!-- <div class="field">
                         <label class="label">Attr</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Attr" v-model="personeventevent.attr" :class="{ 'is-danger': $v.personeventevent.attr.$error }">
+                            <input class="input" type="text" placeholder="Attr" v-model="personevent.attr" :class="{ 'is-danger': $v.personevent.attr.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.attr.$error }" v-if="!$v.personeventevent.attr.required">Field is required</p>
-                    </div>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.attr.$error }" v-if="!$v.personevent.attr.required">Field is required</p>
+                    </div> -->
                     <div class="field">
                         <label class="label">Date</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Date" v-model="personeventevent.date" :class="{ 'is-danger': $v.personeventevent.date.$error }">
+                            <input class="input" type="text" placeholder="Date" v-model="personevent.date" :class="{ 'is-danger': $v.personevent.date.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.date.$error }" v-if="!$v.personeventevent.date.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.date.$error }" v-if="!$v.personevent.date.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Plac</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Plac" v-model="personeventevent.plac" :class="{ 'is-danger': $v.personeventevent.plac.$error }">
+                            <input class="input" type="text" placeholder="Plac" v-model="personevent.plac" :class="{ 'is-danger': $v.personevent.plac.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.plac.$error }" v-if="!$v.personeventevent.plac.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.plac.$error }" v-if="!$v.personevent.plac.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Phon</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Phon" v-model="personeventevent.phon" :class="{ 'is-danger': $v.personeventevent.phon.$error }">
+                            <input class="input" type="text" placeholder="Phon" v-model="personevent.phon" :class="{ 'is-danger': $v.personevent.phon.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.phon.$error }" v-if="!$v.personeventevent.phon.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.phon.$error }" v-if="!$v.personevent.phon.required">Field is required</p>
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                         <label class="label">Caus</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Caus" v-model="personeventevent.caus" :class="{ 'is-danger': $v.personeventevent.caus.$error }">
+                            <input class="input" type="text" placeholder="Caus" v-model="personevent.caus" :class="{ 'is-danger': $v.personevent.caus.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.caus.$error }" v-if="!$v.personeventevent.caus.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.caus.$error }" v-if="!$v.personevent.caus.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Age</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Age" v-model="personeventevent.age" :class="{ 'is-danger': $v.personeventevent.age.$error }">
+                            <input class="input" type="text" placeholder="Age" v-model="personevent.age" :class="{ 'is-danger': $v.personevent.age.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.age.$error }" v-if="!$v.personeventevent.age.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.age.$error }" v-if="!$v.personevent.age.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Agnc</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Agnc" v-model="personeventevent.agnc" :class="{ 'is-danger': $v.personeventevent.agnc.$error }">
+                            <input class="input" type="text" placeholder="Agnc" v-model="personevent.agnc" :class="{ 'is-danger': $v.personevent.agnc.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.agnc.$error }" v-if="!$v.personeventevent.agnc.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.agnc.$error }" v-if="!$v.personevent.agnc.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Description" v-model="personeventevent.description" :class="{ 'is-danger': $v.personeventevent.description.$error }">
+                            <input class="input" type="text" placeholder="Description" v-model="personevent.description" :class="{ 'is-danger': $v.personevent.description.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.description.$error }" v-if="!$v.personeventevent.description.required">Field is required</p>
-                    </div>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.description.$error }" v-if="!$v.personevent.description.required">Field is required</p>
+                    </div> -->
                     <div class="field">
                         <label class="label">Year</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Year" v-model="personeventevent.year" :class="{ 'is-danger': $v.personeventevent.year.$error }">
+                            <input class="input" type="text" placeholder="Year" v-model="personevent.year" :class="{ 'is-danger': $v.personevent.year.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.year.$error }" v-if="!$v.personeventevent.year.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.year.$error }" v-if="!$v.personevent.year.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Month</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Month" v-model="personeventevent.month" :class="{ 'is-danger': $v.personeventevent.month.$error }">
+                            <input class="input" type="text" placeholder="Month" v-model="personevent.month" :class="{ 'is-danger': $v.personevent.month.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.month.$error }" v-if="!$v.personeventevent.month.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.month.$error }" v-if="!$v.personevent.month.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">Day</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Day" v-model="personeventevent.day" :class="{ 'is-danger': $v.personeventevent.day.$error }">
+                            <input class="input" type="text" placeholder="Day" v-model="personevent.day" :class="{ 'is-danger': $v.personevent.day.$error }">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.personeventevent.day.$error }" v-if="!$v.personeventevent.day.required">Field is required</p>
+                        <p class="help" :class="{ 'is-danger': $v.personevent.day.$error }" v-if="!$v.personevent.day.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button  class="button is-link has-background-primary">Submit</button>
+                            <button  @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -131,7 +131,7 @@
                 message: "",
                 person_id: '',
                 age: 0,
-                personeventevent: {
+                personevent: {
                     person_id: "",
                     title: "",
                     type: "",
@@ -150,19 +150,19 @@
             };
         },
         validations: {
-            personeventevent: {
+            personevent: {
                 person_id: {
                     required,
                 },
-                title: {
-                    required,
-                },
-                type: {
-                    required,
-                },
-                attr: {
-                    required,
-                },
+                // title: {
+                //     required,
+                // },
+                // type: {
+                //     required,
+                // },
+                // attr: {
+                //     required,
+                // },
                 date: {
                     required,
                 },
@@ -172,18 +172,18 @@
                 phon: {
                     required,
                 },
-                caus: {
-                    required,
-                },
-                age: {
-                    required,
-                },
-                agnc: {
-                    required,
-                },
-                description: {
-                    required,
-                },
+                // caus: {
+                //     required,
+                // },
+                // age: {
+                //     required,
+                // },
+                // agnc: {
+                //     required,
+                // },
+                // description: {
+                //     required,
+                // },
                 year: {
                     required,
                 },
@@ -202,8 +202,8 @@
                 if (this.$v.$invalid) {
                     console.log("fail")
                 } else {
-                    this.$axios.$post('/api/personevent', this.personeventevent)
-                            .then(response => (this.$router.push('/personeventevent')))
+                    this.$axios.$post('/api/personevent', this.personevent)
+                            .then(response => (this.$router.push('/personevent')))
                             .catch(error => {
                             });
                 }

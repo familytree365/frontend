@@ -10,10 +10,10 @@
             <div class="column is-12">
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
-                        <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                                href="dashboard.html">Home</a></li>
+                        <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
+                                to="/dashboard">Home</NuxtLink></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                aria-current="page">Dashboard</a></li>
+                                aria-current="page">PersonEvent</a></li>
                     </ul>
                 </nav>
             </div>
@@ -27,7 +27,7 @@
                           PersonEvent
                         </p>
                         <p class="card-header-icon">
-                         <NuxtLink to="/personeventevent/create" class="button is-link has-background-primary">
+                         <NuxtLink to="/personevent/create" class="button is-link has-background-primary">
                         Create New PersonEvent</NuxtLink>
                         </p>
                       </header>
@@ -61,7 +61,7 @@
                     >
                     <template slot="table-row" slot-scope="props">
                         <span v-if="props.column.field == 'action'">
-                            <NuxtLink :to="'personeventevent/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
+                            <NuxtLink :to="'personevent/' + rows[props.row.originalIndex].id" class="button is-link has-background-primary">
                                 Edit</NuxtLink>
                             <button @click="deletePersonEvent(rows[props.row.originalIndex].id)" class="button is-danger">
                                 Delete</button>
@@ -102,39 +102,39 @@ export default {
 
                     },
                 },
-                {
-                    label: 'Title',
-                    field: 'title',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Title', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'Type',
-                    field: 'type',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Type', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'Attr',
-                    field: 'attr',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Attr', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
+                // {
+                //     label: 'Title',
+                //     field: 'title',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Title', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'Type',
+                //     field: 'type',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Type', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'Attr',
+                //     field: 'attr',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Attr', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
                 {
                     label: 'Date',
                     field: 'date',
@@ -168,50 +168,50 @@ export default {
                         filterFn: this.columnFilterFn, //custom filter function that
                     },
                 },
-                {
-                    label: 'Age',
-                    field: 'age',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Age', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'Agnc',
-                    field: 'agnc',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Agnc', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'Places Id',
-                    field: 'places_id',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Places Id', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
-                {
-                    label: 'Description',
-                    field: 'description',
-                    filterOptions: {
-                        enabled: true, // enable filter for this column
-                        placeholder: 'Filter Description', // placeholder for filter input
-                        filterValue: '', // initial populated value for this filter
-                        filterDropdownItems: [], // dropdown (with selected values) instead of text input
-                        filterFn: this.columnFilterFn, //custom filter function that
-                    },
-                },
+                // {
+                //     label: 'Age',
+                //     field: 'age',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Age', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'Agnc',
+                //     field: 'agnc',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Agnc', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'Places Id',
+                //     field: 'places_id',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Places Id', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
+                // {
+                //     label: 'Description',
+                //     field: 'description',
+                //     filterOptions: {
+                //         enabled: true, // enable filter for this column
+                //         placeholder: 'Filter Description', // placeholder for filter input
+                //         filterValue: '', // initial populated value for this filter
+                //         filterDropdownItems: [], // dropdown (with selected values) instead of text input
+                //         filterFn: this.columnFilterFn, //custom filter function that
+                //     },
+                // },
                 {
                     label: 'Year',
                     field: 'year',
