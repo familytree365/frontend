@@ -198,8 +198,8 @@ export default {
                 //     },
                 // },
                 {
-                    label: 'repository id',
-                    field: 'repository_id',
+                    label: 'repository',
+                    field: 'repositories.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter repository id', // placeholder for filter input
@@ -209,8 +209,8 @@ export default {
                     },
                 },
                 {
-                    label: 'author id',
-                    field: 'author_id',
+                    label: 'author',
+                    field: 'author.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter author id', // placeholder for filter input
@@ -220,8 +220,8 @@ export default {
                     },
                 },
                 {
-                    label: 'publication id',
-                    field: 'publication_id',
+                    label: 'publication',
+                    field: 'publication.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter publication id', // placeholder for filter input
@@ -232,7 +232,7 @@ export default {
                 },
                 {
                     label: 'type id',
-                    field: 'type_id',
+                    field: 'type.name',
                     filterOptions: {
                         enabled: true, // enable filter for this column
                         placeholder: 'Filter type id', // placeholder for filter input

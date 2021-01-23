@@ -46,6 +46,24 @@
                         <p class="help" :class="{ 'is-danger': $v.personevent.date.$error }" v-if="!$v.personevent.date.required">Field is required</p>
                     </div>
                     <div class="field">
+                        <label class="label">Year</label>
+                        <div class="control">
+                            <datepicker v-model="personevent.year" minimum-view="year" format="yyyy"></datepicker>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Month</label>
+                        <div class="control">
+                            <datepicker v-model="personevent.month" :minimumView="'month'" :maximumView="'month'" format="MMM"></datepicker>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Day</label>
+                        <div class="control">
+                            <datepicker v-model="personevent.day" :minimumView="'day'" :maximumView="'day'" format="dd"></datepicker>
+                        </div>
+                    </div>
+                    <div class="field">
                         <label class="label">Plac</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Plac" v-model="personevent.plac" :class="{ 'is-danger': $v.personevent.plac.$error }">
@@ -59,6 +77,7 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.phon.$error }" v-if="!$v.personevent.phon.required">Field is required</p>
                     </div>
+                   
                     <!-- <div class="field">
                         <label class="label">Caus</label>
                         <div class="control">
@@ -87,30 +106,8 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.description.$error }" v-if="!$v.personevent.description.required">Field is required</p>
                     </div> -->
-                    <div class="field">
-                        <label class="label">Year</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Year" v-model="personevent.year" :class="{ 'is-danger': $v.personevent.year.$error }">
-                            <!-- <datepicker :value="personevent.year" v-model="personevent.year"minimum-view="year" format="yyyy"></datepicker> -->
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.personevent.year.$error }" v-if="!$v.personevent.year.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                        <label class="label">Month</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Month" v-model="personevent.month" :class="{ 'is-danger': $v.personevent.month.$error }">
-                            <!-- <datepicker :value="personevent.month" v-model="personevent.month" :minimumView="'month'" :maximumView="'month'" format="MMM"></datepicker> -->
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.personevent.month.$error }" v-if="!$v.personevent.month.required">Field is required</p>
-                    </div>
-                    <div class="field">
-                        <label class="label">Day</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Day" v-model="personevent.day" :class="{ 'is-danger': $v.personevent.day.$error }">
-                            <!-- <datepicker :value="personevent.month" v-model="personevent.month" :minimumView="'day'" :maximumView="'day'" format="dd"></datepicker> -->
-                        </div>
-                        <p class="help" :class="{ 'is-danger': $v.personevent.day.$error }" v-if="!$v.personevent.day.required">Field is required</p>
-                    </div>
+                    
+                    
                     <div class="field is-grouped">
                         <div class="control">
                             <button  @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -191,15 +188,15 @@
                 // description: {
                 //     required,
                 // },
-                year: {
-                    required,
-                },
-                month: {
-                    required,
-                },
-                day: {
-                    required,
-                },
+                // year: {
+                //     required,
+                // },
+                // month: {
+                //     required,
+                // },
+                // day: {
+                //     required,
+                // },
             },
         },
         methods: {
@@ -215,12 +212,15 @@
                             });
                 }
             },
-            people() {
+            getpeople() {
                 this.$axios.$get("/api/person")
                 .then(response => {
                     this.people = response;
                 })
             },
+        },
+        created() {
+            this.getpeople()
         }
     }
 </script>
