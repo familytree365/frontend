@@ -13,7 +13,7 @@
                     <div class="field">
                         <label class="label">Person</label>
                         <div class="control">
-                            <v-select label="name"  v-model="personevent.person_id" :reduce="subm => subm.id" :options="people"></v-select>
+                            <v-select label="name"  v-model="personevent.person_id" :reduce="person => person.id" :options="people"></v-select>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.person_id.$error }" v-if="!$v.personevent.person_id.required">Field is required</p>
                     </div>
@@ -41,7 +41,15 @@
                     <div class="field">
                         <label class="label">Date</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Date" v-model="personevent.date" :class="{ 'is-danger': $v.personevent.date.$error }">
+                            <v-date-picker v-model="personevent.date" :model-config="modelConfig">
+                              <template v-slot="{ inputValue, inputEvents }">
+                                <input
+                                  class="bg-white border px-2 py-1 rounded input"
+                                  :value="inputValue"
+                                  v-on="inputEvents"
+                               />
+                              </template>
+                            </v-date-picker>
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.date.$error }" v-if="!$v.personevent.date.required">Field is required</p>
                     </div>
@@ -151,6 +159,10 @@
                     day: "",
                 },
                 people: [],
+                modelConfig: {
+                    type: 'string',
+                    mask: 'YYYY-MM-DD', // Uses 'iso' if missing
+                },
             };
         },
         validations: {
