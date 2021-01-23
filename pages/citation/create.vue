@@ -49,10 +49,12 @@
                     <div class="field">
                       <label class="label">Is Active</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Is Active" v-model="citation.is_active" :class="{ 'is-danger': $v.citation.is_active.$error }">
+                            <v-select label="name"  v-model="citation.is_active" :reduce="citation => citation.id" :options="status" :class="{ 'is-danger': $v.citation.is_active.$error }"></v-select>
+
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.citation.is_active.$error }" v-if="!$v.citation.is_active.required">Field is required</p>
                     </div>
+
                     <div class="field">
                       <label class="label">Confidence</label>
                       <div class="control">
@@ -101,6 +103,16 @@ export default {
                 confidence: "",
                 source_id: "",
             },
+            status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
             options : [
               {
                 id: 1,

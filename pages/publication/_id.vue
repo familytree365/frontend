@@ -27,7 +27,7 @@
                     <div class="field">
                       <label class="label">Is Active</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Is Active" v-model="publication.is_active" :class="{ 'is-danger': $v.publication.is_active.$error }">
+                            <v-select label="name"  v-model="publication.is_active" :reduce="publication => publication.id" :options="status" :class="{ 'is-danger': $v.publication.is_active.$error }"></v-select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.publication.is_active.$error }" v-if="!$v.publication.is_active.required">Field is required</p>
                     </div>
@@ -55,7 +55,17 @@ export default {
                 name: "",
                 description: '',
                 is_active: ''
-            }
+            },
+             status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
         };
     },
     validations: {

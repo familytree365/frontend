@@ -30,6 +30,12 @@
                         <input class="input" type="text" placeholder="Date" v-model="place.date">
                       </div>
                     </div>
+                    <div class="field">
+                        <label class="label">is active</label>
+                        <div class="control">
+                            <v-select label="name"  v-model="place.is_active" :reduce="place => place.id" :options="status"></v-select>
+                        </div>
+                    </div>
                     <div class="field is-grouped">
                       <div class="control">
                         <button  @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -54,7 +60,17 @@ export default {
                 title: "",
                 description: '',
                 date: ''
-            }
+            },
+             status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
         };
     },
     validations: {

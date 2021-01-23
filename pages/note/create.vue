@@ -10,13 +10,13 @@
             </header>
             <div class="card-content">
                 <form>
-                    <div class="field">
+                    <!-- <div class="field">
                         <label class="label">Gid</label>
                         <div class="control">
                                <v-select label="name" multiple  v-model="note.gid
                             " :reduce="note => note.id" :options="options"></v-select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="field">
                         <label class="label">Note</label>
                         <div class="control">
@@ -45,14 +45,14 @@
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Is Active" v-model="note.is_active">
+                            <v-select label="name"  v-model="note.is_active" :reduce="note => note.id" :options="status"></v-select>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                               <v-select label="name" multiple  v-model="note.type_id
-                            " :reduce="note => note.id" :options="options"></v-select>
+                               <v-select label="name"   v-model="note.type_id
+                            " :reduce="note => note.id" :options="type"></v-select>
                         </div>
                     </div>
                     <div class="field">
@@ -94,20 +94,18 @@
                     type_id: "",
                     group: "",
                 },
-                options : [
+                status : [
                   {
                     id: 1,
-                    name: "HTML5",
+                    name: "Active",
                   },
                   {
-                    id: 2,
-                    name: "HTML5",
-                  },
-                  {
-                    id: 3,
-                    name: "HTML5",
+                    id: 0,
+                    name: "Inactive",
                   },
                 ],
+                type: [],
+
             };
         },
         validations: {
@@ -132,6 +130,16 @@
                             });
                 }
             },
+             getType() {
+                this.$axios.$get("/api/alltype")
+                .then(response => {
+                    this.type = response;
+                })
+            },
+
+        },
+         created() {
+            this.getType()
         }
     }
 </script>

@@ -35,16 +35,14 @@
                     <div class="field">
                       <label class="label">Text</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Text" v-model="sourcedata.text" :class="{ 'is-danger': $v.sourcedata.text.$error }">
+                        <input class="input" type="text" placeholder="Text" v-model="sourcedata.text">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.text.$error }" v-if="!$v.sourcedata.text.required">Field is required</p>
                     </div>
                     <div class="field">
                       <label class="label">Agnc</label>
                       <div class="control">
-                        <input class="input" type="text" placeholder="Agnc" v-model="sourcedata.agnc" :class="{ 'is-danger': $v.sourcedata.agnc.$error }">
+                        <input class="input" type="text" placeholder="Agnc" v-model="sourcedata.agnc">
                       </div>
-                      <p class="help" :class="{ 'is-danger': $v.sourcedata.agnc.$error }" v-if="!$v.sourcedata.agnc.required">Field is required</p>
                     </div>
                     <div class="field is-grouped">
                       <div class="control">
@@ -102,12 +100,6 @@ export default {
                     required,
                 },
                 date: {
-                    required,
-                },
-                text: {
-                    required,
-                },
-                agnc: {
                     required,
                 },
             },

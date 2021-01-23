@@ -17,13 +17,12 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.sour.$error }" v-if="!$v.source.sour.required">Field is required</p>
                     </div>
-                    <!-- <div class="field">
+                    <div class="field">
                         <label class="label">titl</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="titl" v-model="source.titl"  :class="{ 'is-danger': $v.source.titl.$error }">
+                            <input class="input" type="text" placeholder="titl" v-model="source.titl">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.titl.$error }" v-if="!$v.source.titl.required">Field is required</p>
-                    </div> -->
+                    </div>
                     <div class="field">
                         <label class="label">auth</label>
                         <div class="control">
@@ -31,34 +30,30 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.auth.$error }" v-if="!$v.source.auth.required">Field is required</p>
                     </div>
-                    <!-- <div class="field">
+                    <div class="field">
                         <label class="label">data</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="data" v-model="source.data"  :class="{ 'is-danger': $v.source.data.$error }">
+                            <input class="input" type="text" placeholder="data" v-model="source.data" >
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.data.$error }" v-if="!$v.source.data.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">text</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="text" v-model="source.text"  :class="{ 'is-danger': $v.source.text.$error }">
+                            <input class="input" type="text" placeholder="text" v-model="source.text" >
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.text.$error }" v-if="!$v.source.text.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">publ</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="publ" v-model="source.publ"  :class="{ 'is-danger': $v.source.publ.$error }">
+                            <input class="input" type="text" placeholder="publ" v-model="source.publ" >
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.publ.$error }" v-if="!$v.source.publ.required">Field is required</p>
-                    </div> -->
-                    <!-- <div class="field">
+                    </div>
+                    <div class="field">
                         <label class="label">abbr</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="abbr" v-model="source.abbr"  :class="{ 'is-danger': $v.source.abbr.$error }">
+                            <input class="input" type="text" placeholder="abbr" v-model="source.abbr" >
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.abbr.$error }" v-if="!$v.source.abbr.required">Field is required</p>
-                    </div> -->
+                    </div>
                     <div class="field">
                         <label class="label">Name</label>
                         <div class="control">
@@ -66,13 +61,12 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.name.$error }" v-if="!$v.source.name.required">Field is required</p>
                     </div>
-                    <!-- <div class="field">
+                    <div class="field">
                         <label class="label">Description</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Description" v-model="source.description" :class="{ 'is-danger': $v.source.description.$error }">
+                            <input class="input" type="text" placeholder="Description" v-model="source.description">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.description.$error }" v-if="!$v.source.description.required">Field is required</p>
-                    </div> -->
+                    </div>
                     <div class="field">
                         <label class="label">repository id</label>
                         <div class="control">
@@ -108,27 +102,24 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.source.is_active.$error }" v-if="!$v.source.is_active.required">Field is required</p>
                     </div>
-                    <!-- <div class="field">
+                    <div class="field">
                         <label class="label">group</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="group" v-model="source.group" :class="{ 'is-danger': $v.source.group.$error }">
+                            <input class="input" type="text" placeholder="group" v-model="source.group">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.group.$error }" v-if="!$v.source.group.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">quay</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="quay" v-model="source.quay" :class="{ 'is-danger': $v.source.quay.$error }">
+                            <input class="input" type="text" placeholder="quay" v-model="source.quay">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.quay.$error }" v-if="!$v.source.quay.required">Field is required</p>
                     </div>
                     <div class="field">
                         <label class="label">page</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="page" v-model="source.page" :class="{ 'is-danger': $v.source.page.$error }">
+                            <input class="input" type="text" placeholder="page" v-model="source.page">
                         </div>
-                        <p class="help" :class="{ 'is-danger': $v.source.page.$error }" v-if="!$v.source.page.required">Field is required</p>
-                    </div> -->
+                    </div>
                     <div class="field is-grouped">
                         <div class="control">
                             <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -192,38 +183,20 @@
                 sour: {
                     required,
                 },
-                // titl: {
-                //     required,
-                // },
                 auth: {
                     required,
                 },
-                // data: {
-                //     required,
-                // },
-                // text: {
-                //     required,
-                // },
-                // publ: {
-                //     required,
-                // },
-                // abbr: {
-                //     required,
-                // },
                 name: {
                     required,
                 },
-                // description: {
-                //     required,
-                // },
                 repository_id: {
                     required,
                 },
-                author_id: {
-                    required,
+                author_id:{
+                  required,
                 },
                 publication_id: {
-                    required,
+                  required,
                 },
                 type_id: {
                     required,
@@ -231,16 +204,7 @@
                 is_active: {
                     required,
                 },
-                // group: {
-                //     required,
-                // },
-                // quay: {
-                //     required,
-                // },
-                // page: {
-                //     required,
-                // },
-            },
+                },
         },
         methods: {
 

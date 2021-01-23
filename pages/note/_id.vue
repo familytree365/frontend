@@ -45,13 +45,13 @@
                     <div class="field">
                         <label class="label">Is Active</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Is Active" v-model="note.is_active">
+                            <v-select label="name"  v-model="note.is_active" :reduce="note => note.id" :options="status"></v-select>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Type Id</label>
                         <div class="control">
-                            <v-select label="name" multiple  v-model="note.type_id
+                            <v-select label="name"  v-model="note.type_id
                             " :reduce="note => note.id" :options="options" ></v-select>
                         </div>
                     </div>
@@ -105,6 +105,17 @@
                     name: "HTML5",
                   },
                 ],
+                 status : [
+                  {
+                    id: 1,
+                    name: "Active",
+                  },
+                  {
+                    id: 0,
+                    name: "Inactive",
+                  },
+                ],
+                type: [],
             };
         },
         validations: {
@@ -126,10 +137,20 @@
                             });
                 }
             },
+            getType() {
+                this.$axios.$get("/api/alltype")
+                .then(response => {
+                    this.type = response;
+                })
+            },
         },
+
         async asyncData( { $axios, params }) {
             const note = await $axios.$get('/api/note/' + params.id)
             return {note}
+        },
+          created() {
+            this.getType()
         }
     }
 </script>
