@@ -57,7 +57,8 @@ export default {
          this.$axios.$get("/api/pedigree/show", { params })
                 .then(response => {
                         this.data = response;
-                        d3.selectAll("svg").remove();
+                        d3.selectAll("#tree")
+                        .selectAll('svg').remove();
                         this.isLoading = false
                         setTimeout(this.generate, 1000);
                 })

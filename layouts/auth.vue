@@ -289,9 +289,9 @@
                                         <li v-if="getPermission.includes('trees index')">
                                             <NuxtLink to="/tree"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Trees</NuxtLink>
                                         </li>
-                                        <li v-if="getPermission.includes('trees show index')">
+                                        <!-- <li v-if="getPermission.includes('trees show index')">
                                             <NuxtLink to="/tree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Show</NuxtLink>
-                                        </li>
+                                        </li> -->
                                         <li v-if="getPermission.includes('pedigree index')">
                                             <NuxtLink to="/pedigree/show"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Pedigree</NuxtLink>
                                         </li>
