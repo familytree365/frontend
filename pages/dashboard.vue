@@ -187,7 +187,7 @@ export default {
     components: {
         Loading
     },
-    middleware: 'permission',
+    middleware: ['permission', 'verification'],
     meta: {
         permission: { name: 'dashboard menu' }
     },
