@@ -5,7 +5,6 @@
 export default {
     data() {
         return {
-            message: null,
         };
     },
     methods: {
@@ -15,8 +14,7 @@ export default {
                     params: this.$route.query
                 })
                 .then(response => { 
-                    console.log("gfgf")
-                    this.$router.push("/login");
+                    this.$router.push("/dashboard");
                     
                 })
     }

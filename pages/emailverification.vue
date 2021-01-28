@@ -36,6 +36,9 @@
                         <h1 class="is-size-4 has-text-black has-text-weight-bold">
                             Email verification
                         </h1>
+                        <div v-if="message" class="notification is-success">
+                            {{ message }}
+                        </div>
                         <div class="is-size-6 has-text-black has-text-weight-regular mt-2">You need to confirm your account. We have sent you an activation code, please check your email.<a @click.prevent="resendLink" class="has-text-link has-text-weight-medium"> ResendLink </a></div>
                     </div>
                     </div>
@@ -60,6 +63,7 @@ export default {
             fullPage: true,
             color: '#4fcf8d',
             backgroundColor: '#ffffff',
+            message: null,
         }
             
     },
@@ -69,12 +73,12 @@ export default {
     methods: {
         
         resendLink() {
-            console.log(this.loggedInUser)
             this.$axios.$post("/api/email/verification-notification", {
                         email: this.loggedInUser.email,
                 })
                 .then(response => {
-                    this.$router.push("/dashboard");
+                    this.message = null
+                    this.message = response.message
                 })
         }
     }
