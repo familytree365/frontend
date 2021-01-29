@@ -26,7 +26,7 @@
                     <div class="card-content is-flex jc--sb">
                         <img src="~assets/images/gedcom.svg" alt="">
                         <div class="has-text-right">
-                            <p class="is-size-4 has-text-weight-semibold">2,580</p>
+                            <p class="is-size-4 has-text-weight-semibold">{{ peoplesattached }}</p>
                             <div class="is-size-7 has-text-black has-text-weight-medium mt-1">GEDCOM Imports
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                     <div class="card-content is-flex jc--sb">
                         <img src="~assets/images/families.svg" alt="">
                         <div class="has-text-right">
-                            <p class="is-size-4 has-text-weight-semibold">25,758</p>
+                            <p class="is-size-4 has-text-weight-semibold">{{ familiesjoined }}</p>
                             <div class="is-size-7 has-text-black has-text-weight-medium mt-1">Families Joined
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                     <div class="card-content is-flex jc--sb">
                         <img src="~assets/images/peoples.svg" alt="">
                         <div class="has-text-right">
-                            <p class="is-size-4 has-text-weight-semibold">+ 20,000</p>
+                            <p class="is-size-4 has-text-weight-semibold">{{ peoplesattached }}</p>
                             <div class="is-size-7 has-text-black has-text-weight-medium mt-1">Peoples Attached
                             </div>
                         </div>
@@ -219,6 +219,8 @@ export default {
                 ]
             },
             trial: null,
+            familiesjoined: 0,
+            peoplesattached: 0,
         }
     },
     computed: {
@@ -276,6 +278,8 @@ export default {
             const { data: data } = await this.$axios.get("/api/dashboard");
             const { data: trial } = await this.$axios.get("/api/trial"); 
             this.barChartData.datasets[0].data = data.chart 
+            this.familiesjoined = data.familiesjoined
+            this.peoplesattached = data.peoplesattached
             this.loaded = true
             this.isLoading = false 
             this.trial = trial
