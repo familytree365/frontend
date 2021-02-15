@@ -26,7 +26,7 @@ export default {
   },
 };
 </script>
-<style type="text/css">]
+<style type="text/css">
 html, body {
     background: #EFF3F4;
     font-family: 'Open Sans', serif;
