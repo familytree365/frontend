@@ -29,7 +29,7 @@
     "laravel-echo": "^1.9.0",
     "nuxt": "^2.14.6",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-socket-io": "^1.1.13",
+    "nuxt-socket-io": "^1.1.14",
     "nuxt-stripe-module": "^3.0.1",
     "pusher-js": "^7.0.2",
     "sass": "^1.29.0",
