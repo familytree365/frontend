@@ -9045,10 +9045,10 @@ vue-beautiful-chat@^2.5.0:
     msgdown "^1.0.2"
     v-tooltip "^2.0.1"
 
-vue-cal@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/vue-cal/-/vue-cal-3.9.0.tgz#c40a071a4fd233911313f3848288e0f33bb84e43"
-  integrity sha512-rD5BWeUW4TiaOtA/qdHSBlLBKdF1tc3GayqiEDpCB3kxx/fmJiUtyqSfLtG1UWsPPWBcYQuFE+tjPm3LCtoMEA==
+vue-cal@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/vue-cal/-/vue-cal-3.10.1.tgz#a29853afec221c58dea22ac3f6cf674ce19043ca"
+  integrity sha512-nAfAA0wrxXB0c/7BU9Kluq5h5r1bTh7XfAUTDDgPPNcwhZDt5Fz9WPho72TlOhBxZRdaTWYvU+HeP2AJw9zJ4A==
 
 vue-chartjs@^3.5.1:
   version "3.5.1"
