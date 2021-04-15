@@ -34,7 +34,7 @@
     "pusher-js": "^7.0.3",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
-    "socket.io": "^3.0.4",
+    "socket.io": "^4.0.1",
     "socket.io-client": "^3.0.4",
     "v-calendar": "^2.3.0",
     "vue": "^2.6.12",
