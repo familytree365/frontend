@@ -33,7 +33,7 @@
     "nuxt-stripe-module": "^3.0.1",
     "pusher-js": "^7.0.3",
     "sass": "^1.29.0",
-    "sass-loader": "^10.1.0",
+    "sass-loader": "^11.0.1",
     "socket.io": "^4.0.1",
     "socket.io-client": "^3.0.4",
     "v-calendar": "^2.3.0",
