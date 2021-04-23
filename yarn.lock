@@ -6454,10 +6454,10 @@ nuxt-socket-io@^1.1.14:
     socket.io-client "^3.1.0"
     vue-template-compiler "^2.6.12"
 
-nuxt-stripe-module@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/nuxt-stripe-module/-/nuxt-stripe-module-3.0.1.tgz#3cac0263073e670a7ccb86b8b3f53eb44ef75712"
-  integrity sha512-yenDUU05ig9SVtx/7aw2zK1JHNJANvUhDevIIWbsDhfJYxr6JCXULDGC3g0Pfs5EK8tKOTni9R3I9EUiwT3TsA==
+nuxt-stripe-module@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/nuxt-stripe-module/-/nuxt-stripe-module-3.2.0.tgz#440d820285fedebb9e89de041825c806cd418c4a"
+  integrity sha512-Ra9Ve0BfUP6OvJ3o/GUfzwMgSPzhYWp7WPK2WE+T4rgXOx1rbjDx8DH3WRMJNPIRNXziLcdez3EeDPQ7LffQDw==
   dependencies:
     "@stripe/stripe-js" "^1.11.0"
 
