@@ -8,7 +8,7 @@ orbs:
 workflows:
   sample:
     jobs:
-      - node/test:
+      - node:
           matrix:
             parameters:
               version: ['15.1', 'lts', '12.21']
@@ -16,3 +16,5 @@ workflows:
           # https://circleci.com/blog/circleci-matrix-jobs/
           # or the configuration reference:
           # https://circleci.com/docs/2.0/configuration-reference/?section=reference#matrix-requires-version-21
+                - run: yarn install
+                - run: yarn generate
