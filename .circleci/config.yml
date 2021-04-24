@@ -20,6 +20,7 @@ jobs:
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
+      - run: cp .env.example .env
       - run: yarn install
       - run: yarn build
 
