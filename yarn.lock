@@ -3875,10 +3875,10 @@ d3-zoom@2:
     d3-selection "2"
     d3-transition "2"
 
-d3@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/d3/-/d3-6.3.0.tgz#516311510b345a70a5d9648626a6a74a2ff0b7f7"
-  integrity sha512-VllKodQILRuCxL/t6HAU6JAeNjcaqFZqWOtKgMbip0lpIiII+Rn7/FY1qfTELWZwt0KM/RfNf65UI68LZ5WYWA==
+d3@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-6.7.0.tgz#adac458597b4a2cafe8e08cf30948af0c95cd61f"
+  integrity sha512-hNHRhe+yCDLUG6Q2LwvR/WdNFPOJQ5VWqsJcwIYVeI401+d2/rrCjxSXkiAdIlpx7/73eApFB4Olsmh3YN7a6g==
   dependencies:
     d3-array "2"
     d3-axis "2"
