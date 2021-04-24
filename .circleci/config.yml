@@ -34,4 +34,4 @@ workflows:
           matrix:
             parameters:
               os: [linux, macos]
-              node-version: ["16.0.0", "lts"]
+              node-version: ["16.0.0", "14.16.1"]
