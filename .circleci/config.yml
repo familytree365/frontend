@@ -4,10 +4,6 @@ executors:
   linux:
     docker:
       - image: cimg/base:2020.01
-  macos:
-    macos:
-      xcode: 11.4
-
 orbs:
   node: circleci/node@4.0.0
 
@@ -33,5 +29,5 @@ workflows:
       - test:
           matrix:
             parameters:
-              os: [linux, macos]
+              os: [linux]
               node-version: ["16.0.0", "14.16.1"]
