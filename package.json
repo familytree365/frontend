@@ -12,7 +12,7 @@
     "@ckeditor/ckeditor5-build-inline": "^27.0.0",
     "@ckeditor/ckeditor5-vue2": "^1.0.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@nuxtjs/auth": "^4.9.1",
