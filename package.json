@@ -20,7 +20,7 @@
     "@nuxtjs/bulma": "^1.3.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "@popperjs/core": "2.4.0",
-    "@stripe/stripe-js": "^1.13.2",
+    "@stripe/stripe-js": "^1.14.0",
     "chart.js": "^3.1.1",
     "core-js": "^3.11.0",
     "d3": "^6.7.0",
