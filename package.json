@@ -36,7 +36,7 @@
     "sass": "^1.29.0",
     "sass-loader": "10.1.1",
     "socket.io": "^4.0.2",
-    "socket.io-client": "^4.0.2",
+    "socket.io-client": "^4.1.0",
     "v-calendar": "^2.3.0",
     "vue": "^2.6.12",
     "vue-beautiful-chat": "^2.5.0",
