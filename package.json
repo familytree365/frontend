@@ -28,7 +28,7 @@
     "d3-tip": "^0.9.1",
     "js-cookie": "^2.2.1",
     "laravel-echo": "^1.10.0",
-    "nuxt": "^2.15.5",
+    "nuxt": "^2.15.6",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-socket-io": "^1.1.17",
     "nuxt-stripe-module": "^3.2.0",
