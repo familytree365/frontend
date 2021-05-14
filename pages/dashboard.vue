@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-content" style="height: 400px;">
-                        <bar-chart  v-if="loaded" :data="barChartData" :height="300" />
+                        <pie-chart  v-if="loaded" :chartdata="pieChartData" :options="chartOptions" :height="300" />
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                             Plan </NuxtLink>
                     </div>
                 </div>
-                
+
             </div>
             <div class="column is-4-desktop is-6-tablet is-flex">
                 <div class="card has-background-white has-text-black">
@@ -169,7 +169,6 @@
                         <p class="is-size-7 mb-2 has-text-weight-medium">{{ loggedInUser.email }}</p>
                         <p class="is-size-7 mb-4 has-text-weight-medium">{{ loggedInUser.first_name }} {{ loggedInUser.last_name }}</p>
                         <p class="is-size-7 is-uppercase">Use Tree</p>
- 
                     </div>
                 </div>
             </div>
@@ -182,10 +181,13 @@
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import { mapGetters, mapActions } from "vuex";
+import PieChart from '../components/PieChart.js';
+
 export default {
     layout: 'auth',
     components: {
-        Loading
+        Loading,
+        PieChart
     },
     middleware: ['permission', 'verification'],
     meta: {
@@ -203,9 +205,10 @@ export default {
             color: '#4fcf8d',
             changedb: null,
             backgroundColor: '#ffffff',
-            barChartData: {
+            pieChartData: {
                 datasets: [{
-                    data: [],
+                    label: 'Data One',
+                    data: [40,20,30],
                     backgroundColor: [
                         'rgba(79, 207, 141, 1)',
                         'rgba(251, 145, 58, 1)',
@@ -217,6 +220,10 @@ export default {
                     'Female',
                     'Other'
                 ]
+            },
+            chartOptions: {
+                responsive: true,
+                maintainAspectRatio: false
             },
             trial: null,
             familiesjoined: 0,
@@ -244,7 +251,7 @@ export default {
                     this.changedb = response.changedb
                 })
         },
-        
+
         getCompanies() {
             this.$axios.$get("/api/get_companies")
                 .then(response => {
@@ -254,7 +261,7 @@ export default {
                             this.selected_company = company.id
                             this.getTree()
                         }
-                            
+
                     })
                 })
         },
@@ -269,32 +276,32 @@ export default {
                         if(tree.current_tenant == 1) {
                             this.selected_tree = tree.id
                         }
-                            
+
                     })
                 })
         },
         async loadChart() {
             this.loaded = false
             const { data: data } = await this.$axios.get("/api/dashboard");
-            const { data: trial } = await this.$axios.get("/api/trial"); 
-            this.barChartData.datasets[0].data = data.chart 
+            const { data: trial } = await this.$axios.get("/api/trial");
+            this.pieChartData.datasets[0].data = data.chart
             this.familiesjoined = data.familiesjoined
             this.peoplesattached = data.peoplesattached
             this.loaded = true
-            this.isLoading = false 
+            this.isLoading = false
             this.trial = trial
         }
     },
     created() {
         this.loadRole()
         this.loadPermission()
-        this.getCompanies()  
+        this.getCompanies()
     },
     async mounted () {
         this.loadChart()
     },
-    
-    
+
+
 }
 </script>
 
