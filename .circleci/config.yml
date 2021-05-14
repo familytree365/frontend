@@ -17,19 +17,19 @@ jobs:
     executor: << parameters.os >>
     steps:
       - checkout
-      - run:
-            name: Set yarn cache folder
-            command: |
-              yarn config set cache-folder ~/.yarn-cache
-        - restore_cache:
-            name: Restore Yarn Package Cache
-            keys:
-              - yarn-packages-v0.2.0-{{ .Branch }}-{{ checksum "yarn.lock" }}
-              - yarn-packages-v0.2.0-{{ .Branch }}- # used if checksum fail
       - node/install:
           node-version: << parameters.node-version >>
           install-yarn: true
       - run: cp .env.example .env
+      - run:
+          name: Set yarn cache folder
+          command: |
+            yarn config set cache-folder ~/.yarn-cache
+            - restore_cache:
+                name: Restore Yarn Package Cache
+                keys:
+                  - yarn-packages-v0.2.0-{{ .Branch }}-{{ checksum "yarn.lock" }}
+                  - yarn-packages-v0.2.0-{{ .Branch }}- # used if checksum fail
       - run: yarn install
       - run:
          name: yarn build
