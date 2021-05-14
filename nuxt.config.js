@@ -12,6 +12,7 @@ export default {
 
     sitemap: [
         {hostname: process.env.HOSTNAME || 'http://localhost:3000'},
+        {path: '/sitemap.xml'},
         filter ({ routes }), {
         return: routes.map(route => route.url = route.url.replace("/_nuxt", ""))
       }
