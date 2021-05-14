@@ -11,8 +11,11 @@ export default {
     },
 
     sitemap: [
-        {hostname: process.env.BASE_URL || 'http://localhost:3000'},
-        {path: '/sitemap.xml'}
+        {
+          hostname: process.env.BASE_URL || 'http://localhost:3000',
+          path: '/sitemap.xml'
+        }
+
     ],
 
     // Global page headers (https://go.nuxtjs.dev/config-head)
