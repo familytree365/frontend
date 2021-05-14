@@ -11,7 +11,10 @@ export default {
     },
 
     sitemap: [
-        {hostname: process.env.HOSTNAME || 'http://localhost:3000'}
+        {hostname: process.env.HOSTNAME || 'http://localhost:3000'},
+        filter ({ routes }), {
+        return: routes.map(route => route.url = route.url.replace("/_nuxt", ""))
+      }
     ],
 
     // Global page headers (https://go.nuxtjs.dev/config-head)
