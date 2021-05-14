@@ -7,6 +7,4 @@ node_js:
   - 13
   - 12
 install:
-  - cd frontend && yarn install && yarn build && cd ..
-#script:
-#  - cd frontend && npm test
+  - yarn install && yarn build
