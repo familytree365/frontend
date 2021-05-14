@@ -13,7 +13,11 @@ export default {
     sitemap: [
         {
           hostname: process.env.BASE_URL || 'http://localhost:3000',
-          path: '/sitemap.xml'
+          path: '/sitemap.xml',
+          gzip: true,
+          routes() {
+            return getRoutes();
+          }
         }
 
     ],
