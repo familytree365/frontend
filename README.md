@@ -39,9 +39,6 @@ smart matching with other servers. This is the Nuxt and Vue frontend, see the ba
 ## Demo
 
 https://www.familytree365.ml - register a free account
-```
-
-<!--h-->
 
 ### Thanks
 
