@@ -15,9 +15,6 @@ export default {
           hostname: process.env.BASE_URL || 'http://localhost:3000',
           path: '/sitemap.xml',
           gzip: true,
-          routes() {
-            return getRoutes();
-          }
         }
 
     ],
