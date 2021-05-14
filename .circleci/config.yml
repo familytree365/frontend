@@ -21,7 +21,7 @@ jobs:
             name: Set yarn cache folder
             command: |
               yarn config set cache-folder ~/.yarn-cache
-        - restore_cache:
+      - restore_cache:
             name: Restore Yarn Package Cache
             keys:
               - yarn-packages-v0.2.0-{{ .Branch }}-{{ checksum "yarn.lock" }}
