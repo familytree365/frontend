@@ -7,4 +7,6 @@ node_js:
   - 13
   - 12
 install:
-  - yarn install && yarn build
+  - cp .env.example .env && yarn install && yarn build
+script:
+      - echo "Skipping tests"
