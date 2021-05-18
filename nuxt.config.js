@@ -110,6 +110,8 @@ export default {
         ['nuxt-stripe-module', {
             publishableKey: process.env.STRIPE_KEY,
         }],
+      'nuxt-buefy',
+      ['nuxt-buefy', { /* buefy options */ }]
     ],
 
     axios: {
