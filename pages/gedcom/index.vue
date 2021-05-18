@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div>
         <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
             <div class="columns is-gapless is-multiline is-mobile">
                 <div class="column is-12">
@@ -21,7 +21,7 @@
             <form @submit.prevent="submit()" enctype="multipart/form-data">
                 <div class="columns is-variable is-3 is-desktop is-flex-desktop-only ai--s">
                     <div class="column is-12">
-                        
+
                         <div class="card has-background-white has-text-black" style="height: 500px;">
                             <div class="card-content">
                                 <div v-if="response" class="notification is-success">
@@ -31,7 +31,7 @@
                                     {{ message }}
                                 </div>
                                 <div v-for="error in errors" class="notification is-danger">
-                                    {{ error[0] }} 
+                                    {{ error[0] }}
                                 </div>
                                 <input type="hidden" v-model="fileName">
                                 <div class="field import_block">
@@ -119,14 +119,13 @@ export default {
                 formData.append('file',  this.file)
                 this.$axios
                 .$post("/api/gedcom", formData, {
-
                     headers: {
                       'content-type': 'multipart/form-data',
                       'Access-Control-Allow-Origin': '*'
                     }
                 })
                 .then(response => {
-                    this.isLoading = false 
+                    this.isLoading = false
                     this.response = response[0]
                 })
                 .catch(error => {
