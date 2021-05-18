@@ -3,7 +3,7 @@
         <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-12">
                 <h1 class="is-size-4 has-text-black">
-                    <span class="has-text-weight-medium">Hi Curtis</span>, <span class="has-text-weight-light">
+                    <span class="has-text-weight-medium">Hi {{ loggedInUser.first_name }}</span>, <span class="has-text-weight-light">
                         Welcome Back!</span>
                 </h1>
             </div>
@@ -13,7 +13,7 @@
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                href="dashboard.html">Home</a></li>
                         <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                                                                  aria-current="page">Dashboard</a></li>
+                                                                                  aria-current="page">DNA Matching</a></li>
                     </ul>
                 </nav>
             </div>
@@ -55,10 +55,20 @@
                                 }"
                                 >
                                 <template slot="table-row" slot-scope="props">
-                                    <span v-if="props.column.field == 'action'">
+                                    <div class="dna-matching-image-container"
+                                         v-if="props.column.field === 'image'">
+                                        <img class="dna-matching-image" :src="props.row.image" alt="">
+                                    </div>
+                                    <span v-else>
+                                      {{props.formattedRow[props.column.field]}}
+                                    </span>
+
+                                    <span v-if="props.column.field === 'action'">
                                         <button @click="deleteDna(rows[props.row.originalIndex].id)" class="button is-danger">
                                             Delete</button>
                                     </span>
+
+
 
                                 </template>
                             </vue-good-table>
@@ -123,7 +133,7 @@
 
                         },
                     },
-                    
+
                     {
                         label: 'Action',
                         field: 'action',
@@ -136,14 +146,14 @@
                     columnFilters: {
 
                     },
-                    searchTerm: {
-                        searchTerm: ''
-                    },
+                    searchTerm: '',
                     sort: {
                     },
                     page: 1,
                     perPage: 5
-                }
+                },
+                debounceId: null,
+                debounceTimeout: 500,
             };
         },
         head() {
@@ -158,6 +168,10 @@
         },
 
         computed: {
+            ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
+            ]),
         },
 
         methods: {
@@ -189,33 +203,35 @@
                 this.updateParams(params);
                 this.loadItems();
             },
-            onSearch(params) {
-                console.log(params);
-                this.updateParams({searchTerm: params});
-                this.loadItems();
+            onSearch({ searchTerm }) {
+                this.updateParams({ searchTerm });
+
+                clearTimeout(this.debounceId);
+
+                this.debounceId = setTimeout(() => {
+                    this.loadItems();
+
+                    this.debounceId = null;
+                }, 1000);
             },
-            loadItems() {
-                this.$axios.$get("/api/dnamatching", {
-                    params: this.serverParams
-                })
-                        .then(response => {
-                            this.totalRecords = response.total;
-                            this.rows = response.data;
-                        })
+            async loadItems() {
+              const response = await this.$axios.$get("/api/dnamatching", {
+                  params: this.serverParams
+              });
+
+              this.totalRecords = response.total;
+              this.rows = response.data;
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
                 alert("gg");
                 console.log(searchTerm);
             },
-            deleteDna(id) {
+            async deleteDna(id) {
                 if (confirm("Do you really want to delete?")) {
+                  const response = this.$axios.$delete("/api/dnamatching/" + id)
 
-                    this.$axios
-                            .$delete("/api/dnamatching/" + id)
-                            .then(response => {
-                                this.loadItems();
-                            })
+                  this.loadItems();
                 }
             },
         },
@@ -227,4 +243,13 @@
 
 </script>
 
+<style>
+  .dna-matching-image-container {
+    text-align: center;
+  }
 
+  .dna-matching-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
+</style>
