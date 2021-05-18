@@ -275,6 +275,12 @@
                     GEDCOM Import
                   </NuxtLink>
                 </li>
+                <li v-if="getPermission.includes('gedcom import menu')" @click="menu" class="simplemenu">
+                  <NuxtLink to="/gedcom-export" >
+                    <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
+                    GEDCOM Export
+                  </NuxtLink>
+                </li>
                 <li v-if="getPermission.includes('subscription menu')" @click="menu" class="simplemenu">
                   <NuxtLink to="/subscription" >
                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
