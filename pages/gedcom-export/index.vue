@@ -45,7 +45,7 @@
                 </label>
               </div>
             </div>
-            <a v-if="generatedFile" :href="'/'+ generatedFile" class="field import_block">
+            <a v-if="generatedFile" :href="generatedFile" class="field import_block">
               <div class="file is-large is-boxed has-background-primary">
                 <label class="file-label">
                   <span class="file-cta" @click="handleExportFiles">
