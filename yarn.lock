@@ -1877,10 +1877,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
-"@stripe/stripe-js@^1.11.0", "@stripe/stripe-js@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.14.0.tgz#0eb8a185197948ab9ddb62ee28ae555e7d90bc72"
-  integrity sha512-Zw4EI+ph8RPxRpIX2uwKKDIbe7WM2OarasPjIPRulU1UCj8lRFqWWW/fTj79lZtnX3FNZkiTRM13UG1UZF7yjQ==
+"@stripe/stripe-js@^1.11.0", "@stripe/stripe-js@^1.15.0":
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.15.0.tgz#86178cfbe66151910b09b03595e60048ab4c698e"
+  integrity sha512-KQsNPc+uVQkc8dewwz1A6uHOWeU2cWoZyNIbsx5mtmperr5TPxw4u8M20WOa22n6zmIOh/zLdzEe8DYK/0IjBw==
 
 "@types/anymatch@*":
   version "1.3.1"
