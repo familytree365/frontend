@@ -29,7 +29,7 @@
                     <div class="column is-6" v-for="plan in plans" :key="plan.id">
                         <div class="card has-background-white has-text-black">
                             <div class="card-content">
-                                {{selected_currency_symbol + (plan.amount * selected_currency_rate).toFixed(0)
+                                {{selected_currency_symbol + (plan.amount * selected_currency_rate / 100).toFixed(2)
                                    }}
                                 <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{ plan.title }}</div>
                                 <div class="is-size-7 has-text-black has-text-weight-regular">For <span class="has-text-weight-medium"> Unlimited Trees </span> Yearly</div>
