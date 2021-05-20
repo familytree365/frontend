@@ -51,9 +51,9 @@ export default {
             },
         ],
         script: [
-            {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js'},
-            {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js'},
-            {src: 'https://cdn.jsdelivr.net/npm/d3-dag@0.3.4/dist/d3-dag.min.js'},
+            // {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js'},
+            // {src: 'https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js'},
+            // {src: 'https://cdn.jsdelivr.net/npm/d3-dag@0.3.4/dist/d3-dag.min.js'},
             {src: 'https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js'},
             {src: 'https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js'}
         ],
