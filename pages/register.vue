@@ -42,7 +42,7 @@
                         {{ message }}
                     </div>
                     <div v-for="error in errors" class="notification is-danger">
-                        {{ error[0] }} 
+                        {{ error[0] }}
                     </div>
                     <div class="mb-5">
                         <div class="columns">
@@ -107,10 +107,11 @@
                         <div class="columns is-mobile is-gapless">
                             <div class="column">
                                 <label class="checkbox">
-                                    <input type="checkbox">
+                                    <input type="checkbox" v-model="registration.conditions_terms">
                                     Agree to <NuxtLink to="/termsandconditions" class="has-text-link has-text-weight-medium">terms and
                                         conditions</NuxtLink>
                                 </label>
+                                <p class="help" :class="{ 'is-danger': $v.registration.conditions_terms.$error }" v-if="!$v.registration.conditions_terms.checked">Field is required</p>
                             </div>
                         </div>
 
@@ -158,7 +159,8 @@ export default {
                 last_name: "",
                 email: "",
                 password: "",
-                password_confirmation: ''
+                password_confirmation: '',
+                conditions_terms: false,
             }
         };
     },
@@ -179,29 +181,36 @@ export default {
                 password_confirmation: {
                     required,
                 },
+                conditions_terms: {
+                    checked: value => value === true,
+                }
             },
     },
     methods: {
-        register() {
+        async register() {
             this.$v.$touch();
+
             if (this.$v.$invalid) {
                 console.log("fail")
-            } else {
-                this.isLoading = true 
-                this.$axios
-                .$post("/api/register", this.registration)
-                .then(response => {
-                    
-                  this.$router.push("/login");
-                  this.isLoading = false
-                })
-                .catch(error => {
-                    this.isLoading = false
-                    this.error = true;
-                    this.message = error.response.data.message;
-                    this.errors =  error.response.data.errors;
-                });
+
+                return -1
             }
+
+            try {
+                this.isLoading = true
+
+                const response = await this.$axios
+                  .$post("/api/register", this.registration);
+
+                this.$router.push("/login");
+                this.isLoading = false;
+            } catch (error) {
+              this.isLoading = false
+              this.error = true;
+              this.message = error.response.data.message;
+              this.errors =  error.response.data.errors;
+            }
+
         }
     }
 }
