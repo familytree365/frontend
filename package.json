@@ -34,7 +34,7 @@
     "nuxt-socket-io": "^1.1.18",
     "nuxt-stripe-module": "^3.2.0",
     "pusher-js": "^7.0.3",
-    "sass": "^1.29.0",
+    "sass": "^1.32.13",
     "sass-loader": "10.1.1",
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
