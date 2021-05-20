@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="modal" :class="{'is-active': isActive}">
               <div class="modal-background"></div>
@@ -149,7 +149,7 @@ export default {
             .then(response => {
                 this.getCurrentSubscription();
                 this.plans = response.data;
-                this.isLoading = false 
+                this.isLoading = false
             })
         },
          getCurrentSubscription() {
@@ -212,6 +212,10 @@ export default {
                     this.selected_currency_symbol = '€';
                     this.selected_currency_rate = res.rates.EUR / res.rates.GBP;
                     break;
+                  case 'AUD':
+                    this.selected_currency_symbol = '$';
+                    this.selected_currency_rate = res.rates.AUD / res.rates.GBP;
+                    break;
                   default:
                     this.selected_currency_symbol = '£';
                     this.selected_currency_rate = 1;
@@ -238,7 +242,7 @@ export default {
         this.loadPlans();
 
     },
-  
+
 };
 </script>
 <style>
