@@ -59,7 +59,7 @@
                         <div class="card-content">
                             <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
                                 <i class="fas fa-check mr-2 mt-1"></i>
-                                <p class="is-size-7">Genealogia is a secure online website which you can use to create your own family tree(s) with.</p>
+                                <p class="is-size-7">Family Tree 365 is a secure online website which you can use to create your own family tree(s) with.</p>
                             </div>
                             <div class="has-text-black has-text-weight-medium is-flex plans_info mb-5">
                                 <i class="fas fa-check mr-2 mt-1"></i>
@@ -124,7 +124,7 @@ export default {
             has_payment_method: false,
             plans: [],
             selectedPlanId: null,
-            currency_options: ['USD', 'GBP', 'EUR'],
+            currency_options: ['USD', 'GBP', 'EUR', 'AUD'],
             selected_currency: 'GBP',
             selected_currency_symbol: '£',
             selected_currency_rate: 1,
