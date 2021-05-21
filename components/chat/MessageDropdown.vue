@@ -62,14 +62,19 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
       activeTab: 'notification',
-      multiline: false
+      multiline: false,
+      echo: null,
     }
   },
   computed: {
+    ...mapGetters(['loggedInUser']),
+
     baseTabs() {
       return [
         {
@@ -91,6 +96,19 @@ export default {
     tabs() {
       return [...this.baseTabs]
     },
+  },
+
+  mounted() {
+    this.listenNotifications()
+  },
+
+  methods: {
+    listenNotifications() {
+      this.$echo.channel(`user.${this.loggedInUser.id}`)
+        .listen('.notification', message => {
+          console.log(message)
+      })
+    }
   }
 }
 </script>

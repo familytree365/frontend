@@ -37,7 +37,7 @@
     "sass": "^1.29.0",
     "sass-loader": "10.1.1",
     "socket.io": "^4.1.2",
-    "socket.io-client": "^4.1.2",
+    "socket.io-client": "^2.1.1",
     "v-calendar": "^2.3.0",
     "vue": "^2.6.12",
     "vue-beautiful-chat": "^2.5.0",
@@ -50,5 +50,7 @@
     "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/laravel-echo": "^1.1.0"
+  }
 }
