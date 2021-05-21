@@ -63,7 +63,9 @@ export default {
         ]
     },
     env: {
-        STRIPE_KEY: process.env.STRIPE_KEY
+        STRIPE_KEY: process.env.STRIPE_KEY,
+        BASE_URL: process.env.BASE_URL,
+        ECHO_PORT: process.env.ECHO_PORT,
     },
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
     plugins: [
@@ -72,6 +74,7 @@ export default {
         {src: '~/plugins/vue-select.js', ssr: false},
         {src: '~/plugins/v-calendar.js', ssr: false},
         {src: '~/plugins/vuetimepiker.js', ssr: false},
+        // {src: '~/plugins/echo.js', ssr: false},
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -79,7 +82,13 @@ export default {
 
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
+      '@nuxtjs/laravel-echo'
     ],
+
+    echo: {
+      broadcaster: 'socket.io',
+      host: `${process.env.BASE_URL}:${process.env.ECHO_PORT}`,
+    },
 
     // Modules (https://go.nuxtjs.dev/config-modules)
     modules: [
