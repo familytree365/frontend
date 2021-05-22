@@ -74,6 +74,7 @@ export default {
         {src: '~/plugins/vue-select.js', ssr: false},
         {src: '~/plugins/v-calendar.js', ssr: false},
         {src: '~/plugins/vuetimepiker.js', ssr: false},
+        {src: '~/plugins/vue-fb-customer-chat.js', ssr: false},
         // {src: '~/plugins/echo.js', ssr: false},
     ],
 

@@ -9675,6 +9675,11 @@ vue-client-only@^2.0.0:
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
   integrity sha512-arhk1wtWAfLsJyxGMoEYhoBowM87/i6HLSG2LH/03Yog6i2d9JEN1peMP0Ceis+/n9DxdenGYZZTxbPPJyHciA==
 
+vue-fb-customer-chat@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/vue-fb-customer-chat/-/vue-fb-customer-chat-0.2.0.tgz#26384b0db646f38d9e26b1d2d40adf73bbd46999"
+  integrity sha512-Nk51oAGgBFHYRakUQCw9Un64Y4qY4SAX2mQLpXCrCFQseVA9OOI9K/KLhmYRhd33Ar/maZeZh/0ziHilStHZkQ==
+
 vue-good-table@^2.21.10:
   version "2.21.10"
   resolved "https://registry.yarnpkg.com/vue-good-table/-/vue-good-table-2.21.10.tgz#a6efd27f345512b6ff3933dff8d2e9f1431ac590"
