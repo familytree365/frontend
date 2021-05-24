@@ -16,7 +16,7 @@
 
     <div id="tree"></div>
 
-    <button id='saveButton'>Export my PNG</button>
+    <button class="button is-link has-background-primary mt-2" id='saveButton'>Export my PNG</button>
   </div>
 </template>
 <script>
