@@ -276,7 +276,7 @@ export default {
           await this.$auth.logout();
         },
         handleScroll() {
-            if (window.scrollY >= 500) {
+            if (window.scrollY >= 10) {
                 this.isClear = false;
                 this.isDark = true;
             } else {
