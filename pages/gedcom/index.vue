@@ -33,8 +33,8 @@
                                 <div v-for="error in errors" class="notification is-danger">
                                     {{ error[0] }}
                                 </div>
-                                <input type="hidden" v-model="fileName">
-                                <div class="field import_block">
+                                <input type="hidden" v-model="fileName" v-if="!isLoading">
+                                <div class="field import_block" v-if="!isLoading">
                                     <div class="file is-large is-boxed has-background-primary">
                                         <label class="file-label">
 
@@ -52,6 +52,15 @@
                                     </div>
                                     <p class="help"  :class="{ 'is-danger': $v.fileName.$error }" v-if="!$v.fileName.required">Field is required</p>
                                 </div>
+
+                                <b-progress
+                                  v-if="isLoading"
+                                  type="is-success"
+                                  :max="total"
+                                  :value="complete"
+                                  show-value
+                                />
+
                                 <button type="submit"
                                 class="button theme-button theme-button-xl has-background-primary is-uppercase has-text-weight-medium has-text-white">
                                 Submit
@@ -71,75 +80,103 @@
 </template>
 f
 <script>
+import { mapGetters } from 'vuex'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 import { required } from 'vuelidate/lib/validators'
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+
 export default {
     layout: 'auth',
-    components: {
-        Loading
-    },
-    middleware: 'permission',
-    meta: {
-        permission: { name: 'gedcom import menu' }
-    },
-    data() {
-        return {
-            error: false,
-            message: "",
-            errors:null,
-            file: undefined,
-            fileName: '',
-            isLoading: false,
-            fullPage: true,
-            color: '#4fcf8d',
-            backgroundColor: '#ffffff',
-            response : null,
-        };
-    },
-    validations: {
-        fileName: {
-            required,
-        },
-    },
-    methods: {
-        handleSelectedFiles(event) {
-            console.log(this.$refs.fileInput.files[0])
-            this.file = this.$refs.fileInput.files[0]
-            this.fileName = this.file.name
 
+    components: {
+      Loading
+    },
+
+    middleware: 'permission',
+
+    meta: {
+      permission: { name: 'gedcom import menu' }
+    },
+
+    data: () => ({
+      error: false,
+      message: "",
+      errors:null,
+      file: undefined,
+      fileName: '',
+      isLoading: false,
+      fullPage: true,
+      color: '#4fcf8d',
+      backgroundColor: '#ffffff',
+      response : null,
+      total: 100,
+      complete: 0,
+    }),
+
+    validations: {
+      fileName: {
+        required,
       },
-        submit() {
-            this.$v.$touch();
-            if (this.$v.$invalid) {
-                console.log("fail")
-            } else {
-                this.isLoading = true
-                let formData = new FormData()
-                formData.append('file',  this.file)
-                this.$axios
-                .$post("/api/gedcom", formData, {
-                    headers: {
-                      'content-type': 'multipart/form-data',
-                      'Access-Control-Allow-Origin': '*'
-                    }
-                })
-                .then(response => {
-                    this.isLoading = false
-                    this.response = response[0]
-                })
-                .catch(error => {
-                    this.error = true;
-                    this.message = error.response.data.message;
-                    this.errors =  error.response.data.errors;
-                });
-            }
-            }
+    },
+
+    computed: {
+      ...mapGetters(['loggedInUser']),
+    },
+
+    mounted() {
+      this.subscribeToUploadProgress()
+    },
+
+    methods: {
+      handleSelectedFiles(event) {
+        console.log(this.$refs.fileInput.files[0])
+        this.file = this.$refs.fileInput.files[0]
+        this.fileName = this.file.name
+      },
+
+      async submit() {
+        this.$v.$touch();
+
+        if (this.$v.$invalid) {
+          return -1
         }
+
+        this.total = 100
+        this.complete = 0
+
+        this.isLoading = true
+        let formData = new FormData()
+        formData.append('file',  this.file)
+
+        try {
+          const response = await this.$axios
+            .$post("/api/gedcom", formData, {
+                headers: {
+                  'content-type': 'multipart/form-data',
+                  'Access-Control-Allow-Origin': '*'
+                }
+            })
+
+          this.isLoading = false
+          this.response = response[0]
+        } catch (error) {
+          this.error = true
+          this.message = error.response.data.message
+          this.errors =  error.response.data.errors
+        }
+      },
+
+      subscribeToUploadProgress() {
+        this.$echo.channel(`user.${this.loggedInUser.id}`)
+          .listen('.gedcomProgress', message => {
+            this.total = message.total
+            this.complete = message.complete
+          })
+      }
+      }
     }
 
 </script>
 <style scoped>
     @import '~/assets/css/admin.css';
 </style>
-
