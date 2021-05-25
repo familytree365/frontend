@@ -3,7 +3,7 @@
         <div class="columns is-gapless is-multiline is-mobile">
             <div class="column is-12">
                 <h1 class="is-size-4 has-text-black">
-                    <span class="has-text-weight-medium">Hi Curtis</span>, <span class="has-text-weight-light">
+                    <span class="has-text-weight-medium">Hi {{ loggedInUser.first_name }}</span>, <span class="has-text-weight-light">
                         Welcome Back!</span>
                 </h1>
             </div>

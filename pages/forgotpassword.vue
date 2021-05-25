@@ -6,7 +6,7 @@
                 <div class="auth signin has-background-primary">
                     <div class="auth-content">
                         <div class="has-text-centered">
-                            <img src="~assets/images/logo1.svg" alt="" width="300px" >
+                            <NuxtLink to="/"><img src="~assets/images/logo1.svg" alt="" width="300px"></NuxtLink>
                         </div>
                       <div class="auth-inner-content my-6">
                         <div class="has-text-white has-text-weight-regular is-flex ai--fs mb-5">
