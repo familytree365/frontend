@@ -213,7 +213,6 @@ export default {
                 .$delete("/api/forumtopic/" + id)
 
                     this.loadItems();
-                })
             }
         },
     },

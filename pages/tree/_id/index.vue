@@ -70,7 +70,7 @@
                             });
                 }
             },
-            getTree(){
+            async getTree(){
                 const id = this.$route.params.id
                 const response = await this.$axios.$get('/api/tree/'+id+'/edit')
                             .then(response => this.tree = response)

@@ -94,7 +94,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const publication = await $axios.$get('/api/publication/'+params.id)
       return { publication }
     }

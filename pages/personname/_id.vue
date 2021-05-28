@@ -161,7 +161,7 @@
                 }
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const personname = await $axios.$get('/api/person/' + params.id)
             return {personname}
         }

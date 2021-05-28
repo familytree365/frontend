@@ -62,7 +62,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const event = await $axios.$get('/api/event/'+params.id)
       return { event }
     }

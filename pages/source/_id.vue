@@ -248,7 +248,7 @@
                 })
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const source = await $axios.$get('/api/source/' + params.id)
             return {source}
         },

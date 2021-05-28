@@ -145,7 +145,7 @@
             },
         },
 
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const note = await $axios.$get('/api/note/' + params.id)
             return {note}
         },

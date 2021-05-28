@@ -84,23 +84,20 @@ Vue.component('v-select', vSelect);
                             this.loadRole()
                             this.loadPermission()
                 			this.$router.push('/roles')
-                        })
                         .catch(error => {
                         });
                 }
             },
-      		getallPermission() {
+      		async getallPermission() {
   		    	const response = await this.$axios.$get("/api/getpermissions")
 
   		                this.options = response
-  		            })
   		    },
-      	    getRolePermission() {
+      	    async getRolePermission() {
       	    	const response = await this.$axios.$get("/api/getrolepermission/"+this.$route.params.id)
 
   		            	this.role.name = response.role.name
   		               	this.role.permissions = response.permissions
-  		            })
   		    },
              ...mapActions([
                 "loadRole",

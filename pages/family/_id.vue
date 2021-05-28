@@ -148,7 +148,7 @@
                         })
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const family = await $axios.$get('/api/family/' + params.id)
             return {family}
         },

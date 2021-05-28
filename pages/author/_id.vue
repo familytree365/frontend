@@ -94,7 +94,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const author = await $axios.$get('/api/author/'+params.id)
       return { author }
     }

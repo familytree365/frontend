@@ -175,7 +175,6 @@ export default {
 
                     this.isLoading = false
                     this.$router.push("/subscription");
-                });
         },
     },
     async created() {
@@ -185,7 +184,6 @@ export default {
 
                 this.isLoading = false
                 this.clientSecret = response.data.intent.client_secret;
-            });
         this.stripe = await loadStripe(process.env.STRIPE_KEY);
         const elements = this.stripe.elements();
         this.cardElement = elements.create('card');

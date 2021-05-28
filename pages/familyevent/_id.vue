@@ -216,7 +216,7 @@
                 }
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const familyevent = await $axios.$get('/api/familyevent/' + params.id)
             return {familyevent}
         }

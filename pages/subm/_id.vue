@@ -139,7 +139,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const subm = await $axios.$get('/api/subm/'+params.id)
       return { subm }
     }

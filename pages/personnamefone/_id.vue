@@ -161,7 +161,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const personnamefone = await $axios.$get('/api/personnamefone/'+params.id)
       return { personnamefone }
     }

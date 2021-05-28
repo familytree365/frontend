@@ -180,7 +180,7 @@
                 })
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const repository = await $axios.$get('/api/repository/' + params.id)
             return {repository}
         },

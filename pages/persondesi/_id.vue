@@ -84,7 +84,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const persondesi = await $axios.$get('/api/person/'+params.id)
       return { persondesi }
     }

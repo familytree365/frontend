@@ -96,7 +96,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const place = await $axios.$get('/api/place/'+params.id)
       return { place }
     }

@@ -144,15 +144,14 @@ export default {
         submit() {
 
         },
-        loadPlans() {
+        async loadPlans() {
             const response = await this.$axios.$get("/api/get-plans")
 
                 this.getCurrentSubscription();
                 this.plans = response.data;
-                this.isLoading = false
-            })
+                this.isLoading = false;
         },
-         getCurrentSubscription() {
+         async getCurrentSubscription() {
             const response = await this.$axios.$get('/api/get-current-subscription')
 
                     this.isLoading = true
@@ -173,7 +172,6 @@ export default {
                         });
                     }
                     this.isLoading = false
-                });
         },
         subscribe() {
             this.isLoading = true
@@ -184,7 +182,6 @@ export default {
 
                         this.getCurrentSubscription();
                         this.isLoading = false
-                });
         },
         unsubscribe() {
             this.isLoading = true
@@ -193,9 +190,8 @@ export default {
 
                         this.getCurrentSubscription();
                         this.isLoading = false
-                });
         },
-        selectCurrency(currency) {
+        async selectCurrency(currency) {
             const response = await this.$axios.$get('https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a')
               .then(res => {
                 console.log(res.rates);

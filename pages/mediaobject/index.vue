@@ -142,7 +142,6 @@
                     },
                     page: 1,
                     perPage: 5
-                }
                 },
                 debounceId: null,
                 debounceTimeout: 500,

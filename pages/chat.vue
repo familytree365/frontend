@@ -71,7 +71,7 @@ export default {
       // you can also do this.messages.push(data)
     });
   },
-  // asyncData( { $axios, params }) {
+  // async asyncData( { $axios, params }) {
   //     const source = await $axios.$get('/api/chats')
   //     console.log(source)
   //     return {source}

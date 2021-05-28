@@ -97,7 +97,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const subn = await $axios.$get('/api/subn/'+params.id)
       return { subn }
     }

@@ -113,7 +113,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const sourceref = await $axios.$get('/api/sourceref/'+params.id)
       return { sourceref }
     }

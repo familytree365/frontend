@@ -183,7 +183,7 @@
                 }
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const forumtopics = await $axios.$get('/api/forumtopic')
             const forumcategory = await $axios.$get('/api/forumcategory')
             return {forumtopics: forumtopics, forumcategory: forumcategory}

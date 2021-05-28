@@ -62,7 +62,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const forumcategory = await $axios.$get('/api/forumcategory/'+params.id)
       return { forumcategory }
     }

@@ -95,7 +95,7 @@
                 }
             },
         },
-        asyncData( { $axios, params }) {
+        async asyncData( { $axios, params }) {
             const sourcerepo = await $axios.$get('/api/sourcerepo/' + params.id)
             return {sourcerepo}
         }

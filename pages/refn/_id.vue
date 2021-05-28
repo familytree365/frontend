@@ -90,7 +90,7 @@ export default {
             }
         },
     },
-    asyncData({ $axios,params }) {
+    async asyncData({ $axios,params }) {
       const refn = await $axios.$get('/api/refn/'+params.id)
       return { refn }
     }
