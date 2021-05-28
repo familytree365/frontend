@@ -197,11 +197,11 @@
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
-            loadItems() {
-                this.$axios.$get("/api/tree", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/tree", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
                         })
@@ -215,14 +215,14 @@
 
                     this.$axios
                             .$delete("/api/tree/" + id)
-                            .then(response => {
+
                                 this.loadItems();
                             })
                 }k
             },
             createTree() {
-                this.$axios.$get("/api/tree/create")
-                        .then(response => {
+                const response = await this.$axios.$get("/api/tree/create")
+
                             this.create_tree = response.create_tree
                         })
             },

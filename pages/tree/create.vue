@@ -99,8 +99,8 @@
         },
         methods: {
             getCompany() {
-                this.$axios.$get("/api/company")
-                        .then(response => {
+                const response = await this.$axios.$get("/api/company")
+
                            console.log(response);
                            this.companies = response
                         })
@@ -118,8 +118,8 @@
                 }
             },
             createTree() {
-                this.$axios.$get("/api/tree/create")
-                        .then(response => {
+                const response = await this.$axios.$get("/api/tree/create")
+
                             if(response.create_tree == false) {
                                 this.$router.push("/error");
                             } else {

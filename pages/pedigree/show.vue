@@ -72,7 +72,7 @@ export default {
       // this.fetchdata()
     },
     async created() {
-      const response = await this.$axios.$get("/api/person")
+      const response = await const response = await this.$axios.$get("/api/person")
 
       this.persons = response
     },
@@ -110,7 +110,7 @@ export default {
         this.isLoading = true
 
         try {
-          const response = await this.$axios.$get("/api/pedigree/show")
+          const response = await const response = await this.$axios.$get("/api/pedigree/show")
           this.data = response
 
           this.isLoading = false

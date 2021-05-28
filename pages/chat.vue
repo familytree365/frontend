@@ -42,7 +42,7 @@ export default {
 
       this.$axios
         .$post("/api/chats", {sender: 1, receiver: 2})
-        .then(response => {
+
           console.log(response);
         })
         .catch(error => {

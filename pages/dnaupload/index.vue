@@ -188,11 +188,11 @@
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
-            loadItems() {
-                this.$axios.$get("/api/dnaupload", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/dnaupload", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
                         })
@@ -207,7 +207,7 @@
 
                     this.$axios
                             .$delete("/api/dnaupload/" + id)
-                            .then(response => {
+
                                 this.loadItems();
                             })
                 }

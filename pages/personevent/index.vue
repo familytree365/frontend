@@ -324,14 +324,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/personevent", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/personevent", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -343,7 +342,7 @@ export default {
 
                 this.$axios
                 .$delete("/api/personevent/" + id)
-                .then(response => {
+
                     this.loadItems();
                 })
             }

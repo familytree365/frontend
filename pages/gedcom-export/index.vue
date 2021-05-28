@@ -104,7 +104,7 @@
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
             }
-          }).then(response => {
+          })
           this.inProgress = true;
           this.isLoading = false;
           this.generatedFile = response.file;
@@ -126,7 +126,7 @@
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
             }
-          }).then(response => {
+          })
           console.log(response);
         });
       }

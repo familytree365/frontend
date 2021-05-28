@@ -123,8 +123,8 @@
                 }
             },
             getFamily() {
-                this.$axios.$get("/api/family")
-                .then(response => {
+                const response = await this.$axios.$get("/api/family")
+
                     this.family = response;
                 })
             },

@@ -44,7 +44,7 @@
                         {{ error_msg }}
                     </div>
                     <div v-for="error in errors" class="notification is-danger">
-                        {{ error[0] }} 
+                        {{ error[0] }}
                     </div>
                     <a v-if="message" href="/login" class="has-text-link has-text-weight-medium"> Login </a>
                     <div v-if="error" class="notification is-danger">
@@ -141,7 +141,7 @@ export default {
                         email: this.email,
                         password: this.password,
                         password_confirmation: this.password_confirmation
-                }).then(response => {
+                })
                     this.message =  response.msg;
                     this.error_msg = response.error_msg;
                 })

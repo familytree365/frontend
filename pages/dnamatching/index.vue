@@ -214,8 +214,8 @@
                     this.debounceId = null;
                 }, 1000);
             },
-            async loadItems() {
-              const response = await this.$axios.$get("/api/dnamatching", {
+            async async loadItems() {
+              const response = await const response = await this.$axios.$get("/api/dnamatching", {
                   params: this.serverParams
               });
 

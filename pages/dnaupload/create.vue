@@ -30,7 +30,7 @@
                                 {{ message }}
                             </div>
                             <div v-for="error in errors" class="notification is-danger">
-                                {{ error[0] }} 
+                                {{ error[0] }}
                             </div>
                             <input type="hidden" v-model="fileName">
                             <div class="field import_block">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div>
         </form>
     </div>
 </template>
@@ -110,8 +110,8 @@ export default {
                       'Content-Type': 'multipart/form-data'
                     }
                 })
-                .then(response => {
-                    this.isLoading = false 
+
+                    this.isLoading = false
                     this.$router.push('/dnaupload')
                 })
                 .catch(error => {

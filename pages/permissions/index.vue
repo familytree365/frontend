@@ -166,11 +166,11 @@
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
-            loadItems() {
-                this.$axios.$get("/api/getpermissions", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/getpermissions", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
                         })
@@ -185,7 +185,7 @@
 
                     this.$axios
                             .$delete("/api/person/" + id)
-                            .then(response => {
+
                                 this.loadItems();
                             })
                 }

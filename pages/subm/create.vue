@@ -145,8 +145,8 @@ export default {
             }
         },
          getAddress() {
-            this.$axios.$get("/api/addrname")
-            .then(response => {
+            const response = await this.$axios.$get("/api/addrname")
+
                 this.address = response;
             })
         },

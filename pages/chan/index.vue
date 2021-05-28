@@ -199,14 +199,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/chan", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/chan", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -218,7 +217,7 @@ export default {
 
                 this.$axios
                 .$delete("/api/chan/" + id)
-                .then(response => {
+
                     this.loadItems();
                 })
             }

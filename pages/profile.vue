@@ -24,7 +24,7 @@
                                             {{ profile_error_message }}
                                         </div>
                                         <div v-for="error in profile_errors" class="notification is-danger">
-                                            {{ error[0] }} 
+                                            {{ error[0] }}
                                         </div>
             							<div class="field is-horizontal">
             								<div class="field-label is-normal">
@@ -37,7 +37,7 @@
 														    <label class="file-label">
 														      <input class="file-input" type="file" name="resume">
 														      <span class="file-cta">
-														        <span class="file-icon">											
+														        <span class="file-icon">
 														        <font-awesome-icon :icon="['fas', 'upload']"/>
 														        </span>
 														        <span class="file-label">
@@ -92,7 +92,7 @@
             							</div><hr>
             							<div class="field is-horizontal">
             								<div class="field-label is-normal"><!---->
-            									
+
             								</div>
             								<div class="field-body">
             									<div class="field"><!---->
@@ -152,7 +152,7 @@
                                     {{ password_error_message }}
                                 </div>
                                 <div v-for="error in password_errors" class="notification is-danger">
-                                    {{ error[0] }} 
+                                    {{ error[0] }}
                                 </div>
             					<div class="field is-horizontal">
             						<div class="field-label is-normal">
@@ -166,7 +166,7 @@
             								<p class="help" :class="{ 'is-danger': $v.password.old_password.$error }" v-if="!$v.password.old_password.required">Field is required</p>
             							</div>
             						</div><!---->
-                                    
+
             					</div><hr>
             					<div class="field is-horizontal">
             						<div class="field-label is-normal">
@@ -196,7 +196,7 @@
             					</div><hr>
             					<div class="field is-horizontal">
             						<div class="field-label is-normal"><!---->
-            							
+
             						</div>
             						<div class="field-body">
             							<div class="field"><!---->
@@ -212,7 +212,7 @@
             	</section>
             </div>
         </div>
-            
+
     </div>
 </template>
 
@@ -238,7 +238,7 @@ export default {
                         new_password: null,
                         password_confirmation: null
                   }
-                  
+
             };
       },
       validations: {
@@ -264,11 +264,11 @@ export default {
                         required,
                   },
             }
-            
+
       },
       computed: {
         ...mapGetters(['loggedInUser'])
-        
+
       },
       mounted() {
           this.user.first_name = this.loggedInUser.first_name;
@@ -284,7 +284,7 @@ export default {
             if (!this.$v.user.first_name.$invalid && !this.$v.user.last_name.$invalid && !this.$v.user.email.$invalid) {
                 this.$axios
                 .$post("/api/profile/update", this.user)
-                .then(response => {
+
                   this.loggedInUser()
                 })
                 .catch(error => {
@@ -302,8 +302,8 @@ export default {
             if (!this.$v.password.old_password.$invalid && !this.$v.password.new_password.$invalid && !this.$v.password.password_confirmation.$invalid) {
                 this.$axios
                 .$post("/api/password/change", this.password)
-                .then(response => {
-                  
+
+
                 })
                 .catch(error => {
                     this.error = true;

@@ -10,12 +10,12 @@ export default {
     methods: {
     },
     created() {
-        this.$axios.$get("/api/email-verification", {
+        const response = await this.$axios.$get("/api/email-verification", {
                     params: this.$route.query
                 })
-                .then(response => { 
+
                     this.$router.push("/dashboard");
-                    
+
                 })
     }
 }

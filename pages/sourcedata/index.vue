@@ -214,14 +214,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/sourcedata", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/sourcedata", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -233,7 +232,7 @@ export default {
 
                 this.$axios
                 .$delete("/api/sourcedata/" + id)
-                .then(response => {
+
                     this.loadItems();
                 })
             }

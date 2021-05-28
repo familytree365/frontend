@@ -139,8 +139,8 @@
             },
             create() {
                 this.isLoading = true
-                this.$axios.$get("/api/family/create")
-                        .then(response => {
+                const response = await this.$axios.$get("/api/family/create")
+
                            this.male = response.male
                            this.female = response.female
                            this.types = response.types
@@ -152,7 +152,7 @@
             const family = await $axios.$get('/api/family/' + params.id)
             return {family}
         },
-        
+
         created() {
             this.create();
         },

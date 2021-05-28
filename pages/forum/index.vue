@@ -7,7 +7,7 @@
                 <header class="card-header">
                     <p class="card-header-title">
                         Filters
-                    </p>                        
+                    </p>
                 </header>
                 <div class="card-content">
                     <!-- Search Widget -->
@@ -30,7 +30,7 @@
                             <div class="columns">
                                 <div v-for="cat in forumcategory" class="column is-6">
                                     <a href="#">{{cat.name}}</a>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -151,11 +151,11 @@
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
-            loadItems() {
-                this.$axios.$get("/api/forumtopic", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/forumtopic", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
                         })
@@ -169,7 +169,7 @@
 
                     this.$axios
                             .$delete("/api/forumtopic/" + id)
-                            .then(response => {
+
                                 this.loadItems();
                             })
                 }

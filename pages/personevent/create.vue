@@ -85,7 +85,7 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.phon.$error }" v-if="!$v.personevent.phon.required">Field is required</p>
                     </div>
-                   
+
                     <!-- <div class="field">
                         <label class="label">Caus</label>
                         <div class="control">
@@ -114,8 +114,8 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.personevent.description.$error }" v-if="!$v.personevent.description.required">Field is required</p>
                     </div> -->
-                    
-                    
+
+
                     <div class="field is-grouped">
                         <div class="control">
                             <button  @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -225,8 +225,8 @@
                 }
             },
             getpeople() {
-                this.$axios.$get("/api/person")
-                .then(response => {
+                const response = await this.$axios.$get("/api/person")
+
                     this.people = response;
                 })
             },

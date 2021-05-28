@@ -219,8 +219,8 @@
                 }
             },
             getpeople() {
-                this.$axios.$get("/api/person")
-                .then(response => {
+                const response = await this.$axios.$get("/api/person")
+
                     this.people = response;
                 })
             },

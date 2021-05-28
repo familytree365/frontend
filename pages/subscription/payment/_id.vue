@@ -172,7 +172,7 @@ export default {
                 plan_id: this.plan_id,
                 card_holder_name: this.cardHolderName,
             })
-                .then(response => {
+
                     this.isLoading = false
                     this.$router.push("/subscription");
                 });
@@ -182,7 +182,7 @@ export default {
         this.payment.plan_id =  this.$route.params.id
         this.plan_id = this.$route.params.id;
         this.$axios.get('/api/get-intent')
-            .then(response => {
+
                 this.isLoading = false
                 this.clientSecret = response.data.intent.client_secret;
             });
@@ -190,7 +190,7 @@ export default {
         const elements = this.stripe.elements();
         this.cardElement = elements.create('card');
         this.cardElement.mount('#card-element');
-        
+
     },
 
 }

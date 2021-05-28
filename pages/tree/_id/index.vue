@@ -72,7 +72,7 @@
             },
             getTree(){
                 const id = this.$route.params.id
-                this.$axios.$get('/api/tree/'+id+'/edit')
+                const response = await this.$axios.$get('/api/tree/'+id+'/edit')
                             .then(response => this.tree = response)
                             .catch(error => {
                             });

@@ -131,8 +131,8 @@
                 }
             },
              getType() {
-                this.$axios.$get("/api/alltype")
-                .then(response => {
+                const response = await this.$axios.$get("/api/alltype")
+
                     this.type = response;
                 })
             },

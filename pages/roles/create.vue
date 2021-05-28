@@ -23,8 +23,8 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.role.name.$error }" v-if="!$v.role.name.required">Field is required</p>
                     </div>
-                    
-                    
+
+
                     <div class="field is-grouped">
                         <div class="control">
                             <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -50,7 +50,7 @@ Vue.component('v-select', vSelect);
             return {
                 error: false,
                 options: [],
-                
+
                 message: "",
                 name: '',
                 age: 0,
@@ -81,8 +81,8 @@ Vue.component('v-select', vSelect);
                 }
             },
       getallPermission() {
-        this.$axios.$get("/api/getpermissions")
-            .then(response => {
+        const response = await this.$axios.$get("/api/getpermissions")
+
                 this.options = response
             })
         }
