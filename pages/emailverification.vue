@@ -68,7 +68,8 @@ export default {
 
     },
     computed: {
-            ...mapGetters(['loggedInUser'])
+            ...mapGetters([
+              'loggedInUser'])
     },
     methods: {
 
@@ -79,7 +80,6 @@ export default {
 
                     this.message = null
                     this.message = response.message
-                })
         }
     }
 }

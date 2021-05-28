@@ -112,6 +112,8 @@
 
         computed: {
             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
                     'getEvent'
             ])
         },

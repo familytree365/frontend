@@ -161,6 +161,8 @@
 
         computed: {
             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
                     'getMediaObject'
             ])
         },

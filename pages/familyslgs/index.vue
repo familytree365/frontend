@@ -186,6 +186,8 @@
 
         computed: {
             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
                     'getFamilySlgs'
             ])
         },
