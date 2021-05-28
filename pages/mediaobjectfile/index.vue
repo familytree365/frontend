@@ -241,11 +241,9 @@ export default {
         deleteMediaObjectFile(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/mediaobjectfile/" + id)
+               const response = this.$axios.$delete("/api/mediaobjectfile/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

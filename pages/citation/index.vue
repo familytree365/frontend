@@ -274,11 +274,9 @@ export default {
         deleteCitation(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/citation/" + id)
+               const response = this.$axios.$delete("/api/citation/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

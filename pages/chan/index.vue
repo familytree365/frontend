@@ -215,11 +215,9 @@ export default {
         deleteChan(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/chan/" + id)
+               const response = this.$axios.$delete("/api/chan/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

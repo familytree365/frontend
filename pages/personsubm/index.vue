@@ -208,11 +208,9 @@ export default {
         deletePersonSubm(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/personsubm/" + id)
+               const response = this.$axios.$delete("/api/personsubm/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

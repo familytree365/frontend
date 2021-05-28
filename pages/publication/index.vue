@@ -219,11 +219,9 @@ export default {
         deletePublication(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/publication/" + id)
+               const response = this.$axios.$delete("/api/publication/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

@@ -230,11 +230,9 @@ export default {
         deleteSourceRepo(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/sourcerepo/" + id)
+               const response = this.$axios.$delete("/api/sourcerepo/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

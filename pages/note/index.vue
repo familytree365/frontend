@@ -274,11 +274,9 @@ export default {
         deleteNote(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/note/" + id)
+               const response = this.$axios.$delete("/api/note/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

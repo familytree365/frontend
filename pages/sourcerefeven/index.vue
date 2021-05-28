@@ -219,11 +219,9 @@ export default {
         deleteSourceRefEven(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/sourcerefeven/" + id)
+               const response = this.$axios.$delete("/api/sourcerefeven/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

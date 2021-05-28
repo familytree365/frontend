@@ -208,11 +208,9 @@ export default {
         deletePersonAnci(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/personanci/" + id)
+               const response = this.$axios.$delete("/api/personanci/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

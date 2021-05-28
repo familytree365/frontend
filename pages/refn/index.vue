@@ -219,11 +219,9 @@ export default {
         deleteRefn(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/refn/" + id)
+               const response = this.$axios.$delete("/api/refn/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

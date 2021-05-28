@@ -310,11 +310,9 @@ export default {
         deleteRepository(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/repository/" + id)
+               const response = this.$axios.$delete("/api/repository/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

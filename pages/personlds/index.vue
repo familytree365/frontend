@@ -274,11 +274,9 @@ export default {
         deletePersonLds(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/personlds/" + id)
+               const response = this.$axios.$delete("/api/personlds/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

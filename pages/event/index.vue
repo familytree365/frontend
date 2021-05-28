@@ -197,11 +197,9 @@ export default {
         deleteEvent(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/event/" + id)
+               const response = this.$axios.$delete("/api/event/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

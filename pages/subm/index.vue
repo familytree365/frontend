@@ -277,11 +277,9 @@ export default {
         deleteSubm(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/subm/" + id)
+               const response = this.$axios.$delete("/api/subm/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

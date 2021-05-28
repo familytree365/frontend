@@ -391,11 +391,9 @@ export default {
         deleteSource(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/source/" + id)
+               const response = this.$axios.$delete("/api/source/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

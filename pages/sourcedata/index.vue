@@ -230,11 +230,9 @@ export default {
         deleteSourceData(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/sourcedata/" + id)
+               const response = this.$axios.$delete("/api/sourcedata/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

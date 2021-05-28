@@ -253,11 +253,9 @@ export default {
         deleteAddr(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/addr/" + id)
+               const response = this.$axios.$delete("/api/addr/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },

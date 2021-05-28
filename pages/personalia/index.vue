@@ -219,11 +219,9 @@ export default {
         deletePersonAlia(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/personalia/" + id)
+               const response = this.$axios.$delete("/api/personalia/" + id)
 
-                    this.loadItems();
-                })
+               this.loadItems();
             }
         },
     },
