@@ -62,7 +62,7 @@
                 }
             },
         },
-        async asyncData( { $axios, params }) {
+        asyncData( { $axios, params }) {
             const company = await $axios.$get('/api/company/' + params.id)
             return {company}
         }

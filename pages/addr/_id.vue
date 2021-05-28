@@ -101,7 +101,7 @@
                 }
             },
         },
-        async asyncData( { $axios, params }) {
+        asyncData( { $axios, params }) {
             const addr = await $axios.$get('/api/addr/' + params.id)
             return {addr}
         }

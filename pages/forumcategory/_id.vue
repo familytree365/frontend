@@ -16,7 +16,7 @@
                         <input class="input" type="text" placeholder="Name" v-model="forumcategory.name"  :class="{ 'is-danger': $v.forumcategory.name.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.forumcategory.name.$error }" v-if="!$v.forumcategory.name.required">Field is required</p>
-                    </div>                    
+                    </div>
                     <div class="field is-grouped">
                       <div class="control">
                         <button  class="button is-link has-background-primary">Submit</button>
@@ -62,7 +62,7 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const forumcategory = await $axios.$get('/api/forumcategory/'+params.id)
       return { forumcategory }
     }

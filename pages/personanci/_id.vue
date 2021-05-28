@@ -69,7 +69,7 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const personanci = await $axios.$get('/api/personanci/'+params.id)
       return { personanci }
     }

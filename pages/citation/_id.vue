@@ -151,7 +151,7 @@
                 }
             },
         },
-        async asyncData( { $axios, params }) {
+        asyncData( { $axios, params }) {
             const citation = await $axios.$get('/api/citation/' + params.id)
             return {citation}
         }

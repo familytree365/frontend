@@ -91,7 +91,7 @@
                 }
             },
         },
-        async asyncData( { $axios, params }) {
+        asyncData( { $axios, params }) {
             const mediaobject = await $axios.$get('/api/mediaobject/' + params.id)
             return {mediaobject}
         }

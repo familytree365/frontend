@@ -18,14 +18,14 @@
                           </select>
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.forumtopic.category_id.$error }" v-if="!$v.forumtopic.category_id.required">Field is required</p>
-                    </div>                    
+                    </div>
                     <div class="field">
                       <label class="label">Title</label>
                       <div class="control">
                         <input class="input" type="text" placeholder="Title" v-model="forumtopic.title"  :class="{ 'is-danger': $v.forumtopic.title.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.forumtopic.title.$error }" v-if="!$v.forumtopic.title.required">Field is required</p>
-                    </div> 
+                    </div>
                      <div class="field">
                       <label class="label">Content</label>
                       <div class="control">
@@ -82,12 +82,12 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const forumtopic = await $axios.$get('/api/forumtopic/'+params.id)
       const forumcategory = await $axios.$get('/api/forumcategory')
       return { forumtopic, forumcategory }
     },
-    
+
 }
 </script>
 

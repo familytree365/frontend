@@ -102,7 +102,7 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const chan = await $axios.$get('/api/chan/'+params.id)
       return { chan }
     }

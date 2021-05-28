@@ -98,7 +98,7 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const sourcerefeven = await $axios.$get('/api/sourcerefeven/'+params.id)
       return { sourcerefeven }
     }

@@ -110,7 +110,7 @@ export default {
             }
         },
     },
-    async asyncData({ $axios,params }) {
+    asyncData({ $axios,params }) {
       const sourcedataeven = await $axios.$get('/api/sourcedataeven/'+params.id)
       return { sourcedataeven }
     }
