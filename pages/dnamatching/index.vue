@@ -143,20 +143,14 @@
                 ],
                 rows: [],
                 serverParams: {
-                    columnFilters: {
-
-                    },
-                    searchTerm: '',
-                    sort: {
-                    },
-                    page: 1,
-                    perPage: 5
-                }
+                  columnFilters: {},
+                  searchTerm: '',
+                  sort: {},
+                  page: 1,
+                  perPage: 5
                 },
                 debounceId: null,
-                debounceTimeout: 500,,
-                debounceId: null,
-                debounceTimeout: 500,
+                debounceTimeout: 500
             };
         },
         head() {
@@ -218,7 +212,7 @@
                 }, 1000);
             },
             async async loadItems() {
-              const response = await const response = await this.$axios.$get("/api/dnamatching", {
+              const response = await this.$axios.$get("/api/dnamatching", {
                   params: this.serverParams
               });
 

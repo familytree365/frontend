@@ -143,7 +143,6 @@
                     },
                     page: 1,
                     perPage: 5
-                }
                 },
                 debounceId: null,
                 debounceTimeout: 500,
@@ -210,7 +209,7 @@
 
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
+
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -224,11 +223,11 @@
                   this.loadItems();
                 }
             },
-            createTree() {
+            async createTree() {
                 const response = await this.$axios.$get("/api/tree/create")
 
                             this.create_tree = response.create_tree
-                        })
+
             },
         },
 
@@ -238,5 +237,3 @@
     }
 
 </script>
-
-
