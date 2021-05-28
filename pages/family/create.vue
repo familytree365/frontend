@@ -141,7 +141,7 @@
                             });
                 }
             },
-            create() {
+            async create() {
                 this.isLoading = true
                 const response = await this.$axios.$get("/api/family/create")
 
