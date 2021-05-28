@@ -245,16 +245,15 @@ export default {
         setSelected(value) {
             this.$axios.$post("/api/changedb", {
                     company_id : this.selected_company , tree_id : this.selected_tree})
-                .then(response => {
+
                     console.log(response)
                     this.loadChart()
                     this.changedb = response.changedb
-                })
         },
 
-        getCompanies() {
-            this.$axios.$get("/api/get_companies")
-                .then(response => {
+        async getCompanies() {
+            const response = await this.$axios.$get("/api/get_companies")
+
                     this.companies = response
                     this.companies.map((company) => {
                         if(company.current_tenant == 1) {
@@ -263,14 +262,13 @@ export default {
                         }
 
                     })
-                })
         },
-        getTree() {
+        async getTree() {
             this.selected_tree = null
-            this.$axios.$get("/api/get_tree",{
+            const response = await this.$axios.$get("/api/get_tree",{
                     params: { company_id : this.selected_company }
                 })
-                .then(response => {
+
                     this.trees = response
                     this.trees.map((tree) => {
                         if(tree.current_tenant == 1) {
@@ -278,7 +276,6 @@ export default {
                         }
 
                     })
-                })
         },
         async loadChart() {
             this.loaded = false

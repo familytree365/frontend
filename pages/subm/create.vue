@@ -144,11 +144,10 @@ export default {
                   });
             }
         },
-         getAddress() {
-            this.$axios.$get("/api/addrname")
-            .then(response => {
+         async getAddress() {
+            const response = await this.$axios.$get("/api/addrname")
+
                 this.address = response;
-            })
         },
     },
     created() {

@@ -56,7 +56,7 @@
                       :time-to="23 * 60"
                       events-on-month-view="short"
                       :editable-events="{ title: true, drag: false, resize: true, delete: true, create: false }"
-                      :events="events" 
+                      :events="events"
                       editable-events
                       :on-event-create="onEventCreate"
                       />
@@ -124,7 +124,7 @@ export default {
     meta: {
         permission: { name: 'calendar menu' }
     },
-    
+
     components: { VueCal },
     data() {
       const month = new Date().getMonth();
@@ -191,11 +191,10 @@ export default {
                 .catch(error => {
                 });
       },
-      getevents() {
-        this.$axios.$get("/api/calendar_event")
-        .then(response => {
+      async getevents() {
+        const response = await this.$axios.$get("/api/calendar_event")
+
             this.events = response;
-        })
       },
     },
     created() {

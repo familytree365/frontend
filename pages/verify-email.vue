@@ -9,14 +9,13 @@ export default {
     },
     methods: {
     },
-    created() {
-        this.$axios.$get("/api/email-verification", {
+    async created() {
+        const response = await this.$axios.$get("/api/email-verification", {
                     params: this.$route.query
                 })
-                .then(response => { 
+
                     this.$router.push("/dashboard");
-                    
-                })
+
     }
 }
 </script>

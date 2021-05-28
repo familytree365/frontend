@@ -203,14 +203,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/publication", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/publication", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -220,11 +219,9 @@ export default {
         deletePublication(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/publication/" + id)
-                .then(response => {
-                    this.loadItems();
-                })
+               const response = this.$axios.$delete("/api/publication/" + id)
+
+               this.loadItems();
             }
         },
     },

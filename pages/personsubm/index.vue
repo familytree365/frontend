@@ -192,14 +192,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/personsubm", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/personsubm", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -209,11 +208,9 @@ export default {
         deletePersonSubm(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/personsubm/" + id)
-                .then(response => {
-                    this.loadItems();
-                })
+               const response = this.$axios.$delete("/api/personsubm/" + id)
+
+               this.loadItems();
             }
         },
     },

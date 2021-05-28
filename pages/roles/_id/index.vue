@@ -23,8 +23,8 @@
                         </div>
                         <p class="help" :class="{ 'is-danger': $v.role.name.$error }" v-if="!$v.role.name.required">Field is required</p>
                     </div>
-                    
-                    
+
+
                     <div class="field is-grouped">
                         <div class="control">
                             <button @click.prevent="save()" class="button is-link has-background-primary">Submit</button>
@@ -68,7 +68,9 @@ Vue.component('v-select', vSelect);
             },
         },
         computed: {
-            ...mapGetters(['getRole','getPermission'])
+            ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','getRole','getPermission'])
         },
         methods: {
 
@@ -78,27 +80,24 @@ Vue.component('v-select', vSelect);
                     console.log("fail")
                 } else {
                     this.$axios.$put('/api/roles/' + this.$route.params.id , this.role)
-                        .then(response => {
+
                             this.loadRole()
                             this.loadPermission()
                 			this.$router.push('/roles')
-                        })
                         .catch(error => {
                         });
                 }
             },
-      		getallPermission() {
-  		    	this.$axios.$get("/api/getpermissions")
-  		            .then(response => {
+      		async getallPermission() {
+  		    	const response = await this.$axios.$get("/api/getpermissions")
+
   		                this.options = response
-  		            })
   		    },
-      	    getRolePermission() {
-      	    	this.$axios.$get("/api/getrolepermission/"+this.$route.params.id)
-  		            .then(response => {
+      	    async getRolePermission() {
+      	    	const response = await this.$axios.$get("/api/getrolepermission/"+this.$route.params.id)
+
   		            	this.role.name = response.role.name
   		               	this.role.permissions = response.permissions
-  		            })
   		    },
              ...mapActions([
                 "loadRole",

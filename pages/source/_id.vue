@@ -229,23 +229,20 @@
                             });
                 }
             },
-            getRepository() {
-                this.$axios.$get("/api/allrepository")
-                .then(response => {
+            async getRepository() {
+                const response = await this.$axios.$get("/api/allrepository")
+
                     this.repository = response;
-                })
             },
-            getAuthor() {
-                this.$axios.$get("/api/allauthor")
-                .then(response => {
+            async getAuthor() {
+                const response = await this.$axios.$get("/api/allauthor")
+
                     this.author = response;
-                })
             },
-            getType() {
-                this.$axios.$get("/api/alltype")
-                .then(response => {
+            async getType() {
+                const response = await this.$axios.$get("/api/alltype")
+
                     this.type = response;
-                })
             },
         },
         async asyncData( { $axios, params }) {

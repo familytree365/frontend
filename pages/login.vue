@@ -151,9 +151,9 @@ export default {
             this.provider = provider
             const newWindow = openWindow('', 'message')
             let url = '/api/login/' + provider;
-            this.$axios.get(url).then(response => {
-                newWindow.location.href = response.data;
-            }).catch(error => {});
+            this.$axios.get(url)
+                 newWindow.location.href = response.data;
+                .catch(error => {});
         },
         login() {
             this.$v.$touch();

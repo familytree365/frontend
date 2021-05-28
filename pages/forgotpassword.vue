@@ -104,13 +104,12 @@ export default {
                 this.$axios
                 .$post("/api/password/email", {
                         email: this.email,
-                }).then(response => {
+                })
                     this.message =  response.msg;
                     this.error_msg = response.error_msg
-                })
                 .catch(error => {
                   this.error = response.error;
-                  
+
                 });
             }
         }

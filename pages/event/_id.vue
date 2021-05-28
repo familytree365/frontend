@@ -16,7 +16,7 @@
                         <input class="input" type="text" placeholder="Name" v-model="event.name"  :class="{ 'is-danger': $v.event.name.$error }">
                       </div>
                       <p class="help" :class="{ 'is-danger': $v.event.name.$error }" v-if="!$v.event.name.required">Field is required</p>
-                    </div>                    
+                    </div>
                     <div class="field is-grouped">
                       <div class="control">
                         <button  class="button is-link has-background-primary">Submit</button>

@@ -98,12 +98,11 @@
             this.createTree()
         },
         methods: {
-            getCompany() {
-                this.$axios.$get("/api/company")
-                        .then(response => {
+            async getCompany() {
+                const response = await this.$axios.$get("/api/company")
+
                            console.log(response);
                            this.companies = response
-                        })
             },
 
             save() {
@@ -117,15 +116,15 @@
                             });
                 }
             },
-            createTree() {
-                this.$axios.$get("/api/tree/create")
-                        .then(response => {
+            async createTree() {
+                const response = await this.$axios.$get("/api/tree/create")
+
                             if(response.create_tree == false) {
                                 this.$router.push("/error");
                             } else {
                                 this.isLoading = false
                             }
-                        })
+
             },
         },
         created() {

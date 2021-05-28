@@ -141,15 +141,14 @@
                             });
                 }
             },
-            create() {
+            async create() {
                 this.isLoading = true
-                this.$axios.$get("/api/family/create")
-                        .then(response => {
+                const response = await this.$axios.$get("/api/family/create")
+
                            this.male = response.male
                            this.female = response.female
                            this.types = response.types
                            this.isLoading = false
-                        })
             },
         },
         created() {

@@ -225,14 +225,13 @@ export default {
            this.updateParams({searchTerm: params});
           this.loadItems();
         },
-        loadItems() {
-            this.$axios.$get("/api/mediaobjectfile", {
+        async loadItems() {
+            const response = await this.$axios.$get("/api/mediaobjectfile", {
                 params: this.serverParams
             })
-            .then(response => {
+
                 this.totalRecords = response.total;
                 this.rows = response.data;
-            })
         },
 
         searchFunction(row, col, cellValue, searchTerm){
@@ -242,11 +241,9 @@ export default {
         deleteMediaObjectFile(id) {
              if(confirm("Do you really want to delete?")){
 
-                this.$axios
-                .$delete("/api/mediaobjectfile/" + id)
-                .then(response => {
-                    this.loadItems();
-                })
+               const response = this.$axios.$delete("/api/mediaobjectfile/" + id)
+
+               this.loadItems();
             }
         },
     },

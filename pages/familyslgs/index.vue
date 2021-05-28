@@ -167,7 +167,9 @@
                     },
                     page: 1,
                     perPage: 5
-                }
+                },
+                debounceId: null,
+                debounceTimeout: 500,
             };
         },
         head() {
@@ -183,6 +185,8 @@
 
         computed: {
             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
                     'getFamilySlgs'
             ])
         },
@@ -220,19 +224,22 @@
                 this.updateParams(params);
                 this.loadItems();
             },
-            onSearch(params) {
-                console.log(params);
-                this.updateParams({searchTerm: params});
-                this.loadItems();
+            onSearch({ searchTerm }) {
+                this.updateParams({ searchTerm });
+                clearTimeout(this.debounceId);
+                this.debounceId = setTimeout(() => {
+                    this.loadItems();
+                    this.debounceId = null;
+                }, 1000);
             },
-            loadItems() {
-                this.$axios.$get("/api/familyslgs", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/familyslgs", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
+
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -242,11 +249,9 @@
             deleteFamilySlgs(id) {
                 if (confirm("Do you really want to delete?")) {
 
-                    this.$axios
-                            .$delete("/api/familyslgs/" + id)
-                            .then(response => {
-                                this.loadItems();
-                            })
+                  const response = this.$axios.$delete("/api/familyslgs/" + id)
+
+                  this.loadItems();
                 }
             },
         },

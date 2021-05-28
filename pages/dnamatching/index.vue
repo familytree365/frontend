@@ -143,17 +143,14 @@
                 ],
                 rows: [],
                 serverParams: {
-                    columnFilters: {
-
-                    },
-                    searchTerm: '',
-                    sort: {
-                    },
-                    page: 1,
-                    perPage: 5
+                  columnFilters: {},
+                  searchTerm: '',
+                  sort: {},
+                  page: 1,
+                  perPage: 5
                 },
                 debounceId: null,
-                debounceTimeout: 500,
+                debounceTimeout: 500
             };
         },
         head() {

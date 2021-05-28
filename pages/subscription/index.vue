@@ -144,17 +144,16 @@ export default {
         submit() {
 
         },
-        loadPlans() {
-            this.$axios.$get("/api/get-plans")
-            .then(response => {
+        async loadPlans() {
+            const response = await this.$axios.$get("/api/get-plans")
+
                 this.getCurrentSubscription();
                 this.plans = response.data;
-                this.isLoading = false
-            })
+                this.isLoading = false;
         },
-         getCurrentSubscription() {
-            this.$axios.$get('/api/get-current-subscription')
-                .then(response => {
+         async getCurrentSubscription() {
+            const response = await this.$axios.$get('/api/get-current-subscription')
+
                     this.isLoading = true
                     this.has_payment_method = response.has_payment_method;
                     if (response.subscribed) {
@@ -173,7 +172,6 @@ export default {
                         });
                     }
                     this.isLoading = false
-                });
         },
         subscribe() {
             this.isLoading = true
@@ -181,22 +179,20 @@ export default {
             this.$axios.$post('/api/subscribe', {
                 plan_id: this.selectedPlanId,
                 })
-                .then(response => {
+
                         this.getCurrentSubscription();
                         this.isLoading = false
-                });
         },
         unsubscribe() {
             this.isLoading = true
             this.isActive = false;
             this.$axios.post('/api/unsubscribe')
-                .then(response => {
+
                         this.getCurrentSubscription();
                         this.isLoading = false
-                });
         },
-        selectCurrency(currency) {
-            this.$axios.$get('https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a')
+        async selectCurrency(currency) {
+            const response = await this.$axios.$get('https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a')
               .then(res => {
                 console.log(res.rates);
                 switch (currency) {

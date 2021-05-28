@@ -11,7 +11,7 @@
                 <p>
                     Posted
                     by
-                    <a href="#">{{forumtopic.author.first_name}}</a> 
+                    <a href="#">{{forumtopic.author.first_name}}</a>
                     on {{forumtopic.created_at | datetime}}
                 </p>
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Comments Form -->
-                <div class="card my-4">                                         
+                <div class="card my-4">
                     <div class="card-body">
                         <form>
                             <div class="columns is-flex-desktop-only ai--s">
@@ -42,7 +42,7 @@
                                             <ckeditor :editor="editor" v-model="forumpost.content" :config="editorConfig"></ckeditor>
                                         </div>
                                         <p class="help" :class="{ 'is-danger': $v.forumpost.content.$error }" v-if="!$v.forumpost.content.required">Field is required</p>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="column is-3 ai--s">
                                     <div class="field is-grouped my-6">
@@ -62,27 +62,27 @@
                                     <div class="media-body">
                                         <h4 class="mt-0 has-text-weight-bold">Commenter Name</h4>
                                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                
+
                                         <div class="media mt-4">
                                             <div class="media-body">
                                                 <h5 class="mt-0">Commenter Name</h5>
                                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                                             </div>
                                         </div>
-                
+
                                         <div class="media mt-4">
                                             <div class="media-body">
                                                 <h5 class="mt-0">Commenter Name</h5>
                                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                                             </div>
                                         </div>
-                
+
                                     </div>
                                 </div>-->
 
             </div>
 
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -104,7 +104,9 @@
     export default {
         layout: 'auth',
         computed: {
-            ...mapGetters(['loggedInUser'])
+            ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser'])
         },
         components: {
             // Use the <ckeditor> component in this view.
@@ -163,6 +165,6 @@
     }
 </script>
 
-<style>    
+<style>
 
 </style>

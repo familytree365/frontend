@@ -104,7 +104,7 @@
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
             }
-          }).then(response => {
+          })
           this.inProgress = true;
           this.isLoading = false;
           this.generatedFile = response.file;
@@ -112,23 +112,22 @@
           // this.interval = setInterval(() => {
           //   this.checkJobCompleted();
           // }, 3000)
-        }).catch(error => {
+        .catch(error => {
           this.error = true;
           this.inProgress = false;
           this.errors = error.response.data.errors;
         });
       },
 
-      checkJobCompleted() {
+      async checkJobCompleted() {
         this.$axios
           .$post("/api/check-gedcom-export", {}, {
             headers: {
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
             }
-          }).then(response => {
+          })
           console.log(response);
-        });
       }
     }
   }

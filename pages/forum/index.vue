@@ -7,7 +7,7 @@
                 <header class="card-header">
                     <p class="card-header-title">
                         Filters
-                    </p>                        
+                    </p>
                 </header>
                 <div class="card-content">
                     <!-- Search Widget -->
@@ -30,7 +30,7 @@
                             <div class="columns">
                                 <div v-for="cat in forumcategory" class="column is-6">
                                     <a href="#">{{cat.name}}</a>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,9 +64,6 @@
         </div>
 
     </div>
-
-
-</div>
 </template>
 
 <script>
@@ -93,7 +90,9 @@
                     },
                     page: 1,
                     perPage: 5
-                }
+                },
+                debounceId: null,
+                debounceTimeout: 500,
             };
         },
         head() {
@@ -109,6 +108,8 @@
 
         computed: {
             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
                     'getEvent'
             ])
         },
@@ -146,19 +147,21 @@
                 this.updateParams(params);
                 this.loadItems();
             },
-            onSearch(params) {
-                console.log(params);
-                this.updateParams({searchTerm: params});
-                this.loadItems();
+            onSearch({ searchTerm }) {
+                this.updateParams({ searchTerm });
+                clearTimeout(this.debounceId);
+                this.debounceId = setTimeout(() => {
+                    this.loadItems();
+                    this.debounceId = null;
+                }, 1000);
             },
-            loadItems() {
-                this.$axios.$get("/api/forumtopic", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/forumtopic", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -169,9 +172,8 @@
 
                     this.$axios
                             .$delete("/api/forumtopic/" + id)
-                            .then(response => {
+
                                 this.loadItems();
-                            })
                 }
             },
         },

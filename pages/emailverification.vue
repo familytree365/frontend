@@ -65,21 +65,21 @@ export default {
             backgroundColor: '#ffffff',
             message: null,
         }
-            
+
     },
     computed: {
-            ...mapGetters(['loggedInUser'])
+            ...mapGetters([
+              'loggedInUser'])
     },
     methods: {
-        
+
         resendLink() {
             this.$axios.$post("/api/email/verification-notification", {
                         email: this.loggedInUser.email,
                 })
-                .then(response => {
+
                     this.message = null
                     this.message = response.message
-                })
         }
     }
 }

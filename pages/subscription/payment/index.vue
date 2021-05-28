@@ -128,9 +128,7 @@ export default {
             } else {
                 this.$axios
                 .$post("/api/payment", this.payment)
-                .then(response => {
 
-                })
                 .catch(error => {
                   console.log(error)
                 });

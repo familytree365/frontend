@@ -127,7 +127,9 @@
                     },
                     page: 1,
                     perPage: 5
-                }
+                },
+                debounceId: null,
+                debounceTimeout: 500,
             };
         },
         head() {
@@ -142,7 +144,9 @@
         },
 
         computed: {
-            ...mapGetters(['loggedInUser','getRole','getPermission'])
+            ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser','getRole','getPermission'])
         },
 
         methods: {
@@ -181,14 +185,13 @@
                 this.updateParams({searchTerm: params});
                 this.loadItems();
             },
-            loadItems() {
-                this.$axios.$get("/api/getroles", {
+            async loadItems() {
+                const response = await this.$axios.$get("/api/getroles", {
                     params: this.serverParams
                 })
-                        .then(response => {
+
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -198,9 +201,8 @@
 
                     this.$axios
                             .$delete("/api/person/" + id)
-                            .then(response => {
+
                                 this.loadItems();
-                            })
                 }
             },
             ...mapActions([
