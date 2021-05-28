@@ -256,7 +256,6 @@ export default {
                 .$delete("/api/subn/" + id)
 
                     this.loadItems();
-                })
             }
         },
     },
