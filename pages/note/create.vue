@@ -130,7 +130,7 @@
                             });
                 }
             },
-             getType() {
+             async getType() {
                 const response = await this.$axios.$get("/api/alltype")
 
                     this.type = response;

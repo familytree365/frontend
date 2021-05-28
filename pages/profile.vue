@@ -286,7 +286,6 @@ export default {
                 .$post("/api/profile/update", this.user)
 
                   this.loggedInUser()
-                })
                 .catch(error => {
                     this.error = true;
                     this.profile_error_message = error.response.data.message;
@@ -303,8 +302,6 @@ export default {
                 this.$axios
                 .$post("/api/password/change", this.password)
 
-
-                })
                 .catch(error => {
                     this.error = true;
                     this.password_error_message = error.response.data.message;

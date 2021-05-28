@@ -294,7 +294,6 @@
 
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
             },
 
             searchFunction(row, col, cellValue, searchTerm) {

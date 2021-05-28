@@ -249,10 +249,9 @@ export default {
                     console.log(response)
                     this.loadChart()
                     this.changedb = response.changedb
-                })
         },
 
-        getCompanies() {
+        async getCompanies() {
             const response = await this.$axios.$get("/api/get_companies")
 
                     this.companies = response
@@ -263,9 +262,8 @@ export default {
                         }
 
                     })
-                })
         },
-        getTree() {
+        async getTree() {
             this.selected_tree = null
             const response = await this.$axios.$get("/api/get_tree",{
                     params: { company_id : this.selected_company }
@@ -278,7 +276,6 @@ export default {
                         }
 
                     })
-                })
         },
         async loadChart() {
             this.loaded = false

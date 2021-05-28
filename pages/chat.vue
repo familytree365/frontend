@@ -40,11 +40,8 @@ export default {
     sendMessage(e) {
       e.preventDefault();
 
-      this.$axios
-        .$post("/api/chats", {sender: 1, receiver: 2})
-
-          console.log(response);
-        })
+      this.$axios.$post('/api/chats/' + this.$route.params.id, this.chats)
+        .then(response => (this.$router.push('/addr')))
         .catch(error => {
           this.error = true;
           this.message = error.response.data.message;

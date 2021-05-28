@@ -180,7 +180,6 @@
 
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -194,7 +193,6 @@
                             .$delete("/api/person/" + id)
 
                                 this.loadItems();
-                            })
                 }
             },
         },

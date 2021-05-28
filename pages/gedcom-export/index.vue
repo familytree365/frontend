@@ -112,14 +112,14 @@
           // this.interval = setInterval(() => {
           //   this.checkJobCompleted();
           // }, 3000)
-        }).catch(error => {
+        .catch(error => {
           this.error = true;
           this.inProgress = false;
           this.errors = error.response.data.errors;
         });
       },
 
-      checkJobCompleted() {
+      async checkJobCompleted() {
         this.$axios
           .$post("/api/check-gedcom-export", {}, {
             headers: {
@@ -128,7 +128,6 @@
             }
           })
           console.log(response);
-        });
       }
     }
   }

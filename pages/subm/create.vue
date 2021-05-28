@@ -148,7 +148,6 @@ export default {
             const response = await this.$axios.$get("/api/addrname")
 
                 this.address = response;
-            })
         },
     },
     created() {

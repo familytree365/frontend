@@ -218,11 +218,10 @@
                             });
                 }
             },
-            getpeople() {
+            async getpeople() {
                 const response = await this.$axios.$get("/api/person")
 
                     this.people = response;
-                })
             },
         },
         async asyncData( { $axios, params }) {
