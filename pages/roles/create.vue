@@ -80,11 +80,10 @@ Vue.component('v-select', vSelect);
                             });
                 }
             },
-      getallPermission() {
+      async getallPermission() {
         const response = await this.$axios.$get("/api/getpermissions")
 
                 this.options = response
-            })
         }
         },
         created() {
