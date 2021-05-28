@@ -171,17 +171,15 @@ export default {
                   });
             }
         },
-        getAddress() {
+        async getAddress() {
             const response = await this.$axios.$get("/api/addrname")
 
                 this.address = response;
-            })
         },
-        getType() {
+        async getType() {
             const response = await this.$axios.$get("/api/alltype")
 
                 this.types = response;
-            })
         },
     },
     created() {

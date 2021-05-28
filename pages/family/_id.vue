@@ -137,7 +137,7 @@
                             });
                 }
             },
-            create() {
+            async create() {
                 this.isLoading = true
                 const response = await this.$axios.$get("/api/family/create")
 
@@ -145,7 +145,6 @@
                            this.female = response.female
                            this.types = response.types
                            this.isLoading = false
-                        })
             },
         },
         async asyncData( { $axios, params }) {

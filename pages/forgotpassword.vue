@@ -107,7 +107,6 @@ export default {
                 })
                     this.message =  response.msg;
                     this.error_msg = response.error_msg
-                })
                 .catch(error => {
                   this.error = response.error;
 

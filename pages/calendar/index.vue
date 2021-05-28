@@ -191,11 +191,10 @@ export default {
                 .catch(error => {
                 });
       },
-      getevents() {
+      async getevents() {
         const response = await this.$axios.$get("/api/calendar_event")
 
             this.events = response;
-        })
       },
     },
     created() {

@@ -229,23 +229,20 @@
                             });
                 }
             },
-            getRepository() {
+            async getRepository() {
                 const response = await this.$axios.$get("/api/allrepository")
 
                     this.repository = response;
-                })
             },
-            getAuthor() {
+            async getAuthor() {
                 const response = await this.$axios.$get("/api/allauthor")
 
                     this.author = response;
-                })
             },
-            getType() {
+            async getType() {
                 const response = await this.$axios.$get("/api/alltype")
 
                     this.type = response;
-                })
             },
         },
         async asyncData( { $axios, params }) {

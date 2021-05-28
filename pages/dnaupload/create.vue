@@ -113,7 +113,6 @@ export default {
 
                     this.isLoading = false
                     this.$router.push('/dnaupload')
-                })
                 .catch(error => {
                     this.error = true;
                     this.isLoading = false;

@@ -201,7 +201,6 @@ export default {
                 .$delete("/api/forumcategory/" + id)
 
                     this.loadItems();
-                })
             }
         },
     },

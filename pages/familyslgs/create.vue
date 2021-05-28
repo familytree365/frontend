@@ -122,11 +122,10 @@
                             });
                 }
             },
-            getFamily() {
+            async getFamily() {
                 const response = await this.$axios.$get("/api/family")
 
                     this.family = response;
-                })
             },
         },
         created() {

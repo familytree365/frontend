@@ -64,9 +64,6 @@
         </div>
 
     </div>
-
-
-</div>
 </template>
 
 <script>
@@ -93,7 +90,6 @@
                     },
                     page: 1,
                     perPage: 5
-                }
                 },
                 debounceId: null,
                 debounceTimeout: 500,
@@ -166,7 +162,6 @@
 
                             this.totalRecords = response.total;
                             this.rows = response.data;
-                        })
             },
 
             searchFunction(row, col, cellValue, searchTerm) {
@@ -179,7 +174,6 @@
                             .$delete("/api/forumtopic/" + id)
 
                                 this.loadItems();
-                            })
                 }
             },
         },

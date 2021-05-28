@@ -128,13 +128,12 @@
                             });
                 }
             },
-            getFamily() {
+            async getFamily() {
                 this.isLoading = true
                 const response = await this.$axios.$get("/api/family")
 
                     this.family = response;
                     this.isLoading = false
-                })
             },
         },
         async asyncData( { $axios, params }) {

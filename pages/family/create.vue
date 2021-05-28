@@ -149,7 +149,6 @@
                            this.female = response.female
                            this.types = response.types
                            this.isLoading = false
-                        })
             },
         },
         created() {
