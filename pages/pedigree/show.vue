@@ -110,7 +110,7 @@ export default {
         this.isLoading = true
 
         try {
-          await const response = await this.$axios.$get("/api/pedigree/show")
+          const response = await this.$axios.$get("/api/pedigree/show")
           this.data = response
 
           this.isLoading = false

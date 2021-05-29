@@ -118,6 +118,7 @@ import {
 } from 'vuelidate/lib/validators'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import response from "core-js/internals/is-forced";
 export default {
     middleware: 'guest',
     components: {
@@ -147,11 +148,11 @@ export default {
     },
 
     methods: {
-        loginSocial(provider) {
+        async loginSocial(provider) {
             this.provider = provider
             const newWindow = openWindow('', 'message')
             let url = '/api/login/' + provider;
-            this.$axios.get(url)
+            await this.$axios.get(url)
                  newWindow.location.href = response.data;
                 .catch(error => {});
         },

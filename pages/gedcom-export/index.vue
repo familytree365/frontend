@@ -97,22 +97,24 @@
       };
     },
     methods: {
-      handleExportFiles() {
-        this.$axios
+      async handleExportFiles() {
+        await this.$axios
           .$post("/api/gedcom-export", {}, {
             headers: {
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
             }
           })
-          this.inProgress = true;
-          this.isLoading = false;
-          this.generatedFile = response.file;
+        this.inProgress = true;
+        this.isLoading = false;
+        this.generatedFile = response.file;
 
-          // this.interval = setInterval(() => {
-          //   this.checkJobCompleted();
-          // }, 3000)
-        .catch(error => {
+
+        // this.interval = setInterval(() => {
+        //   this.checkJobCompleted();
+        // }, 3000)
+      .
+        catch(error => {
           this.error = true;
           this.inProgress = false;
           this.errors = error.response.data.errors;
@@ -120,8 +122,8 @@
       },
 
       async checkJobCompleted() {
-        this.$axios
-          .$post("/api/check-gedcom-export", {}, {
+        await this.$axios
+           .$post("/api/check-gedcom-export", {}, {
             headers: {
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
