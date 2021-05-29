@@ -148,14 +148,19 @@ export default {
     },
 
     methods: {
-        async loginSocial(provider) {
+        loginSocial(provider) {
             this.provider = provider
             const newWindow = openWindow('', 'message')
             let url = '/api/login/' + provider;
-            await this.$axios.get(url)
-                 newWindow.location.href = response.data;
-                .catch(error => {});
+            axios.get(url)
+            .then(res => {
+              window.location.href = url;
+            })
+            .catch(err => {
+              console.log(err);
+            })
         },
+
         login() {
             this.$v.$touch();
             if (this.$v.$invalid) {

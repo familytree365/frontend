@@ -225,10 +225,9 @@
                 }
             },
             async getpeople() {
-                const response = await this.$axios.$get("/api/person")
+              const response = await this.$axios.$get("/api/person")
 
-                    this.people = response;
-                })
+              this.people = response;
             },
         },
         created() {

@@ -143,7 +143,7 @@ export default {
                         password_confirmation: this.password_confirmation
                 })
                     this.message =  response.msg;
-                    this.error_msg = response.error_msg;
+                    this.error_msg = response.error_msg
                 .catch(error => {
                     this.error = error.msg;
                     this.errors =  error.response.data.errors;

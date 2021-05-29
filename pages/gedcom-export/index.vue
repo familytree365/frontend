@@ -98,13 +98,13 @@
     },
     methods: {
       async handleExportFiles() {
-        await this.$axios
+        const response = this.$axios
           .$post("/api/gedcom-export", {}, {
             headers: {
               'content-type': 'multipart/form-data',
               'Access-Control-Allow-Origin': '*'
-            }
-          })
+            },
+          },)
         this.inProgress = true;
         this.isLoading = false;
         this.generatedFile = response.file;
@@ -113,8 +113,8 @@
         // this.interval = setInterval(() => {
         //   this.checkJobCompleted();
         // }, 3000)
-      .
-        catch(error => {
+
+        (error => {
           this.error = true;
           this.inProgress = false;
           this.errors = error.response.data.errors;
