@@ -88,7 +88,7 @@ export default {
 
     echo: {
       broadcaster: 'socket.io',
-      host: `${process.env.BASE_URL}:${process.env.ECHO_PORT}`,
+      host: `${process.env.HOSTNAME}:${process.env.ECHO_PORT}`,
     },
 
     // Modules (https://go.nuxtjs.dev/config-modules)
