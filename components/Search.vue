@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      searchClient: algoliasearch ('6C3W4JP2I6', 'ea72adbc6e9f7b4da0b111f7319cd3a3'),
+      searchClient: algoliasearch ('2R81LPS2AZ', 'af20f60ead4ebfaf18ee63bb99e37385'),
       showResults: false,
       highlightedIndex: -1
     }
