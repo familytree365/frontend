@@ -35,3 +35,19 @@
     </div>
   </div>
 </template>
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  layout: 'auth',
+  computed: {
+    ...mapGetters([
+      'isAuthenticated',
+      'loggedInUser',
+    ]),
+  },
+
+  created() {
+    // this.loadSearch();
+  },
+}
+</script>
