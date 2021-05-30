@@ -75,16 +75,40 @@ export default {
         {src: '~/plugins/v-calendar.js', ssr: false},
         {src: '~/plugins/vuetimepiker.js', ssr: false},
         {src: '~/plugins/vue-fb-customer-chat.js', ssr: false},
+        {src: '~/plugins/vue-instantsearch.js', ssr: false},
         // {src: '~/plugins/echo.js', ssr: false},
     ],
 
     // Auto import components (https://go.nuxtjs.dev/config-components)
     components: true,
 
+  transpile: ['vue-instantsearch', 'instantsearch.js/es'],
     // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
     buildModules: [
-      '@nuxtjs/laravel-echo'
+      '@nuxtjs/laravel-echo',
+      'nuxt-content-algolia'
     ],
+
+  hooks: {
+    'content:file:beforeInsert': (content) => {
+      const removeMd = require('remove-markdown');
+      if (content.extension == 'md') {
+        content.bodyPlainText = removeMd(content.text);
+      }
+    }
+  },
+
+  nuxtContentAlgolia: {
+    appId: process.env.ALGOLIA_APP_ID,
+    apiKey: process.env.ALGOLIA_API_KEY,
+    paths: [
+      {
+        name: 'articles',
+        index: 'articles',
+        fields: ['title', 'description', 'bodyPlainText']
+      }
+    ]
+  },
 
     echo: {
       broadcaster: 'socket.io',
