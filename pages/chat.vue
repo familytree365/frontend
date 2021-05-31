@@ -91,10 +91,16 @@
 import io from 'socket.io-client';
 import { mapGetters } from 'vuex'
 import Echo from 'laravel-echo'
+import Cookies from 'js-cookie'
 window.io = require('socket.io-client')
 window.Echo = new Echo({
   broadcaster: 'socket.io',
-  host: 'http://localhost:6001'
+  host: 'http://localhost:6001',
+  auth: {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('XSRF-TOKEN')}`
+        }
+    }
 })
 
 var socket = io('http://localhost:6001');
@@ -180,6 +186,13 @@ export default {
         .then(response => {
           console.log(response);
           this.selectedChatMessages = response.chat_messages;
+          window.Echo.private('chats.' + response.id)
+          .listen('.NewMessage', (e) => {
+              console.log("New message ");
+              console.log(e);
+              this.selectedChatMessages.push(e.message);
+              console.log(this.messages);
+          });
         })
         .catch(error => {
           this.error = true;
@@ -207,21 +220,48 @@ export default {
       this.chatUser = chatUser;
       this.results = [];
    }
+   ,
+   triggerNotif(){
+     this.$axios.$get('/api/t')
+     .then(response => {
+      console.log(response);
+     });
+   },
   },
   mounted() {
     console.log(this.loggedInUser)
     this.loadChats();
-    window.Echo.channel('chat-channel')
-      .listen('.laravel_database_chat-channel', function(e){
-        console.log(e);
-      })
+    //this.triggerNotif();
+
+    // window.Echo.join('chats.1')
+    // .here((users) => {
+    //     //
+    // })
+    // .joining((user) => {
+    //     console.log(user.name);
+    // })
+    // .leaving((user) => {
+    //     console.log(user.name);
+    // })
+    // .listen('.message.created', function(e){
+    //     console.log("New message ");
+    //     console.log(e);
+    //   })
+    // .error((error) => {
+    //     console.error(error);
+    // });
+
+      // .listen('.message.created', function(e){
+      //   console.log("New message ");
+      //   console.log(e);
+      // })
     //socket.emit('ChatMessageSentEvent');
-    socket.on('ChatMessageSentEvent', (data) => {
-      console.log("New message sent...");
-      console.log(data);
-      //this.messages = [...this.messages, data];
-      // you can also do this.messages.push(data)
-    });
+    // socket.on('.message.created', (data) => {
+    //   console.log("New message sent...");
+    //   console.log(data);
+    //   //this.messages = [...this.messages, data];
+    //   // you can also do this.messages.push(data)
+    // });
   },
   // async asyncData( { $axios, params }) {
   //     const source = await $axios.$get('/api/chats')
