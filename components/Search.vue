@@ -69,6 +69,7 @@ export default {
           this.$refs.searchInput.focus()
           event.preventDefault()
         }
+        this.isLoading = false
       })
     })
   },
