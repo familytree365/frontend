@@ -233,7 +233,7 @@ export default {
     computed: {
          ...mapGetters([
               'isAuthenticated',
-              'loggedInUser','loggedInUser','getRole','getPermission'])
+              'loggedInUser','getRole','getPermission'])
     },
     methods: {
         ...mapActions([
