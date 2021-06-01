@@ -42,15 +42,17 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Loading from "vue-loading-overlay";
 export default {
   layout: 'auth',
   computed: {
      ...mapGetters([
               'isAuthenticated',
               'loggedInUser',
-      'isAuthenticated',
-      'loggedInUser',
     ]),
+    components: {
+      Loading
+    },
   },
 
   created() {
