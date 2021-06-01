@@ -28,9 +28,7 @@
             </p>
           </header>
           <div class="card-content">
-            <template>
-    <Search />
-            </template>
+<Search />
           </div>
         </div>
       </div>

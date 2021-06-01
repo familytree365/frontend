@@ -1,7 +1,7 @@
 <template>
   <ais-instant-search
     :search-client="searchClient"
-    index-name="articles"
+    index-name="geneanums"
   >
     <ais-configure :attributesToSnippet="['bodyPlainText']" :hits-per-page.camel="5" />
     <ais-autocomplete v-click-outside="onClickOutside">
@@ -100,7 +100,7 @@ export default {
       return index === this.highlightedIndex
     },
     goToArticle(indices) {
-      this.$nuxt.$router.push('/articles/' + indices[0].hits[this.highlightedIndex].objectID)
+      this.$nuxt.$router.push('/people/' + indices[0].hits[this.highlightedIndex].objectID)
     }
   }
 }
