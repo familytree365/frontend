@@ -27,7 +27,12 @@
               Search
             </p>
           </header>
-          <div class="card-content">
+          <div>
+            <loading
+              :active="false"
+              :color="color"
+              :background-color="backgroundColor"
+            />
 <Search />
           </div>
         </div>

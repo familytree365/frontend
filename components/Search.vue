@@ -1,9 +1,4 @@
 <template>
-  <loading
-    :active="false"
-    :color="color"
-    :background-color="backgroundColor"
-  />
   <ais-instant-search
     :search-client="searchClient"
     index-name="geneanums">
