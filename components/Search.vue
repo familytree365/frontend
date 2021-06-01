@@ -47,7 +47,11 @@
 </template>
 
 <script>
-import algoliasearch from 'algoliasearch/lite'
+import Vue from 'vue';
+import algoliasearch from 'algoliasearch/lite';
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
 import vClickOutside from 'v-click-outside'
 
 export default {
@@ -106,3 +110,9 @@ export default {
   }
 }
 </script>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 1em;
+}
+</style>
