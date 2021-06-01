@@ -12,7 +12,7 @@
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
                                 href="subscription.html">Subscription</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="/dashboard"
                                 aria-current="page">Payment</a></li>
                     </ul>
                 </nav>

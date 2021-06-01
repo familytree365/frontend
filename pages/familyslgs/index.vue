@@ -12,7 +12,7 @@
                     <ul>
                         <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
                                to="/dashboard">Home</NuxtLink></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="/dashboard"
                             aria-current="page">FamilySlgs</a></li>
                     </ul>
                 </nav>
@@ -184,7 +184,7 @@
         },
 
         computed: {
-            ...mapGetters([
+             ...mapGetters([
               'isAuthenticated',
               'loggedInUser',
                     'getFamilySlgs'

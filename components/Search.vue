@@ -1,5 +1,7 @@
 <template>
-  <ais-instant-search :search-client="searchClient" index-name="demo_ecommerce">
+  <ais-instant-search
+    :search-client="searchClient"
+    index-name="geneanums">
     <ais-configure :attributesToSnippet="['bodyPlainText']" :hits-per-page.camel="5" />
     <ais-autocomplete v-click-outside="onClickOutside">
       <div slot-scope="{ currentRefinement, indices, refine }" class="md:relative">
@@ -58,12 +60,10 @@ export default {
   },
   data() {
     return {
-      searchClient: algoliasearch(
-        'B1G2GM9NG0',
-        'aadef574be1f9252bb48d4ea09b5cfe5'
-      ),
+      searchClient: algoliasearch ('2R81LPS2AZ', '4e36d72cdd3978ce8379a0502132ab03'),
       showResults: false,
-      highlightedIndex: -1
+      highlightedIndex: -1,
+      isLoading: true
     }
   },
   mounted() {
@@ -73,6 +73,7 @@ export default {
           this.$refs.searchInput.focus()
           event.preventDefault()
         }
+        this.isLoading = false
       })
     })
   },
@@ -104,7 +105,7 @@ export default {
       return index === this.highlightedIndex
     },
     goToArticle(indices) {
-      this.$nuxt.$router.push('/articles/' + indices[0].hits[this.highlightedIndex].objectID)
+      this.$nuxt.$router.push('/people/' + indices[0].hits[this.highlightedIndex].objectID)
     }
   }
 }

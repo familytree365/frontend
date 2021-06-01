@@ -132,7 +132,9 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['loggedInUser','getRole','getPermission'])
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser','getRole','getPermission'])
     },
     methods: {
         handleSelectedFiles(event) {
