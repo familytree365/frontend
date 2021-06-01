@@ -58,7 +58,8 @@ export default {
     return {
       searchClient: algoliasearch ('2R81LPS2AZ', '4e36d72cdd3978ce8379a0502132ab03'),
       showResults: false,
-      highlightedIndex: -1
+      highlightedIndex: -1,
+      isLoading: true
     }
   },
   mounted() {
