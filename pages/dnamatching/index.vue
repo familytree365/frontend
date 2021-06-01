@@ -11,8 +11,8 @@
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
                         <li><a class="is-size-7 has-text-weight-medium has-text-link"
-                               href="dashboard.html">Home</a></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                               href="/dashboard">Home</a></li>
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="/dashboard"
                                                                                   aria-current="page">DNA Matching</a></li>
                     </ul>
                 </nav>
