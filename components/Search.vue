@@ -1,8 +1,5 @@
 <template>
-  <ais-instant-search
-    :search-client="searchClient"
-    index-name="articles"
-  >
+  <ais-instant-search :search-client="searchClient" index-name="demo_ecommerce">
     <ais-configure :attributesToSnippet="['bodyPlainText']" :hits-per-page.camel="5" />
     <ais-autocomplete v-click-outside="onClickOutside">
       <div slot-scope="{ currentRefinement, indices, refine }" class="md:relative">
@@ -48,7 +45,11 @@
 </template>
 
 <script>
-import algoliasearch from 'algoliasearch/lite'
+import Vue from 'vue';
+import algoliasearch from 'algoliasearch/lite';
+import InstantSearch from 'vue-instantsearch';
+
+Vue.use(InstantSearch);
 import vClickOutside from 'v-click-outside'
 
 export default {
@@ -57,7 +58,10 @@ export default {
   },
   data() {
     return {
-      searchClient: algoliasearch ('2R81LPS2AZ', 'af20f60ead4ebfaf18ee63bb99e37385'),
+      searchClient: algoliasearch(
+        'B1G2GM9NG0',
+        'aadef574be1f9252bb48d4ea09b5cfe5'
+      ),
       showResults: false,
       highlightedIndex: -1
     }
@@ -105,3 +109,9 @@ export default {
   }
 }
 </script>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 1em;
+}
+</style>
