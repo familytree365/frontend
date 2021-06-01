@@ -546,7 +546,9 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['isAuthenticated', 'loggedInUser'])
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','isAuthenticated', 'loggedInUser'])
     },
     created() {
         window.addEventListener('scroll', this.handleScroll);

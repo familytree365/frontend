@@ -120,7 +120,9 @@ export default {
     },
 
     computed: {
-      ...mapGetters(['loggedInUser']),
+       ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser']),
     },
 
     mounted() {

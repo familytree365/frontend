@@ -166,7 +166,9 @@ export default {
       }
     },
     computed: {
-        ...mapGetters(['loggedInUser'])
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser'])
     },
     methods: {
       onEventCreate (event, deleteEventFunction) {

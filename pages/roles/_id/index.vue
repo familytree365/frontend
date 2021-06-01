@@ -68,7 +68,7 @@ Vue.component('v-select', vSelect);
             },
         },
         computed: {
-            ...mapGetters([
+             ...mapGetters([
               'isAuthenticated',
               'loggedInUser','getRole','getPermission'])
         },

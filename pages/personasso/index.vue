@@ -173,7 +173,7 @@
         },
 
         computed: {
-            ...mapGetters([
+             ...mapGetters([
               'isAuthenticated',
               'loggedInUser',
                     'getPersonAsso'

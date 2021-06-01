@@ -144,7 +144,7 @@
         },
 
         computed: {
-            ...mapGetters([
+             ...mapGetters([
               'isAuthenticated',
               'loggedInUser','loggedInUser','getRole','getPermission'])
         },

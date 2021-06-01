@@ -182,7 +182,9 @@ export default {
     },
 
     computed: {
-        ...mapGetters([
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
           'getMediaObjectFile'
         ])
     },

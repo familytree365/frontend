@@ -68,7 +68,9 @@ export default {
 
     },
     computed: {
-            ...mapGetters([
+             ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
               'loggedInUser'])
     },
     methods: {

@@ -26,7 +26,9 @@ var socket = io('http://localhost:6001');
 export default {
   layout: 'auth',
   computed: {
-    ...mapGetters(['loggedInUser'])
+     ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','loggedInUser'])
   },
   data() {
     return {

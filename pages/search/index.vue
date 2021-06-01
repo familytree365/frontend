@@ -28,7 +28,9 @@
             </p>
           </header>
           <div class="card-content">
+            <template>
     <Search />
+            </template>
           </div>
         </div>
       </div>
@@ -40,7 +42,9 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   layout: 'auth',
   computed: {
-    ...mapGetters([
+     ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
       'isAuthenticated',
       'loggedInUser',
     ]),
