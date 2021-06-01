@@ -1,8 +1,7 @@
 <template>
   <ais-instant-search
     :search-client="searchClient"
-    index-name="geneanums"
-  >
+    index-name="geneanums">
     <ais-configure :attributesToSnippet="['bodyPlainText']" :hits-per-page.camel="5" />
     <ais-autocomplete v-click-outside="onClickOutside">
       <div slot-scope="{ currentRefinement, indices, refine }" class="md:relative">
@@ -57,7 +56,7 @@ export default {
   },
   data() {
     return {
-      searchClient: algoliasearch ('2R81LPS2AZ', 'af20f60ead4ebfaf18ee63bb99e37385'),
+      searchClient: algoliasearch ('2R81LPS2AZ', '4e36d72cdd3978ce8379a0502132ab03'),
       showResults: false,
       highlightedIndex: -1
     }
