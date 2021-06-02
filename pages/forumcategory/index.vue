@@ -140,7 +140,8 @@ export default {
 
     computed: {
         ...mapGetters([
-          'getEvent'
+          'getEvent',
+          'loggedInUser',
         ])
     },
 
