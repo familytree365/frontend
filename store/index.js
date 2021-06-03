@@ -15,7 +15,6 @@ export const state = () => ({
   chatMessages: '',
   role: {},
   permission: [],
-
 });
 
 export const getters = {
