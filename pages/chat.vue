@@ -46,15 +46,15 @@
   import Cookies from 'js-cookie'
   import Dropdown from 'vue-simple-search-dropdown';
   Vue.component('Dropdown', Dropdown);
-  window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: 'http://localhost:6001',
-    auth: {
-          headers: {
-            Authorization: `Bearer ${Cookies.get('XSRF-TOKEN')}`
-          }
-      }
-  })
+  // window.Echo = new Echo({
+  //   broadcaster: 'socket.io',
+  //   host: 'http://localhost:6001',
+  //   auth: {
+  //         headers: {
+  //           Authorization: `Bearer ${Cookies.get('XSRF-TOKEN')}`
+  //         }
+  //     }
+  // })
   
 
   export default {
@@ -112,7 +112,7 @@
                   typingUsers: []
                 }
             rooms.push(room);
-            window.Echo.private('chats.' + room.roomId)
+            this.$echo.private('chats.' + room.roomId)
             .listen('.NewMessage', (e) => {
                 console.log("New message ");
                 console.log(e);
