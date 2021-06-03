@@ -60,7 +60,9 @@
   export default {
     layout: 'auth',
     computed: {
-    ...mapGetters(['loggedInUser'])
+    ...mapGetters([
+      'loggedInUser'
+      ]),
   },
     components: {
       ChatWindow
@@ -110,6 +112,24 @@
                   typingUsers: []
                 }
             rooms.push(room);
+            window.Echo.private('chats.' + room.roomId)
+            .listen('.NewMessage', (e) => {
+                console.log("New message ");
+                console.log(e);
+                const index = this.messages.length;
+                if(index == 0 || this.messages[index-1]._id !== e.message._id){                  
+                  if(this.chatId !== room.roomId){
+                    room.unreadCount = room.unreadCount +1;
+                  }else{
+                    this.$set(this.messages, index , e.message);
+                    const count = this.loggedInUser.unreadMsgCount - 1;
+                    this.$store.commit('SET_UNREAD_COUNT', count);
+                    //this.updateUnreadMsg(this.loggedInUser.unreadMsgCount - 1)
+                  }                
+                }
+                
+                room.lastMessage = e.message;
+            });
           }
           this.rooms = rooms;
 
@@ -123,10 +143,9 @@
         });
     },
     fetchMessages({ room, options }) {
-      console.log(room)
-      console.log(options)
+
       this.messagesLoaded = true;
-      console.log("fetching...")
+      this.chatId = room.roomId;
 
       if(room){
         this.$axios.$get('/api/chats/' + room.roomId + '/messages')
@@ -135,22 +154,9 @@
             this.messages = response.data;
             this.messagesLoaded = true;
             room.unreadCount = 0;
-            window.Echo.private('chats.' + room.roomId)
-            .listen('.NewMessage', (e) => {
-                console.log("New message ");
-                console.log(e);
-                const index = this.messages.length;
-                if(index > 0 && this.messages[index-1]._id !== e.message._id){
-                  this.$set(this.messages, index , e.message);
-                  if(this.chatId !== room.roomId){
-                    room.unreadCount = room.unreadCount +1;
-                  }
-                }
-                
-                room.lastMessage = e.message;
-                console.log(this.messages);
-            });
-            
+            const count = response.unreadMsgCount;
+            this.$store.commit('SET_UNREAD_COUNT', count);
+            //this.updateUnreadMsg(response.unreadMsgCount)
           })
           .catch(error => {
             console.log(error);
@@ -173,6 +179,7 @@
           console.log(response);
         })
         .catch(error => {
+          console.log(error)
           this.error = true;
           this.message = error.response.data.message;
           this.errors = error.response.data.errors;
