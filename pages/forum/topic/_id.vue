@@ -104,7 +104,7 @@
     export default {
         layout: 'auth',
         computed: {
-            ...mapGetters([
+             ...mapGetters([
               'isAuthenticated',
               'loggedInUser','loggedInUser'])
         },

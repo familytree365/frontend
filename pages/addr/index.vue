@@ -11,8 +11,8 @@
                 <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
                     <ul>
                         <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
-                                to="dashboard.html">Home</NuxtLink></li>
-                        <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
+                                to="/dashboard">Home</NuxtLink></li>
+                        <li class="is-size-7 has-text-weight-medium is-active"><a href="/dashboard"
                                 aria-current="page">Address</a></li>
                     </ul>
                 </nav>
@@ -194,7 +194,9 @@ export default {
     },
 
     computed: {
-        ...mapGetters([
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
           'getAddr'
         ])
     },

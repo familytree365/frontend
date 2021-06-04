@@ -34,7 +34,7 @@
                         <NuxtLink to="/login" class="navbar-item" v-if="!isAuthenticated">
                           Sign in
                         </NuxtLink>
-                        
+
                         <a v-else @click.prevent="logout()" class="navbar-item">
                                 Log Out</a>
                         <div class="navbar-item" v-if="!isAuthenticated">
@@ -266,7 +266,9 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(['isAuthenticated', 'loggedInUser'])
+         ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser','isAuthenticated', 'loggedInUser'])
     },
     created() {
         window.addEventListener('scroll', this.handleScroll);

@@ -11,9 +11,9 @@
         <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
           <ul>
             <li><NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
-                          to="dashboard.html">Home</NuxtLink></li>
-            <li class="is-size-7 has-text-weight-medium is-active"><a href="dashboard.html"
-                                                                      aria-current="page">Address</a></li>
+                          to="/dashboard">Home</NuxtLink></li>
+            <li class="is-size-7 has-text-weight-medium is-active"><a href="/dashboard"
+                                                                      aria-current="page">Search</a></li>
           </ul>
         </nav>
       </div>
@@ -27,8 +27,13 @@
               Search
             </p>
           </header>
-          <div class="card-content">
-    <Search />
+          <div>
+            <loading
+              :active="false"
+              :color="color"
+              :background-color="backgroundColor"
+            />
+<Search />
           </div>
         </div>
       </div>
@@ -37,13 +42,17 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Loading from "vue-loading-overlay";
 export default {
   layout: 'auth',
   computed: {
-    ...mapGetters([
-      'isAuthenticated',
-      'loggedInUser',
+     ...mapGetters([
+              'isAuthenticated',
+              'loggedInUser',
     ]),
+    components: {
+      Loading
+    },
   },
 
   created() {
