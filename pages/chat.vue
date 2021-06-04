@@ -112,6 +112,7 @@
                   typingUsers: []
                 }
             rooms.push(room);
+            
             this.$echo.private('chats.' + room.roomId)
             .listen('.NewMessage', (e) => {
                 console.log("New message ");
