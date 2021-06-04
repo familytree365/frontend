@@ -10,6 +10,7 @@
         class="navbar-item"
         role="button">
         <span>Message</span>
+        <span v-if="loggedInUser.unreadMsgCount > 0"><b-tag rounded class="has-background-danger has-text-white ml-2"> {{loggedInUser.unreadMsgCount}} </b-tag> </span>
       </a>
     </template>
 
@@ -36,7 +37,7 @@
                 >
                   <template #header>
                     <b-icon :icon="tab.icon"></b-icon>
-                    <span> {{tab.label}} <b-tag rounded> 3 </b-tag> </span>
+                    <span> {{tab.label}} <b-tag rounded> {{loggedInUser.unreadMsgCount}} </b-tag> </span>
                   </template>
                   <div class="empty_state">
                     <b-icon :icon="tab.icon"></b-icon>

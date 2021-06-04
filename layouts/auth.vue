@@ -462,7 +462,8 @@ export default {
     },
     ...mapActions([
       "loadRole",
-      "loadPermission"
+      "loadPermission",
+      "updateUnreadMsg"
     ]),
     async logout() {
       this.$auth.setToken(false)

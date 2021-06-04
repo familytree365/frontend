@@ -1,4 +1,13 @@
   import Vuex from "vuex";
+  import Vue from 'vue';
+
+import moment from 'moment'
+
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('MM/DD/YYYY hh:mm')
+  }
+});
 
 export const state = () => ({
   person: {},
@@ -35,6 +44,9 @@ export const mutations = {
   },
   SET_PERMISSION(state , permission) {
     state.permission = permission
+  },
+  SET_UNREAD_COUNT(state, count){
+    state.auth.user.unreadMsgCount = count;
   }
 };
 

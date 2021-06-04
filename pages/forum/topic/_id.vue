@@ -12,7 +12,7 @@
                     Posted
                     by
                     <a href="#">{{forumtopic.author.first_name}}</a>
-                    on {{forumtopic.created_at | datetime}}
+                    on {{forumtopic.created_at | formatDate}}
                 </p>
 
                 <hr>
@@ -141,7 +141,10 @@
                 } else {
                     this.forumpost.topic_id = this.forumtopic.id
                     this.$axios.$post('/api/forumpost', this.forumpost)
-                            .then(response => (console.log(response)))
+                            .then(response => {
+                                console.log(response)
+                                this.$router.push('/forum')
+                            })
                             .catch(error => {
                             });
                 }

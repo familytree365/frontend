@@ -51,10 +51,11 @@
                 </header>
                 <div class="card-content">
                     <template>
+                        
                         <div v-for="topic in forumtopics">
                             <a :href="'forum/topic/'+topic.slug">{{topic.title}}</a>
                             <p v-html="topic.content"></p>
-                            <p><small>posted on: {{topic.created_at}}</small></p>
+                            <p><small>posted on: {{topic.created_at | formatDate}}</small></p>
                             <hr>
                         </div>
                     </template>
