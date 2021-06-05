@@ -53,7 +53,10 @@
                                         <font-awesome-icon :icon="['fas', 'envelope']" />
                                     </span>
                                 </p>
-                                <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                                <div v-if="$v.email.$error">
+                                    <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                                    <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.email">Please enter a valid email address</p>
+                                </div>
                             </div>
                         </div>
                         <div class="mb-5">
@@ -64,7 +67,9 @@
                                         <font-awesome-icon :icon="['fas', 'lock']" />
                                     </span>
                                 </p>
-                                <p class="help" :class="{ 'is-danger': $v.password.$error }" v-if="!$v.password.required">Field is required</p>
+                                <div v-if="$v.password.$error">
+                                    <p class="help" :class="{ 'is-danger': $v.password.$error }" v-if="!$v.password.required">Field is required</p>
+                                </div>
                             </div>
                         </div>
                         <div class="mb-5">
@@ -104,7 +109,7 @@
                 </div>
             </div>
         </div>
-    </div>h
+    </div>
 </div>
 </template>
 
@@ -113,9 +118,8 @@ import {
     mapGetters,
     mapActions
 } from "vuex";
-import {
-    required
-} from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import response from "core-js/internals/is-forced";
@@ -141,9 +145,11 @@ export default {
     validations: {
         email: {
             required,
+            email
         },
         password: {
-            required
+            required,
+            minLength: minLength(8)
         }
     },
 

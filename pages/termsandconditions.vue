@@ -341,7 +341,7 @@
             <div class="content has-text-centered pt-6">
                 <div class="columns is-gapless">
                     <div class="column has-text-centered is-flex-desktop-only">
-                        <p class="is-size-7 has-text-light has-text-weight-regular">Copyright &copy; 2020 Family Tree 365 Ltd</p>
+                        <p class="is-size-7 has-text-light has-text-weight-regular">Copyright &copy; {{ new Date().getFullYear() }} Family Tree 365 Ltd</p>
                     </div>
                 </div>
             </div>

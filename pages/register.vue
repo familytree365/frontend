@@ -54,7 +54,10 @@
                                             <font-awesome-icon :icon="['fas', 'user']"/>
                                         </span>
                                     </p>
-                                    <p class="help" :class="{ 'is-danger': $v.registration.first_name.$error }" v-if="!$v.registration.first_name.required">Field is required</p>
+                                    <div v-if="$v.registration.first_name.$error">
+                                        <p class="help" :class="{ 'is-danger': $v.registration.first_name.$error }" v-if="!$v.registration.first_name.required">Field is required</p>
+                                        <p class="help" :class="{ 'is-danger': $v.registration.first_name.$error }" v-else-if="!$v.registration.first_name.minLength">Minimum length is 3 characters</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="column">
@@ -65,7 +68,10 @@
                                             <font-awesome-icon :icon="['fas', 'user']"/>
                                         </span>
                                     </p>
-                                    <p class="help" :class="{ 'is-danger': $v.registration.last_name.$error }" v-if="!$v.registration.last_name.required">Field is required</p>
+                                    <div v-if="$v.registration.last_name.$error">
+                                        <p class="help" :class="{ 'is-danger': $v.registration.last_name.$error }" v-if="!$v.registration.last_name.required">Field is required</p>
+                                        <p class="help" :class="{ 'is-danger': $v.registration.last_name.$error }" v-else-if="!$v.registration.last_name.minLength">Minimum length is 3 characters</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -73,12 +79,15 @@
                     <div class="mb-5">
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
-                                <input class="input is-large" type="email" placeholder="Email address" :class="{ 'is-danger': $v.registration.email.$error }" v-model="registration.email">
+                                <input class="input is-large" type="text" placeholder="Email address" :class="{ 'is-danger': $v.registration.email.$error }" v-model="registration.email">
                                 <span class="icon is-small is-left">
                                     <font-awesome-icon :icon="['fas', 'envelope']"/>
                                 </span>
                             </p>
-                            <p class="help" :class="{ 'is-danger': $v.registration.email.$error }" v-if="!$v.registration.email.required">Field is required</p>
+                            <div v-if="$v.registration.email.$error">
+                                <p class="help" :class="{ 'is-danger': $v.registration.email.$error }" v-if="!$v.registration.email.required">Field is required</p>
+                                <p class="help" :class="{ 'is-danger': $v.registration.email.$error }" v-if="!$v.registration.email.email">Please enter a valid email address</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -89,7 +98,10 @@
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
-                            <p class="help" :class="{ 'is-danger': $v.registration.password.$error }" v-if="!$v.registration.password.required">Field is required</p>
+                            <div v-if="$v.registration.password.$error">
+                                <p class="help" :class="{ 'is-danger': $v.registration.password.$error }" v-if="!$v.registration.password.required">Field is required</p>
+                                <p class="help" :class="{ 'is-danger': $v.registration.password.$error }" v-else-if="!$v.registration.password.minLength">Minimum length is 8 characters</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -100,7 +112,11 @@
                                     <font-awesome-icon :icon="['fas', 'lock']"/>
                                 </span>
                             </p>
-                            <p class="help" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-if="!$v.registration.password_confirmation.required">Field is required</p>
+                            <div v-if="$v.registration.password_confirmation.$error">
+                                <p class="help" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-if="!$v.registration.password_confirmation.required">Field is required</p>
+                                <p class="help" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-else-if="!$v.registration.password_confirmation.minLength">Minimum length is 8 characters</p>
+                                <p class="help" :class="{ 'is-danger': $v.registration.password_confirmation.$error }" v-else-if="!$v.registration.password_confirmation.sameAs">Password must match</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -111,7 +127,9 @@
                                     Agree to <NuxtLink to="/termsandconditions" class="has-text-link has-text-weight-medium">terms and
                                         conditions</NuxtLink>
                                 </label>
-                                <p class="help" :class="{ 'is-danger': $v.registration.conditions_terms.$error }" v-if="!$v.registration.conditions_terms.checked">Field is required</p>
+                                <div v-if="$v.registration.conditions_terms.$error">
+                                    <p class="help" :class="{ 'is-danger': $v.registration.conditions_terms.$error }" v-if="!$v.registration.conditions_terms.checked">Field is required</p>
+                                </div>
                             </div>
                         </div>
 
@@ -137,7 +155,8 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+import { required, email, minLength, maxLength, sameAs } from 'vuelidate/lib/validators'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
@@ -168,18 +187,24 @@ export default {
             registration: {
                 first_name: {
                     required,
+                    minLength: minLength(3)
                 },
                 last_name: {
                     required,
+                    minLength: minLength(3)
                 },
                 email: {
                     required,
+                    email
                 },
                 password: {
                     required,
+                    minLength: minLength(8)
                 },
                 password_confirmation: {
                     required,
+                    minLength: minLength(8),
+                    sameAsPassword: sameAs('password')
                 },
                 conditions_terms: {
                     checked: value => value === true,
