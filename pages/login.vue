@@ -105,7 +105,7 @@
                     <a @click="loginSocial('facebook')" href="javascript:;" class="btn cnt-g mb-5">
                         <img src="~assets/images/facebook.png">
                         {{ 'Continue with Facebook' }}
-                    </a>
+                    </a>                    
                 </div>
             </div>
         </div>
@@ -123,10 +123,12 @@ import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import response from "core-js/internals/is-forced";
+import facebookLogin from 'facebook-login-vuejs';
 export default {
     middleware: 'guest',
     components: {
-        Loading
+        Loading,
+        facebookLogin
     },
     data() {
         return {
@@ -139,7 +141,8 @@ export default {
             fullPage: true,
             color: '#4fcf8d',
             backgroundColor: '#ffffff',
-            provider: null
+            provider: null,
+            fbLoginOptions: {scope: 'public_profile,email'}
         }
     },
     validations: {
@@ -158,15 +161,16 @@ export default {
             this.provider = provider
             const newWindow = openWindow('', 'message')
             let url = '/api/login/' + provider;
-            axios.get(url)
+            this.$axios.get(url)
             .then(res => {
-              window.location.href = url;
+                console.log(res)
+                newWindow.location.href = res.data;
+              //window.location.href = url;
             })
             .catch(err => {
               console.log(err);
             })
         },
-
         login() {
             this.$v.$touch();
             if (this.$v.$invalid) {
