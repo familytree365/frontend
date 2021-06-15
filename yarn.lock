@@ -4051,12 +4051,19 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d3-array@2, d3-array@>=2.5, d3-array@^2.12.1, d3-array@^2.3.0:
+d3-array@2, d3-array@^2.3.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
   integrity sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ==
   dependencies:
     internmap "^1.0.0"
+
+d3-array@>=2.5, d3-array@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-3.0.1.tgz#ca45c263f5bb780ab5a34a6e1d3d5883fe4a8d14"
+  integrity sha512-l3Bh5o8RSoC3SBm5ix6ogaFW+J6rOUm42yOtZ2sQPCEvCqUMepeX7zgrlLLGIemxgOyo9s2CsWEidnLv5PwwRw==
+  dependencies:
+    internmap "1 - 2"
 
 d3-axis@2:
   version "2.1.0"
@@ -4098,12 +4105,13 @@ d3-contour@2:
   dependencies:
     d3-array "2"
 
-d3-dag@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.7.0.tgz#dc2fc28ebaea63d36d0cb53bb8a4ff26c971916c"
-  integrity sha512-B/kKkBu+h+F5FM4N2lvQfMiZuqpdCfypfwRqv4N9vKrHrfFqNJDnQ8ETQnTVNt6ewo8x9tLW617H7nW3OSbbQA==
+d3-dag@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.8.0.tgz#def418b1900ddd747e94efdb1cedbec2b2821a67"
+  integrity sha512-vJrNofczywkbKNggubQ7CnhAOt6PrQxhXw9B5gj994cArwIFHrpGR5rD8lNVvWW7KZuKHKMKGBUukGtRXbN00w==
   dependencies:
-    d3-array "^2.12.1"
+    d3-array "^3.0.1"
+    denque "^1.5.0"
     fastpriorityqueue "^0.7.1"
     javascript-lp-solver "0.4.24"
     quadprog "^1.6.1"
@@ -4427,6 +4435,11 @@ delegate@^3.1.2:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
   integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
+
+denque@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/denque/-/denque-1.5.0.tgz#773de0686ff2d8ec2ff92914316a47b73b1c73de"
+  integrity sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
 
 depd@~1.1.2:
   version "1.1.2"
@@ -5947,6 +5960,11 @@ instantsearch.js@^4.20.0:
     preact "^10.0.0"
     prop-types "^15.5.10"
     qs "^6.5.1"
+
+"internmap@1 - 2":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/internmap/-/internmap-2.0.1.tgz#33d0fa016185397549fb1a14ea3dbe5a2949d1cd"
+  integrity sha512-Ujwccrj9FkGqjbY3iVoxD1VV+KdZZeENx0rphrtzmRXbFvkFO88L80BL/zeSIguX/7T+y8k04xqtgWgS5vxwxw==
 
 internmap@^1.0.0:
   version "1.0.1"
