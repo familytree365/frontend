@@ -42,7 +42,7 @@
     "nuxt-stripe-module": "^3.2.0",
     "pusher-js": "^7.0.3",
     "remove-markdown": "^0.3.0",
-    "sass": "^1.29.0",
+    "sass": "^1.35.1",
     "sass-loader": "10.1.1",
     "socket.io": "^4.1.2",
     "socket.io-client": "^2.1.1",
