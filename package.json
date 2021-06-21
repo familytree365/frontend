@@ -35,7 +35,7 @@
     "laravel-echo": "^1.11.0",
     "moment": "^2.29.1",
     "nuxt": "^2.15.7",
-    "nuxt-buefy": "^0.4.7",
+    "nuxt-buefy": "^0.4.8",
     "nuxt-content-algolia": "^0.2.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-socket-io": "^1.1.18",
