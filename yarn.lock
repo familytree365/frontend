@@ -10540,10 +10540,10 @@ vue-loader@^15.9.7:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-loading-overlay@^3.4.2:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/vue-loading-overlay/-/vue-loading-overlay-3.4.2.tgz#34792a83218df1d35dff50121ce9fac2114f1c38"
-  integrity sha512-xcB+NPjl76eA0uggm707x3ZFgrNosZXpynHipyS3K+rrK1NztOV49R1LY+/4ij5W1KYANp7eRI2EIHrxCpmWAw==
+vue-loading-overlay@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/vue-loading-overlay/-/vue-loading-overlay-4.0.3.tgz#ee6daea512527936b285c722fb239a399afe915c"
+  integrity sha512-pRkA48OJ4VxnswKZiz+TDFCbFiBOl0+M+TCjK0iWZi+xQaOCaOhWDyrWoezlIzHjnZwg6mwOCg+YiuRWZTGrQA==
 
 vue-meta@^2.4.0:
   version "2.4.0"
