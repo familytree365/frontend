@@ -23,7 +23,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@popperjs/core": "2.9.2",
     "@stripe/stripe-js": "^1.15.1",
-    "algoliasearch": "^4.9.3",
+    "algoliasearch": "^4.10.2",
     "chart.js": "2.9.4",
     "core-js": "^3.15.2",
     "d3": "^7.0.0",
