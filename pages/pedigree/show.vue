@@ -192,7 +192,7 @@ export default {
 
 
       // make dag from edge list
-      const dag = d3.dagStratify()(this.data.links)
+      const dag = d3.dagConnect()(this.data.links)
 
       // in order to make the family tree work, the dag
       // must be a node with id undefined. create that node if
