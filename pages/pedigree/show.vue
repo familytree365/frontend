@@ -182,7 +182,6 @@ export default {
           .layering(layeringSimplex())
           .decross(decrossOpt())
           .coord(coordQuad())
-
           // .separation((a, b) => { return 1 });
 
 
