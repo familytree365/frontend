@@ -20,21 +20,21 @@
   </div>
 </template>
 <script>
-import * as d3 from 'd3'
+import * as d3Base from 'd3'
+import * as d3Dag from 'd3-dag'
 import d3Tip from 'd3-tip'
 import vSelect from 'vue-select'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 
-const d3Dag = require('d3-dag')
-
+const d3 = Object.assign({}, d3Base, d3Dag)
 import gedcom from '@/static/gedcom.json'
 
 d3.tip = d3Tip()
-d3.sugiyama = d3Dag.sugiyama
-d3.layeringSimplex = d3Dag.layeringSimplex
-d3.coordQuad = d3Dag.coordQuad
-d3.dagConnect = d3Dag.dagConnect
+// d3.sugiyama = d3Dag.sugiyama
+// d3.layeringSimplex = d3Dag.layeringSimplex
+// d3.coordQuad = d3Dag.coordQuad
+// d3.dagConnect = d3Dag.dagConnect
 
 export default {
     layout: 'auth',

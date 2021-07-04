@@ -205,5 +205,6 @@ export default {
                 }
             }
         },
+      transpile: ['d3-dag']
     }
 }
