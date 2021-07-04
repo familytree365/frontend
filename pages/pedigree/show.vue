@@ -20,7 +20,7 @@
   </div>
 </template>
 <script>
-import d3 from 'd3'
+import * as d3Base from 'd3'
 import { coordQuad, dagConnect, decrossOpt, layeringSimplex, sugiyama } from 'd3-dag'
 import d3Tip from 'd3-tip'
 import vSelect from 'vue-select'
@@ -29,7 +29,7 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 
 import gedcom from '@/static/gedcom.json'
 
-d3.tip = d3Tip()
+const d3 = Object.assign({}, d3Base, { tip: d3Tip() })
 
 export default {
     layout: 'auth',
