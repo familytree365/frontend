@@ -20,21 +20,16 @@
   </div>
 </template>
 <script>
-import * as d3Base from 'd3'
-import * as d3Dag from 'd3-dag'
+import d3 from 'd3'
+import { coordQuad, dagConnect, decrossOpt, layeringSimplex, sugiyama } from 'd3-dag'
 import d3Tip from 'd3-tip'
 import vSelect from 'vue-select'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 
-const d3 = Object.assign({}, d3Base, d3Dag)
 import gedcom from '@/static/gedcom.json'
 
 d3.tip = d3Tip()
-// d3.sugiyama = d3Dag.sugiyama
-// d3.layeringSimplex = d3Dag.layeringSimplex
-// d3.coordQuad = d3Dag.coordQuad
-// d3.dagConnect = d3Dag.dagConnect
 
 export default {
     layout: 'auth',
@@ -182,17 +177,17 @@ export default {
           x_sep = 120,
           y_sep = 50;
       // declare a dag layout
-      let tree = d3Dag.sugiyama()
+      let tree = sugiyama()
           .nodeSize([y_sep, x_sep])
-          .layering(d3.layeringSimplex())
-          .decross(d3.decrossOpt())
-          .coord(d3.coordQuad())
+          .layering(layeringSimplex())
+          .decross(decrossOpt())
+          .coord(coordQuad())
 
           // .separation((a, b) => { return 1 });
 
 
       // make dag from edge list
-      const dag = d3.dagConnect()(this.data.links)
+      const dag = dagConnect()(this.data.links)
 
       // in order to make the family tree work, the dag
       // must be a node with id undefined. create that node if
