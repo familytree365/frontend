@@ -182,16 +182,17 @@ export default {
           x_sep = 120,
           y_sep = 50;
       // declare a dag layout
-      var tree = d3Dag.sugiyama()
+      let tree = d3Dag.sugiyama()
           .nodeSize([y_sep, x_sep])
           .layering(d3.layeringSimplex())
+          .decross(d3.decrossOpt())
           .coord(d3.coordQuad())
-          .decross(d3.decrossOpt)
+
           // .separation((a, b) => { return 1 });
 
 
       // make dag from edge list
-      const dag = d3.dagConnect()(this.data.links)
+      const dag = d3.dagStratify()(this.data.links)
 
       // in order to make the family tree work, the dag
       // must be a node with id undefined. create that node if
