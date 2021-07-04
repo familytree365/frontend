@@ -53,7 +53,10 @@
                                         <font-awesome-icon :icon="['fas', 'envelope']" />
                                     </span>
                                 </p>
-                                <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                                <div v-if="$v.email.$error">
+                                    <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                                    <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.email">Please enter a valid email address</p>
+                                </div>
                             </div>
                         </div>
                         <div class="mb-5">
@@ -64,7 +67,9 @@
                                         <font-awesome-icon :icon="['fas', 'lock']" />
                                     </span>
                                 </p>
-                                <p class="help" :class="{ 'is-danger': $v.password.$error }" v-if="!$v.password.required">Field is required</p>
+                                <div v-if="$v.password.$error">
+                                    <p class="help" :class="{ 'is-danger': $v.password.$error }" v-if="!$v.password.required">Field is required</p>
+                                </div>
                             </div>
                         </div>
                         <div class="mb-5">
@@ -100,11 +105,11 @@
                     <a @click="loginSocial('facebook')" href="javascript:;" class="btn cnt-g mb-5">
                         <img src="~assets/images/facebook.png">
                         {{ 'Continue with Facebook' }}
-                    </a>
+                    </a>                    
                 </div>
             </div>
         </div>
-    </div>h
+    </div>
 </div>
 </template>
 
@@ -113,16 +118,17 @@ import {
     mapGetters,
     mapActions
 } from "vuex";
-import {
-    required
-} from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+import { required, email, minLength, maxLength } from 'vuelidate/lib/validators'
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import response from "core-js/internals/is-forced";
+import facebookLogin from 'facebook-login-vuejs';
 export default {
     middleware: 'guest',
     components: {
-        Loading
+        Loading,
+        facebookLogin
     },
     data() {
         return {
@@ -135,15 +141,18 @@ export default {
             fullPage: true,
             color: '#4fcf8d',
             backgroundColor: '#ffffff',
-            provider: null
+            provider: null,
+            fbLoginOptions: {scope: 'public_profile,email'}
         }
     },
     validations: {
         email: {
             required,
+            email
         },
         password: {
-            required
+            required,
+            minLength: minLength(8)
         }
     },
 
@@ -152,15 +161,16 @@ export default {
             this.provider = provider
             const newWindow = openWindow('', 'message')
             let url = '/api/login/' + provider;
-            axios.get(url)
+            this.$axios.get(url)
             .then(res => {
-              window.location.href = url;
+                console.log(res)
+                newWindow.location.href = res.data;
+              //window.location.href = url;
             })
             .catch(err => {
               console.log(err);
             })
         },
-
         login() {
             this.$v.$touch();
             if (this.$v.$invalid) {

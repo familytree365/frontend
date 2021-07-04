@@ -53,7 +53,10 @@
                                 <font-awesome-icon :icon="['fas', 'envelope']"/>
                             </span>
                             </p>
-                            <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                            <div v-if="$v.email.$error">
+                                <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.required">Field is required</p>
+                                <p class="help" :class="{ 'is-danger': $v.email.$error }" v-if="!$v.email.email">Please enter a valid email address</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-6">
@@ -78,7 +81,8 @@
 </template>
 
 <script>
-    import { required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+import { required, email } from 'vuelidate/lib/validators'
 export default {
     middleware: 'guest',
     data() {
@@ -92,6 +96,7 @@ export default {
     validations: {
         email: {
             required,
+            email
         },
     },
     methods: {
