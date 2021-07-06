@@ -269,7 +269,7 @@
                     </li>
                   </ul>
                 </div>
-                <li class="collapsible" id="gedcom" v-if="getPermission.includes('gedcom import menu')" @click="menuDropdown('forum')">
+                <li class="collapsible" id="gedcom" v-if="getPermission.includes('gedcom import menu')" @click="menuDropdown('gedcom')">
                   <a href="#">
                     <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
                     GEDCOM
