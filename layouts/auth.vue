@@ -88,17 +88,6 @@
                     <font-awesome-icon :icon="['fas', 'calendar']" class="mt-1 mr-2" />
                     Calendar</NuxtLink>
                 </li>
-                <li v-if="getPermission.includes('company menu')" @click="menu" class="simplemenu">
-                  <NuxtLink to="/company" >
-                    <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
-                    Company</NuxtLink>
-                </li>
-                <li v-if="getPermission.includes('files menu')" @click="menu" class="simplemenu">
-                  <NuxtLink to="/files" >
-                    <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
-                    Files
-                  </NuxtLink>
-                </li>
                 <li class="collapsible" id="information" v-if="getPermission.includes('files menu')" @click="menuDropdown('information')">
                   <a href="#">
                     <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
@@ -108,6 +97,17 @@
                 </li>
                 <div class="content mb-0">
                   <ul>
+                    <li v-if="getPermission.includes('company menu')" @click="menu" class="simplemenu">
+                      <NuxtLink to="/company" >
+                        <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="mt-1 mr-2" />
+                        Company</NuxtLink>
+                    </li>
+                    <li v-if="getPermission.includes('files menu')" @click="menu" class="simplemenu">
+                      <NuxtLink to="/files" >
+                        <font-awesome-icon :icon="['fas', 'file']" class="mt-1 mr-2" />
+                        Files
+                      </NuxtLink>
+                    </li>
                     <li v-if="getPermission.includes('objects index')">
                       <NuxtLink to="/mediaobject"> <font-awesome-icon :icon="['fas', 'angle-right']" class="mt-1 mr-2" /> Objects</NuxtLink>
                     </li>
