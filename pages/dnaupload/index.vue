@@ -153,8 +153,12 @@
             }
         },
 
-        computed: {
-        },
+      computed: {
+        ...mapGetters([
+          'isAuthenticated',
+          'loggedInUser',
+        ]),
+      },
 
         methods: {
             updateParams(newProps) {
