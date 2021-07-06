@@ -297,6 +297,15 @@
                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
                     Subscription</NuxtLink>
                 </li>
+                <li class="collapsible" id="dna" v-if="getPermission.includes('dna upload menu')" @click="menuDropdown('dna')">
+                  <a href="#">
+                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
+                    DNA
+                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
+                  </a>
+                </li>
+                <div class="content mb-0">
+                  <ul>
                 <li v-if="getPermission.includes('dna upload menu')" @click="menu" class="simplemenu">
                   <NuxtLink to="/dnaupload" >
                     <font-awesome-icon :icon="['fas', 'file-upload']" class="mt-1 mr-2" />
@@ -307,20 +316,12 @@
                     <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
                     DNA Matching</NuxtLink>
                 </li>
+                  </ul>
+                </div>
                 <li v-if="getPermission.includes('how to videos menu')" @click="menu" class="simplemenu">
                   <a href="#">
                     <font-awesome-icon :icon="['fas', 'video']" class="mt-1 mr-2" />
                     How to Videos</a>
-                </li>
-                <li v-if="getPermission.includes('roles menu')" @click="menu" class="simplemenu">
-                  <NuxtLink to="/roles" >
-                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
-                    Roles</NuxtLink>
-                </li>
-                <li v-if="getPermission.includes('permissions menu')" @click="menu" class="simplemenu">
-                  <NuxtLink to="/permissions" >
-                    <font-awesome-icon :icon="['fas', 'dna']" class="mt-1 mr-2" />
-                    Permissions</NuxtLink>
                 </li>
               </ul>
             </aside>
