@@ -269,7 +269,16 @@
                     </li>
                   </ul>
                 </div>
-                <li v-if="getPermission.includes('gedcom import menu')" @click="menu" class="simplemenu">
+                <li class="collapsible" id="gedcom" v-if="getPermission.includes('gedcom import menu')" @click="menuDropdown('forum')">
+                  <a href="#">
+                    <font-awesome-icon :icon="['fas', 'question-circle']" class="mt-1 mr-2" />
+                    GEDCOM
+                    <font-awesome-icon :icon="['fas', 'angle-down']" class="mt-1 mr-2 is-pulled-right" />
+                  </a>
+                </li>
+                <div class="content mb-0">
+                  <ul>
+                  <li v-if="getPermission.includes('gedcom import menu')" @click="menu" class="simplemenu">
                   <NuxtLink to="/gedcom" >
                     <font-awesome-icon :icon="['fas', 'file-import']" class="mt-1 mr-2" />
                     GEDCOM Import
@@ -281,6 +290,8 @@
                     GEDCOM Export
                   </NuxtLink>
                 </li>
+                    </ul>
+                </div>
                 <li v-if="getPermission.includes('subscription menu')" @click="menu" class="simplemenu">
                   <NuxtLink to="/subscription" >
                     <font-awesome-icon :icon="['fas', 'rocket']" class="mt-1 mr-2" />
