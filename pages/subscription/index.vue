@@ -148,6 +148,7 @@ export default {
         },
         async loadPlans() {
             const response = await this.$axios.$get("/api/get-plans")
+          console.log(response);
 
                 this.getCurrentSubscription();
                 this.plans = response.data;
