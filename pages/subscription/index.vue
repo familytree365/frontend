@@ -151,7 +151,7 @@ export default {
           console.log(response);
 
                 this.getCurrentSubscription();
-                this.plans = response.data;
+                this.plans = response;
                 this.isLoading = false;
         },
          async getCurrentSubscription() {
