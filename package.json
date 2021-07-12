@@ -55,7 +55,7 @@
     "vue-chartjs": "^3.5.1",
     "vue-fb-customer-chat": "^0.2.0",
     "vue-good-table": "^2.21.10",
-    "vue-instantsearch": "^3.7.0",
+    "vue-instantsearch": "^3.8.0",
     "vue-loading-overlay": "^3.4.2",
     "vue-select": "^3.11.2",
     "vue-simple-search-dropdown": "^1.0.1",
