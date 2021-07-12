@@ -8,6 +8,7 @@ export default {
 
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:8000',
+    appEnv: process.env.APP_ENV || 'production'
   },
 
   sitemap: [
