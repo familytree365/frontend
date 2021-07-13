@@ -10506,10 +10506,10 @@ vue-hot-reload-api@^2.3.0:
   version "2.4.5"
   resolved "https://github.com/antoine92190/vue-infinite-loading/tarball/master#064f4f302a586407685b6ca80f955543781d9aa7"
 
-vue-instantsearch@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/vue-instantsearch/-/vue-instantsearch-3.8.0.tgz#b26c2afb7e8322534fd6eade01b445986f95ed67"
-  integrity sha512-JQKihn9dK1MFr7fh11Q+oXZJpAi/5PkWEdZGC1KzupjVhXpbc7G61gcg3T/B1zfdovCIfm0p3z4Rb0cJjzGxYA==
+vue-instantsearch@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/vue-instantsearch/-/vue-instantsearch-3.8.1.tgz#6ab57f0aef5558e235b085e0652e5a50eb8aa6e1"
+  integrity sha512-3lV8YBZTNZ2j2Kq9q5ALM/7J7TbBX4mDzFeUQZhI5XDL3HFfRU12ThPUGk6dOm+5XMEHQ7yCXmFTmGb8z3Lg/g==
   dependencies:
     algoliasearch-helper "^3.1.0"
     instantsearch.js "^4.25.0"
