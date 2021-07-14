@@ -10,7 +10,7 @@
     "lodash": "^4.17.21",
     "normalize-url": "^7.0.0",
     "socket.io": "^3.0.4",
-    "ws": "^7.5.3"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
