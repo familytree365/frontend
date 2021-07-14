@@ -62,9 +62,12 @@
     "vue-template-compiler": "2.6.14",
     "vue2-timepicker": "^1.1.6",
     "vuejs-datepicker": "^1.6.2",
-    "vuelidate": "^0.7.6"
+    "vuelidate": "^0.7.6",
+    "yarn": "^1.22.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "yarn-audit-fix": "^6.3.5"
+  },
   "resolutions": {
     "vue": "2.6.14",
     "vue-server-renderer": "2.6.14"
