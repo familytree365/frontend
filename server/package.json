@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "css-what": "^5.0.1",
-    "glob-parent": "^6.0.0",
+    "glob-parent": "^5.1.2",
     "lodash": "^4.17.21",
     "normalize-url": "^7.0.0",
     "socket.io": "^3.0.4",
