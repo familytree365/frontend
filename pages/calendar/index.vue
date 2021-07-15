@@ -66,50 +66,75 @@
         </div>
         <div class="modal" v-bind:class="{ 'is-active': showEventCreationDialog }">
             <div class="modal-background" v-on:click="showEventCreationDialog = false"></div>
-            <div class="modal-card">
-              <header class="modal-card-head">
-                <p class="modal-card-title">Modal title</p>
-                <button class="delete" aria-label="close" v-on:click="showEventCreationDialog = false"></button>
-              </header>
-              <section class="modal-card-body">
-                <div class="field is-horizontal">
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Event Editor</p>
+                  <button class="delete" aria-label="close" v-on:click="showEventCreationDialog = false"></button>
+                </header>
+                <section class="modal-card-body">
                   <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                      <input class="input" type="text" v-model="calendar_event.title" placeholder="Text input">
-                    </div>
-                  </div>
-                  <div class="field-body">
                     <div class="field">
+                      <label class="label">Title</label>
+                      <div class="control">
+                        <input class="input" type="text" v-model="calendar_event.title" placeholder="Event title...">
+                      </div>
+                    </div>                  
+                    <div class="field-body">
+                      <div class="flex-1">
+                        <label class="label">Start</label>
                         <v-date-picker v-model="calendar_event.start" mode="dateTime" is24hr :model-config="modelConfig">
                           <template v-slot="{ inputValue, inputEvents }">
                             <input
-                              class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                              class="input"
                               :value="inputValue"
                               v-on="inputEvents"
                             />
                           </template>
-                        </v-date-picker>
+                        </v-date-picker>                                        
+                      </div>
+                      <div class="flex-1">
+                        <label class="label">End</label>
+                        <v-date-picker v-model="calendar_event.end" mode="dateTime" is24hr :model-config="modelConfig">
+                          <template v-slot="{ inputValue, inputEvents }">
+                            <input
+                              class="input"
+                              :value="inputValue"
+                              v-on="inputEvents"
+                            />
+                          </template>
+                        </v-date-picker>                    
+                      </div>                                                        
                     </div>
                     <div class="field">
-                      <v-date-picker v-model="calendar_event.start" mode="dateTime" is24hr :model-config="modelConfig">
-                        <template v-slot="{ inputValue, inputEvents }">
-                          <input
-                            class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
-                            :value="inputValue"
-                            v-on="inputEvents"
-                          />
-                        </template>
-                      </v-date-picker>
+                      <label class="label">Content</label>
+                      <div class="control">
+                        <textarea class="textarea input" type="text" v-model="calendar_event.content" rows="3" placeholder="Content here..."></textarea>
+                      </div>
+                    </div>
                   </div>
+                  <div class="field">                    
+                    <label class="label">Event Type</label>
+                    <div class="event_group">
+                      <div class="field">
+                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="sports"></input>
+                        <label class="event_item">Sports</label>
+                      </div>
+                      <div class="field">
+                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="leisure"></input>
+                        <label class="event_item">Leisure</label>
+                      </div>
+                      <div class="field">
+                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="health"></input>
+                        <label class="event_item">Health</label>
+                      </div>                      
+                    </div>
                   </div>
-                </div>
-              </section>
-              <footer class="modal-card-foot">
-                <button class="button is-success" @click.prevent="save()">Save changes</button>
-                <button class="button" v-on:click="showEventCreationDialog = false">Cancel</button>
-              </footer>
-            </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success" @click.prevent="save()">Save changes</button>
+                  <button class="button" v-on:click="showEventCreationDialog = false">Cancel</button>
+                </footer>
+              </div>
           </div>
   </div>
 </template>
@@ -136,6 +161,10 @@ export default {
           },
           calendar_event : {
             title : null,
+            content: null,
+            start: null,
+            end: null,
+            class: null
           },
            modelConfig: {
                     type: 'string',
@@ -191,6 +220,7 @@ export default {
         this.$axios.$post('/api/calendar_event', this.calendar_event)
                 .then(response => this.showEventCreationDialog = false )
                 .catch(error => {
+                  console.log(error)
                 });
       },
       async getevents() {

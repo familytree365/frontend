@@ -4391,6 +4391,13 @@ fieldset[disabled] .select select:hover {
   }
 }
 
+.field-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
 .field-body .field .field {
   margin-bottom: 0;
 }
@@ -4416,6 +4423,14 @@ fieldset[disabled] .select select:hover {
   }
 }
 
+.event_group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event_group .event_item {
+  margin: 0 4px;
+}
 .control {
   box-sizing: border-box;
   clear: both;
@@ -5269,10 +5284,11 @@ button.dropdown-item.is-active {
 .modal-card-body {
   -webkit-overflow-scrolling: touch;
   background-color: white;
-  flex-grow: 1;
-  flex-shrink: 1;
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
   overflow: auto;
   padding: 20px;
+  height: 400px;
 }
 
 .navbar {
