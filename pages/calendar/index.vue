@@ -5,6 +5,7 @@
               <h1 class="is-size-4 has-text-black">
                   <span class="has-text-weight-medium">Calendar</span>
               </h1>
+              <button v-on:click="getEventsApi" class="btn bg-color-green">GET_EVENTS</button>
           </div>
           <div class="column is-12">
               <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
@@ -47,11 +48,11 @@
                 <div class="card has-background-white has-text-black">
                     <div class="card-header">
                         <div class="card-header-title has-text-black">
-                            Calendar
+                            Scheduler
                         </div>
                     </div>
                     <div class="card-content is-flex jc--sb">
-                    <vue-cal style="height: 600px" selected-date="2018-11-19"
+                    <vue-cal style="height: 600px" selected-date="2021-07-17"
                       :time-from="9 * 60"
                       :time-to="23 * 60"
                       events-on-month-view="short"
@@ -116,17 +117,23 @@
                     <label class="label">Event Type</label>
                     <div class="event_group">
                       <div class="field">
-                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="sports"></input>
-                        <label class="event_item">Sports</label>
+                        <label class="event_item">
+                          <input type="radio" id="sports" v-model="calendar_event.class" name="event_class" value="sport">
+                          Sports
+                        </label>
                       </div>
                       <div class="field">
-                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="leisure"></input>
-                        <label class="event_item">Leisure</label>
+                        <label class="event_item">
+                          <input type="radio" id="leisure" v-model="calendar_event.class" name="event_class" value="leisure">
+                          Leisure
+                        </label>
                       </div>
                       <div class="field">
-                        <input type="radio" class="radio" v-model="calendar_event.class" name="event_class" value="health"></input>
-                        <label class="event_item">Health</label>
-                      </div>                      
+                        <label class="event_item">
+                          <input type="radio" id="health" v-model="calendar_event.class" name="event_class" value="health">
+                          Health
+                        </label>
+                      </div>                                           
                     </div>
                   </div>
                 </section>
@@ -152,8 +159,8 @@ export default {
 
     components: { VueCal },
     data() {
-      const month = new Date().getMonth();
-      const year = new Date().getFullYear();
+      const cur_month = new Date().getMonth();
+      const cur_year = new Date().getFullYear();
       return {
           isShowModal: false,
           selectedEvent: {
@@ -172,25 +179,7 @@ export default {
                 },
           showEventCreationDialog: false,
           eventsCssClasses: ['leisure', 'sport', 'health'],
-          events: [
-            {
-              start: '2018-11-20 14:00',
-              end: '2018-11-20 18:00',
-              title: 'Need to go shopping',
-              icon: 'shopping_cart', // Custom attribute.
-              content: 'Click to see my shopping list',
-              contentFull: 'My shopping list is rather long:<br><ul><li>Avocados</li><li>Tomatoes</li><li>Potatoes</li><li>Mangoes</li></ul>', // Custom attribute.
-              class: 'leisure'
-            },
-            {
-              start: '2018-11-22 10:00',
-              end: '2018-11-22 15:00',
-              title: 'Golf with John',
-              icon: 'golf_course', // Custom attribute.
-              content: 'Do I need to tell how many holes?',
-              contentFull: 'Okay.<br>It will be a 18 hole golf course.', // Custom attribute.
-              class: 'sport'
-            }
+          events: [            
           ]
       }
     },
@@ -216,21 +205,63 @@ export default {
         this.showEventCreationDialog = false
         this.selectedEvent = {}
       },
-      save() {
-        this.$axios.$post('/api/calendar_event', this.calendar_event)
-                .then(response => this.showEventCreationDialog = false )
-                .catch(error => {
-                  console.log(error)
-                });
+      async save() {
+        if(this.calendar_event.title == null){
+          alert('Please input title');
+          return;
+        }
+        if(this.calendar_event.start == null){
+          alert('Please select the start date & time');
+          return;
+        }
+        if(this.calendar_event.end == null){
+          alert('Please select the end date & time');
+          return;
+        }
+        if(this.calendar_event.class == null)
+        {
+          alert('Please select the type of event!');
+          return;
+        }        
+
+        const response = await this.$axios.$post('/api/calendar_event', this.calendar_event);                
+        const data = await response;        
+
+        this.events = [...this.events, data];                
+        this.calendar_event.title = null;
+        this.calendar_event.content = null;
+        this.calendar_event.start = null;
+        this.calendar_event.end = null;
+        this.calendar_event.class = null;
+
+        this.showEventCreationDialog = false
       },
       async getevents() {
+        var updated_events = []
         const response = await this.$axios.$get("/api/calendar_event")
-
-            this.events = response;
+        let tmp = response;
+        for(let i=0; i<tmp.length; i++)
+        {          
+          let event = {
+            "start" : tmp[i].start_date + ' ' + tmp[i].start_time,
+            "end" : tmp[i].end_date + ' ' + tmp[i].end_time,
+            "title" : tmp[i].title,
+            "icon" : 'shopping_cart',
+            "content" : tmp[i].body,
+            "contentFull" : tmp[i].body,
+            "class" : tmp[i].class
+          };
+          updated_events.push(event);          
+        }
+        this.events = updated_events;        
       },
+      async getEventsApi() {
+        await this.getevents();
+        console.log(this.year + '-' + this.month)
+      }
     },
-    created() {
-      //this.getevents
+    async created() {
+      await this.getevents()
     }
 }
 </script>
@@ -249,6 +280,7 @@ export default {
 
 .vuecal__event.leisure {background-color: rgba(253, 156, 66, 0.9);border: 1px solid rgb(233, 136, 46);color: #fff;}
 .vuecal__event.sport {background-color: rgba(255, 102, 102, 0.9);border: 1px solid rgb(235, 82, 82);color: #fff;}
+.vuecal__event.health {background-color: rgba(102, 255, 140, 0.9);border: 1px solid rgb(69, 236, 53);color: #fff;}
 .vuecal--month-view .vuecal__cell {height: 80px;}
 
 .vuecal--month-view .vuecal__cell-content {
