@@ -47,11 +47,11 @@
                 <div class="card has-background-white has-text-black">
                     <div class="card-header">
                         <div class="card-header-title has-text-black">
-                            Scheduler
+                            Calendar
                         </div>
                     </div>
                     <div class="card-content is-flex jc--sb">
-                    <vue-cal style="height: 600px" selected-date="2021-07-17"
+                    <vue-cal style="height: 600px" :selected-date="selectedDate"
                       :time-from="9 * 60"
                       :time-to="23 * 60"
                       events-on-month-view="short"
@@ -158,8 +158,8 @@ export default {
 
     components: { VueCal },
     data() {
-      const cur_month = new Date().getMonth();
-      const cur_year = new Date().getFullYear();
+      var today = new Date();
+      
       return {
           isShowModal: false,
           selectedEvent: {
@@ -172,10 +172,11 @@ export default {
             end: null,
             class: null
           },
-           modelConfig: {
-                    type: 'string',
-                    mask: 'YYYY-MM-DD HH:mm', // Uses 'iso' if missing
-                },
+          selectedDate : new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+          modelConfig: {
+                  type: 'string',
+                  mask: 'YYYY-MM-DD HH:mm', // Uses 'iso' if missing
+              },
           showEventCreationDialog: false,
           eventsCssClasses: ['leisure', 'sport', 'health'],
           events: [            
