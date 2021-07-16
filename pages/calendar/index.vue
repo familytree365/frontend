@@ -5,7 +5,6 @@
               <h1 class="is-size-4 has-text-black">
                   <span class="has-text-weight-medium">Calendar</span>
               </h1>
-              <button v-on:click="getEventsApi" class="btn bg-color-green">GET_EVENTS</button>
           </div>
           <div class="column is-12">
               <nav class="breadcrumb mt-1 mb-0" aria-label="breadcrumbs">
@@ -255,10 +254,6 @@ export default {
         }
         this.events = updated_events;        
       },
-      async getEventsApi() {
-        await this.getevents();
-        console.log(this.year + '-' + this.month)
-      }
     },
     async created() {
       await this.getevents()
