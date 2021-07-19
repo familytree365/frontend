@@ -75,11 +75,11 @@ export default {
     },
     methods: {
 
-        resendLink() {
-            this.$axios.$post("/api/email/verification-notification", {
+        async resendLink() {
+            var response = await this.$axios.$post("/api/email/verification-notification", {
                         email: this.loggedInUser.email,
                 })
-
+            console.log(response)
                     this.message = null
                     this.message = response.message
         }
