@@ -1,7 +1,7 @@
 <template>
     <div>
         <NuxtLink class="is-size-7 has-text-weight-medium has-text-link"
-                            to="/subscription/paypal">PayPal</NuxtLink>
+                            to="/subscription">Stripe</NuxtLink>
         <loading :active.sync="isLoading" :color="color" :background-color="backgroundColor"> </loading>
         <div class="currency-div">
             <span>Currency: </span>
@@ -23,7 +23,7 @@
                     <li class="is-size-7 has-text-weight-medium is-active"><a href=""
                             aria-current="page">Subscription</a></li>
                     <li class="is-size-7 has-text-weight-medium is-active"><a href=""
-                            aria-current="page">Stripe</a></li>
+                            aria-current="page">Paypal</a></li>
                 </ul>
             </nav>
         </div>
@@ -33,11 +33,11 @@
                     <div class="column is-6" v-for="plan in plans" :key="plan.id">
                         <div class="card has-background-white has-text-black">
                             <div class="card-content">
-                                {{selected_currency_symbol + (plan.amount * selected_currency_rate / 100).toFixed(2)
+                                {{selected_currency_symbol + (plan.amount * selected_currency_rate).toFixed(2)
                                    }}
                                 <div class="is-size-6 has-text-black is-uppercase has-text-weight-bold">{{ plan.nickname }}</div>
                                 <div class="is-size-7 has-text-black has-text-weight-regular">{{ plan.title }}</div>
-                                <NuxtLink  v-if="has_payment_method == false" :to="'/subscription/payment/' + plan.id" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
+                                <!-- <NuxtLink  v-if="has_payment_method == false" :to="'/subscription/payment/' + plan.id" class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">Subscribe</NuxtLink>
                                 <div v-if="has_payment_method && plan.subscribed === false">
                                     <button @click="open(plan.id)"
                                         class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">
@@ -50,7 +50,20 @@
                                         class="button is-size-7 is-uppercase is-danger has-text-weight-medium is-light mt-4" :class="{ 'is-success': plan.subscribed }">
                                         Unsubscribe
                                     </button>
+                                </div> -->
+                                <div v-if="plan.subscribed === false">
+                                    <button @click="handlePayment(plan)"
+                                        class="button is-size-7 is-uppercase has-text-white has-background-primary has-text-weight-medium is-light mt-4">
+                                        Subscribe
+                                    </button>
                                 </div>
+                                <div v-else>
+                                    <button @click="unsubscribePaypal(plan)"
+                                        class="button is-size-7 is-uppercase has-text-white has-background-danger has-text-weight-medium is-light mt-4">
+                                        Unsubscribe
+                                    </button>
+                                </div>
+                                    
                             </div>
                         </div>
                     </div>
@@ -120,7 +133,7 @@ export default {
         return {
             error: false,
             message: "",
-            isLoading: false,
+            isLoading: true,
             fullPage: true,
             color: '#4fcf8d',
             backgroundColor: '#ffffff',
@@ -152,14 +165,14 @@ export default {
         },
         async loadPlans() {
             console.log("asdfhklasdflkasjdflasjdklfjasdlfjlasdfk")
-            const response = await this.$axios.$get("/api/get-plans")
+            const response = await this.$axios.post("/api/getPlans", {email: this.loggedInUser.email});
             console.log("response", response);
 
-                this.getCurrentSubscription();
-                this.plans = response;
+                // this.getCurrentSubscription();
+                this.plans = response.data;
                 this.isLoading = false;
         },
-         async getCurrentSubscription() {
+        async getCurrentSubscription() {
             const response = await this.$axios.$get('/api/get-current-subscription')
 
                     this.isLoading = false
@@ -200,6 +213,7 @@ export default {
                         this.isLoading = false
         },
         async selectCurrency(currency) {
+            this.selected_currency = currency;
             const response = await this.$axios.$get('https://api.currencyfreaks.com/latest?apikey=b864b83a27f5411c804e70762945b59a')
               .then(res => {
                 console.log(res.rates);
@@ -235,16 +249,79 @@ export default {
         close() {
             this.isActive = false;
         },
+
+        // Paypal payment
+        async handlePayment(plan) {
+            this.isLoading = true;
+            var sendData = {
+                ...plan,
+                email: this.loggedInUser.email,
+                first_name: "Nick",
+                last_name: "dev",
+                selected_currency: this.selected_currency
+            }
+            console.log("LOGGED", sendData);
+            const response = await this.$axios.$post('/api/handle-payment', sendData);
+            console.log(response);
+            window.location.href = response;
+            this.isLoading = false;
+        },
+
+        async unsubscribePaypal(plan) {
+            this.isLoading = true;
+            const response = await this.$axios.post('/api/unsubscribePaypal', {email: this.loggedInUser.email});
+            console.log(response);
+            window.location.reload();
+            // alert("Your subscription is cancelled");
+        },
+
         ...mapActions([
-                "loadRole",
-                "loadPermission"
+            "loadRole",
+            "loadPermission"
         ]),
     },
     created() {
         this.loadRole()
         this.loadPermission()
         this.loadPlans();
-
+        // this.plans = [
+        //     {
+        //         id: 0,
+        //         amount: 7500,
+        //         nickname: "UTY",
+        //         title: "Unlimited trees yearly"
+        //     },
+        //     {
+        //         id: 1,
+        //         amount: 750,
+        //         nickname: "UTM",
+        //         title: "Unlimited trees monthly"
+        //     },
+        //     {
+        //         id: 2,
+        //         amount: 2500,
+        //         nickname: "TTY",
+        //         title: "Ten trees yearly"
+        //     },
+        //     {
+        //         id: 3,
+        //         amount: 250,
+        //         nickname: "TTM",
+        //         title: "Ten trees monthly"
+        //     },
+        //     {
+        //         id: 4,
+        //         amount: 1000,
+        //         nickname: "OTY",
+        //         title: "One tree yearly"
+        //     },
+        //     {
+        //         id: 5,
+        //         amount: 100,
+        //         nickname: "OTM",
+        //         title: "One tree monthly"
+        //     }
+        // ]
     },
 
 };
