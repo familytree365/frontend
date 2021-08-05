@@ -12269,10 +12269,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-advanced-chat@^0.8.6:
-  version "0.8.6"
-  resolved "https://registry.npmjs.org/vue-advanced-chat/-/vue-advanced-chat-0.8.6.tgz"
-  integrity sha512-gsLOyEqJvn3qErHk2baTOi+5uByCZXMgijJx2g8K0wFwFMnmg3nIHrKq5YO6tUJPXBRU+qLUy/IktfEcVENo9A==
+vue-advanced-chat@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/vue-advanced-chat/-/vue-advanced-chat-0.9.0.tgz#529558a9b051f27b1281ba436137c0e25cbf75f0"
+  integrity sha512-Zg0rXpQQjOV/gLS/0CPUo/JetwkYj6kS45VZ6cX8ntJqSjC92sgcDD381lLl8cCTPSbpeq7gqgcY9hn21MU7xg==
   dependencies:
     linkifyjs "^2.1.9"
     v-click-outside "^3.1.2"
