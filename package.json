@@ -72,7 +72,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "yarn-audit-fix": "^6.3.6"
+    "yarn-audit-fix": "^6.3.9"
   },
   "resolutions": {
     "vue": "2.6.14",
