@@ -8,7 +8,7 @@ export default {
   
     server: {
     host: process.env.HOST || '0', // default: localhost
-    port: '3000'
+    port: '80'
   },
 
   publicRuntimeConfig: {
