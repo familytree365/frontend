@@ -7,8 +7,8 @@ export default {
   ssr: false,
   
     server: {
-    host: '0', // default: localhost
-    port: '443'
+    host: process.env.HOST || '0', // default: localhost
+    port: '80'
   },
 
   publicRuntimeConfig: {
