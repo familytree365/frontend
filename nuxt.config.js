@@ -5,6 +5,11 @@ const meta = getSiteMeta();
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
+  
+    server: {
+    host: process.env.HOST ||'0', // default: localhost
+    port: '80'
+  },
 
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:8000',
