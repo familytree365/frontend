@@ -41,7 +41,7 @@
     "moment": "^2.29.1",
     "normalize-url": "^7.0.1",
     "nuxt": "^2.15.7",
-    "nuxt-buefy": "^0.4.8",
+    "nuxt-buefy": "^0.4.10",
     "nuxt-content-algolia": "^0.2.0",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-socket-io": "^1.1.18",
