@@ -2008,10 +2008,10 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.15.tgz"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
 
-"@popperjs/core@2.9.2":
-  version "2.9.2"
-  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.9.2.tgz"
-  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
+"@popperjs/core@2.9.3":
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.3.tgz#8b68da1ebd7fc603999cf6ebee34a4899a14b88e"
+  integrity sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==
 
 "@ssthouse/vue-tree-chart@^0.5.3":
   version "0.5.3"
