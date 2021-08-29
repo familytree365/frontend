@@ -39,7 +39,7 @@
     "laravel-echo": "^1.11.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "normalize-url": "^7.0.0",
+    "normalize-url": "^7.0.1",
     "nuxt": "^2.15.7",
     "nuxt-buefy": "^0.4.8",
     "nuxt-content-algolia": "^0.2.0",
