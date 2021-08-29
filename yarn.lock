@@ -1281,10 +1281,10 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@fortawesome/fontawesome-common-types@^0.2.35":
-  version "0.2.35"
-  resolved "https://registry.npmjs.org/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.35.tgz"
-  integrity sha512-IHUfxSEDS9dDGqYwIW7wTN6tn/O8E0n5PcAHz9cAaBoZw6UpG20IG/YM3NNLaGPwPqgjBAFjIURzqoQs3rrtuw==
+"@fortawesome/fontawesome-common-types@^0.2.35", "@fortawesome/fontawesome-common-types@^0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.36.tgz#b44e52db3b6b20523e0c57ef8c42d315532cb903"
+  integrity sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==
 
 "@fortawesome/fontawesome-svg-core@^1.2.12", "@fortawesome/fontawesome-svg-core@^1.2.35":
   version "1.2.35"
@@ -1300,12 +1300,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/free-regular-svg-icons@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.npmjs.org/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.3.tgz"
-  integrity sha512-q4/p8Xehy9qiVTdDWHL4Z+o5PCLRChePGZRTXkl+/Z7erDVL8VcZUuqzJjs6gUz6czss4VIPBRdCz6wP37/zMQ==
+"@fortawesome/free-regular-svg-icons@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.4.tgz#b97edab436954333bbeac09cfc40c6a951081a02"
+  integrity sha512-9VNNnU3CXHy9XednJ3wzQp6SwNwT3XaM26oS4Rp391GsxVYA+0oDR2J194YCIWf7jNRCYKjUCOduxdceLrx+xw==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.35"
+    "@fortawesome/fontawesome-common-types" "^0.2.36"
 
 "@fortawesome/free-solid-svg-icons@^5.15.3":
   version "5.15.3"
@@ -7529,10 +7529,10 @@ lamejs@^1.2.0:
   dependencies:
     use-strict "1.0.1"
 
-laravel-echo@^1.11.0, laravel-echo@^1.6.1:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.11.0.tgz"
-  integrity sha512-0IThWqI+UNjrwIu/JI3/MGYXLT15LPrwNymP80cgZckYDyY57+Pf2WXKXa+ViX9qh+1WU34vBjMsJAj8wA5iVQ==
+laravel-echo@^1.11.1, laravel-echo@^1.6.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.1.tgz#aba6e53a95063b428379934b7bd6eb756aed129a"
+  integrity sha512-ldyiI3tjL+WVHfCbMDcMmyD99rKcQYG0g6Y3mgLvM+0Zw8cOkBKYNlqMjMuYJPjHQqL/zvX4ARq0tzFQk1U82g==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
