@@ -1293,12 +1293,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/free-brands-svg-icons@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.npmjs.org/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.3.tgz"
-  integrity sha512-1hirPcbjj72ZJtFvdnXGPbAbpn3Ox6mH3g5STbANFp3vGSiE5u5ingAKV06mK6ZVqNYxUPlh4DlTnaIvLtF2kw==
+"@fortawesome/free-brands-svg-icons@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.4.tgz#ec8a44dd383bcdd58aa7d1c96f38251e6fec9733"
+  integrity sha512-f1witbwycL9cTENJegcmcZRYyawAFbm8+c6IirLmwbbpqz46wyjbQYLuxOc7weXFXfB7QR8/Vd2u5R3q6JYD9g==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.35"
+    "@fortawesome/fontawesome-common-types" "^0.2.36"
 
 "@fortawesome/free-regular-svg-icons@^5.15.4":
   version "5.15.4"
@@ -2023,10 +2023,10 @@
     vue-router "^3.0.1"
     vuetify "^1.0.18"
 
-"@stripe/stripe-js@^1.11.0", "@stripe/stripe-js@^1.16.0":
-  version "1.16.0"
-  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.16.0.tgz"
-  integrity sha512-ZSHbiwTrISoaTbpercmYGuY7QTg7HxfFyNgbJBaYbwHWbzMhpEdGTsmMpaBXIU6iiqwEEDaIyD8O6yJ+H5DWCg==
+"@stripe/stripe-js@^1.11.0", "@stripe/stripe-js@^1.17.1":
+  version "1.17.1"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.17.1.tgz#afcb7e86d0b05d1a7af53af89111abd2e8d437ae"
+  integrity sha512-c9MyDvdi5Xou0j0JPNy86NebtTDfh9o62Ifuzx6GSm2YO0oedBpy51WSyOue2L8Fb+mqESS5gd6mGVEIPUnXsA==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -7529,10 +7529,10 @@ lamejs@^1.2.0:
   dependencies:
     use-strict "1.0.1"
 
-laravel-echo@^1.11.0, laravel-echo@^1.6.1:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.11.0.tgz"
-  integrity sha512-0IThWqI+UNjrwIu/JI3/MGYXLT15LPrwNymP80cgZckYDyY57+Pf2WXKXa+ViX9qh+1WU34vBjMsJAj8wA5iVQ==
+laravel-echo@^1.11.1, laravel-echo@^1.6.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.1.tgz#aba6e53a95063b428379934b7bd6eb756aed129a"
+  integrity sha512-ldyiI3tjL+WVHfCbMDcMmyD99rKcQYG0g6Y3mgLvM+0Zw8cOkBKYNlqMjMuYJPjHQqL/zvX4ARq0tzFQk1U82g==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -8656,10 +8656,10 @@ normalize-url@^3.0.0, normalize-url@^3.3.0:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-3.3.0.tgz"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
-normalize-url@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.0.tgz#7150a7eaf78d48b4a1e57d2b52de579e6b31fd30"
-  integrity sha512-a7y92XA/bHw9sGhkjgyIuEdP/EItvGVkvzTusBPsvMhuy6ZK0+ET1jQdv2L5yvHlEjE0IFBovEzvwVPbIb+eIg==
+normalize-url@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.1.tgz#44b67c94ecb2cd31d2d0491fe5cc13abb990e787"
+  integrity sha512-WjLnBQVhYX5XRIectq7CEXgu7O13OB1vsj3rkVItD4c48G/JRD5dohJ1R5vVwZ5wI2/SJDNHfpdQ0Xsqbr1dhQ==
 
 npm-audit-report@^2.1.5:
   version "2.1.5"
