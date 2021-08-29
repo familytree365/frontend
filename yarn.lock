@@ -7529,10 +7529,10 @@ lamejs@^1.2.0:
   dependencies:
     use-strict "1.0.1"
 
-laravel-echo@^1.11.0, laravel-echo@^1.6.1:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.11.0.tgz"
-  integrity sha512-0IThWqI+UNjrwIu/JI3/MGYXLT15LPrwNymP80cgZckYDyY57+Pf2WXKXa+ViX9qh+1WU34vBjMsJAj8wA5iVQ==
+laravel-echo@^1.11.1, laravel-echo@^1.6.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.1.tgz#aba6e53a95063b428379934b7bd6eb756aed129a"
+  integrity sha512-ldyiI3tjL+WVHfCbMDcMmyD99rKcQYG0g6Y3mgLvM+0Zw8cOkBKYNlqMjMuYJPjHQqL/zvX4ARq0tzFQk1U82g==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
