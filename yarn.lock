@@ -8979,7 +8979,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-buefy@^0.4.10:
+nuxt-buefy@^0.4.8:
   version "0.4.10"
   resolved "https://registry.yarnpkg.com/nuxt-buefy/-/nuxt-buefy-0.4.10.tgz#7e091ebee5c7dd2bf9de46a3b7a36a3a4d0d4fba"
   integrity sha512-Kk/QrNXUrIe3/iPecb0v1OmcZWfdihioEuPtqW4OUfaDDPrVUdfPPRKLMHNgy1OPxDEGSor/h3zMr23d9/0Nyw==
@@ -10920,10 +10920,10 @@ sass-loader@10.1.1:
     schema-utils "^3.0.0"
     semver "^7.3.2"
 
-sass@^1.29.0:
-  version "1.34.0"
-  resolved "https://registry.npmjs.org/sass/-/sass-1.34.0.tgz"
-  integrity sha512-rHEN0BscqjUYuomUEaqq3BMgsXqQfkcMVR7UhscsAVub0/spUrZGBMxQXFS2kfiDsPLZw5yuU9iJEFNC2x38Qw==
+sass@^1.38.2:
+  version "1.38.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.38.2.tgz#970045d9966180002a8c8f3820fc114cddb42822"
+  integrity sha512-Bz1fG6qiyF0FX6m/I+VxtdVKz1Dfmg/e9kfDy2PhWOkq3T384q2KxwIfP0fXpeI+EyyETdOauH+cRHQDFASllA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
