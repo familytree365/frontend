@@ -1293,12 +1293,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/free-brands-svg-icons@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.npmjs.org/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.3.tgz"
-  integrity sha512-1hirPcbjj72ZJtFvdnXGPbAbpn3Ox6mH3g5STbANFp3vGSiE5u5ingAKV06mK6ZVqNYxUPlh4DlTnaIvLtF2kw==
+"@fortawesome/free-brands-svg-icons@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.4.tgz#ec8a44dd383bcdd58aa7d1c96f38251e6fec9733"
+  integrity sha512-f1witbwycL9cTENJegcmcZRYyawAFbm8+c6IirLmwbbpqz46wyjbQYLuxOc7weXFXfB7QR8/Vd2u5R3q6JYD9g==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.35"
+    "@fortawesome/fontawesome-common-types" "^0.2.36"
 
 "@fortawesome/free-regular-svg-icons@^5.15.4":
   version "5.15.4"
@@ -5043,10 +5043,10 @@ d3@^4.13.0:
     d3-voronoi "1.1.2"
     d3-zoom "1.7.1"
 
-d3@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/d3/-/d3-7.0.0.tgz"
-  integrity sha512-t+jEKGO2jQiSBLJYYq6RFc500tsCeXBB4x41oQaSnZD3Som95nQrlw9XJGrFTMUOQOkwSMauWy9+8Tz1qm9UZw==
+d3@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-7.0.1.tgz#ecd7eb094c398ec71dd61e8628a97ddf1c404d20"
+  integrity sha512-74zonD4nAtxF9dtwFwJ3RuoHPh2D/UTFX26midBuMVH+7pRbOezuyLUIb8mbQMuYFlcUXT+xy++orCmnvMM/CA==
   dependencies:
     d3-array "3"
     d3-axis "3"
@@ -7529,10 +7529,10 @@ lamejs@^1.2.0:
   dependencies:
     use-strict "1.0.1"
 
-laravel-echo@^1.11.0, laravel-echo@^1.6.1:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.11.0.tgz"
-  integrity sha512-0IThWqI+UNjrwIu/JI3/MGYXLT15LPrwNymP80cgZckYDyY57+Pf2WXKXa+ViX9qh+1WU34vBjMsJAj8wA5iVQ==
+laravel-echo@^1.11.1, laravel-echo@^1.6.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.1.tgz#aba6e53a95063b428379934b7bd6eb756aed129a"
+  integrity sha512-ldyiI3tjL+WVHfCbMDcMmyD99rKcQYG0g6Y3mgLvM+0Zw8cOkBKYNlqMjMuYJPjHQqL/zvX4ARq0tzFQk1U82g==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -8656,10 +8656,10 @@ normalize-url@^3.0.0, normalize-url@^3.3.0:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-3.3.0.tgz"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
-normalize-url@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.0.tgz#7150a7eaf78d48b4a1e57d2b52de579e6b31fd30"
-  integrity sha512-a7y92XA/bHw9sGhkjgyIuEdP/EItvGVkvzTusBPsvMhuy6ZK0+ET1jQdv2L5yvHlEjE0IFBovEzvwVPbIb+eIg==
+normalize-url@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.1.tgz#44b67c94ecb2cd31d2d0491fe5cc13abb990e787"
+  integrity sha512-WjLnBQVhYX5XRIectq7CEXgu7O13OB1vsj3rkVItD4c48G/JRD5dohJ1R5vVwZ5wI2/SJDNHfpdQ0Xsqbr1dhQ==
 
 npm-audit-report@^2.1.5:
   version "2.1.5"
