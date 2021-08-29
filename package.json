@@ -21,7 +21,7 @@
     "@nuxtjs/bulma": "^1.3.0",
     "@nuxtjs/laravel-echo": "^1.1.0",
     "@nuxtjs/sitemap": "^2.4.0",
-    "@popperjs/core": "2.9.2",
+    "@popperjs/core": "2.9.3",
     "@ssthouse/vue-tree-chart": "^0.5.3",
     "@stripe/stripe-js": "^1.16.0",
     "algoliasearch": "^4.10.3",
