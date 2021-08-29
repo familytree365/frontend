@@ -1293,12 +1293,12 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/free-brands-svg-icons@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.npmjs.org/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.3.tgz"
-  integrity sha512-1hirPcbjj72ZJtFvdnXGPbAbpn3Ox6mH3g5STbANFp3vGSiE5u5ingAKV06mK6ZVqNYxUPlh4DlTnaIvLtF2kw==
+"@fortawesome/free-brands-svg-icons@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.15.4.tgz#ec8a44dd383bcdd58aa7d1c96f38251e6fec9733"
+  integrity sha512-f1witbwycL9cTENJegcmcZRYyawAFbm8+c6IirLmwbbpqz46wyjbQYLuxOc7weXFXfB7QR8/Vd2u5R3q6JYD9g==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.35"
+    "@fortawesome/fontawesome-common-types" "^0.2.36"
 
 "@fortawesome/free-regular-svg-icons@^5.15.4":
   version "5.15.4"
@@ -5452,6 +5452,11 @@ emoji-js@^3.4.0:
   dependencies:
     emoji-datasource "4.1.0"
 
+emoji-picker-element@^1.7.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/emoji-picker-element/-/emoji-picker-element-1.8.0.tgz#7147041bfccf8e4805feb1400836bf68e76a4bf0"
+  integrity sha512-gTjp6TXrDr9jOFKJCTfRFwdbK2xt6sU1oBQ05fVC9eRTVx3YT1jgWNUfcOZik8jEkrtuIrhJgQfFDHmqtDDppQ==
+
 "emoji-regex@>=6.0.0 <=6.1.1":
   version "6.1.1"
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-6.1.1.tgz"
@@ -7529,10 +7534,10 @@ lamejs@^1.2.0:
   dependencies:
     use-strict "1.0.1"
 
-laravel-echo@^1.11.0, laravel-echo@^1.6.1:
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/laravel-echo/-/laravel-echo-1.11.0.tgz"
-  integrity sha512-0IThWqI+UNjrwIu/JI3/MGYXLT15LPrwNymP80cgZckYDyY57+Pf2WXKXa+ViX9qh+1WU34vBjMsJAj8wA5iVQ==
+laravel-echo@^1.11.1, laravel-echo@^1.6.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.11.1.tgz#aba6e53a95063b428379934b7bd6eb756aed129a"
+  integrity sha512-ldyiI3tjL+WVHfCbMDcMmyD99rKcQYG0g6Y3mgLvM+0Zw8cOkBKYNlqMjMuYJPjHQqL/zvX4ARq0tzFQk1U82g==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -8656,10 +8661,10 @@ normalize-url@^3.0.0, normalize-url@^3.3.0:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-3.3.0.tgz"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
-normalize-url@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.0.tgz#7150a7eaf78d48b4a1e57d2b52de579e6b31fd30"
-  integrity sha512-a7y92XA/bHw9sGhkjgyIuEdP/EItvGVkvzTusBPsvMhuy6ZK0+ET1jQdv2L5yvHlEjE0IFBovEzvwVPbIb+eIg==
+normalize-url@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.1.tgz#44b67c94ecb2cd31d2d0491fe5cc13abb990e787"
+  integrity sha512-WjLnBQVhYX5XRIectq7CEXgu7O13OB1vsj3rkVItD4c48G/JRD5dohJ1R5vVwZ5wI2/SJDNHfpdQ0Xsqbr1dhQ==
 
 npm-audit-report@^2.1.5:
   version "2.1.5"
@@ -12257,14 +12262,14 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-advanced-chat@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/vue-advanced-chat/-/vue-advanced-chat-0.9.0.tgz#529558a9b051f27b1281ba436137c0e25cbf75f0"
-  integrity sha512-Zg0rXpQQjOV/gLS/0CPUo/JetwkYj6kS45VZ6cX8ntJqSjC92sgcDD381lLl8cCTPSbpeq7gqgcY9hn21MU7xg==
+vue-advanced-chat@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-advanced-chat/-/vue-advanced-chat-1.1.0.tgz#1c46eb8383e7933775f96fa59f588f6d15107c12"
+  integrity sha512-wJMFWA9olzfvSdAtgA1qKM9h7hxrADCKSr28eXp/xj2n3YKpvMgd5FurTX3WD6tqBxHOh0o85wT1I6Hp64c2VA==
   dependencies:
+    emoji-picker-element "^1.7.0"
     linkifyjs "^2.1.9"
     v-click-outside "^3.1.2"
-    vue-emoji-picker "^1.0.1"
     vue-infinite-loading "https://github.com/antoine92190/vue-infinite-loading/tarball/master"
   optionalDependencies:
     lamejs "^1.2.0"
@@ -12299,11 +12304,6 @@ vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/vue-client-only/-/vue-client-only-2.0.0.tgz"
   integrity sha512-arhk1wtWAfLsJyxGMoEYhoBowM87/i6HLSG2LH/03Yog6i2d9JEN1peMP0Ceis+/n9DxdenGYZZTxbPPJyHciA==
-
-vue-emoji-picker@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/vue-emoji-picker/-/vue-emoji-picker-1.0.1.tgz"
-  integrity sha512-phisHAaSg+7xnpi7xlOxFGD46npaQXCLit2T6nAHMlEcFNT1ZUqu/NO3P5FDp6RgjP7o4ueduktnxk9ul0IS9Q==
 
 vue-fb-customer-chat@^0.2.0:
   version "0.2.0"
