@@ -44,7 +44,7 @@
     "nuxt-buefy": "^0.4.8",
     "nuxt-content-algolia": "^0.2.0",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-socket-io": "^1.1.18",
+    "nuxt-socket-io": "^1.1.23",
     "nuxt-stripe-module": "^3.2.0",
     "pusher-js": "^7.0.3",
     "remove-markdown": "^0.3.0",
